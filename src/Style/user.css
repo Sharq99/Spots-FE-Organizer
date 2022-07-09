@@ -1,0 +1,172 @@
+.userbuttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  font-size: 20px;
+  width: 100%;
+}
+.background {
+  width: 430px;
+  height: 520px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.form-style {
+  height: 350px;
+  width: 400px;
+  background-color: rgba(255, 255, 255, 0.13);
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+  padding: 50px 35px;
+}
+.form-style * {
+  font-family: "Poppins", sans-serif;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+  outline: none;
+  border: none;
+}
+.form-style h3 {
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 42px;
+  text-align: center;
+}
+
+.label-style {
+  display: block;
+  margin-top: 30px;
+  font-size: 16px;
+  font-weight: 500;
+}
+.input-style {
+  display: block;
+  height: 50px;
+  width: 380px;
+  background-color: rgba(255, 255, 255, 0.07);
+  border-radius: 3px;
+  padding: 0 10px;
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 300;
+}
+::placeholder {
+  color: #e5e5e5;
+}
+.button-sign {
+  margin-top: 50px;
+  width: 20%;
+  background-color: #c9fb5f;
+  color: #080710;
+  padding: 15px 0;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.l-color {
+  color: #c9fb5f;
+}
+
+/* SETTINGS STYLE */
+
+.imageUserNameEdit {
+  justify-content: "space-between";
+  align-items: "flex-start";
+  flex-direction: "row";
+}
+.imageUserName {
+  justify-content: "flex-Start";
+  align-items: "center";
+  flex-direction: "column";
+  position: "relative";
+  margin-left: 2;
+}
+.profile {
+  position: "absolute";
+  align-self: "center";
+  margin-top: 75;
+  margin-left: 28;
+  font-size: 30;
+  align-self: "flex-start";
+  color: bisque;
+}
+.profileImage {
+  width: 200;
+  height: 200;
+  border-radius: 500;
+  margin-right: 105;
+  margin-left: 112;
+  margin-top: 60;
+  border-width: 2;
+}
+.spotsNum {
+  font-size: 30;
+  margin-top: 30;
+  margin-left: 12;
+  font-weight: "bold";
+}
+.spotsTitle {
+  font-size: 30;
+  margin-top: -10;
+  margin-left: 12;
+  /* fontWeight: "bold"; */
+}
+.edit {
+  border-radius: 10;
+  position: "absolute";
+  margin-top: 360;
+  margin-left: "16%";
+  background-color: "#e7e7e7";
+  border-radius: "50%";
+  justify-content: "center";
+  padding-left: 80;
+  padding-right: 80;
+}
+.bio {
+  justify-content: "center";
+  align-items: "center";
+  text-align: "justify";
+  margin: 12;
+  padding: 10;
+  padding-top: 2;
+  padding-bottom: 15;
+  font-size: 9;
+}
+.bioText {
+  font-size: 17;
+  padding-bottom: 20;
+}
+.tripList {
+  grid: 2;
+  grid-template: "c1 c2";
+}
+.imageCard {
+  /* alignSelf: "center"; */
+  width: 80;
+  height: 80;
+  border-radius: 40;
+  margin: 10;
+  z-index: -1;
+  opacity: 0.8;
+}
+.spotsList {
+  background-color: "#fffffc";
+  height: "100%";
+  width: "100%";
+}
+.spotsListContainer {
+  background-color: "#fffffc";
+}

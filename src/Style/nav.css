@@ -1,0 +1,35 @@
+/* Nav */
+.nav {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #c9fb5f;
+  border-radius: 20px;
+  margin: 10px;
+  margin-top: 15px;
+  margin-bottom: 0;
+  height: 50px;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 20px;
+}
+.navitem {
+  width: auto;
+  text-decoration: none;
+  color: #4831d4;
+  font-weight: bold;
+  margin-right: 10px;
+  border: 2px rgb(255, 255, 255);
+}
+.navitem:hover {
+  color: #915ffb;
+
+  border-bottom: 2px solid #915ffb;
+}
+.navitem.active {
+  color: #915ffb;
+  border-bottom: 2px solid #915ffb;
+}
+.navitem-right {
+  padding-left: 60%;
+}
