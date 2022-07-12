@@ -5,6 +5,7 @@ import { baseURL } from "../stores/instance";
 import EditOrganizerModal from "./EditOrganizerModal"
 
 function Settings() {
+  console.log("users: "+authStore?.organizer?.spots?.length)
 
   return (
     <div>
@@ -27,9 +28,9 @@ function Settings() {
                   border-width: 2;
                     
                     <h1 className="Welcome">{authStore.organizer.username}</h1> */}
-                    <div className="center">
-                      <h1 className="profile" >{authStore.organizer.username}</h1>
-                      <div className="imageUserNameEdit">
+                    {/* <div className="center-settings"> */}
+                      <h1 className="profile center-settings" >{authStore.organizer.username}</h1>
+                      <div className="imageUserNameEdit center-settings">
                         <div className="imageUserName">
                           <img className="profileImage" src={`${baseURL}${authStore.organizer.image}`}></img>
                           {/* <img src="https://nenow.in/wp-content/uploads/2018/03/royal-bengal-tiger.jpg" width="200" height="200"  border-radius="50%" border-width="20"></img> */}
@@ -37,12 +38,12 @@ function Settings() {
                         </div>
                       </div>
                       <div>
-                          <h3 className="bio">{authStore.organizer.bio}</h3>
-                          <h3 className="bio">{authStore.organizer.email}</h3>
-                          <h3 className="bio">{authStore.organizer.phone}</h3>
-                      </div>
-                      <LogOutButton/>
-                      <EditOrganizerModal/>
+                          <h3 className="bio center-settings">{authStore.organizer.bio}</h3>
+                          <h3 className="bio center-settings">Email: {authStore.organizer.email}</h3>
+                          <h3 className="bio center-settings">Tel: {authStore.organizer.phone}</h3>
+                      {/* </div> */}
+                      <div className="center-settings"><EditOrganizerModal/></div>
+                      <div className="center-settings"><LogOutButton/></div>
                     </div>
               </>
             ) : (

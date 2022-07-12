@@ -5,9 +5,9 @@ import spotStore from "../../stores/spotStore";
 import SpotItem from "./SpotItem";
 
 function SpotList() {
-    const spotList = authStore.organizer.spots.map(spotID => spotStore.spots.find(spot => spotID === spot._id));
+    const spotList = authStore?.organizer?.spots?.map(spotID => spotStore?.spots?.find(spot => spotID === spot?._id));
   const OrganizerSpots = spotList?.map((spot) => (
-    <SpotItem key={spot._id} spot={spot} />
+    <SpotItem key={spot?._id} spot={spot} />
   ));
 
   return (

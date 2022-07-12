@@ -1,16 +1,15 @@
 import { observer } from "mobx-react";
 import RegisterModal from "./organizer/RegisterModal";
 import authStore from "../stores/authStore";
+import spotStore from "../stores/spotStore";
+import Dashborad from "./Dashborad";
 
 function Home() {
-
   return (
     <div>
       {authStore.organizer ? (
               <>
-                <div className="center">
-                  <h1 className="Welcome">Welcome to Your Dashboard</h1>
-                </div>
+                <Dashborad/>
               </>
             ) : (
               <>
@@ -19,7 +18,8 @@ function Home() {
                   <RegisterModal/>
                 </div>
               </>
-            )}
+            )
+      }
     </div>
   );
 }

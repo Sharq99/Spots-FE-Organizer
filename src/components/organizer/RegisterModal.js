@@ -26,7 +26,7 @@ function RegisterModal() {
 
     <div /*className='user-specs'*/>
         <div class="background"></div>
-        <form className='form-style' onSubmit={handleSubmit}>
+        <form className='form-styleh' onSubmit={handleSubmit}>
             <div>
                 <label className='label-style'>
                     <h3>Register</h3>

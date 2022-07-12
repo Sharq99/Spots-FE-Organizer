@@ -4,40 +4,36 @@ import authStore from "../stores/authStore";
 import CategoryList from "./category/CategoryList";
 import spotStore from "../stores/spotStore"
 import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router";
 
-function CreateSpot() {
+function EditSpot() {
+    const { spotId } = useParams();
+    const oldSpot = spotStore?.getSpotsById(spotId);
     const nav = useNavigate();
-    const cars = ["Saab"];
     // const [sDate, setSpotDate] = useState({
     //     year: "",
     //     month: "",
     //     day: ""
     // });
 
-    const [file, setFile] = useState("");
+    const [file, setFile] = useState(oldSpot?.image);
 
-    const [spot, setSpot] = useState({
-        name: "",
-        image: "",
-        video: "",
-        location: "",
-        description: "",
-        details: "",
-        startTime: "",
-        isFree: true,
-        // spotDate: {
-        //     year: "",
-        //     month: "",
-        //     day: ""
-        // },
-        startDate:0,
-        endDate: 0,
-        seats: 0,
-        price: 0,
-        days:[],
-        numOfDays: 1
+    const [spot, setSpot] = useState(
+        {
+        name: oldSpot?.name,
+        image: oldSpot?.image,
+        location: oldSpot?.location,
+        description: oldSpot?.description,
+        details: oldSpot?.details,
+        startTime: oldSpot?.startTime,
+        isFree: oldSpot?.isFree,
+        startDate: oldSpot?.startDate,
+        endDate: oldSpot?.endDate,
+        seats: oldSpot?.seats,
+        price: oldSpot?.price,
+        numOfDays: oldSpot.numOfDays
     });
-    const [categoryId, setCategoryId] = useState("62c8960e2b8d6b47ab0b9583");
+    const [categoryId, setCategoryId] = useState(oldSpot.category);
 
     const handleChange = (event) =>{
         setSpot({ ...spot, [event.target.name]: event.target.value });
@@ -47,21 +43,6 @@ function CreateSpot() {
     // const handleDate = (event) =>{
     //     setSpotDate({ ...sDate, [event.target.name]: event.target.value });
     //     console.log("sDate: "+JSON.stringify(sDate));}
-
-    // const handleYear = (event) =>{
-    //     setSpot({ ...spot.spotDate, year: event.target.value });
-    //     console.log("spot: "+JSON.stringify(spot));
-    // }
-
-    // const handleMonth = (event) =>{
-    //     setSpot({ ...spot.spotDate, month: event.target.value });
-    //     console.log("spot: "+JSON.stringify(spot));
-    // }
-
-    // const handleDay = (event) =>{
-    //     setSpot({ ...spot.spotDate, day: event.target.value });
-    //     console.log("spot: "+JSON.stringify(spot));
-    // }
 
     const handleFree = (event) =>
         setSpot({ ...spot, [event.target.name]: true });
@@ -77,21 +58,17 @@ function CreateSpot() {
   const handleSubmit =  async (event) => {
     event.preventDefault();
     try {
-     await spotStore.createSpot(spot, categoryId, file);
-      nav("/my-spots");
+     await spotStore.updateSpot(spot, spotId, file);
+      nav(`/spot/${spotId}`);
     } catch (e) {
       alert(e.message);
     }
   }
 
-// ADD input type email for email
-// ADD input type date for date
-// ADD input time date for startTime
-
   return (
     <div>
         <div className="center">
-            <h1 className="Welcome">Create A Spot</h1>
+            <h1 className="Welcome">Update Spot</h1>
         </div>
         <CategoryList setCategoryId={setCategoryId}/>
         <form onSubmit={handleSubmit}>
@@ -176,21 +153,21 @@ function CreateSpot() {
                         type="number"
                         placeholder="Year"
                         name="year"
-                        onChange={handleYear}
+                        onChange={handleDate}
                     />
                     <input
                         className='input-style'
                         type="number"
                         placeholder="Month"
                         name="month"
-                        onChange={handleMonth}
+                        onChange={handleDate}
                     />
                     <input
                         className='input-style'
                         type="number"
                         placeholder="Day"
                         name="day"
-                        onChange={handleDay}
+                        onChange={handleDate}
                     /> */}
                     <h5 className="l-color">Enter End Date:-</h5>
                     <input
@@ -241,12 +218,13 @@ function CreateSpot() {
                     <input
                         className="button-sign ing-create"
                         type="submit"
-                        value="Create Spot"
+                        value="Update Spot"
                     />
+                    <button className="button-sign ing-create" onClick={() => (nav(`/spot/${spotId}`))}>Cancel</button>
             </div>
         </form>
     </div>
   );
 }
 
-export default CreateSpot;
+export default EditSpot;

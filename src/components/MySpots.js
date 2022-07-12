@@ -3,7 +3,7 @@ import authStore from "../stores/authStore";
 import SpotList from "./spots/SpotList";
 
 function MySpots() {
-console.log("AB spots: "+authStore.organizer.spots)
+// console.log("AB spots: "+authStore.organizer.spots)
   return (
     <div>
         <div className="center">

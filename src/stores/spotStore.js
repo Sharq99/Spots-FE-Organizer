@@ -1,5 +1,6 @@
 import { makeAutoObservable } from "mobx";
 import { instance } from "./instance";
+import authStore from "./authStore";
 
 class SpotStore {
   constructor() {
@@ -17,14 +18,17 @@ class SpotStore {
     }
   };
 
-  createSpot = async (newSpot, categoryId, sDate, file) => {
+  createSpot = async (newSpot, categoryId, file) => {
     try {
-      newSpot.spotDate = sDate;
+      // console.log("sDate: "+JSON.stringify(sDate))
+      // newSpot.spotDate = sDate;
+      // console.log("newSpot.spotDate: "+JSON.stringify(newSpot.spotDate))
       newSpot.image = file;
       const formData = new FormData();
       for (const key in newSpot) formData.append(key, newSpot[key]);
       const response = await instance.post(`/spot/cat/${categoryId}`, formData);
       this.spots.push(response.data);
+      authStore.organizer.spots.push(response.data._id);
       // const response = await instance.post(`/spot/cat/${categoryId}`, newSpot);
       // this.spots.push(response.data);
     } catch (error) {
@@ -33,9 +37,13 @@ class SpotStore {
   };
 
   //Edit the Update
-  updateSpot = async (updatedSpot, spotId) => {
+  updateSpot = async (updatedSpot, spotId, file) => {
+    updatedSpot.image = file;
     try {
-      const res = await instance.put(`/spot/${spotId}`, updatedSpot);
+      const formData = new FormData();
+      for (const key in updatedSpot) formData.append(key, updatedSpot[key]);
+      const res = await instance.put(`/spot/update/${spotId}`, formData);
+      // const res = await instance.put(`/spot/${spotId}`, updatedSpot);
       this.spots = this.spots.map((spot) =>
       spot._id === spotId ? res.data : spot
       );
@@ -46,8 +54,9 @@ class SpotStore {
 
   deleteSpot = async (spotId) => {
     try {
-      await instance.delete(`/spot/${spotId}`);
+      await instance.delete(`/spot/delete/${spotId}`);
       this.spots = this.spots.filter((spot) => spot._id !== spotId);
+      authStore.organizer.spots = authStore.organizer.spots.filter((spot) => spot._id !== spotId);
     } catch (error) {
       console.log(error);
     }

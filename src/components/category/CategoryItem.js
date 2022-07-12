@@ -11,12 +11,12 @@ function CategoryItem({ category, setCategoryId }) {
     <div className="categorydiv">
         <button className="categorybutton" onClick={handleCategory}>
           <img className="Scrollcategoryimage" src={`${baseURL}${category.image}`}></img>
-        </button>
-        <div className="categoryname">
+          {/* <div className="categoryname"> */}
           <h5>{category.name}</h5>
-        </div>
+        {/* </div> */}
+        </button>
     </div>
   );
 }
 
-export default observer(CategoryItem);
+export default CategoryItem;

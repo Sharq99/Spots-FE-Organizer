@@ -50,7 +50,7 @@ class AuthStore {
     this.organizer = null;
     localStorage.removeItem("myToken");
     delete instance.defaults.headers.common.Authorization;
-  };
+  }; 
 
   updateOrganizer = async (updatedOrganizer) => {
     try {
@@ -59,11 +59,20 @@ class AuthStore {
       const res = await instance.put("/organizer/update", formData);
         if (updatedOrganizer.bio) this.organizer.bio = res.data.bio;
         if (updatedOrganizer.image) this.organizer.image = res.data.image;
-        if (updatedOrganizer.phone) this.organizer.bio = res.data.phone;
-        if (updatedOrganizer.email) this.organizer.image = res.data.email;
+        if (updatedOrganizer.phone) this.organizer.phone = res.data.phone;
+        if (updatedOrganizer.email) this.organizer.email = res.data.email;
     } catch (error) {
       console.log(error);
     }
+  };
+
+  removeSpot = async (spotId) => {
+    // console.log("inside store before: "+this.organizer.spots.length);
+    console.log("inside store Before: "+JSON.stringify(this.organizer));
+    this.organizer.spots = this.organizer.spots.map((spot) => spot !== spotId);
+    // console.log("inside store after: "+this.organizer.spots.length);
+    console.log("inside store after: "+JSON.stringify(this.organizer));
+    // this.updateOrganizer(this.organizer);
   };
 
 //   updateUser = async (updatedUser, userId, recipeId) => {
