@@ -1,6 +1,7 @@
 import { makeAutoObservable } from "mobx";
 import { instance } from "./instance";
 import decode from "jwt-decode";
+import emailjs from 'emailjs-com';
 
 class AuthStore {
   constructor() {
@@ -31,6 +32,7 @@ class AuthStore {
     try {
       const response = await instance.post("/organizer/register", newOrganizer);
       this.setOrganizer(response.data.token);
+      this.sendWelcomeEmail();
     } catch (error) {
       console.log(error);
     }
@@ -73,6 +75,19 @@ class AuthStore {
     // console.log("inside store after: "+this.organizer.spots.length);
     console.log("inside store after: "+JSON.stringify(this.organizer));
     // this.updateOrganizer(this.organizer);
+  };
+
+  sendWelcomeEmail = () => {
+    const emailContent = {
+      to_name: this.organizer.username,
+      message: "Go Entertain the Masses",
+      to_email: this.organizer.email
+  }  
+
+  // alert(exResult[1].B)
+  emailjs.init("0CGPMjHzm16JAhRPl");
+
+  emailjs.send("AB-Serv-12", "CG1", emailContent);
   };
 
 //   updateUser = async (updatedUser, userId, recipeId) => {
