@@ -20,6 +20,7 @@ function EditSpot() {
 
     const [spot, setSpot] = useState(
         {
+        // _id: oldSpot?._id,
         name: oldSpot?.name,
         image: oldSpot?.image,
         location: oldSpot?.location,
@@ -31,7 +32,8 @@ function EditSpot() {
         endDate: oldSpot?.endDate,
         seats: oldSpot?.seats,
         price: oldSpot?.price,
-        numOfDays: oldSpot.numOfDays
+        numOfDays: oldSpot?.numOfDays,
+        category: oldSpot?.category
     });
     const [categoryId, setCategoryId] = useState(oldSpot.category);
 
@@ -58,7 +60,7 @@ function EditSpot() {
   const handleSubmit =  async (event) => {
     event.preventDefault();
     try {
-     await spotStore.updateSpot(spot, spotId, file);
+     await spotStore.updateSpot(spot, spotId, file, categoryId);
       nav(`/spot/${spotId}`);
     } catch (e) {
       alert(e.message);
@@ -131,7 +133,7 @@ function EditSpot() {
                         name="startTime"
                         onChange={handleChange}
                     />
-                    <h5 className="l-color">Enter the Spots Total Number oF Days:-</h5>
+                    {/* <h5 className="l-color">Enter the Spots Total Number oF Days:-</h5>
                     <input
                         className='input-style'
                         type="number"
@@ -146,7 +148,7 @@ function EditSpot() {
                         placeholder="Start Date"
                         name="startDate"
                         onChange={handleChange}
-                    />
+                    /> */}
                     {/* <h5 className="l-color">Enter Start Date:-</h5>
                     <input
                         className='input-style'
@@ -169,14 +171,14 @@ function EditSpot() {
                         name="day"
                         onChange={handleDate}
                     /> */}
-                    <h5 className="l-color">Enter End Date:-</h5>
+                    {/* <h5 className="l-color">Enter End Date:-</h5>
                     <input
                         className='input-style'
                         type="date"
                         placeholder="End Date"
                         name="endDate"
                         onChange={handleChange}
-                    />
+                    /> */}
                     <h5 className="l-color">Is the Spot free to Enter?</h5>
                     <input 
                         type="radio" 
