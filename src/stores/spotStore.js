@@ -37,12 +37,12 @@ class SpotStore {
   };
 
   //Edit the Update
-  updateSpot = async (updatedSpot, spotId, file) => {
+  updateSpot = async (updatedSpot, spotId, file, categoryId) => {
     updatedSpot.image = file;
     try {
       const formData = new FormData();
       for (const key in updatedSpot) formData.append(key, updatedSpot[key]);
-      const res = await instance.put(`/spot/update/${spotId}`, formData);
+      const res = await instance.put(`/spot/update/${spotId}/cat/${categoryId}`, formData);
       // const res = await instance.put(`/spot/${spotId}`, updatedSpot);
       this.spots = this.spots.map((spot) =>
       spot._id === spotId ? res.data : spot
@@ -56,7 +56,8 @@ class SpotStore {
     try {
       await instance.delete(`/spot/delete/${spotId}`);
       this.spots = this.spots.filter((spot) => spot._id !== spotId);
-      authStore.organizer.spots = authStore.organizer.spots.filter((spot) => spot._id !== spotId);
+      // authStore.organizer.spots = authStore.organizer.spots.map((spot) => spot._id !== spotId);
+      authStore.removeSpot(spotId);
     } catch (error) {
       console.log(error);
     }

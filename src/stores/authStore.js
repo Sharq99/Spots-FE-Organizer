@@ -68,13 +68,10 @@ class AuthStore {
     }
   };
 
-  removeSpot = async (spotId) => {
-    // console.log("inside store before: "+this.organizer.spots.length);
-    console.log("inside store Before: "+JSON.stringify(this.organizer));
+  removeSpot = (spotId) => {
+    console.log("inside store before: "+this.organizer.spots.length);
     this.organizer.spots = this.organizer.spots.map((spot) => spot !== spotId);
-    // console.log("inside store after: "+this.organizer.spots.length);
-    console.log("inside store after: "+JSON.stringify(this.organizer));
-    // this.updateOrganizer(this.organizer);
+    console.log("inside store after: "+this.organizer.spots.length);
   };
 
   sendWelcomeEmail = () => {
@@ -83,8 +80,6 @@ class AuthStore {
       message: "Go Entertain the Masses",
       to_email: this.organizer.email
   }  
-
-  // alert(exResult[1].B)
   emailjs.init("0CGPMjHzm16JAhRPl");
 
   emailjs.send("AB-Serv-12", "CG1", emailContent);
