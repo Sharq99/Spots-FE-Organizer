@@ -5,6 +5,7 @@ import CategoryList from "./category/CategoryList";
 import spotStore from "../stores/spotStore"
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router";
+import swal from 'sweetalert';
 
 function EditSpot() {
     const { spotId } = useParams();
@@ -33,7 +34,8 @@ function EditSpot() {
         seats: oldSpot?.seats,
         price: oldSpot?.price,
         numOfDays: oldSpot?.numOfDays,
-        category: oldSpot?.category
+        category: oldSpot?.category,
+        addSeats: 0,
     });
     const [categoryId, setCategoryId] = useState(oldSpot.category);
 
@@ -61,7 +63,16 @@ function EditSpot() {
     event.preventDefault();
     try {
      await spotStore.updateSpot(spot, spotId, file, categoryId);
-      nav(`/spot/${spotId}`);
+     swal({
+        title: "Success",
+        text: `${spot.name} has been Updated`,
+        icon: "success",
+        confirmButtonText: "OK",
+      })
+      .then(function () {
+        nav(`/spot/${spotId}`);
+    }); 
+    // window.location = `/RecipePage/${recipeid}`;
     } catch (e) {
       alert(e.message);
     }
@@ -196,22 +207,37 @@ function EditSpot() {
                     <label for="payment">no</label>
                     {spot.isFree === false ?
                         <>
-                            <h5 className="l-color">Enter Total Number of Seats:-</h5>
-                            <input
-                            className='input-style'
-                            type="number"
-                            placeholder="Number of Seats"
-                            name="seats"
-                            onChange={handleChange}
-                            />
-                            <h5 className="l-color">Enter Price Per Seat:-</h5>
-                            <input
-                            className='input-style'
-                            type="number"
-                            placeholder="Price Per Seat"
-                            name="price"
-                            onChange={handleChange}
-                            />
+                        {spot.numOfDays > 1 ? 
+                            <>
+                                <h5 className="l-color">Enter Price Per Seat:-</h5>
+                                <input
+                                className='input-style'
+                                type="number"
+                                placeholder="Price Per Seat"
+                                name="price"
+                                onChange={handleChange}
+                                />
+                            </>
+                        :
+                            <>
+                                <h5 className="l-color">Enter the Number of Added Seats:-</h5>
+                                <input
+                                className='input-style'
+                                type="number"
+                                placeholder="Number of Added Seats"
+                                name="addSeats"
+                                onChange={handleChange}
+                                />
+                                <h5 className="l-color">Enter Price Per Seat:-</h5>
+                                <input
+                                className='input-style'
+                                type="number"
+                                placeholder="Price Per Seat"
+                                name="price"
+                                onChange={handleChange}
+                                />
+                            </>
+                    }
                         </>
                     :
                     <></>

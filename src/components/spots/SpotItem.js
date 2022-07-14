@@ -3,10 +3,26 @@ import { Link } from "react-router-dom";
 import authStore from "../../stores/authStore";
 import { baseURL } from "../../stores/instance";
 import spotStore from "../../stores/spotStore";
+import swal from "sweetalert";
 
 function SpotItem({ spot }) {
     const handleDelete = () => {
-      spotStore.deleteSpot(spot?._id);
+      swal({
+        title: "Are you sure?",
+        text: "This Spot Will Be Permanently Deleted!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      }).then((willDelete) => {
+        if (willDelete) {
+          swal("Deleted!", "Your Spot has been deleted!", {
+            icon: "success",
+          });
+          spotStore.deleteSpot(spot?._id);
+        } else {
+          swal("Deletion Cancelled!", "Your Spot Was not Deleted");
+        }
+      });
       // authStore.removeSpot(spot?._id);
       console.log("inside item: "+authStore.organizer.spots.length)
     }
@@ -27,4 +43,4 @@ function SpotItem({ spot }) {
   );
 }
 
-export default SpotItem;
+export default observer(SpotItem);
