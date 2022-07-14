@@ -4,6 +4,7 @@ import authStore from "../stores/authStore";
 import CategoryList from "./category/CategoryList";
 import spotStore from "../stores/spotStore"
 import { useNavigate } from "react-router-dom";
+import swal from 'sweetalert';
 
 function CreateSpot() {
     const nav = useNavigate();
@@ -33,9 +34,11 @@ function CreateSpot() {
         startDate:0,
         endDate: 0,
         seats: 0,
+        addSeats: 0,
         price: 0,
         days:[],
-        numOfDays: 1
+        numOfDays: 1,
+        spotRevenue: 0
     });
     const [categoryId, setCategoryId] = useState("62c8960e2b8d6b47ab0b9583");
 
@@ -78,7 +81,16 @@ function CreateSpot() {
     event.preventDefault();
     try {
      await spotStore.createSpot(spot, categoryId, file);
-      nav("/my-spots");
+     swal({
+        title: "Success",
+        text: `${spot.name} has been added`,
+        icon: "success",
+        confirmButtonText: "OK",
+      })
+      .then(function () {
+        nav("/my-spots");
+    });
+      
     } catch (e) {
       alert(e.message);
     }

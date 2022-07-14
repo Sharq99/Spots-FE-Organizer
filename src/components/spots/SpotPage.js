@@ -4,15 +4,14 @@ import spotStore from "../../stores/spotStore";
 import ReviewList from "../review/ReviewList";
 import { baseURL } from "../../stores/instance";
 import { useNavigate } from "react-router-dom";
+import SpotDaysList from "./SpotDaysList";
+import categoryStore from "../../stores/categoryStore";
 
 function SpotPage() {
     const nav = useNavigate();
   const { spotId } = useParams();
   const spot = spotStore?.getSpotsById(spotId);
-//   console.log("spot: "+JSON.stringify(spot));
-//   const foundCategory = categoriesStore.categories.find(
-//     (category) => recipe.Category === category._id
-//   );
+  const foundCategory = categoryStore?.getCategoryById(spot.category);
   return (
     <div className="center">
       <div className="singlecontainer">
@@ -21,6 +20,8 @@ function SpotPage() {
           <button className="singlecategoryname" onClick={() => (nav(`/Edit/${spotId}`))}>Edit Spot</button>
         </div>
         <img src={`${baseURL}${spot?.image}`} className="singlerecipeimage"></img>
+        <h1 className="instructionstitle">Category</h1>
+        <p className="singlerecipeinstruction">{foundCategory?.name}</p>
         <h1 className="instructionstitle">Description</h1>
         <p className="singlerecipeinstruction">{spot?.description}</p>
         <h1 className="instructionstitle">Details</h1>
@@ -46,11 +47,18 @@ function SpotPage() {
             <p className="singlerecipeinstruction">Free</p> 
         : 
         <>
-            <p className="singlerecipeinstruction">{spot?.price}kd per person</p>
-            <h1 className="instructionstitle">Seats</h1>
-            <p className="singlerecipeinstruction">{spot?.seats}</p>
-            <h1 className="instructionstitle">Spot Revinew</h1>
-            <p className="singlerecipeinstruction">{spot?.price * spot?.seats}</p>
+          {spot.numOfDays === 1 ? 
+            <>
+              <p className="singlerecipeinstruction">{spot?.price}kd per person</p>
+              <h1 className="instructionstitle">Seats</h1>
+              <p className="singlerecipeinstruction">{spot?.seats}</p>
+              <h1 className="instructionstitle">Spot Revinew</h1>
+              <p className="singlerecipeinstruction">{spot?.price * spot?.seats}</p>
+            </>
+          :
+            <SpotDaysList spotDays={spot?.days} price={spot?.price}/>
+        }
+            
         </>
         }
         <h1 className="instructionstitle">Spotted Me</h1>
