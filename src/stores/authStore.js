@@ -69,8 +69,10 @@ class AuthStore {
   };
 
   removeSpot = (spotId) => {
+    console.log("org spots: "+JSON.stringify(this.organizer.spots));
     console.log("inside store before: "+this.organizer.spots.length);
-    this.organizer.spots = this.organizer.spots.map((spot) => spot !== spotId);
+    this.organizer.spots = this.organizer.spots.filter((spot) => spot !== spotId);
+    // this.trips = this.trips.filter((trip) => trip._id !== tripId);
     console.log("inside store after: "+this.organizer.spots.length);
   };
 

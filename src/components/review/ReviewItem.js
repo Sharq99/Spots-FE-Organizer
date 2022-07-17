@@ -1,8 +1,10 @@
 import { observer } from "mobx-react";
 import { baseURL } from "../../stores/instance";
 import Stars from "./Stars";
+import moment from "moment";
 
 function ReviewItem({ review }) {
+  let date = moment(review?.date).format("LL")
   return (
     <div>
       <div className="center-Review">
@@ -11,7 +13,7 @@ function ReviewItem({ review }) {
       </div>
         <div>{<Stars stars={review?.stars}/>}</div>
         <p>{review?.description}</p>
-        <p>{review?.date}</p>
+        <p>{date}</p>
     </div>
   );
 }
