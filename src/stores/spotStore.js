@@ -36,7 +36,6 @@ class SpotStore {
     }
   };
 
-  //Edit the Update
   updateSpot = async (updatedSpot, spotId, file, categoryId) => {
     updatedSpot.image = file;
     try {

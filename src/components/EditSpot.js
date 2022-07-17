@@ -11,11 +11,6 @@ function EditSpot() {
     const { spotId } = useParams();
     const oldSpot = spotStore?.getSpotsById(spotId);
     const nav = useNavigate();
-    // const [sDate, setSpotDate] = useState({
-    //     year: "",
-    //     month: "",
-    //     day: ""
-    // });
 
     const [file, setFile] = useState(oldSpot?.image);
 
@@ -36,6 +31,7 @@ function EditSpot() {
         numOfDays: oldSpot?.numOfDays,
         category: oldSpot?.category,
         addSeats: 0,
+        days: oldSpot?.days
     });
     const [categoryId, setCategoryId] = useState(oldSpot.category);
 
@@ -59,8 +55,22 @@ function EditSpot() {
         setFile(file);
     }
 
+    const updateSeats = () => {
+        if(spot.isFree === false){
+            if(spot.numOfDays <= 1){
+              spot.seats = spot.seats + parseInt(spot.addSeats);
+            } 
+            // else{
+            //   for (let i = 0; i < spot.numOfDays; i++) {
+            //     spot.days[i].seats = spot.days[i].seats + spot.addSeats;
+            //   }
+            // }
+        }
+    }
+    // console.log(typeof spot.days[1].seats)
   const handleSubmit =  async (event) => {
     event.preventDefault();
+    updateSeats();
     try {
      await spotStore.updateSpot(spot, spotId, file, categoryId);
      swal({

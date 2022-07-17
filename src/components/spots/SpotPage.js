@@ -6,12 +6,14 @@ import { baseURL } from "../../stores/instance";
 import { useNavigate } from "react-router-dom";
 import SpotDaysList from "./SpotDaysList";
 import categoryStore from "../../stores/categoryStore";
+import moment from "moment";
 
 function SpotPage() {
     const nav = useNavigate();
   const { spotId } = useParams();
   const spot = spotStore?.getSpotsById(spotId);
-  const foundCategory = categoryStore?.getCategoryById(spot.category);
+  const foundCategory = categoryStore?.getCategoryById(spot?.category);
+  let date = moment(spot?.startDate).format("LL")
   return (
     <div className="center">
       <div className="singlecontainer">
@@ -39,7 +41,7 @@ function SpotPage() {
         <h1 className="instructionstitle">Start Time</h1>
         <p className="singlerecipeinstruction">{spot?.startTime}</p>
         <h1 className="instructionstitle">Start Date</h1>
-        <p className="singlerecipeinstruction">{spot?.startDate}</p>
+        <p className="singlerecipeinstruction">{date}</p>
         <h1 className="instructionstitle">End Date</h1>
         <p className="singlerecipeinstruction">{spot?.endDate}</p>
         <h1 className="instructionstitle">Event Entry</h1>
