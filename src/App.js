@@ -9,6 +9,8 @@ import Settings from "./components/Settings";
 import MySpots from "./components/MySpots";
 import SpotPage from "./components/spots/SpotPage";
 import EditSpot from "./components/EditSpot";
+import Experiance from "./components/spots/Experiance";
+import CreateOffer from "./components/offer/CreatOffer";
 import QrCode from "./qrCode";
 
 function App() {
@@ -24,6 +26,8 @@ function App() {
         <Route path="/my-spots" element={<MySpots />} />
         <Route path="/spot/:spotId" element={<SpotPage />} />
         <Route path="/Edit/:spotId" element={<EditSpot />} />
+        <Route path="/Experiance/:spotId" element={<Experiance />} />
+        <Route path="/create-offer/:spotId" element={<CreateOffer />} />
         <Route path="/QrCode" element={<QrCode />} />
       </Routes>
     </div>
