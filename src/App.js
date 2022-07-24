@@ -1,20 +1,19 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import Nav from "./components/Nav";
 import LogInModal from "./components/organizer/LogInModal";
 import Home from "./components/Home";
-import CreateSpot from "./components/CreateSpot"
+import CreateSpot from "./components/CreateSpot";
 import Settings from "./components/Settings";
 import MySpots from "./components/MySpots";
-import SpotPage from './components/spots/SpotPage';
-import EditSpot from './components/EditSpot';
-
-
+import SpotPage from "./components/spots/SpotPage";
+import EditSpot from "./components/EditSpot";
+import QrCode from "./qrCode";
 
 function App() {
   return (
-    <div>
+    <div className="appdiv">
       <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -25,9 +24,9 @@ function App() {
         <Route path="/my-spots" element={<MySpots />} />
         <Route path="/spot/:spotId" element={<SpotPage />} />
         <Route path="/Edit/:spotId" element={<EditSpot />} />
+        <Route path="/QrCode" element={<QrCode />} />
       </Routes>
     </div>
   );
 }
 export default App;
-

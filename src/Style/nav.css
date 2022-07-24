@@ -1,16 +1,27 @@
 /* Nav */
 .nav {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #c9fb5f;
   border-radius: 20px;
-  margin: 10px;
+  margin: 40px;
   margin-top: 15px;
   margin-bottom: 0;
   height: 70px;
   padding: 20px;
   display: flex;
   flex-direction: row;
+  justify-content:flex-end;
+  font-size: 20px;
+
+}
+.navtabs {
+  background-color: white;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  height: 70px;
+  display: flex;
+  flex-direction: row;
+  justify-content:center;
   align-items: center;
+  text-align:center;
   font-size: 20px;
 }
 .navitem {
@@ -18,18 +29,53 @@
   text-decoration: none;
   color: #4831d4;
   font-weight: bold;
-  margin-right: 10px;
   border: 2px rgb(255, 255, 255);
 }
-.navitem:hover {
-  color: #915ffb;
+.navitemtab.active{
+  color: #4831d4;
+}
 
-  border-bottom: 2px solid #915ffb;
+.navitemtab {
+  color: white;
+  font-weight: bold;
 }
-.navitem.active {
-  color: #915ffb;
-  border-bottom: 2px solid #915ffb;
+
+.navitemPortal{
+  width: auto;
+  color: white;
+  font-size: 20px;
 }
-.navitem-right {
-  padding-left: 60%;
+.navitemPortal-right {
+  padding-left: 5%;
+}
+
+.navitemPortalDiv{
+  padding: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  border-width: 2px;
+  border-color: #4831d4;
+  border-style:solid;
+  border-radius: 60px;
+}
+.navitemPortalDiv:hover{
+  background-color: #4731d43b;
+  color: white;
+}
+
+.icon{
+  font-size: 35px;
+}
+.icon:hover{
+  color: #b9b4db66;
+  font-size: 30px;
+}
+
+.icon2{
+
+  font-size: 40px;
+}
+.icon2:hover{
+  color: #b9b4db66;
+  font-size: 35px;
 }

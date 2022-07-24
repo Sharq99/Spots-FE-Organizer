@@ -1,7 +1,7 @@
 import { makeAutoObservable } from "mobx";
 import { instance } from "./instance";
 import decode from "jwt-decode";
-import emailjs from 'emailjs-com';
+import emailjs from "emailjs-com";
 
 class AuthStore {
   constructor() {
@@ -38,7 +38,6 @@ class AuthStore {
     }
   };
 
-  
   login = async (organizerData) => {
     try {
       const response = await instance.post("/organizer/login", organizerData);
@@ -52,54 +51,42 @@ class AuthStore {
     this.organizer = null;
     localStorage.removeItem("myToken");
     delete instance.defaults.headers.common.Authorization;
-  }; 
+  };
 
   updateOrganizer = async (updatedOrganizer) => {
     try {
       const formData = new FormData();
-      for (const key in updatedOrganizer) formData.append(key, updatedOrganizer[key]);
+      for (const key in updatedOrganizer)
+        formData.append(key, updatedOrganizer[key]);
       const res = await instance.put("/organizer/update", formData);
-        if (updatedOrganizer.bio) this.organizer.bio = res.data.bio;
-        if (updatedOrganizer.image) this.organizer.image = res.data.image;
-        if (updatedOrganizer.phone) this.organizer.phone = res.data.phone;
-        if (updatedOrganizer.email) this.organizer.email = res.data.email;
+      for (const key in this.organizer) this.organizer[key] = res.data[key];
     } catch (error) {
       console.log(error);
     }
-  };
-
-  removeSpot = (spotId) => {
-    console.log("org spots: "+JSON.stringify(this.organizer.spots));
-    console.log("inside store before: "+this.organizer.spots.length);
-    this.organizer.spots = this.organizer.spots.filter((spot) => spot !== spotId);
-    // this.trips = this.trips.filter((trip) => trip._id !== tripId);
-    console.log("inside store after: "+this.organizer.spots.length);
   };
 
   sendWelcomeEmail = () => {
     const emailContent = {
       to_name: this.organizer.username,
       message: "Go Entertain the Masses",
-      to_email: this.organizer.email
-  }  
-  emailjs.init("0CGPMjHzm16JAhRPl");
+      to_email: this.organizer.email,
+    };
+    emailjs.init("0CGPMjHzm16JAhRPl");
 
-  emailjs.send("AB-Serv-12", "CG1", emailContent);
+    emailjs.send("AB-Serv-12", "CG1", emailContent);
   };
 
-//   updateUser = async (updatedUser, userId, recipeId) => {
-//     try {
-//       const res = await instance.put(
-//         `/${userId}/recipes/${recipeId}`,
-//         updatedUser
-//       );
-//     } catch (error) {
-//       console.log("RecipeStore-> updatedRecipe-> error", error);
-//     }
-//   };
+  //   updateUser = async (updatedUser, userId, recipeId) => {
+  //     try {
+  //       const res = await instance.put(
+  //         `/${userId}/recipes/${recipeId}`,
+  //         updatedUser
+  //       );
+  //     } catch (error) {
+  //       console.log("RecipeStore-> updatedRecipe-> error", error);
+  //     }
+  //   };
 }
-
-
 
 const authStore = new AuthStore();
 authStore.checkForToken();

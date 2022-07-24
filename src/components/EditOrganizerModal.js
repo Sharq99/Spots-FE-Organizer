@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import authStore from "../stores/authStore";
 import { Modal, Button, Form, InputGroup, FormControl } from "react-bootstrap";
+import { baseURL } from "../stores/instance";
 
-function EditOrganizerModal() {
+function EditOrganizerModal({ handleCloseEdit }) {
   const [show, setShow] = useState(false);
   const [updateOrganizer, setUpdateOrganizer] = useState({
     phone: authStore.organizer.phone,
@@ -12,74 +13,107 @@ function EditOrganizerModal() {
   });
   const [file, setFile] = useState(authStore.organizer.image);
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false);
+    handleCloseEdit();
+  };
 
   const handleShow = () => setShow(true);
 
   const handleChange = (event) =>
-    setUpdateOrganizer({ ...updateOrganizer, [event.target.name]: event.target.value });
+    setUpdateOrganizer({
+      ...updateOrganizer,
+      [event.target.name]: event.target.value,
+    });
 
   const handleImage = (event) => {
     let file = event.target.files[0];
     setFile(file);
     setUpdateOrganizer({ ...updateOrganizer, image: file });
-  }
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    authStore.updateOrganizer(updateOrganizer, );
+    authStore.updateOrganizer(updateOrganizer);
     handleClose();
+    handleCloseEdit();
   };
 
   return (
     <div>
-      <Button variant="success" onClick={handleShow}>
+      <button className="editorg" onClick={handleShow}>
         Edit Profile
-      </Button>
+      </button>
 
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Update Profile</Modal.Title>
+        <Modal.Header style={{ borderBottomWidth: 0 }} closeButton>
+          <Modal.Title style={{ fontFamily: "Ubuntu" }}>
+            Update Profile
+          </Modal.Title>
         </Modal.Header>
 
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
-          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Profile Picture</Form.Label>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <div className="modalprofileImagediv">
+                <img
+                  className="modalprofileImage"
+                  src={`${baseURL}${authStore.organizer.image}`}
+                ></img>
+              </div>
               <Form.Control
+                style={{ fontFamily: "Ubuntu" }}
                 onChange={handleImage}
                 type="file"
                 autoFocus
                 name="file"
               />
             </Form.Group>
-          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Cantact Email</Form.Label>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label style={{ fontFamily: "Ubuntu" }}>Email</Form.Label>
               <Form.Control
+                style={{ fontFamily: "Source Sans Pro" }}
                 onChange={handleChange}
                 type="email"
-                placeholder="Enter Cantact Email"
+                value={authStore.organizer.email}
                 autoFocus
                 name="email"
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Cantact Number</Form.Label>
+              <Form.Label style={{ fontFamily: "Ubuntu" }}>Phone</Form.Label>
               <Form.Control
                 onChange={handleChange}
                 type="number"
-                placeholder="Enter Cantact Number"
+                style={{ fontFamily: "Source Sans Pro" }}
+                value={authStore.organizer.phone}
                 autoFocus
                 name="phone"
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <InputGroup>
-                <InputGroup.Text>Bio</InputGroup.Text>
-                <FormControl as="textarea" aria-label="With textarea" onChange={handleChange} name="bio"/>
+                <InputGroup.Text style={{ fontFamily: "Ubuntu" }}>
+                  Bio
+                </InputGroup.Text>
+                <FormControl
+                  as="textarea"
+                  style={{ fontFamily: "Source Sans Pro" }}
+                  aria-label="With textarea"
+                  value={authStore.organizer.bio}
+                  onChange={handleChange}
+                  name="bio"
+                />
               </InputGroup>
             </Form.Group>
-            <Button variant="primary" type="submit">
+            <Button
+              style={{
+                backgroundColor: "#4831D4",
+                fontFamily: "Ubuntu",
+              }}
+              variant="primary"
+              type="submit"
+            >
               Update
             </Button>
           </Form>

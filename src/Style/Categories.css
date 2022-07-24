@@ -1,36 +1,41 @@
-@import url('https://fonts.googleapis.com/css2?family=Goudy+Bookletter+1911&family=Libre+Barcode+39+Text&family=Nuosu+SIL&family=Playball&family=Press+Start+2P&family=Sanchez&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&family=Ubuntu:wght@300;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Goudy+Bookletter+1911&family=Libre+Barcode+39+Text&family=Nuosu+SIL&family=Playball&family=Press+Start+2P&family=Sanchez&family=Ubuntu:wght@300&display=swap');
 .categorycontainer{
-    text-align: center;
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%
 }
-
 .categorytitle{
-    padding: 30px 0;
-    padding-bottom: 0;
-    text-align: center;
-    margin: 0;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: 'Ubuntu', sans-serif;
+    text-align: left;
     color: black;
-    font-size: 50px;
-    width: 100%;
+    font-size: 18px;
+    width: fit-content;
+    margin-right: 15px;
 }
+.categorytitlechoosen{
+    font-family: 'Source Sans Pro', sans-serif;
+        text-align: left;
+    color: black;
+    font-weight: bolder;
+    font-size: 18px;
+    width: fit-content;
+    margin-right: 15px;
 
+}
 .categoriescarousel{
-    padding: 40px 0;
-    padding-bottom: 1%;
-    text-align: center;
+    padding: 5px;
     width: 100%;
     height: fit-content;
-    margin: 0%;
     display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-self: center;
+    align-content: center;
+    justify-content: flex-start;
 }
-
-
 .categorysubmit{
     margin-top: 5px;
     margin-bottom: 30px;
@@ -90,19 +95,25 @@
 }
 
 .categorybutton{
-    margin: 2px;
+    margin: 15px;
+    margin-left: 0;
     padding: 0;
     border: 0;
     background: rgba(255, 255, 255, 0);
-    border-radius: 50%;
     position: relative;
-    
+    font-family: 'Ubuntu', sans-serif;  
 }
 
+.categorybutton:active{
+    display:inline-block;
+    border-bottom:2px solid #4831d4;
+    padding-bottom:2px;
+}
 .categorybutton:focus{
-    box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.9) 0px 0px 0px 1px;
+    display:inline-block;
+    border-bottom:2px solid #4831d4;
+    padding-bottom:2px;
 }
-
 .categoryadd{
     font-size: 100px;
     color: #3c4043;
@@ -116,22 +127,8 @@
 }
 
 .categoryname{
-    display: flex;
-    font-size: 35px;
-    color: rgb(255, 255, 255);
-    position: absolute;
-    flex-wrap: nowrap;
-    text-decoration: none;
-    text-shadow: rgb(0.4, 0.4, 2.4);
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-    font-family: 'Nuosu SIL', serif;
-    top: 20%;
-    width: 100%;
-    text-align: center;
-    align-content: center;
-    justify-content: center;
-    user-select: none;
-}
+    text-shadow: rgba(0, 0, 0, 0.09) 0px 3px 8px;
+    font-family: 'Source Sans Pro', sans-serif;}
 
 .categoryshape{
     position: relative; 

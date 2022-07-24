@@ -1,15 +1,17 @@
 import { observer } from "mobx-react";
-import authStore from "../stores/authStore";
 import SpotList from "./spots/SpotList";
 
 function MySpots() {
-// console.log("AB spots: "+authStore.organizer.spots)
   return (
     <div>
+      <div className="myspotstext">
         <div className="center">
-            <h1 className="Welcome">Organizer's List</h1>
+          <h1 className="dash">My Spots</h1>
         </div>
-        <SpotList/>
+      </div>
+      <div className="whitebackgroundspots">
+        <SpotList />
+      </div>
     </div>
   );
 }

@@ -10,8 +10,8 @@ class CategoryStore {
 
   fetchCategories = async () => {
     try {
-        const response = await instance.get("/category");
-        this.categories = response.data;
+      const response = await instance.get("/category");
+      this.categories = response.data;
     } catch (error) {
       console.log(error);
     }
@@ -24,7 +24,6 @@ class CategoryStore {
   getCategories = () => {
     return this.categories;
   };
-
 }
 
 const categoryStore = new CategoryStore();

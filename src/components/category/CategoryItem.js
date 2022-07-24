@@ -1,20 +1,14 @@
-import { observer } from "mobx-react";
-import { baseURL } from "../../stores/instance";
-
-function CategoryItem({ category, setCategoryId }) {
-
-    const handleCategory = () => {
-        setCategoryId(category._id);
-    }
+function CategoryItem({ category, setCategoryId, setCategoryName }) {
+  const handleCategory = () => {
+    setCategoryId(category._id);
+    setCategoryName(category.name);
+  };
 
   return (
-    <div className="categorydiv">
-        <button className="categorybutton" onClick={handleCategory}>
-          <img className="Scrollcategoryimage" src={`${baseURL}${category.image}`}></img>
-          {/* <div className="categoryname"> */}
-          <h5>{category.name}</h5>
-        {/* </div> */}
-        </button>
+    <div className="center">
+      <button className="categorybutton" onClick={handleCategory}>
+        <h5 className="categoryname">{category.name}</h5>
+      </button>
     </div>
   );
 }
