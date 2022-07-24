@@ -34,6 +34,9 @@ function SpotPage() {
           <button className="editorg" onClick={() => nav(`/Edit/${spotId}`)}>
             Edit Spot
           </button>
+          <button className="editorg" onClick={() => nav(`/Experiance/${spotId}`)}>
+            Experiance
+          </button>
         </div>
         <div
           className="spotimagediv"
