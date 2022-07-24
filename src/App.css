@@ -9,9 +9,61 @@
 body {
   background-color: #4831d4;
   /* C9FB5F */
+  background: rgba(0, 0, 0, .65) url("./background1.png");
+  background-size: cover;
+  background-blend-mode: darken;
+
 }
 .Welcome {
-  color: #c9fb5f;
+  color: white;
   font-size: 50px;
-  font-family: sans-serif;
+  width: 40%;
+  text-justify: inter-word;
+  align-self: center;
+  margin-right: 60px;
+  font-family: 'Ubuntu', sans-serif;
+}
+.RegisterModal{
+  align-self: center;
+}
+.welcomeformrow{ 
+  height: 100%;
+  width: 100%;
+  margin-top: 130px;
+  display:inline-flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: row;
+}
+.appdiv{
+height: 100%;
+width: 100%;
+}
+
+.whitebackground{
+  background-color: white;
+  padding:  30px;
+  top:0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  padding-top: 50px;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+  width: 100%;
+}
+.dashback{
+  padding:  30px;
+  top:0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  padding-top: 50px;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+  width: 100%;
 }

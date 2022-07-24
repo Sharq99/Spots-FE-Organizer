@@ -4,30 +4,32 @@ import authStore from "../../stores/authStore";
 import { baseURL } from "../../stores/instance";
 import spotStore from "../../stores/spotStore";
 import swal from "sweetalert";
+import { IoIosRemoveCircle } from "react-icons/io";
 
 function SpotItem({ spot }) {
-    const handleDelete = () => {
-      swal({
-        title: "Are you sure?",
-        text: "This Spot Will Be Permanently Deleted!",
-        icon: "warning",
-        buttons: true,
-        dangerMode: true,
-      }).then((willDelete) => {
-        if (willDelete) {
-          swal("Deleted!", "Your Spot has been deleted!", {
-            icon: "success",
-          });
-          spotStore.deleteSpot(spot?._id);
-        } else {
-          swal("Deletion Cancelled!", "Your Spot Was not Deleted");
-        }
-      });
-      // authStore.removeSpot(spot?._id);
-      console.log("inside item: "+authStore.organizer.spots.length)
-    }
+  const handleDelete = () => {
+    swal({
+      title: "Are you sure?",
+      text: "This Spot Will Be Permanently Deleted!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        swal("Deleted!", "Your Spot has been deleted!", {
+          icon: "success",
+        });
+        spotStore.deleteSpot(spot?._id);
+      }
+    });
+  };
   return (
-    <div>
+    <div className="icondivitem">
+      <IoIosRemoveCircle
+        className="deleteSpot"
+        name="stats-chart-outline"
+        onClick={handleDelete}
+      ></IoIosRemoveCircle>
       <Link to={`/spot/${spot?._id}`}>
         <div className="recipecontainer">
           <div className="recipeimagediv">
@@ -37,8 +39,7 @@ function SpotItem({ spot }) {
             <h5>{spot?.name}</h5>
           </div>
         </div>
-        </Link>
-        <button className="button-sign ing-create" onClick={handleDelete}>Delete Spot</button>
+      </Link>
     </div>
   );
 }

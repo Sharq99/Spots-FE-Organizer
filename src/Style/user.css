@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Goudy+Bookletter+1911&family=Libre+Barcode+39+Text&family=Nuosu+SIL&family=Playball&family=Press+Start+2P&family=Sanchez&family=Ubuntu:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&family=Ubuntu:wght@300;700&display=swap');
 .userbuttons {
   display: flex;
   flex-direction: row;
@@ -6,9 +8,8 @@
   width: 100%;
 }
 .background {
-  width: 430px;
-  height: 520px;
-  position: absolute;
+  width: 100%;
+  height: 100%;
   transform: translate(-50%, -50%);
   left: 50%;
   top: 50%;
@@ -31,26 +32,29 @@
   padding: 50px 35px;
 }
 .form-style * {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Ubuntu', sans-serif;
   color: #ffffff;
   letter-spacing: 0.5px;
   outline: none;
   border: none;
 }
 .form-style h3 {
-  font-size: 32px;
+  font-size: 35px;
   font-weight: 500;
-  line-height: 42px;
+  line-height: 30px;
+  padding-bottom: 30px;
   text-align: center;
-}
+  font-family: 'Ubuntu', sans-serif;
 
+}
 .label-style {
   display: block;
-  margin-top: 30px;
+  margin-top: 10px;
   font-size: 16px;
   font-weight: 500;
+  font-family: 'Ubuntu', sans-serif;
 }
-.input-style {
+.input-stylemain {
   display: block;
   height: 50px;
   width: 380px;
@@ -61,25 +65,71 @@
   font-size: 14px;
   font-weight: 300;
 }
+.input-stylemain::placeholder {
+  color: #e5e5e5c1;
+  font-family: 'Ubuntu', sans-serif;
+}
+.input-style {
+  font-family: 'Source Sans Pro', sans-serif;
+
+  display: block;
+  height: 50px;
+  width: 380px;
+  padding: 0 10px;
+  font-size: 14px;
+  font-weight: 300;
+  border-width: 1px;
+  border-radius: 10px;
+  border-color: #4831d4;
+  border-style:solid;
+  margin-bottom: 28px;
+}
 ::placeholder {
-  color: #e5e5e5;
+  color: rgba(128, 128, 128, 0.517);
+  font-family: 'Ubuntu', sans-serif;
 }
 .button-sign {
-  margin-top: 50px;
+ margin-top: 20px;
   width: 100%;
-  background-color: #c9fb5f;
-  color: #080710;
+  background-color: #4831d4;
+  color: white;
   padding: 15px 0;
   font-size: 18px;
   font-weight: 600;
-  border-radius: 5px;
+  border-radius: 12px;
   cursor: pointer;
+  border-style: none;
 }
-
+.deleteSpot{  
+  z-index: 99;
+  margin-left: 279px;
+  margin-top: 10px;
+  color: red;
+  position: absolute;
+  align-self: flex-start;
+  font-weight: 900;
+  font-size: 25px;
+}
+.icondivitem{
+  display: flex;
+  z-index: 99;
+  flex-direction: row;
+  
+}
 .l-color {
-  color: #c9fb5f;
+  color: black;
+  text-align: left;
+  font-size: 18px;
+  margin-top: 10px;
+  font-family: 'Ubuntu', sans-serif;
 }
-
+.l-color-tiny {
+  color: black;
+  text-align: left;
+  font-size: 14px;
+  margin-top: 10px;
+  font-family: 'Ubuntu', sans-serif;
+}
 /* SETTINGS STYLE */
 
 .imageUserNameEdit {
@@ -93,15 +143,54 @@
   flex-direction: column;
   position: relative;
   margin-left: 2px;
-}
-.profile {
-  margin-top: 50px;
-  /* margin-left: 28px; */
-  font-size: 30px;
-  align-self: flex-start;
-  color: #c9fb5f;
+
 }
 
+.modalprofileImagediv{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.profile {
+  font-size: 30px;
+  align-self: center;
+  color: black;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: bolder;
+  text-transform: capitalize;
+}
+.username{  
+  font-size: 30px;
+  align-self: center;
+  color: black;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: bolder;
+  text-transform: capitalize;
+  margin-bottom: 30px;
+  margin-right: 10px;
+}
+.profilelabels{
+  font-size: 15px;
+  align-self: flex-start;
+  color: black;
+  font-family: 'Ubuntu', sans-serif;
+}
+.profileinfo{
+  display: flex;
+  flex-direction: row;
+  margin: 20px;
+  text-align: left;
+  align-self: center;
+  align-content: center;
+  justify-content: center;
+}
+.profileimageusername{
+  display: flex;
+  flex-direction: column;
+  margin: 40px;
+}
 .spotsNum {
   font-size: 30px;
   margin-top: 30px;
@@ -126,19 +215,43 @@
   padding-right: 80px;
 }
 .bio {
-  justify-content: center;
-  align-items: center;
-  text-align: justify;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 18px;
   margin: 12px;
-  padding: 10px;
-  padding-top: 2px;
-  padding-bottom: 15px;
-  font-size: 25px;
-  color: #c9fb5f;
+  margin-left: 0;
+  color: black;
+  word-wrap: break-word;
+  margin-top: 0;
 }
-.bioText {
-  font-size: 50px;
-  padding-bottom: 20px;
+.biodiv{
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  align-items: flex-start;
+  word-wrap: break-word;
+  width: 300px;
+}
+.email {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 18px;
+  margin: 12px;
+  margin-left: 0;
+  color: black;
+  margin-top: 0;
+}
+.emaildiv{
+  margin-right: 100px;
+}
+.phone {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 18px;
+  margin: 12px;
+  margin-left: 0;
+  color: black;
+  margin-top: 0;
+}
+.phonediv{
+  margin-right: 100px;
 }
 /* .tripList {
   grid: 2px;
@@ -165,20 +278,19 @@
 .reviewImage {
   width: 50px;
   height: 50px;
-  margin: 10px;
+  margin-right: 10px;
   border-radius: 50%;
   object-fit: cover;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 10px;
 }
 
 .star {
-  width: 25px;
-  height: 25px;
-  /* margin: 10px; */
-  /* margin-left: -10px; */
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   object-fit: cover;
-  /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 10px; */
+  margin: 8px;
+  margin-bottom: 0;
+  margin-right: 0;
 }
 
 .center-Review {
@@ -196,14 +308,24 @@
 }
 
 .review-name {
-  margin-top: 8px;
+font-size: 16px;
+margin: 0;
+margin-bottom: 4px;
 }
 
 .profileImage {
-  width: 250px;
-  height: 250px;
+  width: 200px;
+  height: 200px;
   margin: 10px;
   border-radius: 50%;
+  object-fit: cover;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 10px;
+}
+.modalprofileImage {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin-bottom: 25px;
   object-fit: cover;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 10px;
 }
@@ -212,10 +334,6 @@
   height: 490px;
   width: 450px;
   background-color: rgba(255, 255, 255, 0.13);
-  position: absolute;
-  transform: translate(-50%, -50%);
-  top: 50%;
-  left: 50%;
   border-radius: 10px;
   backdrop-filter: blur(10px);
   border: 2px solid rgba(255, 255, 255, 0.1);
@@ -223,15 +341,264 @@
   padding: 50px 35px;
 }
 .form-styleh * {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Ubuntu', sans-serif;
   color: #ffffff;
   letter-spacing: 0.5px;
   outline: none;
   border: none;
 }
 .form-styleh h3 {
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 500;
-  line-height: 42px;
+  line-height: 30px;
+  padding-bottom: 30px;
   text-align: center;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.cardtitle{
+  font-size: 5;
+  color:grey
+}
+.cardnum{
+  font-size: 30;
+  color:black
+}
+.dashcard{
+  display: flex;
+  flex-direction: row;
+  width: 300px;
+  height: 300px;
+  border-radius: 10%;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+align-items: center;
+justify-content: center;
+margin: 20px;
+}
+.dash{
+  font-size: 40px;
+  padding-bottom: 30px;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: bold;
+}
+.myspotstext{
+ font-size: 40px;
+  padding-top: 50px;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: bold;
+}
+.whitebackgrounddash{
+  background-color: white;
+  padding:  30px;
+  position:absolute;
+  top:0;
+  right: 0;
+  left: 0;
+  z-index: -1;
+  padding-top: 200px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.whitebackgroundspots{
+  background-color: white;
+  padding:  30px;
+  position:absolute;
+  top:0;
+  right: 0;
+  left: 0;
+  z-index: -1;
+  padding-top: 185px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  padding-bottom: 50px;
+}
+.whitebackgroundprofile{
+  background-color: white;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+
+  padding-top: 50px;
+  padding-bottom: 280px;
+}
+.whitebackgroundcreate{
+  align-self: center;
+  background-color: white;
+  padding:  30px;
+  top:0;
+  display: flex;
+  flex-direction: column;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;  
+  width:65%;
+  border-radius: 20px;
+}
+.backgroundform{
+   top:0;
+   background-color: white;
+   z-index: -1;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   align-content: center;
+}
+
+.radiotext{
+  margin-right: 15px;
+}
+.radio{
+  margin-right: 5px;
+}
+.formdiv{
+  display: flex;
+  flex-direction: row;
+}
+.firstdiv{
+  margin-right: 50px;
+
+}
+.spotimagecontainer{
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.spotimage{
+  align-self: center;
+  width: 360px;
+  height: 595px;
+  margin: 10px;
+  border-radius: 30px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #4831d4;
+  object-fit:cover;
+  margin-top: 20px;
+}
+.spotimagetext{
+  align-self: center;
+  width: 225px;
+  height: 372px;
+  margin: 10px;
+  border-radius: 30px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #4831d4;
+  color: #4831d4;
+  object-fit:cover;
+  margin-top: 20px;
+  justify-content: center;
+  text-align: center;
+  padding-top: 170px;
+  font-family: 'Ubuntu', sans-serif;
+}
+.imagechoose{
+  display: flex;
+  flex-direction: column;
+  margin-top: 18px;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-style-choose {
+  font-family: 'Ubuntu', sans-serif;
+  width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+  font-size: 1.25em;
+  font-weight: 700;
+  color: white;
+  background-color: #4831d4;
+  display: inline-block;
+}
+.input-style-choose :focus{
+  background-color: red;
+}
+.labelchoose{
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+  color: #4831d4;
+  background-color: white;
+  border-color: #4831d4;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 10px;
+  padding: 5px;
+padding-left: 20px;
+padding-right: 20px;
+  display: inline-block;
+}
+
+.categorydiv{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: fit-content;
+}
+.editorg{
+  color:#4831d4;
+  background-color: white;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #4831d4;
+  font-family: 'Ubuntu', sans-serif;
+  border-radius: 10px;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 10px;
+}
+
+.buttonlogout{
+  color: red;
+  background-color: white;
+  border-style: solid;
+  border-width: 1px;
+  border-color: red;
+  font-family: 'Ubuntu', sans-serif;
+  border-radius: 10px;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.userlogoutedit{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-flow: row;
+}
+.settingsmodal:hover{
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.reviewlabel{
+  font-size: 30px;
+  align-self: flex-start;
+  color: black;
+  font-family: 'Ubuntu', sans-serif;
+}
+.reviewnamedate{
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: center;
+}
+
+.dashicon{
+  font-size: 40px;
+  margin: 30px;
+  margin-left: 0;
+  color: #4731d4cd;
 }

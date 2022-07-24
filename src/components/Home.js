@@ -8,18 +8,19 @@ function Home() {
   return (
     <div>
       {authStore.organizer ? (
-              <>
-                <Dashborad/>
-              </>
-            ) : (
-              <>
-                <div className="center">
-                  <h1 className="Welcome">Welcome to Spots</h1>
-                  <RegisterModal/>
-                </div>
-              </>
-            )
-      }
+        <div className="dashback">
+          <Dashborad />
+        </div>
+      ) : (
+        <>
+          <div className="welcomeformrow">
+            <h1 className="Welcome">
+              Welcome to Spots, Your most modern events app in Kuwait
+            </h1>
+            <RegisterModal />
+          </div>
+        </>
+      )}
     </div>
   );
 }
