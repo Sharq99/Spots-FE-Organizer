@@ -101,14 +101,17 @@
   border-style: none;
 }
 .deleteSpot{  
+  background-color: white;
+  border-radius: 100%;
   z-index: 99;
-  margin-left: 279px;
+  margin-left: 282px;
   margin-top: 10px;
   color: red;
   position: absolute;
   align-self: flex-start;
   font-weight: 900;
-  font-size: 25px;
+  font-size: 27px;
+  cursor: pointer;
 }
 .icondivitem{
   display: flex;
@@ -407,6 +410,7 @@ margin: 20px;
   top:0;
   right: 0;
   left: 0;
+  bottom: 0;
   z-index: -1;
   padding-top: 185px;
   display: flex;

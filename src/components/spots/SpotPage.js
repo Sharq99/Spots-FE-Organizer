@@ -31,12 +31,17 @@ function SpotPage() {
             <h1 className="mainspottitle">{spot?.name}</h1>
             <p className="catdetails">{foundCategory?.name}</p>
           </div>
-          <button className="editorg" onClick={() => nav(`/Edit/${spotId}`)}>
-            Edit Spot
-          </button>
-          <button className="editorg" onClick={() => nav(`/Experiance/${spotId}`)}>
-            Experiance
-          </button>
+          <div className="spotsettigs">
+            <button className="editorg" onClick={() => nav(`/Edit/${spotId}`)}>
+              Edit Spot
+            </button>
+            <button
+              className="editorg"
+              onClick={() => nav(`/ExperianceList/${spotId}`)}
+            >
+              Experiance
+            </button>
+          </div>
         </div>
         <div
           className="spotimagediv"

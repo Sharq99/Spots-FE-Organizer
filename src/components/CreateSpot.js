@@ -18,11 +18,6 @@ function CreateSpot() {
     details: "",
     startTime: "",
     isFree: true,
-    // spotDate: {
-    //     year: "",
-    //     month: "",
-    //     day: ""
-    // },
     startDate: 0,
     endDate: 0,
     seats: 0,
@@ -31,6 +26,7 @@ function CreateSpot() {
     days: [],
     numOfDays: 1,
     spotRevenue: 0,
+    announcement: "",
   });
   const [categoryId, setCategoryId] = useState("62d828fff35c707fdaa7422c");
   const [categoryName, setCategoryName] = useState();
@@ -83,7 +79,7 @@ function CreateSpot() {
         icon: "success",
         confirmButtonText: "OK",
       }).then(function () {
-        nav("/QrCode");
+        nav(`/ExperianceList/${spot._id}`);
       });
     } catch (e) {
       alert(e.message);

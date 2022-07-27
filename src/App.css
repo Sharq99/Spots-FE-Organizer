@@ -5,6 +5,7 @@
 @import "./Style/recipeItem.css";
 @import "./Style/RecipePage.css";
 @import "./Style/user.css";
+@import "./Style/offers.css";
 
 body {
   background-color: #4831d4;
