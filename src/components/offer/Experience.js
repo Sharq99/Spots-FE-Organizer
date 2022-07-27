@@ -5,16 +5,16 @@ import offerStore from "../../stores/offerStore";
 import swal from "sweetalert";
 import spotStore from "../../stores/spotStore";
 
-function CreateOffer() {
+function Experience() {
   const nav = useNavigate();
   const { spotId } = useParams();
   const spot = spotStore.getSpotsById(spotId);
   const [file, setFile] = useState("");
   const [image, setImage] = useState("");
   const [offer, setOffer] = useState({
-      title: "",
-      description: "",
-      image: ""
+    title: "",
+    description: "",
+    image: "",
   });
 
   const handleChange = (event) => {
@@ -34,14 +34,14 @@ function CreateOffer() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await offerStore.createOffer(offer, spotId, file)
+      await offerStore.createOffer(offer, spotId, file);
       swal({
         title: "Success",
         text: `offer has been added`,
         icon: "success",
         confirmButtonText: "OK",
       }).then(function () {
-        nav(`/Experiance/${spotId}`);
+        nav(`/ExperianceList/${spotId}`);
       });
     } catch (e) {
       alert(e.message);
@@ -52,11 +52,9 @@ function CreateOffer() {
     <div className="backgroundform">
       <div className="whitebackground">
         <div className="center">
-            <h1 className="dash">{spot.name}</h1>
           <h1 className="dash">Add an Offer</h1>
         </div>
-
-        <div className="whitebackgroundcreate">
+        <div className="createoffercontainer">
           <form onSubmit={handleSubmit} className="formdiv">
             <div className="firstdiv">
               <h5 className="l-color">Offer Title</h5>
@@ -73,7 +71,7 @@ function CreateOffer() {
                 cols="40"
                 rows="5"
                 style={{
-                  height: "200px",
+                  height: "100px",
                   paddingTop: "10px",
                 }}
                 className="input-style"
@@ -82,16 +80,36 @@ function CreateOffer() {
                 name="description"
                 onChange={handleChange}
               />
+            </div>
+            <div>
               <h5 className="l-color">Upload an Image</h5>
               <h5 className="l-color-tiny">
                 This is how your image will look like on the user's screen
               </h5>
               <div className="spotimagecontainer">
                 {image ? (
-                  <img className="spotimage" src={image}></img>
+                  <img
+                    style={{
+                      alignSelf: "flex-start",
+                      width: 310,
+                      height: 200,
+                      borderRadius: 10,
+                      objectFit: "cover",
+                    }}
+                    src={image}
+                  ></img>
                 ) : (
-                  <label className="spotimagetext">
-                    Your spot image goes here
+                  <label
+                    style={{
+                      alignSelf: "flex-start",
+                      width: 310,
+                      height: 200,
+                      borderRadius: 10,
+                      objectFit: "cover",
+                    }}
+                    className="offerimagetext"
+                  >
+                    Your offer image goes here
                   </label>
                 )}
               </div>
@@ -122,4 +140,4 @@ function CreateOffer() {
   );
 }
 
-export default CreateOffer;
+export default Experience;

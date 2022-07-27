@@ -39,7 +39,6 @@ class SpotStore {
         `/spot/update/${spotId}/cat/${categoryId}`,
         formData
       );
-      // const res = await instance.put(`/spot/${spotId}`, updatedSpot);
       this.spots = this.spots.map((spot) =>
         spot._id === spotId ? res.data : spot
       );

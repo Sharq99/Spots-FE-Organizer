@@ -83,7 +83,6 @@ function EditSpot() {
       }).then(function () {
         nav(`/spot/${spotId}`);
       });
-      // window.location = `/RecipePage/${recipeid}`;
     } catch (e) {
       alert(e.message);
     }

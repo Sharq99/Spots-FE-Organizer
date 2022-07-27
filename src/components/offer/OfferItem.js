@@ -1,33 +1,74 @@
 import { observer } from "mobx-react";
+import { IoIosRemoveCircle } from "react-icons/io";
+import swal from "sweetalert";
 import { baseURL } from "../../stores/instance";
-import Stars from "./Stars";
-import moment from "moment";
-
-function ReviewItem({ review }) {
-  let date = moment(review?.date).format("LL");
+import offerStore from "../../stores/offerStore";
+function OfferItem({ offer }) {
+  const handleDelete = () => {
+    swal({
+      title: "Are you sure?",
+      text: "This Offer Will Be Permanently Deleted!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        swal("Deleted!", "Your Offer has been deleted!", {
+          icon: "success",
+        });
+        offerStore.deleteOffer(offer._id);
+      }
+    });
+  };
   return (
-    <div
-      style={{
-        borderBottomColor: "rgba(178, 174, 174, 0.658)",
-        borderBottomWidth: " 0.4px",
-        borderBottomStyle: "solid",
-        margin: "30px",
-      }}
-    >
-      <div className="center-Review">
+    <div style={{ margin: 30, marginRight: -10 }}>
+      <IoIosRemoveCircle
+        className="deleteOffer"
+        name="stats-chart-outline"
+        onClick={handleDelete}
+      ></IoIosRemoveCircle>
+      <div>
         <img
-          src={`${baseURL}${review?.user?.image}`}
-          className="reviewImage"
-        ></img>
-        <div className="reviewnamedate">
-          <h5 className="review-name">{review?.user?.username}</h5>
-          <h5 className="review-name">{date}</h5>
-        </div>
+          style={{
+            alignSelf: "flex-start",
+            width: 310,
+            height: 200,
+            borderRadius: 10,
+            objectFit: "cover",
+          }}
+          src={`${baseURL}${offer?.image}`}
+        />
       </div>
-      <div>{<Stars stars={review?.stars} />}</div>
-      <p className="spottextbig">{review?.description}</p>
+      <div style={{ alignSelf: "flex-start", width: "90%" }}>
+        <label
+          style={{
+            textTransform: "capitalize",
+            marginTop: 10,
+            fontSize: 25,
+            color: "black",
+            fontFamily: "Ubuntu",
+            paddingLeft: 10,
+          }}
+        >
+          {offer?.title}
+        </label>
+      </div>
+      <div style={{ alignSelf: "flex-start", width: "90%" }}>
+        <label
+          style={{
+            textAlign: "left",
+            marginTop: 10,
+            fontSize: 15,
+            color: "black",
+            fontFamily: "Ubuntu",
+            paddingLeft: 10,
+          }}
+        >
+          {offer?.description}
+        </label>
+      </div>
     </div>
   );
 }
 
-export default ReviewItem;
+export default observer(OfferItem);

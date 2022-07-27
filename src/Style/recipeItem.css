@@ -17,7 +17,7 @@
       margin: 20px;
       text-decoration: none;
 }
-.recipeimagediv{
+.recipeimage{
     display: flex;
     position: absolute;
     z-index: 10;
@@ -30,7 +30,7 @@
     z-index: -1;
     text-decoration: none;
 }
-.recipeimagediv:hover{
+.recipeimage:hover{
     transform: scale(1.1);
 }
 .recipename{

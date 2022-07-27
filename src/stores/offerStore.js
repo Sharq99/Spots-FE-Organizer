@@ -10,8 +10,8 @@ class OfferStore {
 
   fetchOffers = async () => {
     try {
-        const response = await instance.get("/offer");
-        this.offers = response.data;
+      const response = await instance.get("/offer");
+      this.offers = response.data;
     } catch (error) {
       console.log(error);
     }
@@ -29,6 +29,15 @@ class OfferStore {
     }
   };
 
+  deleteOffer = async (offerId) => {
+    try {
+      await instance.delete(`/offer/delete/${offerId}`);
+      this.offers = this.offers.filter((offer) => offer._id !== offerId);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   getOfferById = (offerId) => {
     return this.offers.find((offer) => offer._id === offerId);
   };
@@ -36,7 +45,6 @@ class OfferStore {
   getOffers = () => {
     return this.offers;
   };
-
 }
 
 const offerStore = new OfferStore();

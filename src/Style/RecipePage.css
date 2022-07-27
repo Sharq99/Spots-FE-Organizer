@@ -172,3 +172,9 @@
     padding: 5%;
 
 }
+
+.spotsettigs{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+}
