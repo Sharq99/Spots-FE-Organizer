@@ -3,6 +3,7 @@ import LogOutButton from "./organizer/LogOutButton";
 import authStore from "../stores/authStore";
 import { baseURL } from "../stores/instance";
 import EditOrganizerModal from "./EditOrganizerModal";
+import profilePic from "./pics/PP.jpeg"; 
 import SettingsModal from "./spots/SettingsModal";
 
 function Settings() {
@@ -23,10 +24,11 @@ function Settings() {
           <div className="profileimageusername">
             <div className="imageUserNameEdit center-settings">
               <div className="imageUserName">
-                <img
-                  className="profileImage"
-                  src={`${baseURL}${authStore.organizer.image}`}
-                ></img>
+                {authStore.organizer.image ? (
+                  <img className="profileImage" src={`${baseURL}${authStore.organizer.image}`} alt="Pofile Picture"/>
+                ) : (
+                  <img className="profileImage" src={profilePic} alt="Pofile Picture"/>
+                )}
               </div>
             </div>
           </div>
