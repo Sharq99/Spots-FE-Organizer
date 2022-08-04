@@ -6,6 +6,9 @@ import OfferItem from "../offer/OfferItem";
 import offerStore from "../../stores/offerStore";
 import swal from "sweetalert";
 import { useState } from "react";
+import rewardStore from "../../stores/rewardStore";
+import RewardItem from "../reward/RewardItem";
+import GenerateQrCode from "../../GenerateQrCode";
 
 function ExperianceList() {
   const nav = useNavigate();
@@ -47,6 +50,9 @@ function ExperianceList() {
   return (
     <div className="center">
       <div className="whitebackgroundoffers">
+        <div className="center">
+          <h1 className="dash">{spot.name}'s experience</h1>
+        </div>
         <div className="offercontainer">
           <div
             className="offerdiv"
@@ -119,7 +125,7 @@ function ExperianceList() {
               .map((offer) => (
                 <li
                   style={{
-                    width: "40%",
+                    width: "50%",
                     textAlign: "left",
                   }}
                 >
@@ -127,6 +133,43 @@ function ExperianceList() {
                 </li>
               ))}
           </ul>
+
+          <div className="offerdiv">
+            <h1 className="dashannouncement">Rewards</h1>
+            <button
+              className="editorg"
+              onClick={() => nav(`/RewardExperience/${spotId}`)}
+            >
+              Add Reward
+            </button>
+          </div>
+
+          <ul
+            style={{
+              listStyleType: "none",
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center",
+              width: "100%",
+              flexWrap: "wrap",
+              alignContent: "center",
+            }}
+          >
+            {rewardStore.rewards
+              .filter((reward) => reward.spot === spotId)
+              .map((reward) => (
+                <li
+                  style={{
+                    width: "50%",
+                    textAlign: "left",
+                  }}
+                >
+                  <RewardItem key={reward._id} reward={reward} />
+                </li>
+              ))}
+          </ul>
+          <h1 className="dashannouncement">Create Points</h1>
+          <GenerateQrCode />
         </div>
       </div>
     </div>
