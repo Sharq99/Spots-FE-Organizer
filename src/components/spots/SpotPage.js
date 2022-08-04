@@ -4,15 +4,13 @@ import spotStore from "../../stores/spotStore";
 import ReviewList from "../review/ReviewList";
 import { baseURL } from "../../stores/instance";
 import { useNavigate } from "react-router-dom";
-import SpotDaysList from "./SpotDaysList";
-import categoryStore from "../../stores/categoryStore";
 import moment from "moment";
 
 function SpotPage() {
   const nav = useNavigate();
   const { spotId } = useParams();
   const spot = spotStore?.getSpotsById(spotId);
-  const foundCategory = categoryStore?.getCategoryById(spot?.category);
+
   let date = moment(spot?.startDate).format("LL");
   return (
     <div className="whitebackground">
@@ -29,7 +27,7 @@ function SpotPage() {
         >
           <div className="headingdetails">
             <h1 className="mainspottitle">{spot?.name}</h1>
-            <p className="catdetails">{foundCategory?.name}</p>
+            <p className="catdetails">{spot?.category.name}</p>
           </div>
           <div className="spotsettigs">
             <button className="editorg" onClick={() => nav(`/Edit/${spotId}`)}>

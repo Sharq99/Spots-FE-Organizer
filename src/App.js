@@ -11,6 +11,7 @@ import SpotPage from "./components/spots/SpotPage";
 import EditSpot from "./components/EditSpot";
 import ExperianceList from "./components/spots/ExperianceList";
 import Experience from "./components/offer/Experience";
+import RewardExperience from "./components/reward/RewardExperience";
 
 function App() {
   return (
@@ -27,6 +28,10 @@ function App() {
         <Route path="/Edit/:spotId" element={<EditSpot />} />
         <Route path="/ExperianceList/:spotId" element={<ExperianceList />} />
         <Route path="/Experience/:spotId" element={<Experience />} />
+        <Route
+          path="/RewardExperience/:spotId"
+          element={<RewardExperience />}
+        />
       </Routes>
     </div>
   );
