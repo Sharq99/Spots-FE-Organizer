@@ -66,7 +66,7 @@ function Experience() {
                 name="title"
                 onChange={handleChange}
               />
-              <h5 className="l-color">Offer Description</h5>
+              <h5 className="l-color">Offer Description (90 characters max)</h5>
               <textarea
                 cols="40"
                 rows="5"
@@ -78,6 +78,7 @@ function Experience() {
                 type="text"
                 placeholder="Offer Description"
                 name="description"
+                maxLength={90}
                 onChange={handleChange}
               />
             </div>

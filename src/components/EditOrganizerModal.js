@@ -103,6 +103,7 @@ function EditOrganizerModal({ handleCloseEdit }) {
                   value={authStore.organizer.bio}
                   onChange={handleChange}
                   name="bio"
+                  maxLength={150}
                 />
               </InputGroup>
             </Form.Group>

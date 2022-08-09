@@ -28,6 +28,7 @@ function CreateSpot() {
     spotRevenue: 0,
     announcement: "",
   });
+  spot.announcement = `Welcome to ${spot.name}, enjoy our amazing offers and rewards`;
   const [categoryId, setCategoryId] = useState("62d828fff35c707fdaa7422c");
   const [categoryName, setCategoryName] = useState();
 
@@ -79,7 +80,7 @@ function CreateSpot() {
         icon: "success",
         confirmButtonText: "OK",
       }).then(function () {
-        nav(`/ExperianceList/${spot._id}`);
+        nav(`/my-spots`);
       });
     } catch (e) {
       alert(e.message);
@@ -125,18 +126,21 @@ function CreateSpot() {
                 name="location"
                 onChange={handleChange}
               />
-              <h5 className="l-color">Enter Spot Description</h5>
+              <h5 className="l-color">
+                Enter Spot Description (200 characters max)
+              </h5>
               <textarea
                 cols="40"
                 rows="5"
                 style={{
-                  height: "200px",
+                  height: "100px",
                   paddingTop: "10px",
                 }}
                 className="input-style"
                 type="text"
                 placeholder="Spot Description"
                 name="description"
+                maxLength={200}
                 onChange={handleChange}
               />
               <h5 className="l-color">Enter Spot Details</h5>

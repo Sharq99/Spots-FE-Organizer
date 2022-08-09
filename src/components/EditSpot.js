@@ -123,18 +123,21 @@ function EditSpot() {
                 name="location"
                 onChange={handleChange}
               />
-              <h5 className="l-color">Enter Spot Description</h5>
+              <h5 className="l-color">
+                Enter Spot Description (200 characters max)
+              </h5>
               <textarea
                 cols="40"
                 rows="5"
                 style={{
-                  height: "200px",
+                  height: "100px",
                   paddingTop: "10px",
                 }}
                 className="input-style"
                 type="text"
                 value={spot.description}
                 name="description"
+                maxLength={200}
                 onChange={handleChange}
               />
               <h5 className="l-color">Enter Spot Details</h5>
