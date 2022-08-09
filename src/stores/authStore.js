@@ -44,6 +44,7 @@ class AuthStore {
       this.setOrganizer(response.data.token);
     } catch (error) {
       console.log(error);
+      alert("Wrong credintials");
     }
   };
 

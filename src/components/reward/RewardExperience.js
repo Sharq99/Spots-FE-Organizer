@@ -17,11 +17,17 @@ function RewardExperience() {
     description: "",
     image: "",
     points: 0,
+    isMultiClaim: true,
   });
 
   const handleChange = (event) => {
     setReward({ ...reward, [event.target.name]: event.target.value });
   };
+  const handleOnce = (event) =>
+    setReward({ ...reward, [event.target.name]: false });
+
+  const handleMultiple = (event) =>
+    setReward({ ...reward, [event.target.name]: true });
 
   const handleImage = (event) => {
     let file = event.target.files[0];
@@ -77,7 +83,9 @@ function RewardExperience() {
                 name="points"
                 onChange={handleChange}
               />
-              <h5 className="l-color">Reward Description</h5>
+              <h5 className="l-color">
+                Reward Description (90 characters max)
+              </h5>
               <textarea
                 cols="40"
                 rows="5"
@@ -89,10 +97,34 @@ function RewardExperience() {
                 type="text"
                 placeholder="Reward Description"
                 name="description"
+                maxLength={90}
                 onChange={handleChange}
               />
             </div>
             <div>
+              <div>
+                <h5 className="l-color">
+                  Can the reward be claimed more than once?
+                </h5>
+                <input
+                  type="radio"
+                  id="payment"
+                  name="isMultiClaim"
+                  className="radio"
+                  onChange={handleMultiple}
+                />
+                <label className="radiotext" for="payment">
+                  Yes
+                </label>
+                <input
+                  type="radio"
+                  id="payment"
+                  name="isMultiClaim"
+                  className="radio"
+                  onChange={handleOnce}
+                />
+                <label for="payment">No</label>
+              </div>
               <h5 className="l-color">Upload an Image</h5>
               <h5 className="l-color-tiny">
                 This is how your image will look like on the user's screen
