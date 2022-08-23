@@ -102,29 +102,6 @@ function RewardExperience() {
               />
             </div>
             <div>
-              <div>
-                <h5 className="l-color">
-                  Can the reward be claimed more than once?
-                </h5>
-                <input
-                  type="radio"
-                  id="payment"
-                  name="isMultiClaim"
-                  className="radio"
-                  onChange={handleMultiple}
-                />
-                <label className="radiotext" for="payment">
-                  Yes
-                </label>
-                <input
-                  type="radio"
-                  id="payment"
-                  name="isMultiClaim"
-                  className="radio"
-                  onChange={handleOnce}
-                />
-                <label for="payment">No</label>
-              </div>
               <h5 className="l-color">Upload an Image</h5>
               <h5 className="l-color-tiny">
                 This is how your image will look like on the user's screen
