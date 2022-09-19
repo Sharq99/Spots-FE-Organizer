@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Goudy+Bookletter+1911&family=Libre+Barcode+39+Text&family=Nuosu+SIL&family=Playball&family=Press+Start+2P&family=Sanchez&family=Ubuntu:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&family=Ubuntu:wght@300;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Goudy+Bookletter+1911&family=Libre+Barcode+39+Text&family=Nuosu+SIL&family=Playball&family=Press+Start+2P&family=Sanchez&family=Ubuntu:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro&family=Ubuntu:wght@300;700&display=swap");
 .userbuttons {
   display: flex;
   flex-direction: row;
@@ -32,7 +32,7 @@
   padding: 50px 35px;
 }
 .form-style * {
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
   color: #ffffff;
   letter-spacing: 0.5px;
   outline: none;
@@ -44,15 +44,14 @@
   line-height: 30px;
   padding-bottom: 30px;
   text-align: center;
-  font-family: 'Ubuntu', sans-serif;
-
+  font-family: "Ubuntu", sans-serif;
 }
 .label-style {
   display: block;
   margin-top: 10px;
   font-size: 16px;
   font-weight: 500;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
 }
 .input-stylemain {
   display: block;
@@ -67,10 +66,10 @@
 }
 .input-stylemain::placeholder {
   color: #e5e5e5c1;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
 }
 .input-style {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
 
   display: block;
   height: 50px;
@@ -81,15 +80,15 @@
   border-width: 1px;
   border-radius: 10px;
   border-color: #4831d4;
-  border-style:solid;
+  border-style: solid;
   margin-bottom: 28px;
 }
 ::placeholder {
   color: rgba(128, 128, 128, 0.517);
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
 }
 .button-sign {
- margin-top: 20px;
+  margin-top: 20px;
   width: 100%;
   background-color: #4831d4;
   color: white;
@@ -100,7 +99,19 @@
   cursor: pointer;
   border-style: none;
 }
-.deleteSpot{  
+.button-signx {
+  margin-top: 20px;
+  width: 100%;
+  background-color: #988be6;
+  color: white;
+  padding: 15px 0;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 12px;
+  cursor: pointer;
+  border-style: none;
+}
+.deleteSpot {
   background-color: white;
   border-radius: 100%;
   z-index: 99;
@@ -113,25 +124,31 @@
   font-size: 27px;
   cursor: pointer;
 }
-.icondivitem{
+.icondivitem {
   display: flex;
   z-index: 99;
   flex-direction: row;
-  
 }
 .l-color {
   color: black;
   text-align: left;
   font-size: 18px;
   margin-top: 10px;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
 }
 .l-color-tiny {
   color: black;
   text-align: left;
   font-size: 14px;
   margin-top: 10px;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
+}
+.l-color-tiny-image {
+  color: black;
+  text-align: left;
+  font-size: 14px;
+  margin-top: 3px;
+  font-family: "Ubuntu", sans-serif;
 }
 /* SETTINGS STYLE */
 
@@ -146,10 +163,9 @@
   flex-direction: column;
   position: relative;
   margin-left: 2px;
-
 }
 
-.modalprofileImagediv{
+.modalprofileImagediv {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -160,27 +176,27 @@
   font-size: 30px;
   align-self: center;
   color: black;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
   font-weight: bolder;
   text-transform: capitalize;
 }
-.username{  
+.username {
   font-size: 30px;
   align-self: center;
   color: black;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
   font-weight: bolder;
   text-transform: capitalize;
   margin-bottom: 30px;
   margin-right: 10px;
 }
-.profilelabels{
+.profilelabels {
   font-size: 15px;
   align-self: flex-start;
   color: black;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
 }
-.profileinfo{
+.profileinfo {
   display: flex;
   flex-direction: row;
   margin: 20px;
@@ -189,7 +205,7 @@
   align-content: center;
   justify-content: center;
 }
-.profileimageusername{
+.profileimageusername {
   display: flex;
   flex-direction: column;
   margin: 40px;
@@ -218,7 +234,7 @@
   padding-right: 80px;
 }
 .bio {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
   font-size: 18px;
   margin: 12px;
   margin-left: 0;
@@ -226,7 +242,7 @@
   word-wrap: break-word;
   margin-top: 0;
 }
-.biodiv{
+.biodiv {
   display: flex;
   flex-direction: column;
   align-content: flex-start;
@@ -235,25 +251,25 @@
   width: 300px;
 }
 .email {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
   font-size: 18px;
   margin: 12px;
   margin-left: 0;
   color: black;
   margin-top: 0;
 }
-.emaildiv{
+.emaildiv {
   margin-right: 100px;
 }
 .phone {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
   font-size: 18px;
   margin: 12px;
   margin-left: 0;
   color: black;
   margin-top: 0;
 }
-.phonediv{
+.phonediv {
   margin-right: 100px;
 }
 /* .tripList {
@@ -311,9 +327,9 @@
 }
 
 .review-name {
-font-size: 16px;
-margin: 0;
-margin-bottom: 4px;
+  font-size: 16px;
+  margin: 0;
+  margin-bottom: 4px;
 }
 
 .profileImage {
@@ -334,7 +350,7 @@ margin-bottom: 4px;
 }
 
 .form-styleh {
-  height: 490px;
+  height: 530px;
   width: 450px;
   background-color: rgba(255, 255, 255, 0.13);
   border-radius: 10px;
@@ -344,7 +360,7 @@ margin-bottom: 4px;
   padding: 50px 35px;
 }
 .form-styleh * {
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
   color: #ffffff;
   letter-spacing: 0.5px;
   outline: none;
@@ -356,45 +372,46 @@ margin-bottom: 4px;
   line-height: 30px;
   padding-bottom: 30px;
   text-align: center;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
 }
 
-.cardtitle{
+.cardtitle {
   font-size: 5;
-  color:grey
+  color: grey;
 }
-.cardnum{
+.cardnum {
   font-size: 30;
-  color:black
+  color: black;
 }
-.dashcard{
+.dashcard {
   display: flex;
   flex-direction: row;
   width: 300px;
   height: 300px;
   border-radius: 10%;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-align-items: center;
-justify-content: center;
-margin: 20px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
 }
-.dash{
+.dash {
   font-size: 40px;
   padding-bottom: 30px;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
   font-weight: bold;
 }
-.myspotstext{
- font-size: 40px;
+.myspotstext {
+  font-size: 40px;
   padding-top: 50px;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
   font-weight: bold;
 }
-.whitebackgrounddash{
+.whitebackgrounddash {
   background-color: white;
-  padding:  30px;
-  position:absolute;
-  top:0;
+  padding: 30px;
+  position: absolute;
+  top: 0;
   right: 0;
   left: 0;
   z-index: -1;
@@ -403,11 +420,11 @@ margin: 20px;
   flex-direction: row;
   flex-wrap: wrap;
 }
-.whitebackgroundspots{
+.whitebackgroundspots {
   background-color: white;
-  padding:  30px;
-  position:absolute;
-  top:0;
+  padding: 30px;
+  position: absolute;
+  top: 0;
   right: 0;
   left: 0;
   bottom: 0;
@@ -420,7 +437,7 @@ margin: 20px;
   align-content: center;
   padding-bottom: 50px;
 }
-.whitebackgroundprofile{
+.whitebackgroundprofile {
   background-color: white;
   display: flex;
   text-align: center;
@@ -430,48 +447,47 @@ margin: 20px;
   padding-top: 50px;
   padding-bottom: 280px;
 }
-.whitebackgroundcreate{
+.whitebackgroundcreate {
   align-self: center;
   background-color: white;
-  padding:  30px;
-  top:0;
+  padding: 30px;
+  top: 0;
   display: flex;
   flex-direction: column;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;  
-  width:65%;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  width: 65%;
   border-radius: 20px;
 }
-.backgroundform{
-   top:0;
-   background-color: white;
-   z-index: -1;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: center;
-   align-content: center;
+.backgroundform {
+  top: 0;
+  background-color: white;
+  z-index: -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
 }
 
-.radiotext{
+.radiotext {
   margin-right: 15px;
 }
-.radio{
+.radio {
   margin-right: 5px;
 }
-.formdiv{
+.formdiv {
   display: flex;
   flex-direction: row;
 }
-.firstdiv{
+.firstdiv {
   margin-right: 50px;
-
 }
-.spotimagecontainer{
-display: flex;
-align-items: center;
-justify-content: center;
+.spotimagecontainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.spotimage{
+.spotimage {
   align-self: center;
   width: 360px;
   height: 595px;
@@ -480,10 +496,10 @@ justify-content: center;
   border-style: solid;
   border-width: 1px;
   border-color: #4831d4;
-  object-fit:cover;
+  object-fit: cover;
   margin-top: 20px;
 }
-.spotimagetext{
+.spotimagetext {
   align-self: center;
   width: 225px;
   height: 372px;
@@ -493,14 +509,14 @@ justify-content: center;
   border-width: 1px;
   border-color: #4831d4;
   color: #4831d4;
-  object-fit:cover;
+  object-fit: cover;
   margin-top: 20px;
   justify-content: center;
   text-align: center;
   padding-top: 170px;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
 }
-.imagechoose{
+.imagechoose {
   display: flex;
   flex-direction: column;
   margin-top: 18px;
@@ -510,24 +526,24 @@ justify-content: center;
 }
 
 .input-style-choose {
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
   width: 0.1px;
-	height: 0.1px;
-	opacity: 0;
-	overflow: hidden;
-	position: absolute;
-	z-index: -1;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
   font-size: 1.25em;
   font-weight: 700;
   color: white;
   background-color: #4831d4;
   display: inline-block;
 }
-.input-style-choose :focus{
+.input-style-choose :focus {
   background-color: red;
 }
-.labelchoose{
-  font-family: 'Ubuntu', sans-serif;
+.labelchoose {
+  font-family: "Ubuntu", sans-serif;
   font-size: 18px;
   font-weight: 300;
   color: #4831d4;
@@ -537,24 +553,24 @@ justify-content: center;
   border-style: solid;
   border-radius: 10px;
   padding: 5px;
-padding-left: 20px;
-padding-right: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
   display: inline-block;
 }
 
-.categorydiv{
+.categorydiv {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   width: fit-content;
 }
-.editorg{
-  color:#4831d4;
+.editorg {
+  color: #4831d4;
   background-color: white;
   border-style: solid;
   border-width: 1px;
   border-color: #4831d4;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
   border-radius: 10px;
   padding: 5px;
   padding-left: 10px;
@@ -562,37 +578,36 @@ padding-right: 20px;
   margin-bottom: 10px;
 }
 
-.buttonlogout{
+.buttonlogout {
   color: red;
   background-color: white;
   border-style: solid;
   border-width: 1px;
   border-color: red;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
   border-radius: 10px;
   padding: 5px;
   padding-left: 10px;
   padding-right: 10px;
 }
-.userlogoutedit{
+.userlogoutedit {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   flex-flow: row;
 }
-.settingsmodal:hover{
+.settingsmodal:hover {
   cursor: pointer;
   font-size: 12px;
 }
 
-.reviewlabel{
+.reviewlabel {
   font-size: 30px;
   align-self: flex-start;
   color: black;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
 }
-.reviewnamedate{
-
+.reviewnamedate {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -600,9 +615,29 @@ padding-right: 20px;
   align-content: center;
 }
 
-.dashicon{
+.dashicon {
   font-size: 40px;
   margin: 30px;
   margin-left: 0;
   color: #4731d4cd;
+}
+
+.validation {
+  font-family: "Ubuntu", sans-serif;
+  font-size: 10px;
+  color: greenyellow;
+  margin-left: 10px;
+}
+
+.validationx {
+  font-family: "Ubuntu", sans-serif;
+  font-size: 10px;
+  color: #ff3333;
+  margin-left: 10px;
+}
+.validationy {
+  font-family: "Ubuntu", sans-serif;
+  font-size: 10px;
+  color: white;
+  margin-left: 10px;
 }

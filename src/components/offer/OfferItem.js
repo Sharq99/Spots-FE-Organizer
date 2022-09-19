@@ -51,6 +51,7 @@ function OfferItem({ offer }) {
           }}
         >
           {offer?.title}
+          {/* {offer?.titleAr} */}
         </label>
       </div>
       <div style={{ alignSelf: "flex-start", width: "90%" }}>
@@ -65,6 +66,7 @@ function OfferItem({ offer }) {
           }}
         >
           {offer?.description}
+          {/* {offer?.descriptionAr} */}
         </label>
       </div>
     </div>

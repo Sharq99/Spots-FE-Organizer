@@ -28,6 +28,7 @@ function SpotPage() {
         >
           <div className="headingdetails">
             <h1 className="mainspottitle">{spot?.name}</h1>
+            {/* <h1 className="mainspottitle">{spot?.nameAr}</h1> */}
             <p className="catdetails">{category.name}</p>
           </div>
           <div className="spotsettigs">
@@ -100,6 +101,10 @@ function SpotPage() {
           <p className="spottextbig">{spot?.description}</p>
           <h1 className="spotlabel">Details</h1>
           <p className="spottextbig">{spot?.details}</p>
+          <h1 className="spotlabel">Description in Arabic</h1>
+          <p className="spottextbig">{spot?.descriptionAr}</p>
+          <h1 className="spotlabel">Details in Arabic</h1>
+          <p className="spottextbig">{spot?.detailsAr}</p>
           <h1 className="spotlabel">Location</h1>
           <a className="spotlink" href={spot?.location} target="_blank">
             Spot Location
