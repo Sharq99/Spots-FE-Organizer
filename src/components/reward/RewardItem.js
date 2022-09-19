@@ -51,6 +51,7 @@ function RewardItem({ reward }) {
           }}
         >
           {reward?.title}
+          {/* {reward?.titleAr} */}
         </label>
       </div>
       <label
@@ -77,6 +78,7 @@ function RewardItem({ reward }) {
           }}
         >
           {reward?.description}
+          {/* {reward?.descriptionAr} */}
         </label>
       </div>
     </div>

@@ -16,10 +16,13 @@ function EditSpot() {
   const [file, setFile] = useState(oldSpot?.image);
   const [spot, setSpot] = useState({
     name: oldSpot?.name,
+    nameAr: oldSpot?.nameAr,
     image: oldSpot?.image,
     location: oldSpot?.location,
     description: oldSpot?.description,
+    descriptionAr: oldSpot?.descriptionAr,
     details: oldSpot?.details,
+    detailsAr: oldSpot?.detailsAr,
     startTime: oldSpot?.startTime,
     isFree: oldSpot?.isFree,
     startDate: oldSpot?.startDate,
@@ -106,13 +109,22 @@ function EditSpot() {
           />
           <form onSubmit={handleSubmit} className="formdiv">
             <div className="firstdiv">
-              <h5 className="l-color">Enter Spot Name</h5>
+              <h5 className="l-color">Enter Spot Name (English)</h5>
               <input
                 className="input-style"
                 type="text"
                 multiple
                 value={spot.name}
                 name="name"
+                onChange={handleChange}
+              />
+              <h5 className="l-color">Enter Spot Name (Arabic)</h5>
+              <input
+                className="input-style"
+                type="text"
+                multiple
+                value={spot.nameAr}
+                name="nameAr"
                 onChange={handleChange}
               />
               <h5 className="l-color">Enter Location URL</h5>
@@ -124,7 +136,7 @@ function EditSpot() {
                 onChange={handleChange}
               />
               <h5 className="l-color">
-                Enter Spot Description (200 characters max)
+                Enter Spot Description English (200 characters max)
               </h5>
               <textarea
                 cols="40"
@@ -140,7 +152,24 @@ function EditSpot() {
                 maxLength={200}
                 onChange={handleChange}
               />
-              <h5 className="l-color">Enter Spot Details</h5>
+              <h5 className="l-color">
+                Enter Spot Description Arabic (200 characters max)
+              </h5>
+              <textarea
+                cols="40"
+                rows="5"
+                style={{
+                  height: "100px",
+                  paddingTop: "10px",
+                }}
+                className="input-style"
+                type="text"
+                value={spot.descriptionAr}
+                name="descriptionAr"
+                maxLength={200}
+                onChange={handleChange}
+              />
+              <h5 className="l-color">Enter Spot Details (English)</h5>
               <textarea
                 cols="40"
                 rows="5"
@@ -152,6 +181,20 @@ function EditSpot() {
                 type="text"
                 value={spot.details}
                 name="details"
+                onChange={handleChange}
+              />
+              <h5 className="l-color">Enter Spot Details (Arabic)</h5>
+              <textarea
+                cols="40"
+                rows="5"
+                style={{
+                  height: "150px",
+                  paddingTop: "10px",
+                }}
+                className="input-style"
+                type="text"
+                value={spot.detailsAr}
+                name="detailsAr"
                 onChange={handleChange}
               />
               <h5 className="l-color">Enter Time</h5>
