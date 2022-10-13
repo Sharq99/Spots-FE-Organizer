@@ -51,7 +51,7 @@ function CreateSpot() {
 
   const handleChange = (event) => {
     setSpot({ ...spot, [event.target.name]: event.target.value });
-    if(event.target.name === "name"){
+    if (event.target.name === "name") {
       setSpotName(false);
     } else if (event.target.name === "nameAr") {
       setSpotNameAr(false);
@@ -150,9 +150,9 @@ function CreateSpot() {
           />
           <form onSubmit={handleSubmit} className="formdiv">
             <div className="firstdiv">
-              <div style={{display: "flex", flexDirection: 'row',}}>
+              <div style={{ display: "flex", flexDirection: "row" }}>
                 <h5 className="l-color">Enter Spot Name (in English)</h5>
-                <h5 style={{color:"red", marginTop: "10px"}}>*</h5>
+                <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
               </div>
               <input
                 className="input-style"
@@ -162,9 +162,9 @@ function CreateSpot() {
                 name="name"
                 onChange={handleChange}
               />
-              <div style={{display: "flex", flexDirection: 'row',}}>
+              <div style={{ display: "flex", flexDirection: "row" }}>
                 <h5 className="l-color">Enter Spot Name (in Arabic)</h5>
-                <h5 style={{color:"red", marginTop: "10px"}}>*</h5>
+                <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
               </div>
               <input
                 className="input-style"
@@ -174,9 +174,9 @@ function CreateSpot() {
                 name="nameAr"
                 onChange={handleChange}
               />
-              <div style={{display: "flex", flexDirection: 'row',}}>
+              <div style={{ display: "flex", flexDirection: "row" }}>
                 <h5 className="l-color">Enter Location URL</h5>
-                <h5 style={{color:"red", marginTop: "10px"}}>*</h5>
+                <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
               </div>
               <input
                 className="input-style"
@@ -185,9 +185,11 @@ function CreateSpot() {
                 name="location"
                 onChange={handleChange}
               />
-              <div style={{display: "flex", flexDirection: 'row',}}>
-                <h5 className="l-color">Enter Spot Description in English (200 characters max)</h5>
-                <h5 style={{color:"red", marginTop: "10px"}}>*</h5>
+              <div style={{ display: "flex", flexDirection: "row" }}>
+                <h5 className="l-color">
+                  Enter Spot Description in English (200 characters max)
+                </h5>
+                <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
               </div>
               <textarea
                 cols="40"
@@ -203,9 +205,11 @@ function CreateSpot() {
                 maxLength={200}
                 onChange={handleChange}
               />
-              <div style={{display: "flex", flexDirection: 'row',}}>
-                <h5 className="l-color">Enter Spot Description in Arabic (200 characters max)</h5>
-                <h5 style={{color:"red", marginTop: "10px"}}>*</h5>
+              <div style={{ display: "flex", flexDirection: "row" }}>
+                <h5 className="l-color">
+                  Enter Spot Description in Arabic (200 characters max)
+                </h5>
+                <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
               </div>
               <textarea
                 cols="40"
@@ -221,9 +225,9 @@ function CreateSpot() {
                 maxLength={200}
                 onChange={handleChange}
               />
-              <div style={{display: "flex", flexDirection: 'row',}}>
-                <h5 className="l-color">Enter Spot Detail (in English)s</h5>
-                <h5 style={{color:"red", marginTop: "10px"}}>*</h5>
+              <div style={{ display: "flex", flexDirection: "row" }}>
+                <h5 className="l-color">Enter Spot Detail (in English)</h5>
+                <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
               </div>
               <textarea
                 cols="40"
@@ -238,9 +242,9 @@ function CreateSpot() {
                 name="details"
                 onChange={handleChange}
               />
-              <div style={{display: "flex", flexDirection: 'row',}}>
+              <div style={{ display: "flex", flexDirection: "row" }}>
                 <h5 className="l-color">Enter Spot Details (in Arabic)</h5>
-                <h5 style={{color:"red", marginTop: "10px"}}>*</h5>
+                <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
               </div>
               <textarea
                 cols="40"
@@ -248,6 +252,7 @@ function CreateSpot() {
                 style={{
                   height: "150px",
                   paddingTop: "10px",
+                  textAlign: "right",
                 }}
                 className="input-style"
                 type="text"
@@ -255,9 +260,9 @@ function CreateSpot() {
                 name="detailsAr"
                 onChange={handleChange}
               />
-              <div style={{display: "flex", flexDirection: 'row',}}>
+              <div style={{ display: "flex", flexDirection: "row" }}>
                 <h5 className="l-color">Enter Time</h5>
-                <h5 style={{color:"red", marginTop: "10px"}}>*</h5>
+                <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
               </div>
               <input
                 className="input-style"
@@ -266,9 +271,9 @@ function CreateSpot() {
                 name="startTime"
                 onChange={handleChange}
               />
-              <div style={{display: "flex", flexDirection: 'row',}}>
+              <div style={{ display: "flex", flexDirection: "row" }}>
                 <h5 className="l-color">Enter Date</h5>
-                <h5 style={{color:"red", marginTop: "10px"}}>*</h5>
+                <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
               </div>
               <input
                 className="input-style"
@@ -300,9 +305,9 @@ function CreateSpot() {
               <label for="payment">No</label>
               {spot.isFree === false ? (
                 <div>
-                  <div style={{display: "flex", flexDirection: 'row',}}>
+                  <div style={{ display: "flex", flexDirection: "row" }}>
                     <h5 className="l-color">Enter Total Number of Tickets</h5>
-                    <h5 style={{color:"red", marginTop: "10px"}}>*</h5>
+                    <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
                   </div>
                   <input
                     className="input-style"
@@ -311,9 +316,9 @@ function CreateSpot() {
                     name="seats"
                     onChange={handleChange}
                   />
-                  <div style={{display: "flex", flexDirection: 'row',}}>
+                  <div style={{ display: "flex", flexDirection: "row" }}>
                     <h5 className="l-color">Enter Price Per Ticket</h5>
-                    <h5 style={{color:"red", marginTop: "10px"}}>*</h5>
+                    <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
                   </div>
                   <input
                     className="input-style"
@@ -326,9 +331,9 @@ function CreateSpot() {
               ) : (
                 <></>
               )}
-              <div style={{display: "flex", flexDirection: 'row',}}>
+              <div style={{ display: "flex", flexDirection: "row" }}>
                 <h5 className="l-color">Upload an Image</h5>
-                <h5 style={{color:"red", marginTop: "10px"}}>*</h5>
+                <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
               </div>
               <h5 className="l-color-tiny-image">
                 This is how your image will look like on the user's screen
@@ -357,45 +362,60 @@ function CreateSpot() {
 
                 {spot.isFree === true ? (
                   <>
-                    {spotName === false && spotImage === false && spotLocation === false && spotDescription === false && spotDescriptionAr === false && spotDetails === false && spotDetailsAr === false && spotStartDate === false && spoTime === false ? ( 
+                    {spotName === false &&
+                    spotImage === false &&
+                    spotLocation === false &&
+                    spotDescription === false &&
+                    spotDescriptionAr === false &&
+                    spotDetails === false &&
+                    spotDetailsAr === false &&
+                    spotStartDate === false &&
+                    spoTime === false ? (
                       <input
                         className="button-sign ing-create"
                         type="submit"
                         value="Create Spot"
                       />
-                      ) : (
+                    ) : (
                       <input
                         className="button-signx ing-create"
                         type="submit"
                         disabled
                         value="Create Spot"
                       />
-                    )
-                    }
-                </>
-              ) : (
-                <>
-                    {spotName === false && spotNameAr === false && spotImage === false && spotLocation === false && spotDescription === false && spotDetails === false && spotStartDate === false && spoTime === false && spotSeats === false && spotPrice === false ? (
+                    )}
+                  </>
+                ) : (
+                  <>
+                    {spotName === false &&
+                    spotNameAr === false &&
+                    spotImage === false &&
+                    spotLocation === false &&
+                    spotDescription === false &&
+                    spotDetails === false &&
+                    spotStartDate === false &&
+                    spoTime === false &&
+                    spotSeats === false &&
+                    spotPrice === false ? (
                       <input
                         className="button-sign ing-create"
                         type="submit"
                         value="Create Spot"
                       />
-                      ) : (
+                    ) : (
                       <input
                         className="button-signx ing-create"
                         type="submit"
                         disabled
                         value="Create Spot"
                       />
-                    )
-                    }
-                </>
-              )}
-                
-                <div style={{display: "flex", flexDirection: 'row',}}>
+                    )}
+                  </>
+                )}
+
+                <div style={{ display: "flex", flexDirection: "row" }}>
                   <h5 className="l-color-tiny-image">(Feilds with</h5>
-                  <h5 style={{color:"red"}}>*</h5>
+                  <h5 style={{ color: "red" }}>*</h5>
                   <h5 className="l-color-tiny-image">are reqiured)</h5>
                 </div>
               </div>
@@ -408,4 +428,3 @@ function CreateSpot() {
 }
 
 export default CreateSpot;
-

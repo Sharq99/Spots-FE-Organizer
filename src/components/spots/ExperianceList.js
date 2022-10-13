@@ -51,15 +51,20 @@ function ExperianceList() {
     <div className="center">
       <div className="whitebackgroundoffers">
         <div className="center">
-          <h1 className="dash">{spot.name}'s experience</h1>
+          <h1 className="dash">{spot?.name}'s experience</h1>
         </div>
         <div className="offercontainer">
           <div
             className="offerdiv"
-            style={{ paddingLeft: 90, paddingRight: 90 }}
+            style={{
+              paddingLeft: 90,
+              paddingRight: 90,
+              display: "flex",
+              flexDirection: "column",
+            }}
           >
             <h1 style={{ fontSize: 40 }} className="l-color">
-              Your Qr Code
+              Your Spot's Main Qr Code
             </h1>
             <QrCode spotId={spotId} />
           </div>
