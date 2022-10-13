@@ -62,7 +62,7 @@ function EditOrganizerModal({ handleCloseEdit }) {
                 ></img>
               </div>
               <Form.Control
-                style={{ fontFamily: "Ubuntu" }}
+                style={{ fontFamily: "Ubuntu", objectFit: "contain" }}
                 onChange={handleImage}
                 type="file"
                 autoFocus

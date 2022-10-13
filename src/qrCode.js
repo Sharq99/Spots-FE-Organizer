@@ -1,55 +1,182 @@
 import { useState, useRef } from "react";
-import { QRCodeCanvas } from "qrcode.react";
-import authStore from "./stores/authStore";
-import spotStore from "./stores/spotStore";
+import QRCodeStyling from "qr-code-styling";
+import { useEffect } from "react";
 
-const QrCode = ({ spotId }) => {
-  let url = `spots://Profile/${spotId}`;
+const qrCode = new QRCodeStyling({
+  width: 2000,
+  height: 2000,
+  dotsOptions: {
+    color: "#4267b2",
+    type: "extra-rounded",
+  },
+  cornersSquareOptions: {
+    type: "extra-rounded",
+  },
+  imageOptions: {
+    margin: 5,
+    imageSize: 0.4,
+    crossOrigin: "anonymous",
+  },
+  backgroundOptions: {
+    color: "rgba(0, 0, 0, 0)",
+  },
+  extension: "png",
+});
 
-  const qrRef = useRef();
-  const downloadQRCode = (e) => {
-    e.preventDefault();
-    let canvas = qrRef.current.querySelector("canvas");
-    let image = canvas.toDataURL("image/png");
-    let anchor = document.createElement("a");
-    anchor.href = image;
-    anchor.download = `qr-code.png`;
-    document.body.appendChild(anchor);
-    anchor.click();
-    document.body.removeChild(anchor);
+const qrCodePreview = new QRCodeStyling({
+  width: 300,
+  height: 300,
+  dotsOptions: {
+    color: "#4267b2",
+    type: "extra-rounded",
+  },
+  cornersSquareOptions: {
+    type: "extra-rounded",
+  },
+  imageOptions: {
+    margin: 5,
+    imageSize: 0.4,
+    crossOrigin: "anonymous",
+  },
+  backgroundOptions: {
+    color: "rgba(0, 0, 0, 0)",
+  },
+  extension: "png",
+});
+
+const GenerateQrCode = ({ spotId }) => {
+  const [url, setUrl] = useState(`spots://Profile/${spotId}`);
+  const [color, setColor] = useState(500);
+  const [image, setImage] = useState();
+  const ref = useRef(0);
+  const ref2 = useRef(0);
+
+  useEffect(() => {
+    qrCode.append(ref.current);
+  }, []);
+  useEffect(() => {
+    qrCodePreview.append(ref2.current);
+  }, []);
+
+  useEffect(() => {
+    qrCode.update({
+      data: url,
+    });
+  }, [url]);
+  useEffect(() => {
+    qrCodePreview.update({
+      data: url,
+    });
+  }, [url]);
+  const onUrlChange = (event) => {
+    event.preventDefault();
+    setUrl(event.target.value);
   };
 
-  const qrcode = (
-    <QRCodeCanvas
-      id="qrCode"
-      value={url}
-      size={300}
-      fgColor={"#4831d4"}
-      level={"H"}
-      bgColor={"white"}
-      style={{ margin: 20 }}
-      imageSettings={{
-        src: require("../src/components/pics/icon.png"),
-        x: undefined,
-        y: undefined,
-        width: 80,
-        height: 80,
-      }}
-    />
-  );
+  useEffect(() => {
+    qrCode.update({
+      dotsOptions: {
+        color: color,
+      },
+    });
+  }, [color]);
+  useEffect(() => {
+    qrCodePreview.update({
+      dotsOptions: {
+        color: color,
+      },
+    });
+  }, [color]);
+  const onColorChange = (event) => {
+    event.preventDefault();
+    setColor(event.target.value);
+  };
 
+  useEffect(() => {
+    qrCode.update({
+      image: image,
+    });
+  }, [image]);
+  useEffect(() => {
+    qrCodePreview.update({
+      image: image,
+    });
+  }, [image]);
+  const onImageChange = (event) => {
+    setImage(URL.createObjectURL(event.target.files[0]));
+  };
+
+  const onDownloadClick = () => {
+    qrCode.download({
+      extension: "png",
+    });
+  };
   return (
-    <div>
-      <div ref={qrRef}>{qrcode}</div>
-      <div className="input__group">
-        <form onSubmit={downloadQRCode}>
-          <button className="editorg" type="submit">
+    <div className="qrcode__container">
+      <form className="generateqrdiv">
+        <div className="qrdivone">
+          <div>
+            <label
+              style={{ textAlighn: "left", marginBottom: 10 }}
+              className="l-color"
+            >
+              Choose Image
+            </label>
+            <input
+              type="file"
+              className="input-style"
+              onChange={onImageChange}
+              style={{
+                width: 200,
+                alignContent: "center",
+                justifyContent: "center",
+                justifySelf: "center",
+                paddingTop: 10,
+              }}
+            />
+          </div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              marginLeft: 20,
+            }}
+          >
+            <label
+              style={{ textAlighn: "left", marginBottom: 10 }}
+              className="l-color"
+            >
+              Choose Color
+            </label>
+            <input
+              style={{
+                height: 50,
+                width: 200,
+                borderColor: "#4831d4",
+                borderRadius: 10,
+                padding: 5,
+              }}
+              type="color"
+              value={color}
+              onChange={onColorChange}
+            />
+          </div>
+        </div>
+        <div className="qrdivtwo">
+          <button
+            onClick={onDownloadClick}
+            style={{ marginTop: 10 }}
+            className="editorg"
+            type="submit"
+          >
             Download QR code
           </button>
-        </form>
-      </div>
+          <div ref={ref2} />
+        </div>
+      </form>
     </div>
   );
 };
 
-export default QrCode;
+export default GenerateQrCode;
