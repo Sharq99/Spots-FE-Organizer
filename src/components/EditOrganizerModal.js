@@ -70,12 +70,34 @@ function EditOrganizerModal({ handleCloseEdit }) {
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label style={{ fontFamily: "Ubuntu" }}>Name in Arabic</Form.Label>
+              <Form.Control
+                style={{ fontFamily: "Source Sans Pro" }}
+                onChange={handleChange}
+                type="displayNameAr"
+                defaultValue={authStore.organizer.displayNameAr}
+                autoFocus
+                name="displayNameAr"
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label style={{ fontFamily: "Ubuntu" }}>Name in English</Form.Label>
+              <Form.Control
+                style={{ fontFamily: "Source Sans Pro" }}
+                onChange={handleChange}
+                type="displayNameEn"
+                defaultValue={authStore.organizer.displayNameEn}
+                autoFocus
+                name="displayNameEn"
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label style={{ fontFamily: "Ubuntu" }}>Email</Form.Label>
               <Form.Control
                 style={{ fontFamily: "Source Sans Pro" }}
                 onChange={handleChange}
                 type="email"
-                value={authStore.organizer.email}
+                defaultValue={authStore.organizer.email}
                 autoFocus
                 name="email"
               />
@@ -86,7 +108,7 @@ function EditOrganizerModal({ handleCloseEdit }) {
                 onChange={handleChange}
                 type="number"
                 style={{ fontFamily: "Source Sans Pro" }}
-                value={authStore.organizer.phone}
+                defaultValue={authStore.organizer.phone}
                 autoFocus
                 name="phone"
               />
@@ -100,7 +122,7 @@ function EditOrganizerModal({ handleCloseEdit }) {
                   as="textarea"
                   style={{ fontFamily: "Source Sans Pro" }}
                   aria-label="With textarea"
-                  value={authStore.organizer.bio}
+                  defaultValue={authStore.organizer.bio}
                   onChange={handleChange}
                   name="bio"
                   maxLength={150}
