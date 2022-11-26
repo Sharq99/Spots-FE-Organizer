@@ -4,12 +4,8 @@ import SpotList from "./spots/SpotList";
 function MySpots() {
   return (
     <div>
-      <div className="myspotstext">
-        <div className="center">
-          <h1 className="dash">My Spots</h1>
-        </div>
-      </div>
       <div className="whitebackgroundspots">
+        <h1 className="dash">My Spots</h1>
         <SpotList />
       </div>
     </div>

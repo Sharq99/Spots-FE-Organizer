@@ -21,6 +21,7 @@ function CreateSpot() {
     detailsAr: "",
     startTime: "",
     isFree: true,
+    isAd: false,
     startDate: 0,
     endDate: 0,
     seats: 0,

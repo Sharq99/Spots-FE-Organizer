@@ -8,52 +8,59 @@ import {
   IoIosAddCircle,
   IoIosContact,
   IoIosListBox,
+  IoIosPhotos,
 } from "react-icons/io";
 
 function Nav() {
   return (
     <>
       {authStore.organizer ? (
-        <nav className="navtabs">
-          <NavLink
-            style={({ isActive }) => ({
-              color: isActive ? "#4831d4" : "grey",
-            })}
-            className="icon"
-            to="/Home"
-          >
-            <IoIosStats name="stats-chart-outline"></IoIosStats>
-          </NavLink>
+        <>
+          {authStore.organizer?.username === "Melenzani" ? (
+            <></>
+          ) : (
+            <nav className="navtabs">
+              <NavLink
+                style={({ isActive }) => ({
+                  color: isActive ? "#4831d4" : "grey",
+                })}
+                className="icon"
+                to="/Home"
+              >
+                <IoIosStats name="stats-chart-outline"></IoIosStats>
+              </NavLink>
 
-          <NavLink
-            style={({ isActive }) => ({
-              color: isActive ? "#4831d4" : "grey",
-            })}
-            className="icon"
-            to="/my-spots"
-          >
-            <IoIosListBox name="stats-chart-outline"></IoIosListBox>
-          </NavLink>
-          <NavLink
-            style={({ isActive }) => ({
-              color: isActive ? "#4831d4" : "grey",
-            })}
-            className="icon2"
-            to="/create-spot"
-          >
-            <IoIosAddCircle name="stats-chart-outline"></IoIosAddCircle>
-          </NavLink>
+              <NavLink
+                style={({ isActive }) => ({
+                  color: isActive ? "#4831d4" : "grey",
+                })}
+                className="icon"
+                to="/my-spots"
+              >
+                <IoIosListBox name="stats-chart-outline"></IoIosListBox>
+              </NavLink>
+              <NavLink
+                style={({ isActive }) => ({
+                  color: isActive ? "#4831d4" : "grey",
+                })}
+                className="icon2"
+                to="/create-spot"
+              >
+                <IoIosAddCircle name="stats-chart-outline"></IoIosAddCircle>
+              </NavLink>
 
-          <NavLink
-            style={({ isActive }) => ({
-              color: isActive ? "#4831d4" : "grey",
-            })}
-            className="icon2"
-            to="/settings"
-          >
-            <IoIosContact name="stats-chart-outline"></IoIosContact>
-          </NavLink>
-        </nav>
+              <NavLink
+                style={({ isActive }) => ({
+                  color: isActive ? "#4831d4" : "grey",
+                })}
+                className="icon2"
+                to="/settings"
+              >
+                <IoIosContact name="stats-chart-outline"></IoIosContact>
+              </NavLink>
+            </nav>
+          )}
+        </>
       ) : (
         <nav>
           <div className="nav">

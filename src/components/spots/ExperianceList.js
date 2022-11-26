@@ -22,6 +22,7 @@ function ExperianceList() {
     details: spot?.details,
     startTime: spot?.startTime,
     isFree: spot?.isFree,
+    isAd: spot?.isAd,
     startDate: spot?.startDate,
     endDate: spot?.endDate,
     seats: spot?.seats,
