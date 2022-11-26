@@ -12,13 +12,19 @@ import EditSpot from "./components/EditSpot";
 import ExperianceList from "./components/spots/ExperianceList";
 import Experience from "./components/offer/Experience";
 import RewardExperience from "./components/reward/RewardExperience";
+import authStore from "./stores/authStore";
+import Ads from "./components/Advertisment/Ads";
 
 function App() {
   return (
     <div className="appdiv">
       <Nav />
       <Routes>
-        <Route path="/" element={<Home />} />
+        {authStore.organizer?.username === "Melenzani" ? (
+          <Route path="/" element={<Ads />} />
+        ) : (
+          <Route path="/" element={<Home />} />
+        )}
         <Route path="/Home" element={<Home />} />
         <Route path="/login" element={<LogInModal />} />
         <Route path="/create-spot" element={<CreateSpot />} />
@@ -32,6 +38,7 @@ function App() {
           path="/RewardExperience/:spotId"
           element={<RewardExperience />}
         />
+        <Route path="/Ads" element={<Ads />} />
       </Routes>
     </div>
   );

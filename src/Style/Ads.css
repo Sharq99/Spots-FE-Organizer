@@ -1,0 +1,100 @@
+@import url("https://fonts.googleapis.com/css2?family=Goudy+Bookletter+1911&family=Libre+Barcode+39+Text&family=Nuosu+SIL&family=Playball&family=Press+Start+2P&family=Sanchez&family=Ubuntu:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro&family=Ubuntu:wght@300;700&display=swap");
+
+
+.whitebackgroundad{
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    position: relative;
+    height: 720px;
+    z-index: 1;
+    padding :30px;
+    padding-top: 100px;
+}
+
+.adlist{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin-left: 100px;
+    overflow: scroll;
+}
+
+.aditem{
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+}
+.adimage{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    margin: 10px;
+    object-fit: cover;
+    margin-left: 0px;
+}
+
+.adtitle{
+    font-size: 30px;
+    font-family: "Ubuntu", sans-serif;
+}
+.adtitlebig{
+    font-size: 40px;
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 600;
+}
+
+.adbutton{
+    border-radius: 20px;
+    background-color: white;
+    border-color: #9279f7;
+    color: #9279f7;
+    font-weight: bold;
+    margin-left: 10px;
+    font-family: "Ubuntu", sans-serif;
+}
+.adremovebutton{
+    border-radius: 20px;
+    background-color: white;
+    border-color: #d94f4f;
+    color: #d94f4f;
+    font-weight: bold;
+    margin-left: 10px;
+    font-family: "Ubuntu", sans-serif;
+}
+
+.logoutad{
+    background-color: white;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+}
+
+.logoutadbutton{
+    border-radius: 20px;
+    background-color: white;
+    border-color: #9279f7;
+    color: #9279f7;
+    font-weight: bold;
+    margin-left: 10px;
+    font-family: "Ubuntu", sans-serif;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 50px;
+}
+
+.searchad{
+    width:70%;
+    padding: 10px;
+    border-radius: 10px;
+    border-color:  #9279f7;
+    border-width: 1px;
+    margin: 10px;
+    margin-right: 0;
+    margin-left: 0;
+}

@@ -29,10 +29,10 @@ function EditSpot() {
     endDate: oldSpot?.endDate,
     seats: oldSpot?.seats,
     price: oldSpot?.price,
-    //numOfDays: oldSpot?.numOfDays,
+    isAd: oldSpot?.isAd,
     category: oldSpot?.category,
     addSeats: 0,
-    //days: oldSpot?.days,
+    announcement: oldSpot?.announcement,
   });
   const [categoryId, setCategoryId] = useState(oldSpot.category);
   const [categoryName, setCategoryName] = useState();
