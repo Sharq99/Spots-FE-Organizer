@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import authStore from "../../stores/authStore";
 import { useNavigate } from "react-router-dom";
+import ForgotPassword from "./ForgotPassword";
 
 function LogInModal() {
   const nav = useNavigate();
@@ -42,6 +43,7 @@ function LogInModal() {
               onChange={handleChange}
             />
           </label>
+          <ForgotPassword />
           <input
             className="button-sign ing-create"
             type="submit"

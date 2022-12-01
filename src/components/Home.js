@@ -4,15 +4,17 @@ import authStore from "../stores/authStore";
 import spotStore from "../stores/spotStore";
 import Dashborad from "./Dashborad";
 import Ads from "./Advertisment/Ads";
+import { DEST_KEY_U } from "../config/keys";
+import ApllicationList from "./ApplicationManagement/AppllicationList";
 
 function Home() {
   return (
     <div>
       {authStore.organizer ? (
         <>
-          {authStore.organizer?.username === "Melenzani" ? (
-            <Ads />
-          ) : (
+          {authStore.organizer?.username === "Melenzani" ? (<Ads />) : 
+           authStore.organizer?.username === DEST_KEY_U ? (<ApllicationList/>) : 
+          (
             <div className="dashback">
               <Dashborad />
             </div>

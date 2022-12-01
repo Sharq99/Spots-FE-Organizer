@@ -1,39 +1,19 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import applicationStore from "../../stores/applicationStore";
 import authStore from "../../stores/authStore";
-// import { useNavigate } from "react-router-dom";
 
 function RegisterModal() {
-  // const nav = useNavigate();
   const [organizer, setOrganizer] = useState();
+  const [sent, setSent] = useState(false);
   const [emailValidation, setEmailValidation] = useState(true);
   const [userNameValidation, setUserNameValidation] = useState(true);
-  const [passwordValidation, setPasswordValidation] = useState(true);
   const [phoneNumberValidation, setPhoneNumberValidation] = useState(true);
   const [checkValidationColor, setCheckValidationColor] = useState("#4831d4");
   const [beginingUserName, setBeginingUserName] = useState(true);
   const [beginingEmail, setBeginingEmail] = useState(true);
   const [beginingPhoneNumber, setBeginingPhoneNumber] = useState(true);
-  const [beginingPassword, setBeginingPassword] = useState(true);
 
-
-
-  // const handleChange = (event) =>{
-  //   const check = checkEntry(value);
-  //     if(check === true){
-  //       setOrganizer({ ...organizer, [event.target.name]: event.target.value });
-  //       console.log('user.phone', user.phone)
-  //       setCheckValidation(false);
-  //       setCheckValidationColor("#4831d4");
-  //       setShowError(false);
-  //     } else{
-  //       setCheckValidation(true);
-  //       setCheckValidationColor("red");
-  //       setBegining(false);
-  //       setShowError(true);
-  //     } 
-  //   setOrganizer({ ...organizer, [event.target.name]: event.target.value });
-  // }
   const handleUserName = (event) =>{
     const check = checkUserName(event.target.value);
       if(check === true){
@@ -70,60 +50,6 @@ function RegisterModal() {
       setBeginingPhoneNumber(false);
     }
   }
-  const handlePassword = (event) =>{
-    const check = checkPassword(event.target.value);
-    if(check === true){
-      setOrganizer({ ...organizer, [event.target.name]: event.target.value });
-      setPasswordValidation(false);
-      setCheckValidationColor("#4831d4");
-    } else{
-      setPasswordValidation(true);
-      setCheckValidationColor("red");
-      setBeginingPassword(false);
-    }
-  }
-
-    const checkPassword = (password) => {
-      const re = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
-      const  lowerCase = new RegExp("^(?=.*[a-z])");
-      const upperCase = new RegExp("^(?=.*[A-Z])");
-      const number = new RegExp("^(?=.*[0-9])");
-      const specialCharacter = new RegExp("^(?=.*[!@#\$%\^&\*])");
-      const characterLength = new RegExp("^(?=.{8,})");
-  
-      // if(lowerCase.test(password) === true){
-      //   setLowerCase(false)
-      // } else{
-      //   setLowerCase(true)
-      // }
-  
-      // if(upperCase.test(password) === true){
-      //   setUpperCase(false)
-      // } else{
-      //   setUpperCase(true)
-      // }
-  
-      // if(number.test(password) === true){
-      //   setNumber(false)
-      // } else{
-      //   setNumber(true)
-      // }
-  
-      // if(specialCharacter.test(password) === true){
-      //   setSpecialCharacter(false)
-      // } else{
-      //   setSpecialCharacter(true)
-      // }
-  
-      // if(characterLength.test(password) === true){
-      //   setCharacterLength(false)
-      // } else{
-      //   setCharacterLength(true)
-      // }
-      
-      return re.test(password);
-    };
-
     const checkEmail = (email) => {
       const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(email);
@@ -143,11 +69,18 @@ function RegisterModal() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    authStore.register(organizer);
+    applicationStore.createApplications(organizer);
+    setSent(true);
   };
 
   return (
-    <div className="RegisterModal">
+    <>
+    {sent === true ? (
+      <div>
+        <h1>in a few days your will receive an email informing you on weather ypur application has been accepted or deined</h1>
+      </div>
+    ) : (
+      <div className="RegisterModal">
       <div class="background"></div>
       <form className="form-styleh" onSubmit={handleSubmit}>
         <div>
@@ -207,43 +140,27 @@ function RegisterModal() {
                 )}
               </>
             )}
-            <input
-              className="input-stylemain"
-              type="password"
-              placeholder="Password"
-              name="password"
-              onChange={handlePassword}
-            />
-            {beginingPassword === true ? (
-              <div className="validationy">Enter a password that contains at leat 8 characters, 1 lowerCase, 1 upperCase letter, 1 special character, and 1 number</div>
-            ) : (
-              <>
-                {passwordValidation === true ? (
-                  <h6 className="validationx">Must contain at leat 8 characters, 1 lowerCase, 1 upperCase letter, 1 special character, and 1 number</h6>   
-                  ) : (
-                  <h6 className="validation">Valid password</h6>   
-                )}
-              </>
-            )}
           </label>
-          {emailValidation === false && userNameValidation === false && passwordValidation === false && phoneNumberValidation === false  ? (
+          {emailValidation === false && userNameValidation === false && phoneNumberValidation === false  ? (
             <input
               className="button-sign ing-create"
               type="submit"
-              value="Register"
+              value="send application request"
             />
             ) : (
             <input
               className="button-signx ing-create"
               type="submit"
               disabled
-              value="Register"
+              value="send application request"
             />
             )
           }
         </div>
       </form>
     </div>
+    )}
+    </>
   );
 }
 
