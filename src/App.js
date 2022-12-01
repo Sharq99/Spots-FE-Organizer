@@ -14,31 +14,41 @@ import Experience from "./components/offer/Experience";
 import RewardExperience from "./components/reward/RewardExperience";
 import authStore from "./stores/authStore";
 import Ads from "./components/Advertisment/Ads";
+import { DEST_KEY_U } from "./config/keys";
+import ApllicationList from "./components/ApplicationManagement/AppllicationList";
+import ActiveOrganizersList from "./components/ApplicationManagement/ActiveOrganizersList";
 
 function App() {
   return (
     <div className="appdiv">
       <Nav />
       <Routes>
-        {authStore.organizer?.username === "Melenzani" ? (
-          <Route path="/" element={<Ads />} />
-        ) : (
-          <Route path="/" element={<Home />} />
-        )}
-        <Route path="/Home" element={<Home />} />
-        <Route path="/login" element={<LogInModal />} />
-        <Route path="/create-spot" element={<CreateSpot />} />
-        <Route path="/settings" element={<Settings />} />
-        <Route path="/my-spots" element={<MySpots />} />
-        <Route path="/spot/:spotId" element={<SpotPage />} />
-        <Route path="/Edit/:spotId" element={<EditSpot />} />
-        <Route path="/ExperianceList/:spotId" element={<ExperianceList />} />
-        <Route path="/Experience/:spotId" element={<Experience />} />
-        <Route
-          path="/RewardExperience/:spotId"
-          element={<RewardExperience />}
-        />
-        <Route path="/Ads" element={<Ads />} />
+        {authStore.organizer?.username === "Melenzani" ? (<Route path="/" element={<Ads />} />) : 
+         authStore.organizer?.username === DEST_KEY_U ? (
+          <>
+            <Route path="/applications" element={<ApllicationList />} />
+            <Route path="/active-organizers" element={<ActiveOrganizersList/>}/>
+          </>
+         ) :
+         (
+          <>
+            <Route path="/" element={<Home />} />
+            <Route path="/Home" element={<Home />} />
+            <Route path="/login" element={<LogInModal />} />
+            <Route path="/create-spot" element={<CreateSpot />} />
+            <Route path="/settings" element={<Settings />} />
+            <Route path="/my-spots" element={<MySpots />} />
+            <Route path="/spot/:spotId" element={<SpotPage />} />
+            <Route path="/Edit/:spotId" element={<EditSpot />} />
+            <Route path="/ExperianceList/:spotId" element={<ExperianceList />} />
+            <Route path="/Experience/:spotId" element={<Experience />} />
+            <Route
+              path="/RewardExperience/:spotId"
+              element={<RewardExperience />}
+            />
+            <Route path="/Ads" element={<Ads />} />
+          </>
+         )}
       </Routes>
     </div>
   );

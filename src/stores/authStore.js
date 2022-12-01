@@ -2,12 +2,14 @@ import { makeAutoObservable } from "mobx";
 import { instance } from "./instance";
 import decode from "jwt-decode";
 import emailjs from "emailjs-com";
+import swal from "sweetalert";
 
 class AuthStore {
   constructor() {
     makeAutoObservable(this);
   }
   organizer = null;
+  organizers = [];
 
   setOrganizer = (token) => {
     localStorage.setItem("myToken", token);
@@ -28,10 +30,19 @@ class AuthStore {
     }
   };
 
-  register = async (newOrganizer) => {
+  register = async (application) => {
+    console.log('application: ', application)
+    const newOrganizer ={
+      username: application.username,
+      email: application.email,
+      phone: application.phone,
+      bio: application.bio,
+      password: new Array(12).fill().map(() => String.fromCharCode(Math.random()*86+40)).join("")
+    }
+    console.log('newOrganizer: ', newOrganizer)
     try {
-      const response = await instance.post("/organizer/register", newOrganizer);
-      this.setOrganizer(response.data.token);
+      await instance.post("/organizer/register", newOrganizer);
+      // this.setOrganizer(response.data.token);
       this.sendWelcomeEmail();
     } catch (error) {
       console.log(error);
@@ -77,6 +88,16 @@ class AuthStore {
     emailjs.send("AB-Serv-12", "CG1", emailContent);
   };
 
+  fetchOrganizers = async () => {
+    try {
+      const response = await instance.get("/organizer");
+      console.log('organizers: ', response.data)
+      this.organizers = response.data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   //   updateUser = async (updatedUser, userId, recipeId) => {
   //     try {
   //       const res = await instance.put(
@@ -87,8 +108,41 @@ class AuthStore {
   //       console.log("RecipeStore-> updatedRecipe-> error", error);
   //     }
   //   };
+
+  changeOrganizer = async (organizerChange) => {
+    try {
+      await instance.put(`/organizer/change`, organizerChange).then((response) => {
+        if (response?.data?.isChanged === true) {
+          swal({
+            type: "success",
+            text: "Password Changed 👍",
+            icon: "success"
+          });
+        } else {
+          alert("Passwords Don't Match")
+        }
+      });
+    } catch (error) {
+      console.log("change", error);
+    }
+  };
+
+  forgotUser = async (organizerForgot) => {
+    // userForgot.username = userForgot.username.toLowerCase();
+    try {
+      console.log("organizerForgot", organizerForgot);
+      await instance.put(`/organizer/forgot`, organizerForgot).then(swal({
+        type: "success",
+        text: "Email Sent 👍",
+        icon: "success"
+      }));
+    } catch (error) {
+      console.log("forgot", error);
+    }
+  };
 }
 
 const authStore = new AuthStore();
 authStore.checkForToken();
+authStore.fetchOrganizers();
 export default authStore;

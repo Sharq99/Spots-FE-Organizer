@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Modal, Button, Form, InputGroup, FormControl } from "react-bootstrap";
 import EditOrganizerModal from "../EditOrganizerModal";
 import LogOutButton from "../organizer/LogOutButton";
+import ChangePasswordModal from "../organizer/ChangePasswordModal"
 import { IoIosArrowDown } from "react-icons/io";
 
 function SettingsModal() {
@@ -25,6 +26,9 @@ function SettingsModal() {
         <Modal.Body>
           <div className="center-settings">
             <EditOrganizerModal handleCloseEdit={handleClose} />
+          </div>
+          <div className="center-settings">
+            <ChangePasswordModal handleCloseEdit={handleClose} />
           </div>
           <div className="center-settings">
             <LogOutButton />
