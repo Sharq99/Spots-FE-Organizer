@@ -4,7 +4,7 @@ import authStore from "../stores/authStore";
 import spotStore from "../stores/spotStore";
 import Dashborad from "./Dashborad";
 import Ads from "./Advertisment/Ads";
-import { DEST_KEY_U } from "../config/keys";
+import { DEST_KEY_Ads, DEST_KEY_U } from "../config/keys";
 import ApllicationList from "./ApplicationManagement/AppllicationList";
 
 function Home() {
@@ -12,9 +12,11 @@ function Home() {
     <div>
       {authStore.organizer ? (
         <>
-          {authStore.organizer?.username === "Melenzani" ? (<Ads />) : 
-           authStore.organizer?.username === DEST_KEY_U ? (<ApllicationList/>) : 
-          (
+          {authStore.organizer?.username === DEST_KEY_Ads ? (
+            <Ads />
+          ) : authStore.organizer?.username === DEST_KEY_U ? (
+            <ApllicationList />
+          ) : (
             <div className="dashback">
               <Dashborad />
             </div>
@@ -23,9 +25,6 @@ function Home() {
       ) : (
         <>
           <div className="welcomeformrow">
-            <h1 className="Welcome">
-              Welcome to Spots, Your most modern events app in Kuwait
-            </h1>
             <RegisterModal />
           </div>
         </>

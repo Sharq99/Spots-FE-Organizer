@@ -27,12 +27,12 @@
 .navitem {
   width: auto;
   text-decoration: none;
-  color: #4831d4;
+  color: #9279f7;
   font-weight: bold;
   border: 2px rgb(255, 255, 255);
 }
 .navitemtab.active{
-  color: #4831d4;
+  color: #9279f7;
 }
 
 .navitemtab {
@@ -54,7 +54,7 @@
   padding-left: 30px;
   padding-right: 30px;
   border-width: 2px;
-  border-color: #4831d4;
+  border-color: #9279f7;
   border-style:solid;
   border-radius: 60px;
 }

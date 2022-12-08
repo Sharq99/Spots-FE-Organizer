@@ -106,12 +106,12 @@
 
 .categorybutton:active{
     display:inline-block;
-    border-bottom:2px solid #4831d4;
+    border-bottom:2px solid #9279f7;
     padding-bottom:2px;
 }
 .categorybutton:focus{
     display:inline-block;
-    border-bottom:2px solid #4831d4;
+    border-bottom:2px solid #9279f7;
     padding-bottom:2px;
 }
 .categoryadd{

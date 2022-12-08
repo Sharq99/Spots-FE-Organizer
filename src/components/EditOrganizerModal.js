@@ -70,7 +70,9 @@ function EditOrganizerModal({ handleCloseEdit }) {
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label style={{ fontFamily: "Ubuntu" }}>Name in Arabic</Form.Label>
+              <Form.Label style={{ fontFamily: "Ubuntu" }}>
+                Name in Arabic
+              </Form.Label>
               <Form.Control
                 style={{ fontFamily: "Source Sans Pro" }}
                 onChange={handleChange}
@@ -81,7 +83,9 @@ function EditOrganizerModal({ handleCloseEdit }) {
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label style={{ fontFamily: "Ubuntu" }}>Name in English</Form.Label>
+              <Form.Label style={{ fontFamily: "Ubuntu" }}>
+                Name in English
+              </Form.Label>
               <Form.Control
                 style={{ fontFamily: "Source Sans Pro" }}
                 onChange={handleChange}
@@ -131,7 +135,7 @@ function EditOrganizerModal({ handleCloseEdit }) {
             </Form.Group>
             <Button
               style={{
-                backgroundColor: "#4831D4",
+                backgroundColor: "#9279f7",
                 fontFamily: "Ubuntu",
               }}
               variant="primary"
