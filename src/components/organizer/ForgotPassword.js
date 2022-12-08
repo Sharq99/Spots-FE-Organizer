@@ -16,14 +16,16 @@ function ForgotPassword() {
   const handleChange = (event) =>
     setOrganizerName(event.target.value );
 
-  const handleSubmit = async (event) => {
+  const onSubmit = async (event) => {
     event.preventDefault();
-    await authStore.forgotUser(organizerName)
+    await authStore.forgotOrganizer(organizerName)
+    handleClose()
   };
 
   return (
+    // color: "#4831d4"
     <div>
-        <input style={{backgroundColor: "transparent", fontSize: "15px",  color: "#4831d4"}} type="button" value="Forgot Password?" onClick={handleShow} />
+        <input style={{ position: "absolute", marginLeft: "37%", marginTop: "25%", backgroundColor: "transparent", fontSize: "15px", color: "white", borderWidth: "0px" }} type="button" value="Forgot Password?" onClick={handleShow} />
 
         <Modal show={show} onHide={handleClose}>
             <Modal.Header style={{ borderBottomWidth: 0 }} closeButton>
@@ -33,7 +35,7 @@ function ForgotPassword() {
             </Modal.Header>
 
             <Modal.Body>
-            <Form onSubmit={handleSubmit}>
+            <Form onSubmit={onSubmit}>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                 <Form.Label style={{ fontFamily: "Ubuntu" }}>Organizer's Username</Form.Label>
                 <Form.Control
@@ -46,7 +48,7 @@ function ForgotPassword() {
                 </Form.Group>
                 <Button
                 style={{
-                    backgroundColor: "#4831D4",
+                    backgroundColor: "#9279F7",
                     fontFamily: "Ubuntu",
                 }}
                 variant="primary"

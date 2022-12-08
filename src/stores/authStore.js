@@ -127,7 +127,7 @@ class AuthStore {
     }
   };
 
-  forgotUser = async (organizerForgot) => {
+  forgotOrganizer = async (organizerForgot) => {
     // userForgot.username = userForgot.username.toLowerCase();
     try {
       console.log("organizerForgot", organizerForgot);
