@@ -78,7 +78,7 @@
   font-weight: 300;
   border-width: 1px;
   border-radius: 10px;
-  border-color: #4831d4;
+  border-color: #9279f7;
   border-style: solid;
   margin-bottom: 28px;
 }
@@ -89,7 +89,7 @@
 .button-sign {
   margin-top: 20px;
   width: 100%;
-  background-color: #4831d4;
+  background-color: #9279f7;
   color: white;
   padding: 15px 0;
   font-size: 18px;
@@ -492,7 +492,7 @@
   border-radius: 30px;
   border-style: solid;
   border-width: 1px;
-  border-color: #4831d4;
+  border-color: #9279f7;
   object-fit: cover;
   margin-top: 20px;
 }
@@ -504,8 +504,8 @@
   border-radius: 30px;
   border-style: solid;
   border-width: 1px;
-  border-color: #4831d4;
-  color: #4831d4;
+  border-color: #9279f7;
+  color: #9279f7;
   object-fit: cover;
   margin-top: 20px;
   justify-content: center;
@@ -533,7 +533,7 @@
   font-size: 1.25em;
   font-weight: 700;
   color: white;
-  background-color: #4831d4;
+  background-color: #9279f7;
   display: inline-block;
 }
 .input-style-choose :focus {
@@ -543,9 +543,9 @@
   font-family: "Ubuntu", sans-serif;
   font-size: 18px;
   font-weight: 300;
-  color: #4831d4;
+  color: #9279f7;
   background-color: white;
-  border-color: #4831d4;
+  border-color: #9279f7;
   border-width: 1px;
   border-style: solid;
   border-radius: 10px;
@@ -562,11 +562,11 @@
   width: fit-content;
 }
 .editorg {
-  color: #4831d4;
+  color: #9279f7;
   background-color: white;
   border-style: solid;
   border-width: 1px;
-  border-color: #4831d4;
+  border-color: #9279f7;
   font-family: "Ubuntu", sans-serif;
   border-radius: 10px;
   padding: 5px;

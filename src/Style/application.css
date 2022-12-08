@@ -1,8 +1,8 @@
 /* Accept */
 .accept {
-  background: green;
-  border: 1px solid green;
-  border-radius: 6px;
+  background: #38bc38;
+  border: 1px solid #38bc38;
+  border-radius: 20px;
   box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
   box-sizing: border-box;
   color: #ffffff;
@@ -11,10 +11,9 @@
   font-family: nunito, roboto, proxima-nova, "proxima nova", sans-serif;
   font-size: 16px;
   font-weight: 800;
-  line-height: 16px;
-  min-height: 40px;
+margin-top: 0;
   outline: 0;
-  padding: 12px 14px;
+  padding: 5px 10px;
   text-align: center;
   text-rendering: geometricprecision;
   text-transform: none;
@@ -22,13 +21,16 @@
   -webkit-user-select: none;
   touch-action: manipulation;
   vertical-align: middle;
+  align-self: center;
+  justify-self: center;
+  margin-top: -4px;
 }
 
 .accept:hover,
 .accept:active {
   background-color: initial;
   background-position: 0 0;
-  color: green;
+  color: #38bc38;
 }
 
 .accept:active {
@@ -37,9 +39,9 @@
 
 /* Reject */
 .reject {
-  background: #ff4742;
-  border: 1px solid #ff4742;
-  border-radius: 6px;
+  background: #e53f42;
+  border: 1px solid #e53f42;
+  border-radius: 20px;
   box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
   box-sizing: border-box;
   color: #ffffff;
@@ -48,10 +50,8 @@
   font-family: nunito, roboto, proxima-nova, "proxima nova", sans-serif;
   font-size: 16px;
   font-weight: 800;
-  line-height: 16px;
-  min-height: 40px;
   outline: 0;
-  padding: 12px 14px;
+  padding: 5px 10px;
   text-align: center;
   text-rendering: geometricprecision;
   text-transform: none;
@@ -59,15 +59,29 @@
   -webkit-user-select: none;
   touch-action: manipulation;
   vertical-align: middle;
+  align-self: center;
+  justify-self: center;
+  margin-top: -4px;
 }
 
 .reject:hover,
 .reject:active {
   background-color: initial;
   background-position: 0 0;
-  color: #ff4742;
+  color: #e53f42;
 }
 
 .reject:active {
   opacity: 0.5;
+}
+
+
+.acceptrejectdiv{
+  width: 350px;
+height: 46px;
+text-align: center;
+align-items: center;
+justify-content: center;
+display: flex;
+
 }

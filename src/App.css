@@ -8,9 +8,11 @@
 @import "./Style/offers.css";
 @import "./Style/Ads.css";
 @import "./Style/application.css";
+@import url("https://fonts.googleapis.com/css2?family=Goudy+Bookletter+1911&family=Libre+Barcode+39+Text&family=Nuosu+SIL&family=Playball&family=Press+Start+2P&family=Sanchez&family=Ubuntu:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro&family=Ubuntu:wght@300;700&display=swap");
 
 body {
-  background-color: #4831d4;
+  background-color: #9279f7;
   /* C9FB5F */
   background: rgba(0, 0, 0, 0.65) url("./background1.png");
   background-size: cover;
@@ -31,7 +33,7 @@ body {
 .welcomeformrow {
   height: 100%;
   width: 100%;
-  margin-top: 130px;
+  margin-top: 30px;
   display: inline-flex;
   justify-content: center;
   align-content: center;
@@ -68,4 +70,36 @@ body {
   align-content: center;
   flex-direction: column;
   width: 100%;
+}
+
+.confirmation{
+  color: #f1f1f1;
+  font-size:  30px;
+  text-align: center;
+  align-self: center;
+  justify-self: center;
+  align-self: center;
+  align-items: center;
+  padding: 50px;
+  font-weight: bolder;
+  font-family: "Ubuntu", sans-serif;
+  border-radius: 30px;
+  height: fit-content;
+  width: 750px;
+  margin-top: 20%;
+  background-color: rgba(255, 255, 255, 0.13);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+}
+
+.titleorg{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #9279f7;
+  color: #f1f1f1;
+  padding: 10px;
+  margin-bottom: 0;
+  font-family: "Ubuntu", sans-serif;
 }
