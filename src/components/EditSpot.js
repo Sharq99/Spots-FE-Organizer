@@ -28,6 +28,7 @@ function EditSpot() {
     startDate: oldSpot?.startDate,
     endDate: oldSpot?.endDate,
     seats: oldSpot?.seats,
+    seatsRemaining: oldSpot?.seatsRemaining,
     price: oldSpot?.price,
     isAd: oldSpot?.isAd,
     category: oldSpot?.category,
@@ -76,6 +77,11 @@ function EditSpot() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     //updateSeats();
+    spot.seatsRemaining =
+      spot.seatsRemaining +
+      (oldSpot.seats > spot.seats
+        ? -1 * (oldSpot.seats - spot.seats)
+        : spot.seats - oldSpot.seats);
     try {
       await spotStore.updateSpot(spot, spotId, file, categoryId);
       swal({

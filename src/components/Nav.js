@@ -25,7 +25,7 @@ function Nav() {
             <nav className="navtabs">
               <NavLink
                 style={({ isActive }) => ({
-                  color: isActive ? "#9279f7" : "grey",
+                  color: isActive ? "#e52b51" : "grey",
                 })}
                 className="icon"
                 to="/applications"
@@ -35,7 +35,7 @@ function Nav() {
               <LogOutButton />
               <NavLink
                 style={({ isActive }) => ({
-                  color: isActive ? "#9279f7" : "grey",
+                  color: isActive ? "#e52b51" : "grey",
                 })}
                 className="icon"
                 to="/active-organizers"
@@ -47,7 +47,7 @@ function Nav() {
             <nav className="navtabs">
               <NavLink
                 style={({ isActive }) => ({
-                  color: isActive ? "#9279f7" : "grey",
+                  color: isActive ? "#e52b51" : "grey",
                 })}
                 className="icon"
                 to="/Home"
@@ -57,7 +57,7 @@ function Nav() {
 
               <NavLink
                 style={({ isActive }) => ({
-                  color: isActive ? "#9279f7" : "grey",
+                  color: isActive ? "#e52b51" : "grey",
                 })}
                 className="icon"
                 to="/my-spots"
@@ -66,7 +66,7 @@ function Nav() {
               </NavLink>
               <NavLink
                 style={({ isActive }) => ({
-                  color: isActive ? "#9279f7" : "grey",
+                  color: isActive ? "#e52b51" : "grey",
                 })}
                 className="icon2"
                 to="/create-spot"
@@ -76,7 +76,7 @@ function Nav() {
 
               <NavLink
                 style={({ isActive }) => ({
-                  color: isActive ? "#9279f7" : "grey",
+                  color: isActive ? "#e52b51" : "grey",
                 })}
                 className="icon2"
                 to="/settings"

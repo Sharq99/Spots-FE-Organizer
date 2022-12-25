@@ -12,7 +12,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro&family=Ubuntu:wght@300;700&display=swap");
 
 body {
-  background-color: #9279f7;
+  background-color: #e52b51;
   /* C9FB5F */
   background: rgba(0, 0, 0, 0.65) url("./background1.png");
   background-size: cover;
@@ -97,7 +97,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #9279f7;
+  background-color: #e52b51;
   color: #f1f1f1;
   padding: 10px;
   margin-bottom: 0;

@@ -135,7 +135,7 @@ function EditOrganizerModal({ handleCloseEdit }) {
             </Form.Group>
             <Button
               style={{
-                backgroundColor: "#9279f7",
+                backgroundColor: "#e52b51",
                 fontFamily: "Ubuntu",
               }}
               variant="primary"

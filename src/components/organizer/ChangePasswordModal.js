@@ -10,7 +10,7 @@ function ChangePasswordModal({ handleCloseEdit }) {
   });
   const [checkValidation, setCheckValidation] = useState(true);
   const [confirmed, setConfirmed] = useState(false);
-  const [checkValidationColor, setCheckValidationColor] = useState("#9279f7");
+  const [checkValidationColor, setCheckValidationColor] = useState("#e52b51");
   const [showError, setShowError] = useState(true);
   const [lowerCase, setLowerCase] = useState(true);
   const [upperCase, setUpperCase] = useState(true);
@@ -32,7 +32,7 @@ function ChangePasswordModal({ handleCloseEdit }) {
     if (check === true) {
       setOrganizer({ ...organizer, [event.target.name]: event.target.value });
       setCheckValidation(false);
-      setCheckValidationColor("#9279f7");
+      setCheckValidationColor("#e52b51");
       setShowError(false);
     } else {
       setCheckValidation(true);
@@ -160,7 +160,7 @@ function ChangePasswordModal({ handleCloseEdit }) {
             </Form.Group>
             <Button
               style={{
-                backgroundColor: "#9279f7",
+                backgroundColor: "#e52b51",
                 fontFamily: "Ubuntu",
               }}
               variant="primary"
@@ -225,7 +225,7 @@ export default ChangePasswordModal;
 //   if(check === true){
 //     setOrganizer({ ...organizer, [event.target.name]: event.target.value });
 //     // setPasswordValidation(false);
-//     // setCheckValidationColor("#9279f7");
+//     // setCheckValidationColor("#e52b51");
 //   } else{
 //     // setPasswordValidation(true);
 //     // setCheckValidationColor("red");

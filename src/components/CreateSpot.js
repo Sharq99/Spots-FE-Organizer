@@ -1,4 +1,3 @@
-import { observer } from "mobx-react";
 import { useState } from "react";
 import CategoryList from "./category/CategoryList";
 import spotStore from "../stores/spotStore";
@@ -31,6 +30,7 @@ function CreateSpot() {
     numOfDays: 1,
     spotRevenue: 0,
     announcement: "",
+    seatsRemaining: 0,
   });
   const [spotName, setSpotName] = useState(true);
   const [spotNameAr, setSpotNameAr] = useState(true);
@@ -44,11 +44,9 @@ function CreateSpot() {
   const [spoTime, setSpoTime] = useState(true);
   const [spotSeats, setSpotSeats] = useState(true);
   const [spotPrice, setSpotPrice] = useState(true);
-
   spot.announcement = `Welcome to ${spot.name}, enjoy our amazing offers and rewards`;
   const [categoryId, setCategoryId] = useState("62d828fff35c707fdaa7422c");
   const [categoryName, setCategoryName] = useState();
-  const [validation, setValidation] = useState(true);
 
   const handleChange = (event) => {
     setSpot({ ...spot, [event.target.name]: event.target.value });
@@ -70,13 +68,13 @@ function CreateSpot() {
       setSpotStartDate(false);
     } else if (event.target.name === "startTime") {
       setSpoTime(false);
-    } else if (event.target.name === "seats") {
-      setSpotSeats(false);
     } else if (event.target.name === "price") {
       setSpotPrice(false);
+    } else if (event.target.name === "seats") {
+      setSpotSeats(false);
     }
   };
-
+  console.log("spotbefore", spot);
   // const handleDate = (event) =>{
   //     setSpotDate({ ...sDate, [event.target.name]: event.target.value });
   //     console.log("sDate: "+JSON.stringify(sDate));}
@@ -100,7 +98,6 @@ function CreateSpot() {
 
   const handlePaid = (event) =>
     setSpot({ ...spot, [event.target.name]: false });
-
   const handleImage = (event) => {
     let file = event.target.files[0];
     setFile(file);
@@ -113,9 +110,12 @@ function CreateSpot() {
   };
 
   const handleSubmit = async (event) => {
+    spot.seatsRemaining = spot.seats;
+    console.log("spotafter", spot);
     event.preventDefault();
     try {
       await spotStore.createSpot(spot, categoryId, file);
+      console.log("spot", spot);
       swal({
         title: "Success",
         text: `${spot.name} has been added`,
@@ -341,7 +341,7 @@ function CreateSpot() {
               </h5>
               <div className="spotimagecontainer">
                 {image ? (
-                  <img className="spotimage" src={image}></img>
+                  <img alt={image} className="spotimage" src={image}></img>
                 ) : (
                   <label className="spotimagetext">
                     Your spot image goes here

@@ -6,15 +6,156 @@ import { baseURL } from "../../stores/instance";
 import { useNavigate } from "react-router-dom";
 import moment from "moment";
 import categoryStore from "../../stores/categoryStore";
+import { useEffect } from "react";
 
 function SpotPage() {
   const nav = useNavigate();
   const { spotId } = useParams();
   const spot = spotStore?.getSpotsById(spotId);
+  console.log("spot", spot);
   const category = categoryStore.getCategoryById(spot.category);
   let date = moment(spot?.startDate).format("LL");
+  const active = new Date().getDate() === new Date(spot.startDate).getDate();
+  useEffect(() => {
+    spotStore.fetchSpots();
+  }, []);
+
   return (
     <div className="whitebackground">
+      {active ? (
+        <>
+          <div
+            style={{
+              fontSize: 30,
+
+              color: "black",
+              fontWeight: "600",
+              textAlign: "center",
+              display: "flex",
+              flexDirection: "row",
+              alignContent: "center",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <div
+              style={{
+                backgroundColor: "#e52b51",
+                width: 15,
+                height: 15,
+                borderRadius: "100%",
+              }}
+            ></div>
+            <h1
+              className="fontfamily"
+              style={{
+                fontSize: 30,
+                color: "black",
+                fontWeight: "600",
+                textAlign: "center",
+                margin: 0,
+                padding: 0,
+                marginLeft: 10,
+              }}
+            >
+              Live Statistics
+            </h1>
+          </div>
+          <div className="containerLive">
+            <div
+              style={{
+                width: "50%",
+                display: "flex",
+                flexDirection: "column",
+                alignContent: "center",
+                justifyContent: "center",
+                alignItems: "center",
+                padding: 50,
+              }}
+            >
+              <h1
+                className="fontfamily"
+                style={{
+                  fontSize: 30,
+                  color: "black",
+                  textAlign: "center",
+                }}
+              >
+                Seats Remaining
+              </h1>
+              <h1
+                className="fontfamily"
+                style={{
+                  fontSize: 50,
+                  color: "black",
+                  fontWeight: "600",
+                  textAlign: "center",
+                  padding: 20,
+                }}
+              >
+                {spot.seatsRemaining}
+              </h1>
+              <h1
+                className="fontfamily"
+                style={{
+                  fontSize: 20,
+                  color: "grey",
+                  textAlign: "center",
+                }}
+              >
+                From {spot.seats} total
+              </h1>
+            </div>
+            <div
+              style={{
+                width: "50%",
+                display: "flex",
+                flexDirection: "column",
+                alignContent: "center",
+                justifyContent: "center",
+                alignItems: "center",
+                padding: 50,
+              }}
+            >
+              <h1
+                className="fontfamily"
+                style={{
+                  fontSize: 30,
+                  color: "black",
+                  textAlign: "center",
+                }}
+              >
+                Your Revenue
+              </h1>
+              <h1
+                className="fontfamily"
+                style={{
+                  fontSize: 50,
+                  color: "black",
+                  fontWeight: "600",
+                  textAlign: "center",
+                  padding: 20,
+                }}
+              >
+                {spot.spotRevenue}
+              </h1>
+              <h1
+                className="fontfamily"
+                style={{
+                  fontSize: 20,
+                  color: "grey",
+                  textAlign: "center",
+                }}
+              >
+                Before commission
+              </h1>
+            </div>
+          </div>
+        </>
+      ) : (
+        <></>
+      )}
+
       <div className="container" style={{ width: "50%" }}>
         <div
           className="center"
@@ -31,10 +172,18 @@ function SpotPage() {
             {/* <h1 className="mainspottitle">{spot?.nameAr}</h1> */}
             <p className="catdetails">{category.name}</p>
           </div>
+
           <div className="spotsettigs">
-            <button className="editorg" onClick={() => nav(`/Edit/${spotId}`)}>
-              Edit Spot
-            </button>
+            {new Date().getDate() > new Date(spot.startDate).getDate() ? (
+              <></>
+            ) : (
+              <button
+                className="editorg"
+                onClick={() => nav(`/Edit/${spotId}`)}
+              >
+                Edit Spot
+              </button>
+            )}
             <button
               className="editorg"
               onClick={() => nav(`/ExperianceList/${spotId}`)}

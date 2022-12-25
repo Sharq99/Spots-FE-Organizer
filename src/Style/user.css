@@ -78,7 +78,7 @@
   font-weight: 300;
   border-width: 1px;
   border-radius: 10px;
-  border-color: #9279f7;
+  border-color: #e52b51;
   border-style: solid;
   margin-bottom: 28px;
 }
@@ -89,7 +89,7 @@
 .button-sign {
   margin-top: 20px;
   width: 100%;
-  background-color: #9279f7;
+  background-color: #e52b51;
   color: white;
   padding: 15px 0;
   font-size: 18px;
@@ -101,7 +101,7 @@
 .button-signx {
   margin-top: 20px;
   width: 100%;
-  background-color: #988be6;
+  background-color: #ef7f96;
   color: white;
   padding: 15px 0;
   font-size: 18px;
@@ -385,8 +385,20 @@
 .dashcard {
   display: flex;
   flex-direction: row;
-  width: 300px;
-  height: 300px;
+  width: 35%;
+  height: 35%;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+  padding: 20px;
+}
+.dashcardDough {
+  display: flex;
+  flex-direction: row;
+  width: 35%;
+  height: 35%;
   border-radius: 10%;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
@@ -394,17 +406,17 @@
   justify-content: center;
   margin: 20px;
 }
-.dashcardDough {
+.dashcardBar {
   display: flex;
   flex-direction: row;
-  width: 25%;
-  height: 30%;
-  border-radius: 10%;
+  width: 72%;
+  height: fit-content;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
   align-items: center;
   justify-content: center;
   margin: 20px;
+  padding: 20px;
 }
 .dash {
   font-size: 40px;
@@ -430,6 +442,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  height: fit-content;
 }
 .whitebackgroundspots {
   background-color: white;
@@ -444,7 +457,7 @@
   flex-wrap: wrap;
   justify-content: center;
   align-content: center;
-  padding-bottom: 50px;
+  padding-bottom: 50%;
 }
 .whitebackgroundprofile {
   background-color: white;
@@ -504,7 +517,7 @@
   border-radius: 30px;
   border-style: solid;
   border-width: 1px;
-  border-color: #9279f7;
+  border-color: #e52b51;
   object-fit: cover;
   margin-top: 20px;
 }
@@ -516,8 +529,8 @@
   border-radius: 30px;
   border-style: solid;
   border-width: 1px;
-  border-color: #9279f7;
-  color: #9279f7;
+  border-color: #e52b51;
+  color: #e52b51;
   object-fit: cover;
   margin-top: 20px;
   justify-content: center;
@@ -545,7 +558,7 @@
   font-size: 1.25em;
   font-weight: 700;
   color: white;
-  background-color: #9279f7;
+  background-color: #e52b51;
   display: inline-block;
 }
 .input-style-choose :focus {
@@ -555,9 +568,9 @@
   font-family: "Ubuntu", sans-serif;
   font-size: 18px;
   font-weight: 300;
-  color: #9279f7;
+  color: #e52b51;
   background-color: white;
-  border-color: #9279f7;
+  border-color: #e52b51;
   border-width: 1px;
   border-style: solid;
   border-radius: 10px;
@@ -574,11 +587,11 @@
   width: fit-content;
 }
 .editorg {
-  color: #9279f7;
+  color: #e52b51;
   background-color: white;
   border-style: solid;
   border-width: 1px;
-  border-color: #9279f7;
+  border-color: #e52b51;
   font-family: "Ubuntu", sans-serif;
   border-radius: 10px;
   padding: 5px;
@@ -628,7 +641,7 @@
   font-size: 40px;
   margin: 30px;
   margin-left: 0;
-  color: #4731d4cd;
+  color: #e52b51cd;
 }
 
 .validation {
@@ -684,4 +697,8 @@
 .seven {
   grid-column: 2 / 2;
   grid-row: 2;
+}
+
+.fontfamily{
+  font-family: "Ubuntu", sans-serif;
 }

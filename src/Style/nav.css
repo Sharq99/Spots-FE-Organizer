@@ -27,12 +27,12 @@
 .navitem {
   width: auto;
   text-decoration: none;
-  color: #9279f7;
+  color: #e52b51;
   font-weight: bold;
   border: 2px rgb(255, 255, 255);
 }
 .navitemtab.active{
-  color: #9279f7;
+  color: #e52b51;
 }
 
 .navitemtab {
@@ -54,12 +54,12 @@
   padding-left: 30px;
   padding-right: 30px;
   border-width: 2px;
-  border-color: #9279f7;
+  border-color: #e52b51;
   border-style:solid;
   border-radius: 60px;
 }
 .navitemPortalDiv:hover{
-  background-color: #4731d43b;
+  background-color: #e52b513b;
   color: white;
 }
 
