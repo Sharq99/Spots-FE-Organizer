@@ -9,12 +9,12 @@ function RegisterModal() {
   const [emailValidation, setEmailValidation] = useState(true);
   const [userNameValidation, setUserNameValidation] = useState(true);
   const [phoneNumberValidation, setPhoneNumberValidation] = useState(true);
-  const [checkValidationColor, setCheckValidationColor] = useState("#9279f7");
+  const [checkValidationColor, setCheckValidationColor] = useState("#e52b51");
   const [beginingUserName, setBeginingUserName] = useState(true);
 
   const [socialValidation, setSocialValidation] = useState(true);
   const [checkValidationColorSocial, setCheckValidationColorSocial] =
-    useState("#9279f7");
+    useState("#e52b51");
   const [beginingSocial, setBeginingSocial] = useState(true);
 
   const [beginingEmail, setBeginingEmail] = useState(true);
@@ -25,7 +25,7 @@ function RegisterModal() {
     if (check === true) {
       setOrganizer({ ...organizer, [event.target.name]: event.target.value });
       setUserNameValidation(false);
-      setCheckValidationColor("#9279f7");
+      setCheckValidationColor("#e52b51");
     } else {
       setUserNameValidation(true);
       setCheckValidationColor("red");
@@ -37,7 +37,7 @@ function RegisterModal() {
     if (check === true) {
       setOrganizer({ ...organizer, [event.target.name]: event.target.value });
       setSocialValidation(false);
-      setCheckValidationColorSocial("#9279f7");
+      setCheckValidationColorSocial("#e52b51");
     } else {
       setSocialValidation(true);
       setCheckValidationColorSocial("red");
@@ -49,7 +49,7 @@ function RegisterModal() {
     if (check === true) {
       setOrganizer({ ...organizer, [event.target.name]: event.target.value });
       setEmailValidation(false);
-      setCheckValidationColor("#9279f7");
+      setCheckValidationColor("#e52b51");
     } else {
       setEmailValidation(true);
       setCheckValidationColor("red");
@@ -61,7 +61,7 @@ function RegisterModal() {
     if (check === true) {
       setOrganizer({ ...organizer, [event.target.name]: event.target.value });
       setPhoneNumberValidation(false);
-      setCheckValidationColor("#9279f7");
+      setCheckValidationColor("#e52b51");
     } else {
       setPhoneNumberValidation(true);
       setCheckValidationColor("red");

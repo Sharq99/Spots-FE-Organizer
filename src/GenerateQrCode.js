@@ -169,7 +169,7 @@ const GenerateQrCode = () => {
               style={{
                 height: 50,
                 width: 200,
-                borderColor: "#9279f7",
+                borderColor: "#e52b51",
                 borderRadius: 10,
                 padding: 5,
               }}
