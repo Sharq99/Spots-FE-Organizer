@@ -11,7 +11,7 @@ function AdSpots() {
     .filter((spot) => spot?.name.toLowerCase().includes(query?.toLowerCase()))
     .filter((spot) => new Date(spot.startDate) >= today && spot.isAd !== true)
     .map((spot) => <AdSpotsItem key={spot?._id} spot={spot} />);
-  //console.log(spotLis);
+  //console.log(spotListt);
   return (
     <div className="adlist">
       <h1 className="adtitlebig">All Spots</h1>
