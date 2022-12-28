@@ -31,15 +31,18 @@ class AuthStore {
   };
 
   register = async (application) => {
-    console.log('application: ', application)
-    const newOrganizer ={
+    console.log("application: ", application);
+    const newOrganizer = {
       username: application.username,
       email: application.email,
       phone: application.phone,
       bio: application.bio,
-      password: new Array(12).fill().map(() => String.fromCharCode(Math.random()*86+40)).join("")
-    }
-    console.log('newOrganizer: ', newOrganizer)
+      password: new Array(12)
+        .fill()
+        .map(() => String.fromCharCode(Math.random() * 86 + 40))
+        .join(""),
+    };
+    console.log("newOrganizer: ", newOrganizer);
     try {
       await instance.post("/organizer/register", newOrganizer);
       // this.setOrganizer(response.data.token);
@@ -55,7 +58,7 @@ class AuthStore {
       this.setOrganizer(response.data.token);
     } catch (error) {
       console.log(error);
-      alert("Wrong credintials");
+      alert("Wrong credintials ");
     }
   };
 
@@ -91,7 +94,7 @@ class AuthStore {
   fetchOrganizers = async () => {
     try {
       const response = await instance.get("/organizer");
-      console.log('organizers: ', response.data)
+      console.log("organizers: ", response.data);
       this.organizers = response.data;
     } catch (error) {
       console.log(error);
@@ -111,17 +114,19 @@ class AuthStore {
 
   changeOrganizer = async (organizerChange) => {
     try {
-      await instance.put(`/organizer/change`, organizerChange).then((response) => {
-        if (response?.data?.isChanged === true) {
-          swal({
-            type: "success",
-            text: "Password Changed 👍",
-            icon: "success"
-          });
-        } else {
-          alert("Passwords Don't Match")
-        }
-      });
+      await instance
+        .put(`/organizer/change`, organizerChange)
+        .then((response) => {
+          if (response?.data?.isChanged === true) {
+            swal({
+              type: "success",
+              text: "Password Changed 👍",
+              icon: "success",
+            });
+          } else {
+            alert("Passwords Don't Match");
+          }
+        });
     } catch (error) {
       console.log("change", error);
     }
@@ -131,11 +136,13 @@ class AuthStore {
     // userForgot.username = userForgot.username.toLowerCase();
     try {
       console.log("organizerForgot", organizerForgot);
-      await instance.put(`/organizer/forgot`, organizerForgot).then(swal({
-        type: "success",
-        text: "Email Sent 👍",
-        icon: "success"
-      }));
+      await instance.put(`/organizer/forgot`, organizerForgot).then(
+        swal({
+          type: "success",
+          text: "Email Sent 👍",
+          icon: "success",
+        })
+      );
     } catch (error) {
       console.log("forgot", error);
     }
