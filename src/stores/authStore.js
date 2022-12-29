@@ -44,7 +44,7 @@ class AuthStore {
     };
     console.log("newOrganizer: ", newOrganizer);
     try {
-      await instance.post("/organizer/register", newOrganizer);
+      await instance.post("/api/organizer/register", newOrganizer);
       // this.setOrganizer(response.data.token);
       this.sendWelcomeEmail();
     } catch (error) {
@@ -54,7 +54,10 @@ class AuthStore {
 
   login = async (organizerData) => {
     try {
-      const response = await instance.post("/organizer/login", organizerData);
+      const response = await instance.post(
+        "/api/organizer/login",
+        organizerData
+      );
       this.setOrganizer(response.data.token);
     } catch (error) {
       console.log(error);
@@ -73,7 +76,7 @@ class AuthStore {
       const formData = new FormData();
       for (const key in updatedOrganizer)
         formData.append(key, updatedOrganizer[key]);
-      const res = await instance.put("/organizer/update", formData);
+      const res = await instance.put("/api/organizer/update", formData);
       for (const key in this.organizer) this.organizer[key] = res.data[key];
     } catch (error) {
       console.log(error);
@@ -93,7 +96,7 @@ class AuthStore {
 
   fetchOrganizers = async () => {
     try {
-      const response = await instance.get("/organizer");
+      const response = await instance.get("/api/organizer");
       console.log("organizers: ", response.data);
       this.organizers = response.data;
     } catch (error) {
@@ -115,7 +118,7 @@ class AuthStore {
   changeOrganizer = async (organizerChange) => {
     try {
       await instance
-        .put(`/organizer/change`, organizerChange)
+        .put(`/api/organizer/change`, organizerChange)
         .then((response) => {
           if (response?.data?.isChanged === true) {
             swal({
@@ -136,7 +139,7 @@ class AuthStore {
     // userForgot.username = userForgot.username.toLowerCase();
     try {
       console.log("organizerForgot", organizerForgot);
-      await instance.put(`/organizer/forgot`, organizerForgot).then(
+      await instance.put(`/api/organizer/forgot`, organizerForgot).then(
         swal({
           type: "success",
           text: "Email Sent 👍",
