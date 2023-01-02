@@ -2,7 +2,7 @@ import axios from "axios";
 
 const baseURL =
   process.env.NODE_ENV === "production"
-    ? "http://destkw.com/api"
+    ? "https://destkw.com/api"
     : "http://localhost:8000";
 
 const instance = axios.create({
