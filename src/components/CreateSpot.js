@@ -74,7 +74,6 @@ function CreateSpot() {
       setSpotSeats(false);
     }
   };
-  console.log("spotbefore", spot);
   // const handleDate = (event) =>{
   //     setSpotDate({ ...sDate, [event.target.name]: event.target.value });
   //     console.log("sDate: "+JSON.stringify(sDate));}
@@ -111,11 +110,9 @@ function CreateSpot() {
 
   const handleSubmit = async (event) => {
     spot.seatsRemaining = spot.seats;
-    console.log("spotafter", spot);
     event.preventDefault();
     try {
       await spotStore.createSpot(spot, categoryId, file);
-      console.log("spot", spot);
       swal({
         title: "Success",
         text: `${spot.name} has been added`,

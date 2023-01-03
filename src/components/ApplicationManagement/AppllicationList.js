@@ -90,7 +90,6 @@ function ApplicationList() {
                     applicationStore.deleteApplication(rowData._id);
                   }
                 });
-                console.log("Rejected");
               };
               return (
                 <>
