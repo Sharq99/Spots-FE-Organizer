@@ -17,11 +17,18 @@ import Ads from "./components/Advertisment/Ads";
 import { DEST_KEY_Ads, DEST_KEY_U } from "./config/keys";
 import ApllicationList from "./components/ApplicationManagement/AppllicationList";
 import ActiveOrganizersList from "./components/ApplicationManagement/ActiveOrganizersList";
+import { Helmet } from "react-helmet";
 
 function App() {
   return (
     <div className="appdiv">
       <Nav />
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Dest</title>
+        <link rel="canonical" href="http://destkw.com/" />
+        <meta name="description" content="Events App" />
+      </Helmet>
       <Routes>
         {authStore.organizer?.username === DEST_KEY_Ads ? (
           <Route path="/" element={<Ads />} />

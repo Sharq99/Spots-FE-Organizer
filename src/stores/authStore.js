@@ -31,7 +31,6 @@ class AuthStore {
   };
 
   register = async (application) => {
-    console.log("application: ", application);
     const newOrganizer = {
       username: application.username,
       email: application.email,
@@ -42,7 +41,6 @@ class AuthStore {
         .map(() => String.fromCharCode(Math.random() * 86 + 40))
         .join(""),
     };
-    console.log("newOrganizer: ", newOrganizer);
     try {
       await instance.post("/organizer/register", newOrganizer);
       // this.setOrganizer(response.data.token);
@@ -94,7 +92,6 @@ class AuthStore {
   fetchOrganizers = async () => {
     try {
       const response = await instance.get("/organizer");
-      console.log("organizers: ", response.data);
       this.organizers = response.data;
     } catch (error) {
       console.log(error);
@@ -135,7 +132,6 @@ class AuthStore {
   forgotOrganizer = async (organizerForgot) => {
     // userForgot.username = userForgot.username.toLowerCase();
     try {
-      console.log("organizerForgot", organizerForgot);
       await instance.put(`/organizer/forgot`, organizerForgot).then(
         swal({
           type: "success",

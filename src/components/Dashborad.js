@@ -30,7 +30,6 @@ function Dashborad() {
   const usersPerSpot = orgainizerSpots?.map((spot) => spot?.users.length);
   const spotsNames = orgainizerSpots?.map((spot) => spot?.name);
   const spotsScannedUsers = orgainizerSpots?.map((spot) => spot?.scanned);
-  console.log("revenuePerSpot", revenuePerSpot);
   orgainizerSpots?.forEach((spot) => {
     return (totalUsers = totalUsers + spot?.users?.length);
   });
@@ -43,8 +42,6 @@ function Dashborad() {
   orgainizerSpots?.forEach((spot) => {
     return (totalPaidUsers = totalPaidUsers + spot?.users?.length);
   });
-  console.log("paidSpots", paidSpots);
-  console.log("freeSpots", freeSpots);
 
   ChartJS.register(
     ArcElement,
