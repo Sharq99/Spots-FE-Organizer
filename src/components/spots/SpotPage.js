@@ -12,7 +12,6 @@ function SpotPage() {
   const nav = useNavigate();
   const { spotId } = useParams();
   const spot = spotStore?.getSpotsById(spotId);
-  console.log("spot", spot);
   const category = categoryStore.getCategoryById(spot.category);
   let date = moment(spot?.startDate).format("LL");
   const active = new Date().getDate() === new Date(spot.startDate).getDate();
