@@ -14,7 +14,7 @@ import Experience from "./components/offer/Experience";
 import RewardExperience from "./components/reward/RewardExperience";
 import authStore from "./stores/authStore";
 import Ads from "./components/Advertisment/Ads";
-import { DEST_KEY_Ads, DEST_KEY_U } from "./config/keys";
+import { DEST_KEY_ADS, DEST_KEY_U } from "./config/keys";
 import ApllicationList from "./components/ApplicationManagement/AppllicationList";
 import ActiveOrganizersList from "./components/ApplicationManagement/ActiveOrganizersList";
 import { Helmet } from "react-helmet";
@@ -30,7 +30,7 @@ function App() {
         <meta name="description" content="Events App" />
       </Helmet>
       <Routes>
-        {authStore.organizer?.username === DEST_KEY_Ads ? (
+        {authStore.organizer?.username === DEST_KEY_ADS ? (
           <Route path="/" element={<Ads />} />
         ) : authStore.organizer?.username === DEST_KEY_U ? (
           <>
