@@ -20,13 +20,12 @@ function SpotPage() {
   }, []);
 
   return (
-    <div className="whitebackground">
+    <div className="whitebackgroundoffers">
       {active ? (
         <>
           <div
             style={{
               fontSize: 30,
-
               color: "black",
               fontWeight: "600",
               textAlign: "center",
@@ -189,6 +188,12 @@ function SpotPage() {
             >
               Experiance
             </button>
+            <button
+              className="editorg"
+              onClick={() => nav(`/OrderHistory/${spotId}`)}
+            >
+              Order history
+            </button>
           </div>
         </div>
         <div
@@ -234,13 +239,13 @@ function SpotPage() {
                 </div>
                 <div className="spotcontainer">
                   <p className="spottext">{spot?.spotRevenue * spot?.seats}</p>
-                  <h1 className="spotlabel">Spot Revenue</h1>
+                  <h1 className="spotlabel">Dest Revenue</h1>
                 </div>
               </>
             )}
             <div className="spotcontainer">
               <p className="spottext">{spot?.users?.length}</p>
-              <h1 className="spotlabel">Spotted Me</h1>
+              <h1 className="spotlabel">Destted Me</h1>
             </div>
           </div>
         </div>
@@ -255,7 +260,7 @@ function SpotPage() {
           <p className="spottextbig">{spot?.detailsAr}</p>
           <h1 className="spotlabel">Location</h1>
           <a className="spotlink" href={spot?.location} target="_blank">
-            Spot Location
+            Dest Location
           </a>
         </div>
         {spot?.reviews.length !== 0 ? (

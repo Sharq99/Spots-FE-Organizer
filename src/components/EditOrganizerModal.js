@@ -10,9 +10,13 @@ function EditOrganizerModal({ handleCloseEdit }) {
     bio: authStore.organizer.bio,
     email: authStore.organizer.email,
     image: authStore.organizer.image,
+    numofDests: authStore.organizer.numofDests,
+    displayNameEn: authStore.organizer.displayNameEn,
+    displayNameAr: authStore.organizer.displayNameAr,
+    username: authStore.organizer.username,
   });
   const [file, setFile] = useState(authStore.organizer.image);
-
+  const [image, setImage] = useState();
   const handleClose = () => {
     setShow(false);
     handleCloseEdit();
@@ -30,6 +34,11 @@ function EditOrganizerModal({ handleCloseEdit }) {
     let file = event.target.files[0];
     setFile(file);
     setUpdateOrganizer({ ...updateOrganizer, image: file });
+    let reader = new FileReader();
+    reader.addEventListener("load", () => {
+      setImage(reader.result);
+    });
+    reader.readAsDataURL(file);
   };
 
   const handleSubmit = (event) => {
@@ -58,7 +67,13 @@ function EditOrganizerModal({ handleCloseEdit }) {
               <div className="modalprofileImagediv">
                 <img
                   className="modalprofileImage"
-                  src={`${baseURL}${authStore.organizer.image}`}
+                  src={
+                    updateOrganizer.image
+                      ? image
+                        ? `${image}`
+                        : `${baseURL}${authStore.organizer.image}`
+                      : require("./pics/PP.jpeg")
+                  }
                 ></img>
               </div>
               <Form.Control

@@ -13,31 +13,36 @@
 
 body {
   background-color: #e52b51;
-  /* C9FB5F */
   background: rgba(0, 0, 0, 0.65) url("./background1.png");
-  background-size: cover;
+  background-size:cover;
+  background-repeat: no-repeat;
   background-blend-mode: darken;
 }
 .Welcome {
   color: white;
-  font-size: 50px;
-  width: 40%;
+  font-size: 45px;
   text-justify: inter-word;
   align-self: center;
-  margin-right: 60px;
   font-family: "Ubuntu", sans-serif;
+  padding: 30px;
+ font-size:  5vw;
+
 }
 .RegisterModal {
   align-self: center;
+
+
 }
 .welcomeformrow {
   height: 100%;
-  width: 100%;
-  margin-top: 30px;
-  display: inline-flex;
+  display: flex;
   justify-content: center;
   align-content: center;
   flex-direction: row;
+  flex-wrap: wrap;
+  align-self: center;
+  margin: 6%;
+ 
 }
 .appdiv {
   height: 100%;
@@ -47,16 +52,19 @@ body {
 .whitebackground {
   background-color: white;
   padding: 30px;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  padding-top: 50px;
+  margin-top: "50%";
   display: flex;
   align-items: center;
   align-content: center;
   flex-direction: column;
-  width: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  left: 0;
+  z-index: -1;
+ bottom:0
+
+
 }
 .dashback {
   padding: 30px;

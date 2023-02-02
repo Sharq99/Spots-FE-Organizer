@@ -9,7 +9,7 @@ import ApllicationList from "./ApplicationManagement/AppllicationList";
 
 function Home() {
   return (
-    <div>
+    <>
       {authStore.organizer ? (
         <>
           {authStore.organizer?.email === DEST_KEY_ADS ? (
@@ -17,19 +17,13 @@ function Home() {
           ) : authStore.organizer?.username === DEST_KEY_U ? (
             <ApllicationList />
           ) : (
-            <div className="dashback">
-              <Dashborad />
-            </div>
+            <Dashborad />
           )}
         </>
       ) : (
-        <>
-          <div className="welcomeformrow">
-            <RegisterModal />
-          </div>
-        </>
+        <RegisterModal />
       )}
-    </div>
+    </>
   );
 }
 

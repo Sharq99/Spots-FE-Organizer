@@ -10,13 +10,13 @@ function SpotItem({ spot }) {
   const handleDelete = () => {
     swal({
       title: "Are you sure?",
-      text: "This Spot Will Be Permanently Deleted!",
+      text: "This Dest Will Be Permanently Deleted!",
       icon: "warning",
       buttons: true,
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        swal("Deleted!", "Your Spot has been deleted!", {
+        swal("Deleted!", "Your Dest has been deleted!", {
           icon: "success",
         });
         spotStore.deleteSpot(spot?._id);

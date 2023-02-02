@@ -5,7 +5,7 @@
     overflow: hidden;
     cursor: pointer;
     background:#EEE;
-    border-radius: 15px;
+    border-radius: 20px;
     position: relative;
     width: 275px;
     height: 455px;
@@ -16,6 +16,8 @@
     transition: transform 0.3s ease-in-out, border-radius 0.3s ease-in-out;
       margin: 20px;
       text-decoration: none;
+      
+
 }
 .recipeimage{
     display: flex;

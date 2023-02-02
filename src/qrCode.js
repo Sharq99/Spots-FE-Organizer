@@ -45,7 +45,7 @@ const qrCodePreview = new QRCodeStyling({
 });
 
 const GenerateQrCode = ({ spotId }) => {
-  const [url, setUrl] = useState(`spots://Profile/${spotId}`);
+  const [url, setUrl] = useState(`dest://Profile/${spotId}`);
   const [color, setColor] = useState(500);
   const [image, setImage] = useState();
   const ref = useRef(0);

@@ -11,13 +11,13 @@ function AdItem({ spot }) {
   const handleRemove = () => {
     swal({
       title: "Are you sure?",
-      text: "This Spot Will Be removed!",
+      text: "This Dest Will Be removed!",
       icon: "warning",
       buttons: true,
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        swal("Done!", "Spot has been removed!", {
+        swal("Done!", "Dest has been removed!", {
           icon: "success",
         });
         spotStore.updateSpot(FalseSpot, spot._id, spot?.image, spot.category);
