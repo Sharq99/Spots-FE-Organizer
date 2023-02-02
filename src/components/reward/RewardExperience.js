@@ -30,7 +30,7 @@ function RewardExperience() {
 
   const handleChange = (event) => {
     setReward({ ...reward, [event.target.name]: event.target.value });
-    if(event.target.name === "title"){
+    if (event.target.name === "title") {
       setRewardTitle(false);
     } else if (event.target.name === "titleAr") {
       setRewardTitleAr(false);
@@ -78,16 +78,16 @@ function RewardExperience() {
 
   return (
     <div className="backgroundform">
-      <div className="whitebackground">
+      <div className="whitebackgroundoffers">
         <div className="center">
           <h1 className="dash">Add a Reward</h1>
         </div>
         <div className="createoffercontainer">
           <form onSubmit={handleSubmit} className="formdiv">
             <div className="firstdiv">
-              <div style={{display: "flex", flexDirection: 'row',}}>
+              <div style={{ display: "flex", flexDirection: "row" }}>
                 <h5 className="l-color">Reward Title English</h5>
-                <h5 style={{color:"red", marginTop: "10px"}}>*</h5>
+                <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
               </div>
               <input
                 className="input-style"
@@ -97,9 +97,9 @@ function RewardExperience() {
                 name="title"
                 onChange={handleChange}
               />
-              <div style={{display: "flex", flexDirection: 'row',}}>
+              <div style={{ display: "flex", flexDirection: "row" }}>
                 <h5 className="l-color">Reward Title Arabic</h5>
-                <h5 style={{color:"red", marginTop: "10px"}}>*</h5>
+                <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
               </div>
               <input
                 className="input-style"
@@ -109,9 +109,9 @@ function RewardExperience() {
                 name="titleAr"
                 onChange={handleChange}
               />
-              <div style={{display: "flex", flexDirection: 'row',}}>
+              <div style={{ display: "flex", flexDirection: "row" }}>
                 <h5 className="l-color">Reward Points</h5>
-                <h5 style={{color:"red", marginTop: "10px"}}>*</h5>
+                <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
               </div>
               <input
                 className="input-style"
@@ -121,9 +121,11 @@ function RewardExperience() {
                 name="points"
                 onChange={handleChange}
               />
-               <div style={{display: "flex", flexDirection: 'row',}}>
-                <h5 className="l-color">Reward Description English (90 characters max)</h5>
-                <h5 style={{color:"red", marginTop: "10px"}}>*</h5>
+              <div style={{ display: "flex", flexDirection: "row" }}>
+                <h5 className="l-color">
+                  Reward Description English (90 characters max)
+                </h5>
+                <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
               </div>
               <textarea
                 cols="40"
@@ -139,9 +141,11 @@ function RewardExperience() {
                 maxLength={90}
                 onChange={handleChange}
               />
-              <div style={{display: "flex", flexDirection: 'row',}}>
-                <h5 className="l-color">Reward Description Arabic (90 characters max)</h5>
-                <h5 style={{color:"red", marginTop: "10px"}}>*</h5>
+              <div style={{ display: "flex", flexDirection: "row" }}>
+                <h5 className="l-color">
+                  Reward Description Arabic (90 characters max)
+                </h5>
+                <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
               </div>
               <textarea
                 cols="40"
@@ -159,9 +163,9 @@ function RewardExperience() {
               />
             </div>
             <div>
-              <div style={{display: "flex", flexDirection: 'row',}}>
+              <div style={{ display: "flex", flexDirection: "row" }}>
                 <h5 className="l-color">Upload an Image</h5>
-                <h5 style={{color:"red", marginTop: "10px"}}>*</h5>
+                <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
               </div>
               <h5 className="l-color-tiny-image">
                 This is how your image will look like on the user's screen
@@ -206,13 +210,18 @@ function RewardExperience() {
                   Choose image
                 </label>
 
-                {rewardTitle === false && rewardTitleAr === false && rewardImage === false && rewardDescription === false && rewardDescriptionAr === false && rewardImage === false ? ( 
+                {rewardTitle === false &&
+                rewardTitleAr === false &&
+                rewardImage === false &&
+                rewardDescription === false &&
+                rewardDescriptionAr === false &&
+                rewardImage === false ? (
                   <input
                     className="button-sign ing-create"
                     type="submit"
                     value="Add Reward"
                   />
-                  ) : (
+                ) : (
                   <input
                     className="button-signx ing-create"
                     type="submit"

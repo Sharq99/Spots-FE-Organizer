@@ -99,12 +99,12 @@ function EditSpot() {
 
   return (
     <div className="backgroundform">
-      <div className="whitebackground">
+      <div className="whitebackgroundoffers" style={{ height: "250%" }}>
         <div className="center">
-          <h1 className="dash">Update Spot</h1>
+          <h1 className="dash">Update Dest</h1>
         </div>
 
-        <div className="whitebackgroundcreate">
+        <div style={{ height: "200%" }} className="whitebackgroundcreate">
           <div className="categorydiv">
             <h1 className="categorytitle">Choose a category</h1>
             <h1 className="categorytitlechoosen">{categoryName}</h1>
@@ -115,7 +115,7 @@ function EditSpot() {
           />
           <form onSubmit={handleSubmit} className="formdiv">
             <div className="firstdiv">
-              <h5 className="l-color">Enter Spot Name (English)</h5>
+              <h5 className="l-color">Enter Dest Name (English)</h5>
               <input
                 className="input-style"
                 type="text"
@@ -124,7 +124,7 @@ function EditSpot() {
                 name="name"
                 onChange={handleChange}
               />
-              <h5 className="l-color">Enter Spot Name (Arabic)</h5>
+              <h5 className="l-color">Enter Dest Name (Arabic)</h5>
               <input
                 className="input-style"
                 type="text"
@@ -142,7 +142,7 @@ function EditSpot() {
                 onChange={handleChange}
               />
               <h5 className="l-color">
-                Enter Spot Description English (200 characters max)
+                Enter Dest Description English (200 characters max)
               </h5>
               <textarea
                 cols="40"
@@ -159,7 +159,7 @@ function EditSpot() {
                 onChange={handleChange}
               />
               <h5 className="l-color">
-                Enter Spot Description Arabic (200 characters max)
+                Enter Dest Description Arabic (200 characters max)
               </h5>
               <textarea
                 cols="40"
@@ -175,7 +175,7 @@ function EditSpot() {
                 maxLength={200}
                 onChange={handleChange}
               />
-              <h5 className="l-color">Enter Spot Details (English)</h5>
+              <h5 className="l-color">Enter Dest Details (English)</h5>
               <textarea
                 cols="40"
                 rows="5"
@@ -189,7 +189,7 @@ function EditSpot() {
                 name="details"
                 onChange={handleChange}
               />
-              <h5 className="l-color">Enter Spot Details (Arabic)</h5>
+              <h5 className="l-color">Enter Dest Details (Arabic)</h5>
               <textarea
                 cols="40"
                 rows="5"
@@ -221,7 +221,7 @@ function EditSpot() {
               />
             </div>
             <div>
-              <h5 className="l-color">Is the Spot free to Enter?</h5>
+              <h5 className="l-color">Is the Dest free to Enter?</h5>
               <input
                 checked={spot.isFree === true ? "checked" : ""}
                 type="radio"

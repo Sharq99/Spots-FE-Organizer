@@ -3,11 +3,11 @@ import SpotList from "./spots/SpotList";
 
 function MySpots() {
   return (
-    <div>
-      <div className="whitebackgroundspots">
-        <h1 className="dash">My Spots</h1>
-        <SpotList />
-      </div>
+    <div className="whitebackgroundoffers">
+      <h1 style={{ alignSelf: "center" }} className="dash">
+        My Dests
+      </h1>
+      <SpotList />
     </div>
   );
 }

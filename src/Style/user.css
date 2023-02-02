@@ -3,7 +3,7 @@
 .userbuttons {
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   font-size: 20px;
   width: 100%;
 }
@@ -56,7 +56,7 @@
 .input-stylemain {
   display: block;
   height: 50px;
-  width: 380px;
+  width: 100%;
   background-color: rgba(255, 255, 255, 0.07);
   border-radius: 3px;
   padding: 0 10px;
@@ -190,11 +190,102 @@
   margin-right: 10px;
 }
 .profilelabels {
-  font-size: 15px;
-  align-self: flex-start;
+  font-size: 18px;
+  color: black;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 600;
+}
+.nooffersandrewardsplaceholder {
+  font-size: 30px;
   color: black;
   font-family: "Ubuntu", sans-serif;
 }
+.destdownloads {
+  font-size: 20px;
+  color: black;
+  font-family: "Ubuntu", sans-serif;
+  margin-bottom: 20px;
+}
+.deststamp{
+  height: 100px;
+  width: 50%;
+  background-color: #e52b51;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  padding-left: 15px;
+}
+.deststamp:hover{
+cursor: pointer;
+}
+.deststampar{
+  height: 100px;
+  width: 50%;
+  background-color: #e52b51;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  padding-right: 15px;
+  margin-left: 20px;
+}
+.deststampar:hover{
+cursor: pointer;
+}
+
+.deststamptitle {
+  font-size: 40px;
+  color: black;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 600;
+}
+.deststampimage{
+  width: 70px;
+  height: 82px;
+}
+
+.deststamptitlesmall{
+  font-family: "Ubuntu", sans-serif;
+  font-size: 22px;
+  color: #f1f1f1; 
+  align-self: flex-start;
+  line-height: 25px;
+
+}
+.deststamptitlelarge{
+  font-family: "Ubuntu", sans-serif;
+  font-size: 55px;
+  font-weight: 600;
+  color: #f1f1f1; 
+  text-align: left;
+  line-height: 30px;
+  margin-left: 15px;
+
+
+}
+.deststamptitlesmallar{
+  font-family:  sans-serif;
+  font-size: 25px;
+  color: #f1f1f1; 
+  align-self: flex-end;
+  line-height: 20px;
+
+}
+.deststamptitlelargear{
+  font-family: sans-serif;
+  font-size: 55px;
+  font-weight: 600;
+  color: #f1f1f1; 
+  text-align: right;
+  line-height: 32px;
+  margin-right: 30px;
+}
+
 .profileinfo {
   display: flex;
   flex-direction: row;
@@ -250,12 +341,16 @@
   width: 300px;
 }
 .email {
-  font-family: "Source Sans Pro", sans-serif;
-  font-size: 18px;
-  margin: 12px;
-  margin-left: 0;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 20px;
   color: black;
-  margin-top: 0;
+  margin: 15px;
+}
+.emailnot {
+  font-family: "Ubuntu", sans-serif;
+  font-size: 20px;
+  color: rgb(193, 20, 20);
+  margin: 15px;
 }
 .emaildiv {
   margin-right: 100px;
@@ -336,7 +431,7 @@
   height: 200px;
   margin: 10px;
   border-radius: 50%;
-  object-fit: contain;
+  object-fit: cover;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 10px;
 }
 .modalprofileImage {
@@ -344,19 +439,19 @@
   height: 200px;
   border-radius: 50%;
   margin-bottom: 25px;
-  object-fit: contain;
+  object-fit:cover;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 10px;
 }
 
 .form-styleh {
-  height: 530px;
-  width: 450px;
+  height: 500px;
+  width: 400px;
   background-color: rgba(255, 255, 255, 0.13);
   border-radius: 10px;
   backdrop-filter: blur(10px);
   border: 2px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
-  padding: 50px 35px;
+padding: 35px;
 }
 .form-styleh * {
   font-family: "Ubuntu", sans-serif;
@@ -366,10 +461,10 @@
   border: none;
 }
 .form-styleh h3 {
-  font-size: 28px;
+  font-size: 23px;
   font-weight: 500;
   line-height: 30px;
-  padding-bottom: 30px;
+  margin-bottom: 30px;
   text-align: center;
   font-family: "Ubuntu", sans-serif;
 }
@@ -424,6 +519,29 @@
   font-family: "Ubuntu", sans-serif;
   font-weight: bold;
 }
+.codelabel {
+  font-size: 30px;
+  padding-top: 30px;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: bold;
+  text-align: center;
+  color: #bb2626;
+}
+.codelabelsecond {
+  font-size: 30px;
+  padding-top: 10px;
+  font-family: "Ubuntu", sans-serif;
+  text-align: center;
+
+}
+.codedest {
+  font-size: 70px;
+  padding-top: 10px;
+  font-family: "Ubuntu", sans-serif;
+  text-align: center;
+  color: #e52b51;
+  width: 100%;
+}
 .myspotstext {
   font-size: 40px;
   padding-top: 50px;
@@ -446,18 +564,16 @@
 }
 .whitebackgroundspots {
   background-color: white;
-  padding: 30px;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  z-index: -1;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  align-content: center;
-  padding-bottom: 50%;
+  align-content: flex-start;
+  position:absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+padding: 30px;
 }
 .whitebackgroundprofile {
   background-color: white;
@@ -477,6 +593,27 @@
   display: flex;
   flex-direction: column;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  width: 65%;
+  border-radius: 20px;
+}
+.whitebackgroundcreateoff {
+  align-self: center;
+  background-color: white;
+  padding: 150px;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  width: 65%;
+  border-radius: 20px;
+}
+.whitebackgroundcreateoffmy {
+  align-self: center;
+  background-color: white;
+  padding: 150px;
+  top: 0;
+  display: flex;
+  flex-direction: column;
   width: 65%;
   border-radius: 20px;
 }
@@ -664,40 +801,7 @@
   margin-left: 10px;
 }
 
-.wrapper {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  grid-auto-rows: minmax(100px, auto);
-}
-.one {
-  grid-column: 1 / 1;
-  grid-row: 1;
-}
-.two {
-  grid-column: 2 / 2;
-  grid-row: 1;
-}
-.three {
-  grid-column: 3 / 3;
-  grid-row: 1;
-}
-.four {
-  grid-column: 1 / 1;
-  grid-row: 2;
-}
-.five {
-  grid-column: 2 / 4;
-  grid-row: 2;
-}
-.six {
-  grid-column: 3 / 3;
-  grid-row: 2;
-}
-.seven {
-  grid-column: 2 / 2;
-  grid-row: 2;
-}
+
 
 .fontfamily{
   font-family: "Ubuntu", sans-serif;

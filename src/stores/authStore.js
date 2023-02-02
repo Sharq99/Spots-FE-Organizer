@@ -72,7 +72,8 @@ class AuthStore {
       for (const key in updatedOrganizer)
         formData.append(key, updatedOrganizer[key]);
       const res = await instance.put("/organizer/update", formData);
-      for (const key in this.organizer) this.organizer[key] = res.data[key];
+      //for (const key in this.organizer) this.organizer[key] = res.data[key];
+      this.setOrganizer(res.data.token);
     } catch (error) {
       console.log(error);
     }
@@ -141,6 +142,19 @@ class AuthStore {
       );
     } catch (error) {
       console.log("forgot", error);
+    }
+  };
+
+  updateNumofDests = async () => {
+    const newOrganizer = {
+      ...this.organizer,
+      numofDests: this.organizer.numofDests - 1,
+    };
+    try {
+      const res = await instance.put("/organizer/update", newOrganizer);
+      this.setOrganizer(res.data.token);
+    } catch (error) {
+      console.log("numofdests", error);
     }
   };
 }

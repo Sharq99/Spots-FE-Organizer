@@ -44,9 +44,16 @@
   width: auto;
   color: white;
   font-size: 20px;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
 }
 .navitemPortal-right {
   padding-left: 5%;
+
 }
 
 .navitemPortalDiv{
@@ -56,7 +63,8 @@
   border-width: 2px;
   border-color: #e52b51;
   border-style:solid;
-  border-radius: 60px;
+  border-radius: 20px;
+
 }
 .navitemPortalDiv:hover{
   background-color: #e52b513b;

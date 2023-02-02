@@ -11,15 +11,14 @@ import {
   IoMdPersonAdd,
   IoMdPerson,
 } from "react-icons/io";
-import { GrDocumentUser, GrDocumentVerified } from "react-icons/gr";
-import { DEST_KEY_Ads, DEST_KEY_U } from "../config/keys";
+import { DEST_KEY_ADS, DEST_KEY_U } from "../config/keys";
 
 function Nav() {
   return (
     <>
       {authStore.organizer ? (
         <>
-          {authStore.organizer?.email === DEST_KEY_Ads ? (
+          {authStore.organizer?.email === DEST_KEY_ADS ? (
             <></>
           ) : authStore.organizer?.username === DEST_KEY_U ? (
             <nav className="navtabs">
@@ -92,15 +91,14 @@ function Nav() {
             <div>
               <NavLink className="navitem" to="/Home"></NavLink>
             </div>
-            <div className="navitem-right">
-              <div className="userbuttons">
-                <div>
-                  <NavLink className="navitemPortal" to="/login">
-                    <div className="navitemPortalDiv">My Portal</div>
-                  </NavLink>
-                </div>
-              </div>
-            </div>
+
+            <NavLink className="navitemPortal" to="/login">
+              <img
+                src="https://i.imgur.com/iAugH1I.png"
+                style={{ height: 35, width: 100 }}
+              />
+              <div className="navitemPortalDiv">My Portal</div>
+            </NavLink>
           </div>
         </nav>
       )}
