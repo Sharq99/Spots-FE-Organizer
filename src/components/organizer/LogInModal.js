@@ -22,7 +22,7 @@ function LogInModal() {
   };
 
   return (
-    <div /*className='user-specs'*/>
+    <div>
       <div class="background"></div>
       <form className="form-style" onSubmit={handleSubmit}>
         <div>
@@ -43,30 +43,19 @@ function LogInModal() {
               onChange={handleChange}
             />
           </label>
-          <ForgotPassword />
           <input
             className="button-sign ing-create"
             type="submit"
             value="Login"
+            style={{marginTop: "30px"}}
           />
         </div>
       </form>
+      <div style={{ position: "absolute", top: "56%", left: "37%"}}>
+          <ForgotPassword />
+      </div>
     </div>
   );
 }
 
 export default LogInModal;
-
-// check this later
-
-// async function handleSubmit(event) {
-//     event.preventDefault();
-
-//     try {
-//       await Auth.signIn(email, password);
-//       userHasAuthenticated(true);
-//       nav("/");
-//     } catch (e) {
-//       alert(e.message);
-//     }
-//   }

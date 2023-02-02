@@ -1,15 +1,12 @@
 import { observer } from "mobx-react";
 import { useEffect } from "react";
 import applicationStore from "../../stores/applicationStore";
-// import ApplicationItem from "./ApplicationItem"
 import { Table, Column, HeaderCell, Cell } from "rsuite-table";
 import "rsuite-table/dist/css/rsuite-table.css";
 import authStore from "../../stores/authStore";
 import swal from "sweetalert";
 
 function ApplicationList() {
-  // const applicationsData = applicationStore.applications.map((application) => <ApplicationItem key={application._id} application={application} />);
-
   useEffect(() => {
     applicationStore.fetchApplications();
   }, []);
@@ -17,8 +14,8 @@ function ApplicationList() {
   return (
     <div style={{ backgroundColor: "white", width: "100%", height: "100%" }}>
       <h1 className="titleorg">Recieved Applications</h1>
-      <Table data={applicationStore.applications} height={660}>
-        <Column width={350} align="center" fixed resizable>
+      <Table data={applicationStore.applications} height={660} wordWrap="break-word">
+        <Column width={250} align="center" fixed resizable>
           <HeaderCell
             style={{
               fontWeight: "bolder",
@@ -29,7 +26,7 @@ function ApplicationList() {
           </HeaderCell>
           <Cell dataKey="username" />
         </Column>
-        <Column width={350} align="center" fixed resizable>
+        <Column width={250} align="center" fixed resizable>
           <HeaderCell
             style={{
               fontWeight: "bolder",
@@ -39,6 +36,24 @@ function ApplicationList() {
             Phone
           </HeaderCell>
           <Cell dataKey="phone" />
+        </Column>
+        <Column width={250} align="center" fixed resizable>
+          <HeaderCell
+            style={{
+              fontWeight: "bolder",
+              fontSize: 17,
+            }}
+          >
+            Instagram Link
+          </HeaderCell>
+            <Cell>
+                {(rowData) => {
+                return(
+                    <a href={rowData.instagram} target="_blank" rel="noopener norefrer" style={{ color: "#ff3333", textDecoration: "underLine" }}>
+                      Visit Instagram
+                    </a>
+                )}}
+            </Cell>
         </Column>
         <Column width={390} align="center" fixed resizable>
           <HeaderCell

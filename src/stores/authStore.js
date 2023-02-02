@@ -145,6 +145,14 @@ class AuthStore {
     }
   };
 
+  addDestsToOrganizer = async (newDests) => {
+    try {
+      await instance.post("/organizer/more", newDests);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  
   updateNumofDests = async () => {
     const newOrganizer = {
       ...this.organizer,
@@ -155,6 +163,7 @@ class AuthStore {
       this.setOrganizer(res.data.token);
     } catch (error) {
       console.log("numofdests", error);
+
     }
   };
 }

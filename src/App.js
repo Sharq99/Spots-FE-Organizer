@@ -18,6 +18,10 @@ import { DEST_KEY_ADS, DEST_KEY_U } from "./config/keys";
 import ApllicationList from "./components/ApplicationManagement/AppllicationList";
 import ActiveOrganizersList from "./components/ApplicationManagement/ActiveOrganizersList";
 import { Helmet } from "react-helmet";
+import OrderHistory from "./components/spots/OrderHistory";
+import PushNotification from "./components/pushNotification/PushNotification";
+import PushNotificationHistory from "./components/pushNotification/PushNotificationHistory";
+import ManageDests from "./components/numberOfDests/ManageDests";
 
 function App() {
   return (
@@ -31,13 +35,27 @@ function App() {
       </Helmet>
       <Routes>
         {authStore.organizer?.username === DEST_KEY_ADS ? (
-          <Route path="/" element={<Ads />} />
+          <>
+            <Route path="/Ads" element={<Ads />} />
+            <Route
+              path="/PushNotification"
+              element={<PushNotification />}
+            />
+            <Route
+              path="/PushNotifications"
+              element={<PushNotificationHistory />}
+            />
+          </>
         ) : authStore.organizer?.username === DEST_KEY_U ? (
           <>
             <Route path="/applications" element={<ApllicationList />} />
             <Route
               path="/active-organizers"
               element={<ActiveOrganizersList />}
+            />
+            <Route
+              path="/addDests"
+              element={<ManageDests />}
             />
           </>
         ) : (
@@ -54,12 +72,15 @@ function App() {
               path="/ExperianceList/:spotId"
               element={<ExperianceList />}
             />
+            <Route
+              path="/OrderHistory/:spotId"
+              element={<OrderHistory />}
+            />
             <Route path="/Experience/:spotId" element={<Experience />} />
             <Route
               path="/RewardExperience/:spotId"
               element={<RewardExperience />}
             />
-            <Route path="/Ads" element={<Ads />} />
           </>
         )}
       </Routes>

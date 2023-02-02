@@ -11,6 +11,9 @@ import {
   IoMdPersonAdd,
   IoMdPerson,
 } from "react-icons/io";
+import { RiAdvertisementFill } from "react-icons/ri";
+import { AiFillNotification } from "react-icons/ai";
+import { HiViewGridAdd } from "react-icons/hi";
 import { DEST_KEY_ADS, DEST_KEY_U } from "../config/keys";
 
 function Nav() {
@@ -18,8 +21,28 @@ function Nav() {
     <>
       {authStore.organizer ? (
         <>
-          {authStore.organizer?.email === DEST_KEY_ADS ? (
-            <></>
+          {authStore.organizer?.username === DEST_KEY_ADS ? (
+            <nav className="navtabs">
+              <NavLink
+                style={({ isActive }) => ({
+                  color: isActive ? "#e52b51" : "grey",
+                })}
+                className="icon"
+                to="/Ads"
+              >
+                <RiAdvertisementFill name="stats-chart-outline"></RiAdvertisementFill>
+              </NavLink>
+              <LogOutButton />
+              <NavLink
+                style={({ isActive }) => ({
+                  color: isActive ? "#e52b51" : "grey",
+                })}
+                className="icon"
+                to="/PushNotification"
+              >
+                <AiFillNotification name="stats-chart-outline"></AiFillNotification>
+              </NavLink>
+            </nav>
           ) : authStore.organizer?.username === DEST_KEY_U ? (
             <nav className="navtabs">
               <NavLink
@@ -31,7 +54,6 @@ function Nav() {
               >
                 <IoMdPersonAdd name="stats-chart-outline"></IoMdPersonAdd>
               </NavLink>
-              <LogOutButton />
               <NavLink
                 style={({ isActive }) => ({
                   color: isActive ? "#e52b51" : "grey",
@@ -41,6 +63,16 @@ function Nav() {
               >
                 <IoMdPerson name="stats-chart-outline"></IoMdPerson>
               </NavLink>
+              <NavLink
+                style={({ isActive }) => ({
+                  color: isActive ? "#e52b51" : "grey",
+                })}
+                className="icon"
+                to="/addDests"
+              > 
+                <HiViewGridAdd name="stats-chart-outline"></HiViewGridAdd>
+              </NavLink>
+                <LogOutButton />
             </nav>
           ) : (
             <nav className="navtabs">

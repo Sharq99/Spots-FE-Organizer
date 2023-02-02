@@ -24,6 +24,7 @@ function EditSpot() {
     details: oldSpot?.details,
     detailsAr: oldSpot?.detailsAr,
     startTime: oldSpot?.startTime,
+    endTime: oldSpot?.endTime,
     isFree: oldSpot?.isFree,
     startDate: oldSpot?.startDate,
     endDate: oldSpot?.endDate,
@@ -41,7 +42,7 @@ function EditSpot() {
   const handleChange = (event) => {
     setSpot({ ...spot, [event.target.name]: event.target.value });
   };
-
+console.log('spot.endTime', spot.endTime)
   // const handleDate = (event) =>{
   //     setSpotDate({ ...sDate, [event.target.name]: event.target.value });
   //     console.log("sDate: "+JSON.stringify(sDate));}
@@ -203,7 +204,7 @@ function EditSpot() {
                 name="detailsAr"
                 onChange={handleChange}
               />
-              <h5 className="l-color">Enter Time</h5>
+              <h5 className="l-color">Enter Start Time</h5>
               <input
                 className="input-style"
                 type="time"
@@ -211,6 +212,21 @@ function EditSpot() {
                 name="startTime"
                 onChange={handleChange}
               />
+              {(spot.endTime === "") || (spot.endTime === null) ?  ( 
+                <></>
+                   ) : (
+                    <>
+                      <h5 className="l-color">Enter End Time</h5>
+                      <input
+                      className="input-style"
+                      type="time"
+                      value={spot.endTime}
+                      name="endTime"
+                      onChange={handleChange}
+                    />
+                </>
+                  )
+              }
               <h5 className="l-color">Enter Date</h5>
               <input
                 className="input-style"
