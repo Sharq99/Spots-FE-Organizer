@@ -216,8 +216,14 @@ function SpotPage() {
           >
             <div className="spotcontainer">
               <p className="spottext">{spot?.startTime}</p>
-              <h1 className="spotlabel">Time</h1>
+              <h1 className="spotlabel">Start Time</h1>
             </div>
+            {spot?.endTime && (
+              <div className="spotcontainer">
+                <p className="spottext">{spot?.endTime}</p>
+                <h1 className="spotlabel">End Time</h1>
+              </div>
+            )}
             <div className="spotcontainer">
               <p className="spottext">{date}</p>
               <h1 className="spotlabel">Date</h1>

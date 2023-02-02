@@ -131,14 +131,14 @@ function CreateSpot() {
     try {
       await spotStore
         .createSpot(spot, categoryId, file)
-        .then(await authStore.updateNumofDests())
         .swal({
           title: "Success",
           text: `${spot.name} has been added`,
           icon: "success",
           confirmButtonText: "OK",
         })
-        .then(function () {
+        .then(async function () {
+          await authStore.updateNumofDests();
           nav(`/my-spots`);
         });
     } catch (e) {
@@ -157,185 +157,185 @@ function CreateSpot() {
         <div className="center">
           <h1 className="dash">Create A Dest</h1>
         </div>
-       {authStore.organizer.numofDests > 0 ? (
+        {authStore.organizer.numofDests === 0 ? (
           <div className="whitebackgroundcreate">
             <div className="categorydiv">
               <h1 className="categorytitle">Choose a category</h1>
               <h1 className="categorytitlechoosen">{categoryName}</h1>
-          </div>
-          <CategoryList
-            setCategoryId={setCategoryId}
-            setCategoryName={setCategoryName}
-          />
-          <form onSubmit={handleSubmit} className="formdiv">
-            <div className="firstdiv">
-              <div style={{ display: "flex", flexDirection: "row" }}>
-                <h5 className="l-color">Enter Spot Name (in English)</h5>
-                <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
-              </div>
-              <input
-                className="input-style"
-                type="text"
-                multiple
-                placeholder="Spot Name in English"
-                name="name"
-                onChange={handleChange}
-              />
-              <div style={{ display: "flex", flexDirection: "row" }}>
-                <h5 className="l-color">Enter Spot Name (in Arabic)</h5>
-                <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
-              </div>
-              <input
-                className="input-style"
-                type="text"
-                multiple
-                placeholder="Spot Name in Arabic"
-                name="nameAr"
-                onChange={handleChange}
-              />
-              <div style={{ display: "flex", flexDirection: "row" }}>
-                <h5 className="l-color">Enter Location URL</h5>
-                <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
-              </div>
-              <input
-                className="input-style"
-                type="text"
-                placeholder="Location URL"
-                name="location"
-                onChange={handleChange}
-              />
-              <div style={{ display: "flex", flexDirection: "row" }}>
-                <h5 className="l-color">
-                  Enter Spot Description in English (200 characters max)
-                </h5>
-                <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
-              </div>
-              <textarea
-                cols="40"
-                rows="5"
-                style={{
-                  height: "100px",
-                  paddingTop: "10px",
-                }}
-                className="input-style"
-                type="text"
-                placeholder="Spot Description in English"
-                name="description"
-                maxLength={200}
-                onChange={handleChange}
-              />
-              <div style={{ display: "flex", flexDirection: "row" }}>
-                <h5 className="l-color">
-                  Enter Spot Description in Arabic (200 characters max)
-                </h5>
-                <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
-              </div>
-              <textarea
-                cols="40"
-                rows="5"
-                style={{
-                  height: "100px",
-                  paddingTop: "10px",
-                }}
-                className="input-style"
-                type="text"
-                placeholder="Spot Description in Arabic"
-                name="descriptionAr"
-                maxLength={200}
-                onChange={handleChange}
-              />
-              <div style={{ display: "flex", flexDirection: "row" }}>
-                <h5 className="l-color">Enter Spot Detail (in English)</h5>
-                <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
-              </div>
-              <textarea
-                cols="40"
-                rows="5"
-                style={{
-                  height: "150px",
-                  paddingTop: "10px",
-                }}
-                className="input-style"
-                type="text"
-                placeholder="Spot Details in English"
-                name="details"
-                onChange={handleChange}
-              />
-              <div style={{ display: "flex", flexDirection: "row" }}>
-                <h5 className="l-color">Enter Spot Details (in Arabic)</h5>
-                <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
-              </div>
-              <textarea
-                cols="40"
-                rows="5"
-                style={{
-                  height: "150px",
-                  paddingTop: "10px",
-                  textAlign: "right",
-                }}
-                className="input-style"
-                type="text"
-                placeholder="Spot Details in Arabic"
-                name="detailsAr"
-                onChange={handleChange}
-              />
-              <div style={{ display: "flex", flexDirection: "row" }}>
-                <h5 className="l-color">Enter Start Time</h5>
-                <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
-              </div>
-              <input
-                className="input-style"
-                type="time"
-                placeholder="Time"
-                name="startTime"
-                onChange={handleChange}
-              />
-              <div>
-                <h5 className="l-color">Add End Time?</h5>
+            </div>
+            <CategoryList
+              setCategoryId={setCategoryId}
+              setCategoryName={setCategoryName}
+            />
+            <form onSubmit={handleSubmit} className="formdiv">
+              <div className="firstdiv">
+                <div style={{ display: "flex", flexDirection: "row" }}>
+                  <h5 className="l-color">Enter Spot Name (in English)</h5>
+                  <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
+                </div>
                 <input
-                  type="radio"
-                  id="timeEnd"
-                  name="spotEndTime"
-                  className="radio"
-                  onChange={() => setAddEndTimeRadio(true)}
+                  className="input-style"
+                  type="text"
+                  multiple
+                  placeholder="Spot Name in English"
+                  name="name"
+                  onChange={handleChange}
                 />
-                <label className="radiotext" for="timeEnd">
-                  Yes
-                </label>
+                <div style={{ display: "flex", flexDirection: "row" }}>
+                  <h5 className="l-color">Enter Spot Name (in Arabic)</h5>
+                  <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
+                </div>
                 <input
-                  type="radio"
-                  id="timeEnd"
-                  name="spotEndTime"
-                  className="radio"
-                  onChange={() => setAddEndTimeRadio(false)}
+                  className="input-style"
+                  type="text"
+                  multiple
+                  placeholder="Spot Name in Arabic"
+                  name="nameAr"
+                  onChange={handleChange}
                 />
-                <label for="timeEnd">No</label>
-                {addEndTimeRadio === true ? (
-                  <>
-                  <h5 className="l-color">Enter End Time</h5>
+                <div style={{ display: "flex", flexDirection: "row" }}>
+                  <h5 className="l-color">Enter Location URL</h5>
+                  <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
+                </div>
+                <input
+                  className="input-style"
+                  type="text"
+                  placeholder="Location URL"
+                  name="location"
+                  onChange={handleChange}
+                />
+                <div style={{ display: "flex", flexDirection: "row" }}>
+                  <h5 className="l-color">
+                    Enter Spot Description in English (200 characters max)
+                  </h5>
+                  <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
+                </div>
+                <textarea
+                  cols="40"
+                  rows="5"
+                  style={{
+                    height: "100px",
+                    paddingTop: "10px",
+                  }}
+                  className="input-style"
+                  type="text"
+                  placeholder="Spot Description in English"
+                  name="description"
+                  maxLength={200}
+                  onChange={handleChange}
+                />
+                <div style={{ display: "flex", flexDirection: "row" }}>
+                  <h5 className="l-color">
+                    Enter Spot Description in Arabic (200 characters max)
+                  </h5>
+                  <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
+                </div>
+                <textarea
+                  cols="40"
+                  rows="5"
+                  style={{
+                    height: "100px",
+                    paddingTop: "10px",
+                  }}
+                  className="input-style"
+                  type="text"
+                  placeholder="Spot Description in Arabic"
+                  name="descriptionAr"
+                  maxLength={200}
+                  onChange={handleChange}
+                />
+                <div style={{ display: "flex", flexDirection: "row" }}>
+                  <h5 className="l-color">Enter Spot Detail (in English)</h5>
+                  <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
+                </div>
+                <textarea
+                  cols="40"
+                  rows="5"
+                  style={{
+                    height: "150px",
+                    paddingTop: "10px",
+                  }}
+                  className="input-style"
+                  type="text"
+                  placeholder="Spot Details in English"
+                  name="details"
+                  onChange={handleChange}
+                />
+                <div style={{ display: "flex", flexDirection: "row" }}>
+                  <h5 className="l-color">Enter Spot Details (in Arabic)</h5>
+                  <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
+                </div>
+                <textarea
+                  cols="40"
+                  rows="5"
+                  style={{
+                    height: "150px",
+                    paddingTop: "10px",
+                    textAlign: "right",
+                  }}
+                  className="input-style"
+                  type="text"
+                  placeholder="Spot Details in Arabic"
+                  name="detailsAr"
+                  onChange={handleChange}
+                />
+                <div style={{ display: "flex", flexDirection: "row" }}>
+                  <h5 className="l-color">Enter Start Time</h5>
+                  <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
+                </div>
+                <input
+                  className="input-style"
+                  type="time"
+                  placeholder="Time"
+                  name="startTime"
+                  onChange={handleChange}
+                />
+                <div>
+                  <h5 className="l-color">Add End Time?</h5>
                   <input
-                    className="input-style"
-                    type="time"
-                    placeholder="Time"
-                    name="endTime"
-                    onChange={handleChange}
+                    type="radio"
+                    id="timeEnd"
+                    name="spotEndTime"
+                    className="radio"
+                    onChange={() => setAddEndTimeRadio(true)}
                   />
-                  </>
-                ) : (
-                  <></>
-                )}
-              </div>
-              <div style={{ display: "flex", flexDirection: "row" }}>
-                <h5 className="l-color">Enter Date</h5>
-                <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
-              </div>
-              <input
-                className="input-style"
-                type="date"
-                placeholder="Date"
-                name="startDate"
-                onChange={handleChange}
-              />
+                  <label className="radiotext" for="timeEnd">
+                    Yes
+                  </label>
+                  <input
+                    type="radio"
+                    id="timeEnd"
+                    name="spotEndTime"
+                    className="radio"
+                    onChange={() => setAddEndTimeRadio(false)}
+                  />
+                  <label for="timeEnd">No</label>
+                  {addEndTimeRadio === true ? (
+                    <>
+                      <h5 className="l-color">Enter End Time</h5>
+                      <input
+                        className="input-style"
+                        type="time"
+                        placeholder="Time"
+                        name="endTime"
+                        onChange={handleChange}
+                      />
+                    </>
+                  ) : (
+                    <></>
+                  )}
+                </div>
+                <div style={{ display: "flex", flexDirection: "row" }}>
+                  <h5 className="l-color">Enter Date</h5>
+                  <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
+                </div>
+                <input
+                  className="input-style"
+                  type="date"
+                  placeholder="Date"
+                  name="startDate"
+                  onChange={handleChange}
+                />
               </div>
               <div>
                 <h5 className="l-color">Is the Dest free to Enter?</h5>
@@ -417,14 +417,15 @@ function CreateSpot() {
                   {spot.isFree === true ? (
                     <>
                       {spotName === false &&
+                      spotNameAr === false &&
                       spotImage === false &&
                       spotLocation === false &&
                       spotDescription === false &&
                       spotDescriptionAr === false &&
                       spotDetails === false &&
+                      startTime === false &&
                       spotDetailsAr === false &&
-                      spotStartDate === false &&
-                      spoTime === false ? (
+                      spotStartDate === false ? (
                         <input
                           className="button-sign ing-create"
                           type="submit"
@@ -448,8 +449,8 @@ function CreateSpot() {
                       spotDescription === false &&
                       spotDetails === false &&
                       spotStartDate === false &&
-                      spoTime === false &&
                       spotSeats === false &&
+                      startTime === false &&
                       spotPrice === false ? (
                         <input
                           className="button-sign ing-create"
