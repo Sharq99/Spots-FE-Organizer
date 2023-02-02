@@ -123,15 +123,14 @@ function Nav() {
             <div>
               <NavLink className="navitem" to="/Home"></NavLink>
             </div>
-            <div className="navitem-right">
-              <div className="userbuttons">
-                <div>
-                  <NavLink className="navitemPortal" to="/login">
-                    <div className="navitemPortalDiv">My Portal</div>
-                  </NavLink>
-                </div>
-              </div>
-            </div>
+
+            <NavLink className="navitemPortal" to="/login">
+              <img
+                src="https://i.imgur.com/iAugH1I.png"
+                style={{ height: 35, width: 100 }}
+              />
+              <div className="navitemPortalDiv">My Portal</div>
+            </NavLink>
           </div>
         </nav>
       )}

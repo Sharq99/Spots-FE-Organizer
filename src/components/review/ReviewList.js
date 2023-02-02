@@ -13,7 +13,7 @@ function ReviewList({ reviews }) {
 
   return (
     <div>
-      <h5 className="reviewlabel center">Spot Reviews</h5>
+      <h5 className="reviewlabel center">Dest Reviews</h5>
       <div className="singlerecipeinstruction">{spotReviews}</div>
     </div>
   );

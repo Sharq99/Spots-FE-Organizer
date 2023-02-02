@@ -54,10 +54,10 @@ function Dashborad() {
   );
 
   const dataDoughnut = {
-    labels: ["Free Spots", "Paid Spots"],
+    labels: ["Free Dests", "Paid Dests"],
     datasets: [
       {
-        label: "#Spots",
+        label: "#Dests",
         data: [freeSpots.length, paidSpots.length],
         backgroundColor: ["rgba(255, 99, 132, 0.2)", "rgba(54, 162, 235, 0.2)"],
         borderColor: ["rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)"],
@@ -87,7 +87,7 @@ function Dashborad() {
       },
       title: {
         display: true,
-        text: "Spots Total Revenue",
+        text: "Dests Total Revenue",
       },
     },
   };
@@ -100,7 +100,7 @@ function Dashborad() {
       },
       title: {
         display: true,
-        text: "Spots Total Users",
+        text: "Dests Total Users",
       },
     },
   };
@@ -142,126 +142,122 @@ function Dashborad() {
   };
 
   return (
-    <div>
-      <div className="center">
+    <div className="whitebackgroundoffers">
+      <div style={{ alignSelf: "center" }} className="center">
         <h1 className="dash">Dashboard</h1>
       </div>
-      <div className="whitebackgrounddash">
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            flexWrap: "wrap",
-            alignContent: "center",
-            justifyContent: "center",
-            alignItems: "center",
-            width: "100%",
-            height: "100%",
-          }}
-        >
-          <div className="dashcard">
-            <IoIosFiling
-              className="dashicon"
-              name="stats-chart-outline"
-            ></IoIosFiling>
-            <div style={{ display: "flex", flexDirection: "column" }}>
-              <h1 className="cardnum">{orgainizerSpots?.length}</h1>
-              <h6 className="cardtitle">Total Spots created</h6>
-            </div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          flexWrap: "wrap",
+          alignContent: "center",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <div className="dashcard">
+          <IoIosFiling
+            className="dashicon"
+            name="stats-chart-outline"
+          ></IoIosFiling>
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <h1 className="cardnum">{orgainizerSpots?.length}</h1>
+            <h6 className="cardtitle">Total Dests created</h6>
           </div>
-          <div className="dashcard">
-            <IoIosStats
-              className="dashicon"
-              name="stats-chart-outline"
-            ></IoIosStats>
-            <div style={{ display: "flex", flexDirection: "column" }}>
-              <h1 className="cardnum">{totalRevenue + " KD"}</h1>
-              <h6 className="cardtitle">Total Revenue</h6>
-            </div>
+        </div>
+        <div className="dashcard">
+          <IoIosStats
+            className="dashicon"
+            name="stats-chart-outline"
+          ></IoIosStats>
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <h1 className="cardnum">{totalRevenue + " KD"}</h1>
+            <h6 className="cardtitle">Total Revenue</h6>
           </div>
+        </div>
 
-          <div className="dashcardDough">
-            <div
+        <div className="dashcardDough">
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              width: "90%",
+              height: "90%",
+              padding: 20,
+            }}
+          >
+            <Doughnut
               style={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "center",
                 width: "90%",
                 height: "90%",
-                padding: 20,
+                marginBottom: 10,
               }}
-            >
-              <Doughnut
-                style={{
-                  width: "90%",
-                  height: "90%",
-                  marginBottom: 10,
-                }}
-                data={dataDoughnut}
-              />
-              <h6 className="cardtitle">Total Spots created</h6>
-            </div>
+              data={dataDoughnut}
+            />
+            <h6 className="cardtitle">Total Dests created</h6>
           </div>
-          <div className="dashcardDough">
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "center",
-                width: "90%",
-                height: "90%",
-                padding: 20,
-              }}
-            >
-              <Doughnut
-                style={{ width: "90%", height: "90%", marginBottom: 10 }}
-                data={dataDoughnutAllUsers}
-              />
-              <h6 className="cardtitle">Total users</h6>
-            </div>
+        </div>
+        <div className="dashcardDough">
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              width: "90%",
+              height: "90%",
+              padding: 20,
+            }}
+          >
+            <Doughnut
+              style={{ width: "90%", height: "90%", marginBottom: 10 }}
+              data={dataDoughnutAllUsers}
+            />
+            <h6 className="cardtitle">Total users</h6>
           </div>
+        </div>
 
-          <div className="dashcardBar">
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "center",
-                width: "100%",
-                height: "100%",
-              }}
-            >
-              <Bar
-                style={{ width: "90%", height: "100%", marginBottom: 10 }}
-                options={optionsRev}
-                data={dataBarRev}
-              />
-            </div>
+        <div className="dashcardBar">
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              width: "100%",
+              height: "100%",
+            }}
+          >
+            <Bar
+              style={{ width: "90%", height: "100%", marginBottom: 10 }}
+              options={optionsRev}
+              data={dataBarRev}
+            />
           </div>
-          <div className="dashcardBar">
-            <div
+        </div>
+        <div className="dashcardBar">
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              width: "100%",
+              height: "100%",
+            }}
+          >
+            <Bar
               style={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "center",
                 width: "100%",
                 height: "100%",
+                marginBottom: 10,
               }}
-            >
-              <Bar
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  marginBottom: 10,
-                }}
-                options={optionsUser}
-                data={dataBarUser}
-              />
-            </div>
+              options={optionsUser}
+              data={dataBarUser}
+            />
           </div>
         </div>
       </div>
@@ -270,39 +266,3 @@ function Dashborad() {
 }
 
 export default Dashborad;
-
-{
-  /* <div>
-      <div className="center">
-        <h1 className="dash">Dashboard</h1>
-      </div>
-      <div className="whitebackgrounddash">
-        
-        <div className="dashcard">
-          <IoMdStar className="dashicon" name="stats-chart-outline"></IoMdStar>
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <h1 className="cardnum">{totalUsers}</h1>
-            <h6 className="cardtitle">Users Spotted Me</h6>
-          </div>
-        </div>
-        
-        <div className="dashcard">
-          <IoIosPin className="dashicon" name="stats-chart-outline"></IoIosPin>
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <h1 className="cardnum">{freeSpots?.length}</h1>
-            <h6 className="cardtitle">Total free spots</h6>
-          </div>
-        </div>
-        <div className="dashcard">
-          <IoIosCash
-            className="dashicon"
-            name="stats-chart-outline"
-          ></IoIosCash>
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <h1 className="cardnum">{paidSpots?.length}</h1>
-            <h6 className="cardtitle">Total Paid spots</h6>
-          </div>
-        </div>
-      </div>
-    </div> */
-}

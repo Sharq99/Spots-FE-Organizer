@@ -26,7 +26,7 @@ function Experience() {
 
   const handleChange = (event) => {
     setOffer({ ...offer, [event.target.name]: event.target.value });
-    if(event.target.name === "title"){
+    if (event.target.name === "title") {
       setOfferTitle(false);
     } else if (event.target.name === "titleAr") {
       setOfferTitleAr(false);
@@ -67,17 +67,17 @@ function Experience() {
 
   return (
     <div className="backgroundform">
-      <div className="whitebackground">
+      <div className="whitebackgroundoffers">
         <div className="center">
           <h1 className="dash">Add an Offer</h1>
         </div>
         <div className="createoffercontainer">
           <form onSubmit={handleSubmit} className="formdiv">
             <div className="firstdiv">
-            <div style={{display: "flex", flexDirection: 'row',}}>
-              <h5 className="l-color">Offer Title English</h5>
-              <h5 style={{color:"red", marginTop: "10px"}}>*</h5>
-            </div>
+              <div style={{ display: "flex", flexDirection: "row" }}>
+                <h5 className="l-color">Offer Title English</h5>
+                <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
+              </div>
               <input
                 className="input-style"
                 type="text"
@@ -86,10 +86,10 @@ function Experience() {
                 name="title"
                 onChange={handleChange}
               />
-            <div style={{display: "flex", flexDirection: 'row',}}>
-              <h5 className="l-color">Offer Title Arabic</h5>
-              <h5 style={{color:"red", marginTop: "10px"}}>*</h5>
-            </div>
+              <div style={{ display: "flex", flexDirection: "row" }}>
+                <h5 className="l-color">Offer Title Arabic</h5>
+                <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
+              </div>
               <input
                 className="input-style"
                 type="text"
@@ -98,9 +98,11 @@ function Experience() {
                 name="titleAr"
                 onChange={handleChange}
               />
-              <div style={{display: "flex", flexDirection: 'row',}}>
-                <h5 className="l-color">Offer Description English (90 characters max)</h5>
-                <h5 style={{color:"red", marginTop: "10px"}}>*</h5>
+              <div style={{ display: "flex", flexDirection: "row" }}>
+                <h5 className="l-color">
+                  Offer Description English (90 characters max)
+                </h5>
+                <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
               </div>
               <textarea
                 cols="40"
@@ -116,9 +118,11 @@ function Experience() {
                 maxLength={90}
                 onChange={handleChange}
               />
-              <div style={{display: "flex", flexDirection: 'row',}}>
-                <h5 className="l-color">Offer Description Arabic (90 characters max)</h5>
-                <h5 style={{color:"red", marginTop: "10px"}}>*</h5>
+              <div style={{ display: "flex", flexDirection: "row" }}>
+                <h5 className="l-color">
+                  Offer Description Arabic (90 characters max)
+                </h5>
+                <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
               </div>
               <textarea
                 cols="40"
@@ -136,9 +140,9 @@ function Experience() {
               />
             </div>
             <div>
-              <div style={{display: "flex", flexDirection: 'row',}}>
+              <div style={{ display: "flex", flexDirection: "row" }}>
                 <h5 className="l-color">Upload an Image</h5>
-                <h5 style={{color:"red", marginTop: "10px"}}>*</h5>
+                <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
               </div>
               <h5 className="l-color-tiny-image">
                 This is how your image will look like on the user's screen
@@ -183,13 +187,17 @@ function Experience() {
                   Choose image
                 </label>
 
-                {offerTitle === false && offerTitleAr === false && offerImage === false && offerDescription === false && offerDescriptionAr === false ? ( 
+                {offerTitle === false &&
+                offerTitleAr === false &&
+                offerImage === false &&
+                offerDescription === false &&
+                offerDescriptionAr === false ? (
                   <input
                     className="button-sign ing-create"
                     type="submit"
                     value="Add Offer"
                   />
-                  ) : (
+                ) : (
                   <input
                     className="button-signx ing-create"
                     type="submit"

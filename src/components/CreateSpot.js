@@ -3,11 +3,22 @@ import CategoryList from "./category/CategoryList";
 import spotStore from "../stores/spotStore";
 import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
+import authStore from "../stores/authStore";
 
 function CreateSpot() {
   const nav = useNavigate();
   const [file, setFile] = useState("");
   const [image, setImage] = useState("");
+  //const [updateOrganizer, setUpdateOrganizer] = useState({
+  //phone: authStore.organizer.phone,
+  //bio: authStore.organizer.bio,
+  //email: authStore.organizer.email,
+  //image: authStore.organizer.image,
+  //numofDests: authStore.organizer.numofDests,
+  //displayNameEn: authStore.organizer.displayNameEn,
+  //displayNameAr: authStore.organizer.displayNameAr,
+  //username: authStore.organizer.username,
+  //});
   const [spot, setSpot] = useState({
     name: "",
     nameAr: "",
@@ -102,6 +113,7 @@ function CreateSpot() {
 
   const handlePaid = (event) =>
     setSpot({ ...spot, [event.target.name]: false });
+
   const handleImage = (event) => {
     let file = event.target.files[0];
     setFile(file);
@@ -117,35 +129,39 @@ function CreateSpot() {
     spot.seatsRemaining = spot.seats;
     event.preventDefault();
     try {
-      await spotStore.createSpot(spot, categoryId, file);
-      swal({
-        title: "Success",
-        text: `${spot.name} has been added`,
-        icon: "success",
-        confirmButtonText: "OK",
-      }).then(function () {
-        nav(`/my-spots`);
-      });
+      await spotStore
+        .createSpot(spot, categoryId, file)
+        .then(await authStore.updateNumofDests())
+        .swal({
+          title: "Success",
+          text: `${spot.name} has been added`,
+          icon: "success",
+          confirmButtonText: "OK",
+        })
+        .then(function () {
+          nav(`/my-spots`);
+        });
     } catch (e) {
       alert(e.message);
+      //updateOrganizer.numofDests = updateOrganizer.numofDests - 1;
+      //await authStore.updateOrganizer(updateOrganizer);
     }
   };
-
   // ADD input type email for email
   // ADD input type date for date
   // ADD input time date for startTime
 
   return (
     <div className="backgroundform">
-      <div className="whitebackground">
+      <div className="whitebackgroundoffers">
         <div className="center">
-          <h1 className="dash">Create A Spot</h1>
+          <h1 className="dash">Create A Dest</h1>
         </div>
-
-        <div className="whitebackgroundcreate">
-          <div className="categorydiv">
-            <h1 className="categorytitle">Choose a category</h1>
-            <h1 className="categorytitlechoosen">{categoryName}</h1>
+       {authStore.organizer.numofDests > 0 ? (
+          <div className="whitebackgroundcreate">
+            <div className="categorydiv">
+              <h1 className="categorytitle">Choose a category</h1>
+              <h1 className="categorytitlechoosen">{categoryName}</h1>
           </div>
           <CategoryList
             setCategoryId={setCategoryId}
@@ -320,146 +336,154 @@ function CreateSpot() {
                 name="startDate"
                 onChange={handleChange}
               />
-            </div>
-            <div>
-              <h5 className="l-color">Is the Spot free to Enter?</h5>
-              <input
-                type="radio"
-                id="payment"
-                name="isFree"
-                className="radio"
-                onChange={handleFree}
-              />
-              <label className="radiotext" for="payment">
-                Yes
-              </label>
-              <input
-                type="radio"
-                id="payment"
-                name="isFree"
-                className="radio"
-                onChange={handlePaid}
-              />
-              <label for="payment">No</label>
-              {spot.isFree === false ? (
-                <div>
-                  <div style={{ display: "flex", flexDirection: "row" }}>
-                    <h5 className="l-color">Enter Total Number of Tickets</h5>
-                    <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
-                  </div>
-                  <input
-                    className="input-style"
-                    type="number"
-                    placeholder="Number of Tickets"
-                    name="seats"
-                    onChange={handleChange}
-                  />
-                  <div style={{ display: "flex", flexDirection: "row" }}>
-                    <h5 className="l-color">Enter Price Per Ticket</h5>
-                    <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
-                  </div>
-                  <input
-                    className="input-style"
-                    type="number"
-                    placeholder="Price Per Ticket"
-                    name="price"
-                    onChange={handleChange}
-                  />
-                </div>
-              ) : (
-                <></>
-              )}
-              <div style={{ display: "flex", flexDirection: "row" }}>
-                <h5 className="l-color">Upload an Image</h5>
-                <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
               </div>
-              <h5 className="l-color-tiny-image">
-                This is how your image will look like on the user's screen
-              </h5>
-              <div className="spotimagecontainer">
-                {image ? (
-                  <img alt={image} className="spotimage" src={image}></img>
-                ) : (
-                  <label className="spotimagetext">
-                    Your spot image goes here
-                  </label>
-                )}
-              </div>
-              <div className="imagechoose">
+              <div>
+                <h5 className="l-color">Is the Dest free to Enter?</h5>
                 <input
-                  className="input-style-choose"
-                  type="file"
-                  id="choose"
-                  placeholder="Image URL"
-                  name="image"
-                  onChange={handleImage}
+                  type="radio"
+                  id="payment"
+                  name="isFree"
+                  className="radio"
+                  onChange={handleFree}
                 />
-                <label className="labelchoose" for="choose">
-                  Choose image
+                <label className="radiotext" for="payment">
+                  Yes
                 </label>
-
-                {spot.isFree === true ? (
-                  <>
-                    {spotName === false &&
-                    spotImage === false &&
-                    spotLocation === false &&
-                    spotDescription === false &&
-                    spotDescriptionAr === false &&
-                    spotDetails === false &&
-                    spotDetailsAr === false &&
-                    spotStartDate === false &&
-                    startTime === false ? (
-                      <input
-                        className="button-sign ing-create"
-                        type="submit"
-                        value="Create Spot"
-                      />
-                    ) : (
-                      <input
-                        className="button-signx ing-create"
-                        type="submit"
-                        disabled
-                        value="Create Spot"
-                      />
-                    )}
-                  </>
+                <input
+                  type="radio"
+                  id="payment"
+                  name="isFree"
+                  className="radio"
+                  onChange={handlePaid}
+                />
+                <label for="payment">No</label>
+                {spot.isFree === false ? (
+                  <div>
+                    <div style={{ display: "flex", flexDirection: "row" }}>
+                      <h5 className="l-color">Enter Total Number of Tickets</h5>
+                      <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
+                    </div>
+                    <input
+                      className="input-style"
+                      type="number"
+                      placeholder="Number of Tickets"
+                      name="seats"
+                      onChange={handleChange}
+                    />
+                    <div style={{ display: "flex", flexDirection: "row" }}>
+                      <h5 className="l-color">Enter Price Per Ticket</h5>
+                      <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
+                    </div>
+                    <input
+                      className="input-style"
+                      type="number"
+                      placeholder="Price Per Ticket"
+                      name="price"
+                      onChange={handleChange}
+                    />
+                  </div>
                 ) : (
-                  <>
-                    {spotName === false &&
-                    spotNameAr === false &&
-                    spotImage === false &&
-                    spotLocation === false &&
-                    spotDescription === false &&
-                    spotDetails === false &&
-                    spotStartDate === false &&
-                    startTime === false &&
-                    spotSeats === false &&
-                    spotPrice === false ? (
-                      <input
-                        className="button-sign ing-create"
-                        type="submit"
-                        value="Create Spot"
-                      />
-                    ) : (
-                      <input
-                        className="button-signx ing-create"
-                        type="submit"
-                        disabled
-                        value="Create Spot"
-                      />
-                    )}
-                  </>
+                  <></>
                 )}
-
                 <div style={{ display: "flex", flexDirection: "row" }}>
-                  <h5 className="l-color-tiny-image">(Feilds with</h5>
-                  <h5 style={{ color: "red" }}>*</h5>
-                  <h5 className="l-color-tiny-image">are reqiured)</h5>
+                  <h5 className="l-color">Upload an Image</h5>
+                  <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
+                </div>
+                <h5 className="l-color-tiny-image">
+                  This is how your image will look like on the user's screen
+                </h5>
+                <div className="spotimagecontainer">
+                  {image ? (
+                    <img alt={image} className="spotimage" src={image}></img>
+                  ) : (
+                    <label className="spotimagetext">
+                      Your Dest image goes here
+                    </label>
+                  )}
+                </div>
+                <div className="imagechoose">
+                  <input
+                    className="input-style-choose"
+                    type="file"
+                    id="choose"
+                    placeholder="Image URL"
+                    name="image"
+                    onChange={handleImage}
+                  />
+                  <label className="labelchoose" for="choose">
+                    Choose image
+                  </label>
+
+                  {spot.isFree === true ? (
+                    <>
+                      {spotName === false &&
+                      spotImage === false &&
+                      spotLocation === false &&
+                      spotDescription === false &&
+                      spotDescriptionAr === false &&
+                      spotDetails === false &&
+                      spotDetailsAr === false &&
+                      spotStartDate === false &&
+                      spoTime === false ? (
+                        <input
+                          className="button-sign ing-create"
+                          type="submit"
+                          value="Create Spot"
+                        />
+                      ) : (
+                        <input
+                          className="button-signx ing-create"
+                          type="submit"
+                          disabled
+                          value="Create Spot"
+                        />
+                      )}
+                    </>
+                  ) : (
+                    <>
+                      {spotName === false &&
+                      spotNameAr === false &&
+                      spotImage === false &&
+                      spotLocation === false &&
+                      spotDescription === false &&
+                      spotDetails === false &&
+                      spotStartDate === false &&
+                      spoTime === false &&
+                      spotSeats === false &&
+                      spotPrice === false ? (
+                        <input
+                          className="button-sign ing-create"
+                          type="submit"
+                          value="Create Spot"
+                        />
+                      ) : (
+                        <input
+                          className="button-signx ing-create"
+                          type="submit"
+                          disabled
+                          value="Create Spot"
+                        />
+                      )}
+                    </>
+                  )}
+
+                  <div style={{ display: "flex", flexDirection: "row" }}>
+                    <h5 className="l-color-tiny-image">(Feilds with</h5>
+                    <h5 style={{ color: "red" }}>*</h5>
+                    <h5 className="l-color-tiny-image">are reqiured)</h5>
+                  </div>
                 </div>
               </div>
-            </div>
-          </form>
-        </div>
+            </form>
+          </div>
+        ) : (
+          <div className="whitebackgroundcreateoff">
+            <h1 className="codelabel">You Don't have any Dest Credits</h1>
+            <h1 className="codelabelsecond">
+              To get more Dest Credits, contact us in WhatsApp at 99440289
+            </h1>
+          </div>
+        )}
       </div>
     </div>
   );
