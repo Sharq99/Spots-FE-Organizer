@@ -1,13 +1,11 @@
 import { observer } from "mobx-react";
 import { useEffect, useState } from "react";
 import authStore from "../../stores/authStore";
-// import ActiveOrganizersItem from "./ActiveOrganizersItem"
 import { Table, Column, HeaderCell, Cell } from "rsuite-table";
 import "rsuite-table/dist/css/rsuite-table.css";
 
 function ActiveOrganizersList() {
   const [loading, setLoading] = useState(false);
-  // const activeOrganizers = authStore?.organizers?.map((organizer) => <ActiveOrganizersItem key={organizer?._id} organizer={organizer} />);
   useEffect(() => {
     try {
       setLoading(true);
@@ -90,7 +88,7 @@ function ActiveOrganizersList() {
               fontSize: 17,
             }}
           >
-            Spots #
+            Dests #
           </HeaderCell>
           <Cell>
             {(rowData) => {

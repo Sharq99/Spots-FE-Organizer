@@ -143,6 +143,14 @@ class AuthStore {
       console.log("forgot", error);
     }
   };
+
+  addDestsToOrganizer = async (newDests) => {
+    try {
+      await instance.post("/organizer/more", newDests);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 }
 
 const authStore = new AuthStore();

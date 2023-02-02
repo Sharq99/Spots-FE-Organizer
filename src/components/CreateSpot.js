@@ -19,6 +19,7 @@ function CreateSpot() {
     details: "",
     detailsAr: "",
     startTime: "",
+    endTime: "",
     isFree: true,
     isAd: false,
     startDate: 0,
@@ -41,7 +42,9 @@ function CreateSpot() {
   const [spotDetails, setSpotDetails] = useState(true);
   const [spotDetailsAr, setSpotDetailsAr] = useState(true);
   const [spotStartDate, setSpotStartDate] = useState(true);
-  const [spoTime, setSpoTime] = useState(true);
+  const [startTime, setStartTime] = useState(true);
+  const [endTime, setEndTime] = useState(true);
+  const [addEndTimeRadio, setAddEndTimeRadio] = useState(false);
   const [spotSeats, setSpotSeats] = useState(true);
   const [spotPrice, setSpotPrice] = useState(true);
   spot.announcement = `Welcome to ${spot.name}, enjoy our amazing offers and rewards`;
@@ -67,7 +70,9 @@ function CreateSpot() {
     } else if (event.target.name === "startDate") {
       setSpotStartDate(false);
     } else if (event.target.name === "startTime") {
-      setSpoTime(false);
+      setStartTime(false);
+    } else if (event.target.name === "endTime") {
+      setEndTime(false);
     } else if (event.target.name === "price") {
       setSpotPrice(false);
     } else if (event.target.name === "seats") {
@@ -259,7 +264,7 @@ function CreateSpot() {
                 onChange={handleChange}
               />
               <div style={{ display: "flex", flexDirection: "row" }}>
-                <h5 className="l-color">Enter Time</h5>
+                <h5 className="l-color">Enter Start Time</h5>
                 <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
               </div>
               <input
@@ -269,6 +274,41 @@ function CreateSpot() {
                 name="startTime"
                 onChange={handleChange}
               />
+              <div>
+                <h5 className="l-color">Add End Time?</h5>
+                <input
+                  type="radio"
+                  id="timeEnd"
+                  name="spotEndTime"
+                  className="radio"
+                  onChange={() => setAddEndTimeRadio(true)}
+                />
+                <label className="radiotext" for="timeEnd">
+                  Yes
+                </label>
+                <input
+                  type="radio"
+                  id="timeEnd"
+                  name="spotEndTime"
+                  className="radio"
+                  onChange={() => setAddEndTimeRadio(false)}
+                />
+                <label for="timeEnd">No</label>
+                {addEndTimeRadio === true ? (
+                  <>
+                  <h5 className="l-color">Enter End Time</h5>
+                  <input
+                    className="input-style"
+                    type="time"
+                    placeholder="Time"
+                    name="endTime"
+                    onChange={handleChange}
+                  />
+                  </>
+                ) : (
+                  <></>
+                )}
+              </div>
               <div style={{ display: "flex", flexDirection: "row" }}>
                 <h5 className="l-color">Enter Date</h5>
                 <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
@@ -368,7 +408,7 @@ function CreateSpot() {
                     spotDetails === false &&
                     spotDetailsAr === false &&
                     spotStartDate === false &&
-                    spoTime === false ? (
+                    startTime === false ? (
                       <input
                         className="button-sign ing-create"
                         type="submit"
@@ -392,7 +432,7 @@ function CreateSpot() {
                     spotDescription === false &&
                     spotDetails === false &&
                     spotStartDate === false &&
-                    spoTime === false &&
+                    startTime === false &&
                     spotSeats === false &&
                     spotPrice === false ? (
                       <input
