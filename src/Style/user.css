@@ -98,6 +98,24 @@
   cursor: pointer;
   border-style: none;
 }
+.button-cancel {
+  margin-top: 20px;
+  width: 100%;
+  color: #e52b51;
+  background-color: #1b1b1b00;
+  padding: 15px 0;
+  font-size: 18px;
+  font-weight: 500;
+  border-radius: 12px;
+  border-color: #e52b51;
+  border-style: solid;
+  border-width: 1px;
+  cursor: pointer;
+}
+.button-cancel:hover{
+background-color: #e52b5003;
+}
+
 .button-signx {
   margin-top: 20px;
   width: 100%;
@@ -444,7 +462,7 @@ cursor: pointer;
 }
 
 .form-styleh {
-  height: 500px;
+  height: fit-content;
   width: 400px;
   background-color: rgba(255, 255, 255, 0.13);
   border-radius: 10px;
@@ -645,11 +663,24 @@ padding: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 .spotimage {
   align-self: center;
-  width: 360px;
-  height: 595px;
+  width: 290px;
+  height: 480px;
+  border-radius: 30px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #e52b51;
+  object-fit: cover;
+  margin-top: 20px;
+}
+.spotgallery {
+  align-self: center;
+  min-width: 450px;
+  height: 300px;
   margin: 10px;
   border-radius: 30px;
   border-style: solid;
@@ -658,11 +689,38 @@ padding: 30px;
   object-fit: cover;
   margin-top: 20px;
 }
+.spotpagegallery {
+  align-self: center;
+  min-width: 450px;
+  height: 300px;
+  margin: 20px;
+  margin-left: 0;
+  border-radius: 20px;
+  object-fit: cover;
+
+}
 .spotimagetext {
   align-self: center;
-  width: 225px;
-  height: 372px;
+  width: 290px;
+  height: 480px;
   margin: 10px;
+  border-radius: 30px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #e52b51;
+  color: #e52b51;
+  object-fit: cover;
+  margin-top: 20px;
+  padding-top:220px;
+  justify-content: center;
+  text-align: center;
+  font-family: "Ubuntu", sans-serif;
+}
+.spotgallerytext {
+  align-self: center;
+  width: 100px;
+  height: 30px;
+  margin: 15px;
   border-radius: 30px;
   border-style: solid;
   border-width: 1px;
@@ -672,8 +730,8 @@ padding: 30px;
   margin-top: 20px;
   justify-content: center;
   text-align: center;
-  padding-top: 170px;
   font-family: "Ubuntu", sans-serif;
+
 }
 .imagechoose {
   display: flex;
@@ -682,6 +740,24 @@ padding: 30px;
   align-content: center;
   justify-content: center;
   align-items: center;
+}
+.spotgalleryholder {
+  align-self: center;
+  min-width: 450px;
+  height: 300px;
+  margin: 10px;
+  border-radius: 30px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #e52b51;
+  color: #e52b51;
+  object-fit: cover;
+  margin-top: 20px;
+  padding-top:140px;
+  justify-content: center;
+  text-align: center;
+  font-family: "Ubuntu", sans-serif;
+  
 }
 
 .input-style-choose {
@@ -716,6 +792,30 @@ padding: 30px;
   padding-right: 20px;
   display: inline-block;
 }
+.modalinfo {
+  font-family: "Ubuntu", sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  color: #e52b51;
+  background-color: white;
+  border-color: #e52b51;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  display: inline-block;
+  width: 100px;
+  height: 30px;
+  margin-left: 20px;
+  align-self: center;
+}
+
+.closeinfomodal{
+  color: red;
+  font-size: 30px;
+  cursor: pointer;
+}
 
 .categorydiv {
   display: flex;
@@ -734,7 +834,8 @@ padding: 30px;
   padding: 5px;
   padding-left: 10px;
   padding-right: 10px;
-  margin-bottom: 10px;
+  margin: 5px;
+
 }
 
 .buttonlogout {
@@ -801,8 +902,27 @@ padding: 30px;
   margin-left: 10px;
 }
 
-
-
 .fontfamily{
   font-family: "Ubuntu", sans-serif;
+}
+
+.overlayfinished{
+ background-color: rgba(0, 0, 0, 0.449);
+ position: absolute;
+ z-index: 99;
+ width: 100%;
+ height: 100%;
+ display: flex;
+ align-items: center;
+ align-content: center;
+ justify-content: center;
+}
+.overlayfinishedlabel{
+  font-size: 50px;
+  font-family: "Ubuntu", sans-serif;
+  color: #ffffff;
+
+}
+.overlayfinishedlabel:hover{
+  cursor: pointer;
 }

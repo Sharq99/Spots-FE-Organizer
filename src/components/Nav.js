@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import LogOutButton from "./organizer/LogOutButton";
 import authStore from "../stores/authStore";
 import { observer } from "mobx-react";
@@ -17,6 +17,7 @@ import { HiViewGridAdd } from "react-icons/hi";
 import { DEST_KEY_ADS, DEST_KEY_U } from "../config/keys";
 
 function Nav() {
+  const nav = useNavigate();
   return (
     <>
       {authStore.organizer ? (
@@ -69,10 +70,10 @@ function Nav() {
                 })}
                 className="icon"
                 to="/addDests"
-              > 
+              >
                 <HiViewGridAdd name="stats-chart-outline"></HiViewGridAdd>
               </NavLink>
-                <LogOutButton />
+              <LogOutButton />
             </nav>
           ) : (
             <nav className="navtabs">
@@ -123,14 +124,16 @@ function Nav() {
             <div>
               <NavLink className="navitem" to="/Home"></NavLink>
             </div>
-
-            <NavLink className="navitemPortal" to="/login">
+            <div className="navitemPortal">
               <img
+                onClick={() => nav(`/`)}
                 src="https://i.imgur.com/iAugH1I.png"
-                style={{ height: 35, width: 100 }}
+                style={{ height: 35, width: 100, cursor: "pointer" }}
               />
-              <div className="navitemPortalDiv">My Portal</div>
-            </NavLink>
+              <NavLink className="navitemmyPortal" to="/login">
+                <div className="navitemPortalDiv">My Portal</div>
+              </NavLink>
+            </div>
           </div>
         </nav>
       )}

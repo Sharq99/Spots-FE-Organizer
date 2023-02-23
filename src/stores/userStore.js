@@ -10,9 +10,8 @@ class UserStore {
 
   fetchUsers = async () => {
     try {
-        const response = await instance.get("/user/emails");
-        this.users = response.data;
-        console.log('users', this.users)
+      const response = await instance.get("/user/emails");
+      this.users = response.data;
     } catch (error) {
       console.log(error);
     }
@@ -21,7 +20,6 @@ class UserStore {
   getUserById = (userId) => {
     return this.users.find((user) => user._id === userId);
   };
-
 }
 
 const userStore = new UserStore();

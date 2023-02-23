@@ -23,6 +23,9 @@ function SpotItem({ spot }) {
       }
     });
   };
+  const today = new Date();
+  today.setHours(3, 0, 0, 0);
+  const dateCheck = today > new Date(spot.startDate);
   return (
     <div className="icondivitem">
       <IoIosRemoveCircle
@@ -32,9 +35,24 @@ function SpotItem({ spot }) {
       ></IoIosRemoveCircle>
       <Link to={`/spot/${spot?._id}`}>
         <div className="recipecontainer">
-          <div className="recipeimagediv">
-            <img className="recipeimage" src={`${baseURL}${spot?.image}`}></img>
-          </div>
+          {!dateCheck ? (
+            <div className="recipeimagediv">
+              <img
+                className="recipeimage"
+                src={`${baseURL}${spot?.image}`}
+              ></img>
+            </div>
+          ) : (
+            <div className="endeddiv">
+              <img
+                className="recipeimage"
+                src={`${baseURL}${spot?.image}`}
+              ></img>
+              <div className="overlayfinished">
+                <label className="overlayfinishedlabel">Finished</label>
+              </div>
+            </div>
+          )}
           <div className="recipename">
             <h5>{spot?.name}</h5>
           </div>

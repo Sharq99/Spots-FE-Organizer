@@ -43,17 +43,15 @@ function LogInModal() {
               onChange={handleChange}
             />
           </label>
+          <ForgotPassword />
           <input
             className="button-sign ing-create"
             type="submit"
             value="Login"
-            style={{marginTop: "30px"}}
+            style={{ marginTop: "3%" }}
           />
         </div>
       </form>
-      <div style={{ position: "absolute", top: "56%", left: "37%"}}>
-          <ForgotPassword />
-      </div>
     </div>
   );
 }
