@@ -92,8 +92,8 @@
   font-size: 20px;
     color: #e52b51;
   text-decoration: underline;
-  margin: 0;
   margin: 10px;
+  margin-left: 0;
   text-decoration-thickness: 0.05em;
   text-underline-offset: 0.1em;
   align-self: flex-start;
@@ -115,8 +115,8 @@
     margin: 0;
     align-self: flex-start;
     font-weight: 200;
-    margin: 10px;
-
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .mainspottitle{
@@ -157,24 +157,85 @@
 
 .spotimagediv{
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     align-content: center;
     flex-direction: row;
+   
 }
 
 .headingdetails{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    width: 60%;
 }
 
 .spotinfobig{
-    padding: 5%;
-
+    margin: 20px;
+    margin-left: 0;
 }
 
 .spotsettigs{
-    display: flex;
-    flex-direction: column;
+    display:flex;
+    flex-direction: row;
     align-self: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    width: 40%;
+}
+.livepulse{
+    background-color: #e52b51;
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+    margin-right: 10px;
+    box-shadow: 0 0 0 0 #e52b51;
+	transform: scale(1);
+	animation: pulse 2s infinite;
+}
+.publisheddot{
+    background-color: #2b9838;
+    width: 13px;
+    height: 13px;
+    border-radius: 100%;
+    margin-right: 10px;
+    align-self:center ;
+}
+.notpublisheddot{
+    background-color: #878282;
+    width: 13px;
+    height: 13px;
+    border-radius: 100%;
+    margin-right: 10px;
+    align-self: center;
+}
+
+.toggleswitchdiv{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.toggleswitchlabel{
+    font-size: 15px;
+    margin: 5px;
+}
+
+@keyframes pulse {
+	0% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(229, 43, 81, 0.7);
+	}
+
+	70% {
+		transform: scale(1);
+		box-shadow: 0 0 0 10px rgba(229, 43, 81, 0);
+	}
+
+	100% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(229, 43, 81, 0);
+	}
 }

@@ -51,9 +51,18 @@
   align-items: center;
   align-content: center;
 }
+.navitemmyPortal{
+
+  color: white;
+  font-size: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
 .navitemPortal-right {
   padding-left: 5%;
-
 }
 
 .navitemPortalDiv{

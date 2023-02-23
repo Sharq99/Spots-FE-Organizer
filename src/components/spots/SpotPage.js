@@ -6,7 +6,8 @@ import { baseURL } from "../../stores/instance";
 import { useNavigate } from "react-router-dom";
 import moment from "moment";
 import categoryStore from "../../stores/categoryStore";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import "react-toggle/style.css";
 
 function SpotPage() {
   const nav = useNavigate();
@@ -14,7 +15,10 @@ function SpotPage() {
   const spot = spotStore?.getSpotsById(spotId);
   const category = categoryStore.getCategoryById(spot.category);
   let date = moment(spot?.startDate).format("LL");
-  const active = new Date().getDate() === new Date(spot.startDate).getDate();
+  const today = new Date();
+  today.setHours(3, 0, 0, 0);
+  const active = today.getTime() === new Date(spot.startDate).getTime();
+
   useEffect(() => {
     spotStore.fetchSpots();
   }, []);
@@ -36,14 +40,7 @@ function SpotPage() {
               justifyContent: "center",
             }}
           >
-            <div
-              style={{
-                backgroundColor: "#e52b51",
-                width: 15,
-                height: 15,
-                borderRadius: "100%",
-              }}
-            ></div>
+            <div className="livepulse"></div>
             <h1
               className="fontfamily"
               style={{
@@ -166,34 +163,61 @@ function SpotPage() {
           }}
         >
           <div className="headingdetails">
-            <h1 className="mainspottitle">{spot?.name}</h1>
-            {/* <h1 className="mainspottitle">{spot?.nameAr}</h1> */}
-            <p className="catdetails">{category.name}</p>
+            <div style={{ display: "flex", flexDirection: "row" }}>
+              <h1 className="mainspottitle">{spot?.name}</h1>
+              <p className="catdetails">{category?.name}</p>
+            </div>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                alignContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <div
+                className={
+                  spot?.isPublished ? "publisheddot" : "notpublisheddot"
+                }
+              ></div>
+              <p
+                className="catdetails"
+                style={{ fontSize: 18, alignSelf: "center", margin: 0 }}
+              >
+                {spot?.isPublished ? "Published" : "Not published"}
+              </p>
+            </div>
           </div>
-
           <div className="spotsettigs">
-            {new Date().getDate() > new Date(spot.startDate).getDate() ? (
+            {today > new Date(spot.startDate) ? (
               <></>
             ) : (
               <button
                 className="editorg"
+                style={{ width: "50%" }}
                 onClick={() => nav(`/Edit/${spotId}`)}
               >
-                Edit Spot
+                Edit Dest
               </button>
             )}
+
             <button
               className="editorg"
+              style={{ width: "50%" }}
               onClick={() => nav(`/ExperianceList/${spotId}`)}
             >
               Experiance
             </button>
-            <button
-              className="editorg"
-              onClick={() => nav(`/OrderHistory/${spotId}`)}
-            >
-              Order history
-            </button>
+
+            {!spot.isFree && (
+              <button
+                className="editorg"
+                style={{ width: "50%" }}
+                onClick={() => nav(`/OrderHistory/${spotId}`)}
+              >
+                Order history
+              </button>
+            )}
           </div>
         </div>
         <div
@@ -254,6 +278,42 @@ function SpotPage() {
               <h1 className="spotlabel">Destted Me</h1>
             </div>
           </div>
+        </div>
+        <div
+          style={{
+            width: "100%",
+            display: "flex",
+            flexDirection: "row",
+            flexWrap: "nowrap",
+            whiteSpace: "nowrap",
+            overflowX: "auto",
+          }}
+        >
+          <img
+            src={`${baseURL}${spot?.galleryImage0}`}
+            className="spotpagegallery"
+            alt={`${baseURL}${spot?.galleryImage0}`}
+          ></img>
+          <img
+            src={`${baseURL}${spot?.galleryImage1}`}
+            className="spotpagegallery"
+            alt={`${baseURL}${spot?.galleryImage1}`}
+          ></img>
+          <img
+            src={`${baseURL}${spot?.galleryImage2}`}
+            className="spotpagegallery"
+            alt={`${baseURL}${spot?.galleryImage2}`}
+          ></img>
+          <img
+            src={`${baseURL}${spot?.galleryImage3}`}
+            className="spotpagegallery"
+            alt={`${baseURL}${spot?.galleryImage3}`}
+          ></img>
+          <img
+            src={`${baseURL}${spot?.galleryImage4}`}
+            className="spotpagegallery"
+            alt={`${baseURL}${spot?.galleryImage4}`}
+          ></img>
         </div>
         <div className="spotinfobig">
           <h1 className="spotlabel">Description</h1>

@@ -7,6 +7,9 @@ import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router";
 import swal from "sweetalert";
 import { baseURL } from "../stores/instance";
+import Toggle from "react-toggle";
+import "react-toggle/style.css";
+import categoryStore from "../stores/categoryStore";
 
 function EditSpot() {
   const { spotId } = useParams();
@@ -14,17 +17,33 @@ function EditSpot() {
   const nav = useNavigate();
   const [image, setImage] = useState("");
   const [file, setFile] = useState(oldSpot?.image);
+  const [galleryFile0, setGalleryFile0] = useState(oldSpot?.galleryImage0);
+  const [galleryFile1, setGalleryFile1] = useState(oldSpot?.galleryImage1);
+  const [galleryFile2, setGalleryFile2] = useState(oldSpot?.galleryImage2);
+  const [galleryFile3, setGalleryFile3] = useState(oldSpot?.galleryImage3);
+  const [galleryFile4, setGalleryFile4] = useState(oldSpot?.galleryImage4);
+  const [galleryImage0, setGalleryImage0] = useState("");
+  const [galleryImage1, setGalleryImage1] = useState("");
+  const [galleryImage2, setGalleryImage2] = useState("");
+  const [galleryImage3, setGalleryImage3] = useState("");
+  const [galleryImage4, setGalleryImage4] = useState("");
+  const [checked, setChecked] = useState(oldSpot?.isPublished);
   const [spot, setSpot] = useState({
     name: oldSpot?.name,
     nameAr: oldSpot?.nameAr,
     image: oldSpot?.image,
+    galleryImage0: oldSpot?.galleryImage0,
+    galleryImage1: oldSpot?.galleryImage1,
+    galleryImage2: oldSpot?.galleryImage2,
+    galleryImage3: oldSpot?.galleryImage3,
+    galleryImage4: oldSpot?.galleryImage4,
     location: oldSpot?.location,
     description: oldSpot?.description,
     descriptionAr: oldSpot?.descriptionAr,
     details: oldSpot?.details,
     detailsAr: oldSpot?.detailsAr,
     startTime: oldSpot?.startTime,
-    endTime: oldSpot?.endTime,
+    endTime: oldSpot?.endTime ? oldSpot?.endTime : "",
     isFree: oldSpot?.isFree,
     startDate: oldSpot?.startDate,
     endDate: oldSpot?.endDate,
@@ -35,17 +54,22 @@ function EditSpot() {
     category: oldSpot?.category,
     addSeats: 0,
     announcement: oldSpot?.announcement,
+    isPublished: oldSpot?.isPublished,
   });
   const [categoryId, setCategoryId] = useState(oldSpot.category);
-  const [categoryName, setCategoryName] = useState();
-
+  const [categoryName, setCategoryName] = useState(
+    categoryStore.getCategoryById(spot.category).name
+  );
   const handleChange = (event) => {
     setSpot({ ...spot, [event.target.name]: event.target.value });
   };
-console.log('spot.endTime', spot.endTime)
   // const handleDate = (event) =>{
   //     setSpotDate({ ...sDate, [event.target.name]: event.target.value });
   //     console.log("sDate: "+JSON.stringify(sDate));}
+
+  const handlePublish = (e) => {
+    setSpot({ ...spot, [e.target.name]: e.target.checked });
+  };
 
   const handleFree = (event) => setSpot({ ...spot, [event.target.name]: true });
 
@@ -55,11 +79,82 @@ console.log('spot.endTime', spot.endTime)
   const handleImage = (event) => {
     let file = event.target.files[0];
     setFile(file);
+    if (file.size > 5 * 1024 * 1024) {
+      window.alert("Please upload an image smaller than 5 MB");
+      return false;
+    }
     let reader = new FileReader();
     reader.addEventListener("load", () => {
       setImage(reader.result);
     });
     reader.readAsDataURL(file);
+  };
+
+  const handleGalleryImage0 = (event) => {
+    let file0 = event.target.files[0];
+    if (file0.size > 5 * 1024 * 1024) {
+      window.alert("Please upload an image smaller than 5 MB");
+      return false;
+    }
+    setGalleryFile0(file0);
+    let reader = new FileReader();
+    reader.addEventListener("load", () => {
+      setGalleryImage0(reader.result);
+    });
+    reader.readAsDataURL(file0);
+  };
+
+  const handleGalleryImage1 = (event) => {
+    let file1 = event.target.files[0];
+    if (file1.size > 5 * 1024 * 1024) {
+      window.alert("Please upload an image smaller than 5 MB");
+      return false;
+    }
+    setGalleryFile1(file1);
+    let reader = new FileReader();
+    reader.addEventListener("load", () => {
+      setGalleryImage1(reader.result);
+    });
+    reader.readAsDataURL(file1);
+  };
+  const handleGalleryImage2 = (event) => {
+    let file2 = event.target.files[0];
+    if (file2.size > 5 * 1024 * 1024) {
+      window.alert("Please upload an image smaller than 5 MB");
+      return false;
+    }
+    setGalleryFile2(file2);
+    let reader = new FileReader();
+    reader.addEventListener("load", () => {
+      setGalleryImage2(reader.result);
+    });
+    reader.readAsDataURL(file2);
+  };
+  const handleGalleryImage3 = (event) => {
+    let file3 = event.target.files[0];
+    if (file3.size > 5 * 1024 * 1024) {
+      window.alert("Please upload an image smaller than 5 MB");
+      return false;
+    }
+    setGalleryFile3(file3);
+    let reader = new FileReader();
+    reader.addEventListener("load", () => {
+      setGalleryImage3(reader.result);
+    });
+    reader.readAsDataURL(file3);
+  };
+  const handleGalleryImage4 = (event) => {
+    let file4 = event.target.files[0];
+    if (file4.size > 5 * 1024 * 1024) {
+      window.alert("Please upload an image smaller than 5 MB");
+      return false;
+    }
+    setGalleryFile4(file4);
+    let reader = new FileReader();
+    reader.addEventListener("load", () => {
+      setGalleryImage4(reader.result);
+    });
+    reader.readAsDataURL(file4);
   };
 
   //const updateSeats = () => {
@@ -84,7 +179,17 @@ console.log('spot.endTime', spot.endTime)
         ? -1 * (oldSpot.seats - spot.seats)
         : spot.seats - oldSpot.seats);
     try {
-      await spotStore.updateSpot(spot, spotId, file, categoryId);
+      await spotStore.updateSpot(
+        spot,
+        spotId,
+        file,
+        categoryId,
+        galleryFile0,
+        galleryFile1,
+        galleryFile2,
+        galleryFile3,
+        galleryFile4
+      );
       swal({
         title: "Success",
         text: `${spot.name} has been Updated`,
@@ -98,6 +203,8 @@ console.log('spot.endTime', spot.endTime)
     }
   };
 
+  const spotdate = new Date(spot.startDate);
+  const formattedDate = spotdate.toISOString().substr(0, 10);
   return (
     <div className="backgroundform">
       <div className="whitebackgroundoffers" style={{ height: "250%" }}>
@@ -106,6 +213,245 @@ console.log('spot.endTime', spot.endTime)
         </div>
 
         <div style={{ height: "200%" }} className="whitebackgroundcreate">
+          <h5 className="l-color">Upload an Image</h5>
+          <h5 className="l-color-tiny">
+            This is how your image will look like on the Explore screen
+          </h5>
+          <div className="spotimagecontainer">
+            <img
+              className="spotimage"
+              src={image ? image : `${baseURL}${spot.image}`}
+            ></img>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignSelf: "center",
+              alignContent: "center",
+              justifyContent: "center",
+            }}
+          >
+            <h5 className="l-color">Max file size is 5 MB</h5>
+            <h5
+              style={{
+                color: "red",
+                marginTop: 10,
+                alignSelf: "center",
+              }}
+            >
+              &nbsp; *
+            </h5>
+          </div>
+          <div className="imagechoose">
+            <input
+              className="input-style-choose"
+              type="file"
+              id="choose"
+              placeholder="Image URL"
+              name="image"
+              onChange={handleImage}
+            />
+            <label className="labelchoose" for="choose">
+              Choose image
+            </label>
+          </div>
+          <div>
+            <div style={{ display: "flex", flexDirection: "row" }}>
+              <h5 className="l-color">Upload Image Gallery &nbsp; </h5>
+            </div>
+            <h5 className="l-color-tiny-image">You can add up to 5 images</h5>
+            <div className="spotimagecontainer">
+              <div
+                style={{
+                  position: "relative",
+                  width: "100%",
+                  display: "flex",
+                  flexDirection: "row",
+                  flexWrap: "nowrap",
+                  whiteSpace: "nowrap",
+                  overflowX: "auto",
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <img
+                    alt={galleryImage0}
+                    className="spotgallery"
+                    src={
+                      galleryImage0
+                        ? galleryImage0
+                        : `${baseURL}${spot.galleryImage0}`
+                    }
+                  ></img>
+
+                  <input
+                    onChange={handleGalleryImage0}
+                    type="file"
+                    id="choose0"
+                    placeholder="Image URL"
+                    className="input-style-choose"
+                    name="galleryItem0"
+                  />
+                  <label className="editorg" for="choose0">
+                    Choose Image
+                  </label>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <img
+                    alt={galleryImage1}
+                    className="spotgallery"
+                    src={
+                      galleryImage1
+                        ? galleryImage1
+                        : `${baseURL}${spot.galleryImage1}`
+                    }
+                  ></img>
+
+                  <input
+                    onChange={handleGalleryImage1}
+                    type="file"
+                    id="choose1"
+                    placeholder="Image URL"
+                    className="input-style-choose"
+                    name="galleryItem1"
+                  />
+                  <label className="editorg" for="choose1">
+                    Choose Image
+                  </label>
+                </div>
+
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <img
+                    alt={galleryImage2}
+                    className="spotgallery"
+                    src={
+                      galleryImage2
+                        ? galleryImage2
+                        : `${baseURL}${spot.galleryImage2}`
+                    }
+                  ></img>
+                  <input
+                    onChange={handleGalleryImage2}
+                    type="file"
+                    id="choose2"
+                    placeholder="Image URL"
+                    className="input-style-choose"
+                    name="galleryItem2"
+                  />
+                  <label className="editorg" for="choose2">
+                    Choose Image
+                  </label>
+                </div>
+
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <img
+                    alt={galleryImage3}
+                    className="spotgallery"
+                    src={
+                      galleryImage3
+                        ? galleryImage3
+                        : `${baseURL}${spot.galleryImage3}`
+                    }
+                  ></img>
+
+                  <input
+                    onChange={handleGalleryImage3}
+                    type="file"
+                    id="choose3"
+                    placeholder="Image URL"
+                    className="input-style-choose"
+                    name="galleryItem3"
+                  />
+                  <label className="editorg" for="choose3">
+                    Choose Image
+                  </label>
+                </div>
+
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <img
+                    alt={galleryImage4}
+                    className="spotgallery"
+                    src={
+                      galleryImage4
+                        ? galleryImage4
+                        : `${baseURL}${spot.galleryImage4}`
+                    }
+                  ></img>
+                  <input
+                    onChange={handleGalleryImage4}
+                    type="file"
+                    id="choose4"
+                    placeholder="Image URL"
+                    className="input-style-choose"
+                    name="galleryItem4"
+                  />
+                  <label className="editorg" for="choose4">
+                    Choose Image
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                alignSelf: "center",
+                alignContent: "center",
+                justifyContent: "center",
+              }}
+            >
+              <h5 className="l-color">Max file size is 5 MB</h5>
+              <h5
+                style={{
+                  color: "red",
+                  marginTop: 10,
+                  alignSelf: "center",
+                }}
+              >
+                &nbsp; *
+              </h5>
+            </div>
+          </div>
           <div className="categorydiv">
             <h1 className="categorytitle">Choose a category</h1>
             <h1 className="categorytitlechoosen">{categoryName}</h1>
@@ -129,6 +475,7 @@ console.log('spot.endTime', spot.endTime)
               <input
                 className="input-style"
                 type="text"
+                dir="rtl"
                 multiple
                 value={spot.nameAr}
                 name="nameAr"
@@ -169,6 +516,7 @@ console.log('spot.endTime', spot.endTime)
                   height: "100px",
                   paddingTop: "10px",
                 }}
+                dir="rtl"
                 className="input-style"
                 type="text"
                 value={spot.descriptionAr}
@@ -200,10 +548,18 @@ console.log('spot.endTime', spot.endTime)
                 }}
                 className="input-style"
                 type="text"
+                dir="rtl"
                 value={spot.detailsAr}
                 name="detailsAr"
                 onChange={handleChange}
               />
+            </div>
+
+            <div
+              style={{
+                width: "100%",
+              }}
+            >
               <h5 className="l-color">Enter Start Time</h5>
               <input
                 className="input-style"
@@ -212,32 +568,38 @@ console.log('spot.endTime', spot.endTime)
                 name="startTime"
                 onChange={handleChange}
               />
-              {(spot.endTime === "") || (spot.endTime === null) ?  ( 
+
+              {spot.endTime !== "" || spot.endTime !== null ? (
                 <></>
-                   ) : (
-                    <>
-                      <h5 className="l-color">Enter End Time</h5>
-                      <input
-                      className="input-style"
-                      type="time"
-                      value={spot.endTime}
-                      name="endTime"
-                      onChange={handleChange}
-                    />
+              ) : (
+                <>
+                  <h5 className="l-color">Enter End Time</h5>
+                  <input
+                    className="input-style"
+                    type="time"
+                    value={spot.endTime}
+                    name="endTime"
+                    onChange={handleChange}
+                  />
                 </>
-                  )
-              }
+              )}
               <h5 className="l-color">Enter Date</h5>
               <input
                 className="input-style"
                 type="date"
-                value={spot.startDate}
+                value={formattedDate}
                 name="startDate"
                 onChange={handleChange}
               />
-            </div>
-            <div>
-              <h5 className="l-color">Is the Dest free to Enter?</h5>
+              <h5 className="l-color">Publish Dest</h5>
+              <Toggle
+                defaultChecked={checked}
+                icons={false}
+                name="isPublished"
+                onChange={handlePublish}
+              />
+
+              {/* <h5 className="l-color">Is the Dest free to Enter?</h5>
               <input
                 checked={spot.isFree === true ? "checked" : ""}
                 type="radio"
@@ -279,37 +641,23 @@ console.log('spot.endTime', spot.endTime)
                 </div>
               ) : (
                 <></>
-              )}
-              <h5 className="l-color">Upload an Image</h5>
-              <h5 className="l-color-tiny">
-                This is how your image will look like on the user's screen
-              </h5>
-              <div className="spotimagecontainer">
-                <img
-                  className="spotimage"
-                  src={image ? image : `${baseURL}${spot.image}`}
-                ></img>
-              </div>
-              <div className="imagechoose">
-                <input
-                  className="input-style-choose"
-                  type="file"
-                  id="choose"
-                  placeholder="Image URL"
-                  name="image"
-                  onChange={handleImage}
-                />
-                <label className="labelchoose" for="choose">
-                  Choose image
-                </label>
-
+              )} */}
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignContent: "center",
+                  alignItems: "center",
+                  width: "100%",
+                }}
+              >
                 <input
                   className="button-sign ing-create"
                   type="submit"
                   value="Update Spot"
                 />
                 <button
-                  className="button-sign ing-create"
+                  className="button-cancel"
                   onClick={() => nav(`/spot/${spotId}`)}
                 >
                   Cancel
