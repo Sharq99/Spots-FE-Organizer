@@ -13,7 +13,6 @@ function EditOrganizerModal({ handleCloseEdit }) {
     numofDests: authStore.organizer.numofDests,
     displayNameEn: authStore.organizer.displayNameEn,
     displayNameAr: authStore.organizer.displayNameAr,
-    username: authStore.organizer.username,
   });
   const [file, setFile] = useState(authStore.organizer.image);
   const [image, setImage] = useState();
@@ -50,9 +49,11 @@ function EditOrganizerModal({ handleCloseEdit }) {
 
   return (
     <div>
-      <button className="editorg" onClick={handleShow}>
-        Edit Profile
-      </button>
+      <div>
+        <button className="settingsbuttons" onClick={handleShow}>
+          Edit Profile
+        </button>
+      </div>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header style={{ borderBottomWidth: 0 }} closeButton>
@@ -110,7 +111,7 @@ function EditOrganizerModal({ handleCloseEdit }) {
                 name="displayNameEn"
               />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+            {/* <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label style={{ fontFamily: "Ubuntu" }}>Email</Form.Label>
               <Form.Control
                 style={{ fontFamily: "Source Sans Pro" }}
@@ -120,7 +121,7 @@ function EditOrganizerModal({ handleCloseEdit }) {
                 autoFocus
                 name="email"
               />
-            </Form.Group>
+            </Form.Group> */}
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label style={{ fontFamily: "Ubuntu" }}>Phone</Form.Label>
               <Form.Control

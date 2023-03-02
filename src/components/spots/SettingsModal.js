@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Modal, Button, Form, InputGroup, FormControl } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 import EditOrganizerModal from "../EditOrganizerModal";
 import LogOutButton from "../organizer/LogOutButton";
-import ChangePasswordModal from "../organizer/ChangePasswordModal"
-import { IoIosArrowDown } from "react-icons/io";
+import ChangePasswordModal from "../organizer/ChangePasswordModal";
+import { IoIosSettings, IoIosClose } from "react-icons/io";
 
 function SettingsModal() {
   const [show, setShow] = useState(false);
@@ -12,17 +12,41 @@ function SettingsModal() {
 
   return (
     <div>
-      <IoIosArrowDown
-        onClick={handleShow}
-        name="stats-chart-outline"
-        className="settingsmodal"
-      ></IoIosArrowDown>
+      <h5 onClick={handleShow} name="stats-chart-outline" className="editorg">
+        Edit Profile
+      </h5>
 
       <Modal size="sm" className="modal" show={show} onHide={handleClose}>
-        <Modal.Header
-          style={{ borderBottomWidth: 0 }}
-          closeButton
-        ></Modal.Header>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            padding: 10,
+            paddingTop: 5,
+            paddingBottom: 0,
+          }}
+        >
+          <Modal.Header
+            style={{
+              borderBottomWidth: 0,
+              fontSize: 20,
+              margin: 0,
+              textAlign: "left",
+            }}
+          >
+            Settings
+          </Modal.Header>
+          <IoIosClose
+            style={{
+              fontSize: 32,
+              marginRight: 10,
+            }}
+            onClick={handleClose}
+            name="stats-chart-outline"
+            className="settingsmodal"
+          ></IoIosClose>
+        </div>
         <Modal.Body>
           <div className="center-settings">
             <EditOrganizerModal handleCloseEdit={handleClose} />

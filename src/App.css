@@ -88,13 +88,12 @@ body {
   justify-self: center;
   align-self: center;
   align-items: center;
-  padding: 50px;
   font-weight: bolder;
   font-family: "Ubuntu", sans-serif;
   border-radius: 30px;
   height: fit-content;
   width: 750px;
-  margin-top: 20%;
+  margin-top: 10%;
   background-color: rgba(255, 255, 255, 0.13);
   backdrop-filter: blur(10px);
   border: 2px solid rgba(255, 255, 255, 0.1);

@@ -30,9 +30,17 @@ class AuthStore {
     }
   };
 
+  getToken = async () => {
+    try {
+      const response = await instance.post("/organizer/updateToken");
+      this.setOrganizer(response.data.token);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   register = async (application) => {
     const newOrganizer = {
-      username: application.username,
       email: application.email,
       phone: application.phone,
       bio: application.bio,
@@ -43,8 +51,6 @@ class AuthStore {
     };
     try {
       await instance.post("/organizer/register", newOrganizer);
-      // this.setOrganizer(response.data.token);
-      this.sendWelcomeEmail();
     } catch (error) {
       console.log(error);
     }
@@ -77,17 +83,6 @@ class AuthStore {
     } catch (error) {
       console.log(error);
     }
-  };
-
-  sendWelcomeEmail = () => {
-    const emailContent = {
-      to_name: this.organizer.username,
-      message: "Go Entertain the Masses",
-      to_email: this.organizer.email,
-    };
-    emailjs.init("0CGPMjHzm16JAhRPl");
-
-    emailjs.send("AB-Serv-12", "CG1", emailContent);
   };
 
   fetchOrganizers = async () => {
@@ -152,7 +147,7 @@ class AuthStore {
       console.log(error);
     }
   };
-  
+
   updateNumofDests = async () => {
     const newOrganizer = {
       ...this.organizer,
@@ -163,7 +158,6 @@ class AuthStore {
       this.setOrganizer(res.data.token);
     } catch (error) {
       console.log("numofdests", error);
-
     }
   };
 }

@@ -56,96 +56,145 @@ function SpotPage() {
               Live Statistics
             </h1>
           </div>
-          <div className="containerLive">
-            <div
-              style={{
-                width: "50%",
-                display: "flex",
-                flexDirection: "column",
-                alignContent: "center",
-                justifyContent: "center",
-                alignItems: "center",
-                padding: 50,
-              }}
-            >
-              <h1
-                className="fontfamily"
+          {spot.isFree ? (
+            <div className="containerLive">
+              <div
                 style={{
-                  fontSize: 30,
-                  color: "black",
-                  textAlign: "center",
+                  width: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignContent: "center",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  padding: 50,
                 }}
               >
-                Seats Remaining
-              </h1>
-              <h1
-                className="fontfamily"
-                style={{
-                  fontSize: 50,
-                  color: "black",
-                  fontWeight: "600",
-                  textAlign: "center",
-                  padding: 20,
-                }}
-              >
-                {spot.seatsRemaining}
-              </h1>
-              <h1
-                className="fontfamily"
-                style={{
-                  fontSize: 20,
-                  color: "grey",
-                  textAlign: "center",
-                }}
-              >
-                From {spot.seats} total
-              </h1>
+                <h1
+                  className="fontfamily"
+                  style={{
+                    fontSize: 30,
+                    color: "black",
+                    textAlign: "center",
+                  }}
+                >
+                  Users here
+                </h1>
+                <h1
+                  className="fontfamily"
+                  style={{
+                    fontSize: 50,
+                    color: "black",
+                    fontWeight: "600",
+                    textAlign: "center",
+                    padding: 20,
+                  }}
+                >
+                  {spot.users.length}
+                </h1>
+                <h1
+                  className="fontfamily"
+                  style={{
+                    fontSize: 20,
+                    color: "grey",
+                    textAlign: "center",
+                  }}
+                >
+                  Only users who scanned your main QR code
+                </h1>
+              </div>
             </div>
-            <div
-              style={{
-                width: "50%",
-                display: "flex",
-                flexDirection: "column",
-                alignContent: "center",
-                justifyContent: "center",
-                alignItems: "center",
-                padding: 50,
-              }}
-            >
-              <h1
-                className="fontfamily"
+          ) : (
+            <div className="containerLive">
+              <div
                 style={{
-                  fontSize: 30,
-                  color: "black",
-                  textAlign: "center",
+                  width: "50%",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignContent: "center",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  padding: 50,
                 }}
               >
-                Your Revenue
-              </h1>
-              <h1
-                className="fontfamily"
+                <h1
+                  className="fontfamily"
+                  style={{
+                    fontSize: 30,
+                    color: "black",
+                    textAlign: "center",
+                  }}
+                >
+                  Seats Remaining
+                </h1>
+                <h1
+                  className="fontfamily"
+                  style={{
+                    fontSize: 50,
+                    color: "black",
+                    fontWeight: "600",
+                    textAlign: "center",
+                    padding: 20,
+                  }}
+                >
+                  {spot.seatsRemaining}
+                </h1>
+                <h1
+                  className="fontfamily"
+                  style={{
+                    fontSize: 20,
+                    color: "grey",
+                    textAlign: "center",
+                  }}
+                >
+                  From {spot.seats} total
+                </h1>
+              </div>
+              <div
                 style={{
-                  fontSize: 50,
-                  color: "black",
-                  fontWeight: "600",
-                  textAlign: "center",
-                  padding: 20,
+                  width: "50%",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignContent: "center",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  padding: 50,
                 }}
               >
-                {spot.spotRevenue}
-              </h1>
-              <h1
-                className="fontfamily"
-                style={{
-                  fontSize: 20,
-                  color: "grey",
-                  textAlign: "center",
-                }}
-              >
-                Before commission
-              </h1>
+                <h1
+                  className="fontfamily"
+                  style={{
+                    fontSize: 30,
+                    color: "black",
+                    textAlign: "center",
+                  }}
+                >
+                  Your Revenue
+                </h1>
+                <h1
+                  className="fontfamily"
+                  style={{
+                    fontSize: 50,
+                    color: "black",
+                    fontWeight: "600",
+                    textAlign: "center",
+                    padding: 20,
+                  }}
+                >
+                  {spot.spotRevenue}
+                </h1>
+                <h1
+                  className="fontfamily"
+                  style={{
+                    fontSize: 20,
+                    color: "grey",
+                    textAlign: "center",
+                  }}
+                >
+                  Before commission
+                </h1>
+              </div>
             </div>
-          </div>
+          )}
         </>
       ) : (
         <></>
@@ -289,31 +338,41 @@ function SpotPage() {
             overflowX: "auto",
           }}
         >
-          <img
-            src={`${baseURL}${spot?.galleryImage0}`}
-            className="spotpagegallery"
-            alt={`${baseURL}${spot?.galleryImage0}`}
-          ></img>
-          <img
-            src={`${baseURL}${spot?.galleryImage1}`}
-            className="spotpagegallery"
-            alt={`${baseURL}${spot?.galleryImage1}`}
-          ></img>
-          <img
-            src={`${baseURL}${spot?.galleryImage2}`}
-            className="spotpagegallery"
-            alt={`${baseURL}${spot?.galleryImage2}`}
-          ></img>
-          <img
-            src={`${baseURL}${spot?.galleryImage3}`}
-            className="spotpagegallery"
-            alt={`${baseURL}${spot?.galleryImage3}`}
-          ></img>
-          <img
-            src={`${baseURL}${spot?.galleryImage4}`}
-            className="spotpagegallery"
-            alt={`${baseURL}${spot?.galleryImage4}`}
-          ></img>
+          {spot?.galleryImage0 && (
+            <img
+              src={`${baseURL}${spot?.galleryImage0}`}
+              className="spotpagegallery"
+              alt={`${baseURL}${spot?.galleryImage0}`}
+            ></img>
+          )}
+          {spot?.galleryImage1 && (
+            <img
+              src={`${baseURL}${spot?.galleryImage1}`}
+              className="spotpagegallery"
+              alt={`${baseURL}${spot?.galleryImage1}`}
+            ></img>
+          )}
+          {spot?.galleryImage2 && (
+            <img
+              src={`${baseURL}${spot?.galleryImage2}`}
+              className="spotpagegallery"
+              alt={`${baseURL}${spot?.galleryImage2}`}
+            ></img>
+          )}
+          {spot?.galleryImage3 && (
+            <img
+              src={`${baseURL}${spot?.galleryImage3}`}
+              className="spotpagegallery"
+              alt={`${baseURL}${spot?.galleryImage3}`}
+            ></img>
+          )}
+          {spot?.galleryImage4 && (
+            <img
+              src={`${baseURL}${spot?.galleryImage4}`}
+              className="spotpagegallery"
+              alt={`${baseURL}${spot?.galleryImage4}`}
+            ></img>
+          )}
         </div>
         <div className="spotinfobig">
           <h1 className="spotlabel">Description</h1>

@@ -1,7 +1,7 @@
 import { observer } from "mobx-react";
 import spotStore from "../../stores/spotStore";
 import { useNavigate, useParams } from "react-router-dom";
-import QrCode from "../../qrCode";
+import MainQrCode from "../../qrCode";
 import OfferItem from "../offer/OfferItem";
 import offerStore from "../../stores/offerStore";
 import swal from "sweetalert";
@@ -11,7 +11,6 @@ import RewardItem from "../reward/RewardItem";
 import GenerateQrCode from "../../GenerateQrCode";
 import html2canvas from "html2canvas";
 import { ReactComponent as DestLogo } from "../pics/DestLogo.svg";
-import GenerateQrCodeStamp from "../../qrCodeStamp";
 import QRCode from "react-qr-code";
 
 function downloadDivAsImageEnglish(divId) {
@@ -39,20 +38,31 @@ function ExperianceList() {
   const spot = spotStore.getSpotsById(spotId);
   const [newspot, setNewspot] = useState({
     name: spot?.name,
+    nameAr: spot?.nameAr,
     image: spot?.image,
+    galleryImage0: spot?.galleryImage0,
+    galleryImage1: spot?.galleryImage1,
+    galleryImage2: spot?.galleryImage2,
+    galleryImage3: spot?.galleryImage3,
+    galleryImage4: spot?.galleryImage4,
     location: spot?.location,
     description: spot?.description,
+    descriptionAr: spot?.descriptionAr,
     details: spot?.details,
+    detailsAr: spot?.detailsAr,
     startTime: spot?.startTime,
+    endTime: spot?.endTime ? spot?.endTime : "",
     isFree: spot?.isFree,
-    isAd: spot?.isAd,
     startDate: spot?.startDate,
     endDate: spot?.endDate,
     seats: spot?.seats,
+    seatsRemaining: spot?.seatsRemaining,
     price: spot?.price,
+    isAd: spot?.isAd,
     category: spot?.category,
-    addSeats: 0,
-    announcement: "",
+    addSeats: spot?.addSeats,
+    announcement: spot?.announcement,
+    isPublished: spot?.isPublished,
   });
   const handleAnnouncementText = (event) => {
     newspot.announcement = event.target.value;
@@ -60,7 +70,18 @@ function ExperianceList() {
   const handleAnnouncement = async (event) => {
     event.preventDefault();
     try {
-      await spotStore.updateSpot(newspot, spotId, spot?.image, spot?.category);
+      console.log(spot?.category);
+      await spotStore.updateSpot(
+        newspot,
+        spotId,
+        spot?.image,
+        spot?.category,
+        newspot.galleryImage0,
+        newspot.galleryImage1,
+        newspot.galleryImage2,
+        newspot.galleryImage3,
+        newspot.galleryImage4
+      );
       swal({
         title: "Success",
         text: `announcement has been Updated`,
@@ -95,7 +116,7 @@ function ExperianceList() {
             <h1 style={{ fontSize: 40 }} className="l-color">
               Your Dest's Main Qr Code
             </h1>
-            <QrCode spotId={spotId} />
+            <MainQrCode spotId={spotId} />
           </div>
           <div>
             <h1 className="dashannouncement">Announcement</h1>
@@ -220,7 +241,7 @@ function ExperianceList() {
           <h1 className="destdownloads">
             Click on the one you want to download
           </h1>
-          {spot.isFree ? (
+          {spot?.isFree ? (
             <div
               style={{
                 display: "flex",
@@ -257,12 +278,9 @@ function ExperianceList() {
                     height: "100%",
                     backgroundColor: "white",
                     width: 110,
-                    borderTopRightRadius: 20,
-                    borderBottomRightRadius: 20,
                     display: "flex",
                     alignContent: "center",
                     justifyContent: "center",
-                    paddingRight: 6,
                   }}
                 >
                   <QRCode
@@ -305,12 +323,9 @@ function ExperianceList() {
                     height: "100%",
                     backgroundColor: "white",
                     width: 110,
-                    borderTopLeftRadius: 20,
-                    borderBottomLeftRadius: 20,
                     display: "flex",
                     alignContent: "center",
                     justifyContent: "center",
-                    paddingLeft: 6,
                   }}
                 >
                   <QRCode
@@ -353,12 +368,9 @@ function ExperianceList() {
                     height: "100%",
                     backgroundColor: "white",
                     width: 110,
-                    borderTopRightRadius: 20,
-                    borderBottomRightRadius: 20,
                     display: "flex",
                     alignContent: "center",
                     justifyContent: "center",
-                    paddingRight: 6,
                   }}
                 >
                   <QRCode
@@ -391,12 +403,9 @@ function ExperianceList() {
                     height: "100%",
                     backgroundColor: "white",
                     width: 110,
-                    borderTopLeftRadius: 20,
-                    borderBottomLeftRadius: 20,
                     display: "flex",
                     alignContent: "center",
                     justifyContent: "center",
-                    paddingLeft: 6,
                   }}
                 >
                   <QRCode
