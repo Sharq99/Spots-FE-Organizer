@@ -3,26 +3,18 @@ import applicationStore from "../../stores/applicationStore";
 
 function RegisterModal() {
   const [organizer, setOrganizer] = useState({
-    username: "",
     email: "",
     phone: "",
     instagram: "",
   });
   const [sent, setSent] = useState(false);
   const [emailValidation, setEmailValidation] = useState(true);
-  const [userNameValidation, setUserNameValidation] = useState(true);
   const [phoneNumberValidation, setPhoneNumberValidation] = useState(true);
   const [instagramValidation, setInstagramValidation] = useState(true);
 
   const handleChange = (event) => {
     setOrganizer({ ...organizer, [event.target.name]: event.target.value });
-    if (event.target.name === "username") {
-      if (event.target.value === "") {
-        setUserNameValidation(true);
-      } else {
-        setUserNameValidation(false);
-      }
-    } else if (event.target.name === "email") {
+    if (event.target.name === "email") {
       if (event.target.value === "") {
         setEmailValidation(true);
       } else {
@@ -64,13 +56,6 @@ function RegisterModal() {
             <input
               className="input-stylemain"
               type="text"
-              placeholder="Username"
-              name="username"
-              onChange={handleChange}
-            />
-            <input
-              className="input-stylemain"
-              type="text"
               placeholder="Email"
               name="email"
               onChange={handleChange}
@@ -90,7 +75,6 @@ function RegisterModal() {
               onChange={handleChange}
             />
             {emailValidation === false &&
-            userNameValidation === false &&
             phoneNumberValidation === false &&
             instagramValidation === false ? (
               <input

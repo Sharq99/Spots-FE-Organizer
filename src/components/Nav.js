@@ -22,7 +22,7 @@ function Nav() {
     <>
       {authStore.organizer ? (
         <>
-          {authStore.organizer?.username === DEST_KEY_ADS ? (
+          {authStore.organizer?.displayNameEn === DEST_KEY_ADS ? (
             <nav className="navtabs">
               <NavLink
                 style={({ isActive }) => ({
@@ -44,7 +44,7 @@ function Nav() {
                 <AiFillNotification name="stats-chart-outline"></AiFillNotification>
               </NavLink>
             </nav>
-          ) : authStore.organizer?.username === DEST_KEY_U ? (
+          ) : authStore.organizer?.displayNameEn === DEST_KEY_U ? (
             <nav className="navtabs">
               <NavLink
                 style={({ isActive }) => ({

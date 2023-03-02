@@ -47,14 +47,14 @@ function ForgotPassword() {
           <Form onSubmit={onSubmit}>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label style={{ fontFamily: "Ubuntu" }}>
-                Organizer's Username
+                Organizer's Email
               </Form.Label>
               <Form.Control
                 style={{ fontFamily: "Source Sans Pro" }}
                 onChange={handleChange}
-                type="username"
+                type="email"
                 autoFocus
-                name="username"
+                name="email"
               />
             </Form.Group>
             <Button

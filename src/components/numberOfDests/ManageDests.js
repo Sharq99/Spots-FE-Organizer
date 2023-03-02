@@ -5,7 +5,7 @@ import authStore from "../../stores/authStore";
 function ManageDests() {
   const [addDests, setAddDests] = useState({
     numofDests: 0,
-    oranizerUsername: "",
+    oranizerEmail: "",
   });
   const [numofDests, setNumofDests] = useState(true);
   const [userId, setUserId] = useState(true);
@@ -16,9 +16,9 @@ function ManageDests() {
         setNumofDests(true);
     } else if(event.target.name === "numofDests" && event.target.value !== "") {
         setNumofDests(false);
-    } else if (event.target.name === "oranizerUsername" &&  event.target.value === "") {
+    } else if (event.target.name === "oranizerEmail" &&  event.target.value === "") {
         setUserId(true);
-    } else if (event.target.name === "oranizerUsername" && event.target.value !== "") {
+    } else if (event.target.name === "oranizerEmail" && event.target.value !== "") {
         setUserId(false);
     }
   };
@@ -50,16 +50,16 @@ function ManageDests() {
           <form onSubmit={handleSubmit} >
               <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent: "space-evenly"}}>
                 <div>
-                    <div style={{ display: "flex", flexDirection: "row" }}> {/* Username */}
-                        <h5 className="l-color">Enter Organizer's Username</h5>
+                    <div style={{ display: "flex", flexDirection: "row" }}> {/* Email */}
+                        <h5 className="l-color">Enter Organizer's Email</h5>
                         <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
                     </div>
                     <input
                         className="input-style"
                         type="text"
                         multiple
-                        placeholder="Organizer's Username"
-                        name="oranizerUsername"
+                        placeholder="Organizer's Email"
+                        name="oranizerEmail"
                         onChange={handleChange}
                     />
                 </div>

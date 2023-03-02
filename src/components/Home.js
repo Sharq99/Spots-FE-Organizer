@@ -14,7 +14,7 @@ function Home() {
         <>
           {authStore.organizer?.email === DEST_KEY_ADS ? (
             <Ads />
-          ) : authStore.organizer?.username === DEST_KEY_U ? (
+          ) : authStore.organizer?.displayNameEn === DEST_KEY_U ? (
             <ApllicationList />
           ) : (
             <Dashborad />

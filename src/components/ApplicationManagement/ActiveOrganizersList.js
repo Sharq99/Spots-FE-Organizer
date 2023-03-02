@@ -26,7 +26,7 @@ function ActiveOrganizersList() {
         loading={loading}
         height={660}
       >
-        <Column width={240} align="center" fixed resizable>
+        {/* <Column width={240} align="center" fixed resizable>
           <HeaderCell
             style={{
               fontWeight: "bolder",
@@ -36,7 +36,7 @@ function ActiveOrganizersList() {
             User Name
           </HeaderCell>
           <Cell dataKey="username" />
-        </Column>
+        </Column> */}
         <Column width={240} align="center" fixed resizable>
           <HeaderCell
             style={{

@@ -15,7 +15,7 @@ function ApplicationList() {
     <div style={{ backgroundColor: "white", width: "100%", height: "100%" }}>
       <h1 className="titleorg">Recieved Applications</h1>
       <Table data={applicationStore.applications} height={660} wordWrap="break-word">
-        <Column width={250} align="center" fixed resizable>
+        {/* <Column width={250} align="center" fixed resizable>
           <HeaderCell
             style={{
               fontWeight: "bolder",
@@ -25,7 +25,7 @@ function ApplicationList() {
             User Name
           </HeaderCell>
           <Cell dataKey="username" />
-        </Column>
+        </Column> */}
         <Column width={250} align="center" fixed resizable>
           <HeaderCell
             style={{
