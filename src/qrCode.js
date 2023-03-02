@@ -44,7 +44,7 @@ const qrCodePreview = new QRCodeStyling({
   extension: "png",
 });
 
-const GenerateQrCode = ({ spotId }) => {
+const MainQrCode = ({ spotId }) => {
   const [url, setUrl] = useState(`dest://Profile/${spotId}`);
   const [color, setColor] = useState(500);
   const [image, setImage] = useState();
@@ -120,7 +120,7 @@ const GenerateQrCode = ({ spotId }) => {
               style={{ textAlighn: "left", marginBottom: 10 }}
               className="l-color"
             >
-              Choose Image
+              Choose Logo
             </label>
             <input
               type="file"
@@ -164,6 +164,7 @@ const GenerateQrCode = ({ spotId }) => {
           </div>
         </div>
         <div className="qrdivtwo">
+          <div ref={ref2} />
           <button
             onClick={onDownloadClick}
             style={{ marginTop: 10 }}
@@ -172,11 +173,10 @@ const GenerateQrCode = ({ spotId }) => {
           >
             Download QR code
           </button>
-          <div ref={ref2} />
         </div>
       </form>
     </div>
   );
 };
 
-export default GenerateQrCode;
+export default MainQrCode;

@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import CategoryList from "./category/CategoryList";
 import spotStore from "../stores/spotStore";
 import { useNavigate } from "react-router-dom";
@@ -23,9 +23,15 @@ function CreateSpot() {
   const [galleryImage2, setGalleryImage2] = useState("");
   const [galleryImage3, setGalleryImage3] = useState("");
   const [galleryImage4, setGalleryImage4] = useState("");
-
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalIsOpen2, setModalIsOpen2] = useState(false);
+  useEffect(() => {
+    const getToken = async () => {
+      await authStore.getToken();
+    };
+    getToken();
+  }, []);
+
   function openModal() {
     setModalIsOpen(true);
   }
@@ -40,16 +46,7 @@ function CreateSpot() {
   function closeModal2() {
     setModalIsOpen2(false);
   }
-  //const [updateOrganizer, setUpdateOrganizer] = useState({
-  //phone: authStore.organizer.phone,
-  //bio: authStore.organizer.bio,
-  //email: authStore.organizer.email,
-  //image: authStore.organizer.image,
-  //numofDests: authStore.organizer.numofDests,
-  //displayNameEn: authStore.organizer.displayNameEn,
-  //displayNameAr: authStore.organizer.displayNameAr,
-  //username: authStore.organizer.username,
-  //});
+
   const [spot, setSpot] = useState({
     name: "",
     nameAr: "",
@@ -274,7 +271,7 @@ function CreateSpot() {
         <div className="center">
           <h1 className="dash">Create A Dest</h1>
         </div>
-        {authStore.organizer.numofDests < 0 ? (
+        {authStore.organizer.numofDests > 0 ? (
           <div className="whitebackgroundcreate">
             <div>
               <div style={{ display: "flex", flexDirection: "row" }}>
@@ -465,18 +462,48 @@ function CreateSpot() {
                       Recommended 450W x 300H
                     </label>
                   )}
-
-                  <input
-                    onChange={handleGalleryImage0}
-                    type="file"
-                    id="choose0"
-                    placeholder="Image URL"
-                    className="input-style-choose"
-                    name="galleryItem0"
-                  />
-                  <label className="editorg" for="choose0">
-                    Choose Image
-                  </label>
+                  <div>
+                    <input
+                      onChange={handleGalleryImage0}
+                      type="file"
+                      id="choose0"
+                      placeholder="Image URL"
+                      className="input-style-choose"
+                      name="galleryItem0"
+                    />
+                    <label
+                      className="editorg"
+                      for="choose0"
+                      style={{ marginBottom: 15 }}
+                    >
+                      Choose Image
+                    </label>
+                    {galleryFile0 ? (
+                      <>
+                        <input
+                          onClick={() => {
+                            setGalleryFile0("");
+                            setGalleryImage0("");
+                            setSpot({ ...spot, galleryImage0: null });
+                          }}
+                          type="button"
+                          id="delete0"
+                          placeholder="Image URL"
+                          className="input-style-choose"
+                          name="galleryItem0"
+                        />
+                        <label
+                          className="editorg"
+                          for="delete0"
+                          style={{ marginBottom: 15 }}
+                        >
+                          Remove
+                        </label>
+                      </>
+                    ) : (
+                      <></>
+                    )}
+                  </div>
                 </div>
                 <div
                   style={{
@@ -498,17 +525,48 @@ function CreateSpot() {
                       Recommended 450W x 300H
                     </label>
                   )}
-                  <input
-                    onChange={handleGalleryImage1}
-                    type="file"
-                    id="choose1"
-                    placeholder="Image URL"
-                    className="input-style-choose"
-                    name="galleryItem1"
-                  />
-                  <label className="editorg" for="choose1">
-                    Choose Image
-                  </label>
+                  <div>
+                    <input
+                      onChange={handleGalleryImage1}
+                      type="file"
+                      id="choose1"
+                      placeholder="Image URL"
+                      className="input-style-choose"
+                      name="galleryItem1"
+                    />
+                    <label
+                      className="editorg"
+                      for="choose1"
+                      style={{ marginBottom: 15 }}
+                    >
+                      Choose Image
+                    </label>
+                    {galleryFile1 ? (
+                      <>
+                        <input
+                          onClick={() => {
+                            setGalleryFile1("");
+                            setGalleryImage1("");
+                            setSpot({ ...spot, galleryImage1: null });
+                          }}
+                          type="button"
+                          id="delete1"
+                          placeholder="Image URL"
+                          className="input-style-choose"
+                          name="galleryItem1"
+                        />
+                        <label
+                          className="editorg"
+                          for="delete1"
+                          style={{ marginBottom: 15 }}
+                        >
+                          Remove
+                        </label>
+                      </>
+                    ) : (
+                      <></>
+                    )}
+                  </div>
                 </div>
 
                 <div
@@ -531,17 +589,48 @@ function CreateSpot() {
                       Recommended 450W x 300H
                     </label>
                   )}
-                  <input
-                    onChange={handleGalleryImage2}
-                    type="file"
-                    id="choose2"
-                    placeholder="Image URL"
-                    className="input-style-choose"
-                    name="galleryItem2"
-                  />
-                  <label className="editorg" for="choose2">
-                    Choose Image
-                  </label>
+                  <div>
+                    <input
+                      onChange={handleGalleryImage2}
+                      type="file"
+                      id="choose2"
+                      placeholder="Image URL"
+                      className="input-style-choose"
+                      name="galleryItem2"
+                    />
+                    <label
+                      className="editorg"
+                      for="choose2"
+                      style={{ marginBottom: 15 }}
+                    >
+                      Choose Image
+                    </label>
+                    {galleryFile2 ? (
+                      <>
+                        <input
+                          onClick={() => {
+                            setGalleryFile2("");
+                            setGalleryImage2("");
+                            setSpot({ ...spot, galleryImage2: null });
+                          }}
+                          type="button"
+                          id="delete2"
+                          placeholder="Image URL"
+                          className="input-style-choose"
+                          name="galleryItem2"
+                        />
+                        <label
+                          className="editorg"
+                          for="delete2"
+                          style={{ marginBottom: 15 }}
+                        >
+                          Remove
+                        </label>
+                      </>
+                    ) : (
+                      <></>
+                    )}
+                  </div>
                 </div>
 
                 <div
@@ -564,18 +653,48 @@ function CreateSpot() {
                       Recommended 450W x 300H
                     </label>
                   )}
-
-                  <input
-                    onChange={handleGalleryImage3}
-                    type="file"
-                    id="choose3"
-                    placeholder="Image URL"
-                    className="input-style-choose"
-                    name="galleryItem3"
-                  />
-                  <label className="editorg" for="choose3">
-                    Choose Image
-                  </label>
+                  <div>
+                    <input
+                      onChange={handleGalleryImage3}
+                      type="file"
+                      id="choose3"
+                      placeholder="Image URL"
+                      className="input-style-choose"
+                      name="galleryItem3"
+                    />
+                    <label
+                      className="editorg"
+                      for="choose3"
+                      style={{ marginBottom: 15 }}
+                    >
+                      Choose Image
+                    </label>
+                    {galleryFile3 ? (
+                      <>
+                        <input
+                          onClick={() => {
+                            setGalleryFile3("");
+                            setGalleryImage3("");
+                            setSpot({ ...spot, galleryImage3: null });
+                          }}
+                          type="button"
+                          id="delete3"
+                          placeholder="Image URL"
+                          className="input-style-choose"
+                          name="galleryItem3"
+                        />
+                        <label
+                          className="editorg"
+                          for="delete3"
+                          style={{ marginBottom: 15 }}
+                        >
+                          Remove
+                        </label>
+                      </>
+                    ) : (
+                      <></>
+                    )}
+                  </div>
                 </div>
 
                 <div
@@ -598,17 +717,48 @@ function CreateSpot() {
                       Recommended 450W x 300H
                     </label>
                   )}
-                  <input
-                    onChange={handleGalleryImage4}
-                    type="file"
-                    id="choose4"
-                    placeholder="Image URL"
-                    className="input-style-choose"
-                    name="galleryItem4"
-                  />
-                  <label className="editorg" for="choose4">
-                    Choose Image
-                  </label>
+                  <div>
+                    <input
+                      onChange={handleGalleryImage4}
+                      type="file"
+                      id="choose4"
+                      placeholder="Image URL"
+                      className="input-style-choose"
+                      name="galleryItem4"
+                    />
+                    <label
+                      className="editorg"
+                      for="choose4"
+                      style={{ marginBottom: 15 }}
+                    >
+                      Choose Image
+                    </label>
+                    {galleryFile4 ? (
+                      <>
+                        <input
+                          onClick={() => {
+                            setGalleryFile4("");
+                            setGalleryImage4("");
+                            setSpot({ ...spot, galleryImage4: null });
+                          }}
+                          type="button"
+                          id="delete4"
+                          placeholder="Image URL"
+                          className="input-style-choose"
+                          name="galleryItem4"
+                        />
+                        <label
+                          className="editorg"
+                          for="delete4"
+                          style={{ marginBottom: 15 }}
+                        >
+                          Remove
+                        </label>
+                      </>
+                    ) : (
+                      <></>
+                    )}
+                  </div>
                 </div>
               </div>
               <div
@@ -833,7 +983,7 @@ function CreateSpot() {
                   name="isPublished"
                   onChange={handlePublish}
                 />
-                <h5 className="l-color">Is the Dest free to Enter?</h5>
+                {/* <h5 className="l-color">Is the Dest free to Enter?</h5>
                 <input
                   type="radio"
                   id="payment"
@@ -881,7 +1031,7 @@ function CreateSpot() {
                   </div>
                 ) : (
                   <></>
-                )}
+                )} */}
                 <div
                   style={{
                     display: "flex",

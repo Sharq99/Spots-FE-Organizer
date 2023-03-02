@@ -199,12 +199,10 @@ background-color: #e52b5003;
 }
 .username {
   font-size: 30px;
-  align-self: center;
   color: black;
   font-family: "Ubuntu", sans-serif;
   font-weight: bolder;
   text-transform: capitalize;
-  margin-bottom: 30px;
   margin-right: 10px;
 }
 .profilelabels {
@@ -228,7 +226,6 @@ background-color: #e52b5003;
   height: 100px;
   width: 50%;
   background-color: #e52b51;
-  border-radius: 20px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -243,7 +240,6 @@ cursor: pointer;
   height: 100px;
   width: 50%;
   background-color: #e52b51;
-  border-radius: 20px;
   display: flex;
   flex-direction: row-reverse;
   align-items: center;
@@ -317,6 +313,7 @@ cursor: pointer;
   display: flex;
   flex-direction: column;
   margin: 40px;
+  margin-bottom: 0;
 }
 .spotsNum {
   font-size: 30px;
@@ -835,7 +832,20 @@ padding: 30px;
   padding-left: 10px;
   padding-right: 10px;
   margin: 5px;
-
+  cursor: pointer;
+}
+.settingsbuttons {
+  color: white;
+  border-style: none;
+  border-width: 0px;
+  background-color: #e52b51;
+  font-family: "Ubuntu", sans-serif;
+  border-radius: 10px;
+  padding-left: 20px;
+  height: 50px;
+  width: 255px;
+  text-align: left;
+  margin-bottom: 10px;
 }
 
 .buttonlogout {
@@ -856,9 +866,14 @@ padding: 30px;
   flex-wrap: wrap;
   flex-flow: row;
 }
+.settingsmodal{
+  font-size: 30px;
+  align-self: center;
+  color: #e52b51;
+}
 .settingsmodal:hover {
   cursor: pointer;
-  font-size: 12px;
+  
 }
 
 .reviewlabel {

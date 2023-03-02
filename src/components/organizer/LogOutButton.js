@@ -13,7 +13,7 @@ function LogOutButton() {
   };
 
   return (
-    <button className="editorg" onClick={handleSignOut}>
+    <button className="settingsbuttons" onClick={handleSignOut}>
       Logout
     </button>
   );

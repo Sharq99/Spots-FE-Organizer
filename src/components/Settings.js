@@ -9,16 +9,6 @@ function Settings() {
     <div className="whitebackgroundprofile">
       {authStore.organizer ? (
         <>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "center",
-            }}
-          >
-            <h1 className="username">{authStore.organizer.username}</h1>
-            <SettingsModal />
-          </div>
           <div className="profileimageusername">
             <div className="imageUserNameEdit center-settings">
               <div className="imageUserName">
@@ -37,6 +27,16 @@ function Settings() {
                 )}
               </div>
             </div>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "center",
+                marginTop: 20,
+              }}
+            >
+              <SettingsModal />
+            </div>
           </div>
 
           <div
@@ -53,8 +53,6 @@ function Settings() {
                 flexDirection: "row",
                 width: "60%",
                 boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
-                marginTop: 30,
-
                 borderRadius: 30,
                 padding: 30,
                 justifyContent: "space-between",

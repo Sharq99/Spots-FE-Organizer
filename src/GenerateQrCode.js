@@ -120,7 +120,7 @@ const GenerateQrCode = () => {
               style={{ textAlighn: "left", marginBottom: 10 }}
               className="l-color"
             >
-              Choose Image
+              Choose Logo
             </label>
             <input
               type="file"
@@ -180,6 +180,7 @@ const GenerateQrCode = () => {
           </div>
         </div>
         <div className="qrdivtwo">
+          <div ref={ref2} />
           <button
             onClick={onDownloadClick}
             style={{ marginTop: 10 }}
@@ -188,7 +189,6 @@ const GenerateQrCode = () => {
           >
             Download QR code
           </button>
-          <div ref={ref2} />
         </div>
       </form>
     </div>

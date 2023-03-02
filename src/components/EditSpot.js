@@ -58,7 +58,7 @@ function EditSpot() {
   });
   const [categoryId, setCategoryId] = useState(oldSpot.category);
   const [categoryName, setCategoryName] = useState(
-    categoryStore.getCategoryById(spot.category).name
+    categoryStore.getCategoryById(spot.category)?.name
   );
   const handleChange = (event) => {
     setSpot({ ...spot, [event.target.name]: event.target.value });
@@ -291,18 +291,48 @@ function EditSpot() {
                         : `${baseURL}${spot.galleryImage0}`
                     }
                   ></img>
-
-                  <input
-                    onChange={handleGalleryImage0}
-                    type="file"
-                    id="choose0"
-                    placeholder="Image URL"
-                    className="input-style-choose"
-                    name="galleryItem0"
-                  />
-                  <label className="editorg" for="choose0">
-                    Choose Image
-                  </label>
+                  <div>
+                    <input
+                      onChange={handleGalleryImage0}
+                      type="file"
+                      id="choose0"
+                      placeholder="Image URL"
+                      className="input-style-choose"
+                      name="galleryItem0"
+                    />
+                    <label
+                      className="editorg"
+                      for="choose0"
+                      style={{ marginBottom: 15 }}
+                    >
+                      Choose Image
+                    </label>
+                    {galleryFile0 ? (
+                      <>
+                        <input
+                          onClick={() => {
+                            setGalleryFile0("");
+                            setGalleryImage0("");
+                            setSpot({ ...spot, galleryImage0: null });
+                          }}
+                          type="button"
+                          id="delete0"
+                          placeholder="Image URL"
+                          className="input-style-choose"
+                          name="galleryItem0"
+                        />
+                        <label
+                          className="editorg"
+                          for="delete0"
+                          style={{ marginBottom: 15 }}
+                        >
+                          Remove
+                        </label>
+                      </>
+                    ) : (
+                      <></>
+                    )}
+                  </div>
                 </div>
                 <div
                   style={{
@@ -322,18 +352,48 @@ function EditSpot() {
                         : `${baseURL}${spot.galleryImage1}`
                     }
                   ></img>
-
-                  <input
-                    onChange={handleGalleryImage1}
-                    type="file"
-                    id="choose1"
-                    placeholder="Image URL"
-                    className="input-style-choose"
-                    name="galleryItem1"
-                  />
-                  <label className="editorg" for="choose1">
-                    Choose Image
-                  </label>
+                  <div>
+                    <input
+                      onChange={handleGalleryImage1}
+                      type="file"
+                      id="choose1"
+                      placeholder="Image URL"
+                      className="input-style-choose"
+                      name="galleryItem1"
+                    />
+                    <label
+                      className="editorg"
+                      for="choose1"
+                      style={{ marginBottom: 15 }}
+                    >
+                      Choose Image
+                    </label>
+                    {galleryFile1 ? (
+                      <>
+                        <input
+                          onClick={() => {
+                            setGalleryFile1("");
+                            setGalleryImage1("");
+                            setSpot({ ...spot, galleryImage1: null });
+                          }}
+                          type="button"
+                          id="delete1"
+                          placeholder="Image URL"
+                          className="input-style-choose"
+                          name="galleryItem1"
+                        />
+                        <label
+                          className="editorg"
+                          for="delete1"
+                          style={{ marginBottom: 15 }}
+                        >
+                          Remove
+                        </label>
+                      </>
+                    ) : (
+                      <></>
+                    )}
+                  </div>
                 </div>
 
                 <div
@@ -354,17 +414,48 @@ function EditSpot() {
                         : `${baseURL}${spot.galleryImage2}`
                     }
                   ></img>
-                  <input
-                    onChange={handleGalleryImage2}
-                    type="file"
-                    id="choose2"
-                    placeholder="Image URL"
-                    className="input-style-choose"
-                    name="galleryItem2"
-                  />
-                  <label className="editorg" for="choose2">
-                    Choose Image
-                  </label>
+                  <div>
+                    <input
+                      onChange={handleGalleryImage2}
+                      type="file"
+                      id="choose2"
+                      placeholder="Image URL"
+                      className="input-style-choose"
+                      name="galleryItem2"
+                    />
+                    <label
+                      className="editorg"
+                      for="choose2"
+                      style={{ marginBottom: 15 }}
+                    >
+                      Choose Image
+                    </label>
+                    {galleryFile2 ? (
+                      <>
+                        <input
+                          onClick={() => {
+                            setGalleryFile2("");
+                            setGalleryImage2("");
+                            setSpot({ ...spot, galleryImage2: null });
+                          }}
+                          type="button"
+                          id="delete2"
+                          placeholder="Image URL"
+                          className="input-style-choose"
+                          name="galleryItem2"
+                        />
+                        <label
+                          className="editorg"
+                          for="delete2"
+                          style={{ marginBottom: 15 }}
+                        >
+                          Remove
+                        </label>
+                      </>
+                    ) : (
+                      <></>
+                    )}
+                  </div>
                 </div>
 
                 <div
@@ -385,18 +476,48 @@ function EditSpot() {
                         : `${baseURL}${spot.galleryImage3}`
                     }
                   ></img>
-
-                  <input
-                    onChange={handleGalleryImage3}
-                    type="file"
-                    id="choose3"
-                    placeholder="Image URL"
-                    className="input-style-choose"
-                    name="galleryItem3"
-                  />
-                  <label className="editorg" for="choose3">
-                    Choose Image
-                  </label>
+                  <div>
+                    <input
+                      onChange={handleGalleryImage3}
+                      type="file"
+                      id="choose3"
+                      placeholder="Image URL"
+                      className="input-style-choose"
+                      name="galleryItem3"
+                    />
+                    <label
+                      className="editorg"
+                      for="choose3"
+                      style={{ marginBottom: 15 }}
+                    >
+                      Choose Image
+                    </label>
+                    {galleryFile3 ? (
+                      <>
+                        <input
+                          onClick={() => {
+                            setGalleryFile3("");
+                            setGalleryImage3("");
+                            setSpot({ ...spot, galleryImage3: null });
+                          }}
+                          type="button"
+                          id="delete3"
+                          placeholder="Image URL"
+                          className="input-style-choose"
+                          name="galleryItem3"
+                        />
+                        <label
+                          className="editorg"
+                          for="delete3"
+                          style={{ marginBottom: 15 }}
+                        >
+                          Remove
+                        </label>
+                      </>
+                    ) : (
+                      <></>
+                    )}
+                  </div>
                 </div>
 
                 <div
@@ -417,17 +538,48 @@ function EditSpot() {
                         : `${baseURL}${spot.galleryImage4}`
                     }
                   ></img>
-                  <input
-                    onChange={handleGalleryImage4}
-                    type="file"
-                    id="choose4"
-                    placeholder="Image URL"
-                    className="input-style-choose"
-                    name="galleryItem4"
-                  />
-                  <label className="editorg" for="choose4">
-                    Choose Image
-                  </label>
+                  <div>
+                    <input
+                      onChange={handleGalleryImage4}
+                      type="file"
+                      id="choose4"
+                      placeholder="Image URL"
+                      className="input-style-choose"
+                      name="galleryItem4"
+                    />
+                    <label
+                      className="editorg"
+                      for="choose4"
+                      style={{ marginBottom: 15 }}
+                    >
+                      Choose Image
+                    </label>
+                    {galleryFile4 ? (
+                      <>
+                        <input
+                          onClick={() => {
+                            setGalleryFile4("");
+                            setGalleryImage4("");
+                            setSpot({ ...spot, galleryImage4: null });
+                          }}
+                          type="button"
+                          id="delete4"
+                          placeholder="Image URL"
+                          className="input-style-choose"
+                          name="galleryItem4"
+                        />
+                        <label
+                          className="editorg"
+                          for="delete4"
+                          style={{ marginBottom: 15 }}
+                        >
+                          Remove
+                        </label>
+                      </>
+                    ) : (
+                      <></>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
