@@ -34,7 +34,7 @@ function App() {
         <meta name="description" content="Events App" />
       </Helmet>
       <Routes>
-        {authStore.organizer?.username === DEST_KEY_ADS ? (
+        {authStore.organizer?.displayNameEn === DEST_KEY_ADS ? (
           <>
             <Route path="/Ads" element={<Ads />} />
             <Route
@@ -46,7 +46,7 @@ function App() {
               element={<PushNotificationHistory />}
             />
           </>
-        ) : authStore.organizer?.username === DEST_KEY_U ? (
+        ) : authStore.organizer?.displayNameEn === DEST_KEY_U ? (
           <>
             <Route path="/applications" element={<ApllicationList />} />
             <Route

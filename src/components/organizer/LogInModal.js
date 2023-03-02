@@ -15,7 +15,7 @@ function LogInModal() {
     event.preventDefault();
     try {
       await authStore.login(organizer);
-      nav("/Home");
+      if(authStore.organizer) nav("/Home");
     } catch (e) {
       alert(e.message);
     }
@@ -30,9 +30,9 @@ function LogInModal() {
             <h3>Sign in to your portal</h3>
             <input
               className="input-stylemain"
-              type="text"
-              placeholder="Username"
-              name="username"
+              type="email"
+              placeholder="Email"
+              name="email"
               onChange={handleChange}
             />
             <input

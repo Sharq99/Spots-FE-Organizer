@@ -4,7 +4,7 @@ import { Modal, Button, Form } from "react-bootstrap";
 
 function ChangePasswordModal({ handleCloseEdit }) {
   const [organizer, setOrganizer] = useState({
-    username: `${authStore.organizer.username}`,
+    email: `${authStore.organizer.email}`,
     newPassword: "",
     currentPassword: "",
   });
@@ -109,7 +109,7 @@ function ChangePasswordModal({ handleCloseEdit }) {
 
   return (
     <div>
-      <button className="editorg" onClick={handleShow}>
+      <button className="settingsbuttons" onClick={handleShow}>
         Change Password
       </button>
 
