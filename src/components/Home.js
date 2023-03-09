@@ -4,25 +4,23 @@ import authStore from "../stores/authStore";
 import spotStore from "../stores/spotStore";
 import Dashborad from "./Dashborad";
 import Ads from "./Advertisment/Ads";
-import { DEST_KEY_ADS, DEST_KEY_U } from "../config/keys";
+import { DEST_KEY_ADMN } from "../config/keys";
 import ApllicationList from "./ApplicationManagement/AppllicationList";
 
 function Home() {
+  const { organizer } = authStore;
   return (
     <>
-      {authStore.organizer ? (
+      {organizer && (
         <>
-          {authStore.organizer?.email === DEST_KEY_ADS ? (
-            <Ads />
-          ) : authStore.organizer?.displayNameEn === DEST_KEY_U ? (
+          {organizer.email === DEST_KEY_ADMN ? (
             <ApllicationList />
           ) : (
             <Dashborad />
           )}
         </>
-      ) : (
-        <RegisterModal />
       )}
+      {!organizer && <RegisterModal />}
     </>
   );
 }

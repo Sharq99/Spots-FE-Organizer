@@ -14,7 +14,7 @@ import Experience from "./components/offer/Experience";
 import RewardExperience from "./components/reward/RewardExperience";
 import authStore from "./stores/authStore";
 import Ads from "./components/Advertisment/Ads";
-import { DEST_KEY_ADS, DEST_KEY_U } from "./config/keys";
+import { DEST_KEY_ADMN } from "./config/keys";
 import ApllicationList from "./components/ApplicationManagement/AppllicationList";
 import ActiveOrganizersList from "./components/ApplicationManagement/ActiveOrganizersList";
 import { Helmet } from "react-helmet";
@@ -22,6 +22,7 @@ import OrderHistory from "./components/spots/OrderHistory";
 import PushNotification from "./components/pushNotification/PushNotification";
 import PushNotificationHistory from "./components/pushNotification/PushNotificationHistory";
 import ManageDests from "./components/numberOfDests/ManageDests";
+import ForgetOrganizersList from "./components/forgotPassword/ForgetOrganizersList";
 
 function App() {
   return (
@@ -34,8 +35,21 @@ function App() {
         <meta name="description" content="Events App" />
       </Helmet>
       <Routes>
-        {authStore.organizer?.displayNameEn === DEST_KEY_ADS ? (
+        {authStore.organizer?.email === DEST_KEY_ADMN ? (
           <>
+            <Route path="/applications" element={<ApllicationList />} />
+            <Route
+              path="/active-organizers"
+              element={<ActiveOrganizersList />}
+            />
+            <Route
+              path="/forgot-passwords"
+              element={<ForgetOrganizersList />}
+            />
+            <Route
+              path="/addDests"
+              element={<ManageDests />}
+            />
             <Route path="/Ads" element={<Ads />} />
             <Route
               path="/PushNotification"
@@ -44,18 +58,6 @@ function App() {
             <Route
               path="/PushNotifications"
               element={<PushNotificationHistory />}
-            />
-          </>
-        ) : authStore.organizer?.displayNameEn === DEST_KEY_U ? (
-          <>
-            <Route path="/applications" element={<ApllicationList />} />
-            <Route
-              path="/active-organizers"
-              element={<ActiveOrganizersList />}
-            />
-            <Route
-              path="/addDests"
-              element={<ManageDests />}
             />
           </>
         ) : (

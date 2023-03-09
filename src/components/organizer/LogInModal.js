@@ -27,7 +27,7 @@ function LogInModal() {
       <form className="form-style" onSubmit={handleSubmit}>
         <div>
           <label className="label-style">
-            <h3>Sign in to your portal</h3>
+            <h3>Login to your portal</h3>
             <input
               className="input-stylemain"
               type="email"
@@ -43,15 +43,15 @@ function LogInModal() {
               onChange={handleChange}
             />
           </label>
-          <ForgotPassword />
           <input
             className="button-sign ing-create"
             type="submit"
             value="Login"
-            style={{ marginTop: "3%" }}
+            style={{ marginTop: "12%" }}
           />
         </div>
       </form>
+      <ForgotPassword />
     </div>
   );
 }

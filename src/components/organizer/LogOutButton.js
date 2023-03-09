@@ -12,10 +12,19 @@ function LogOutButton() {
     }
   };
 
+  const location = window.location.href
+
   return (
-    <button className="settingsbuttons" onClick={handleSignOut}>
-      Logout
-    </button>
+    <>{location.includes("settings") ? (<>
+      <button className="settingsbuttons" onClick={handleSignOut}>
+        Logout
+      </button>
+    </>) : (<>
+      <button className="logoutbutton" onClick={handleSignOut}>
+        Logout
+      </button>
+    </>)
+    }</>
   );
 }
 
