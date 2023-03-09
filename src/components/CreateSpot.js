@@ -74,7 +74,8 @@ function CreateSpot() {
     days: [],
     numOfDays: 1,
     spotRevenue: 0,
-    announcement: "",
+    announcementEn: "",
+    announcementAr: "",
     seatsRemaining: 0,
     isPublished: false,
   });
@@ -93,10 +94,10 @@ function CreateSpot() {
   const [addEndTimeRadio, setAddEndTimeRadio] = useState(false);
   const [spotSeats, setSpotSeats] = useState(true);
   const [spotPrice, setSpotPrice] = useState(true);
-  spot.announcement = `Welcome to ${spot.name}, enjoy our amazing offers and rewards`;
+  spot.announcementEn = `Welcome to ${spot.name}, enjoy our amazing offers and rewards`;
+  spot.announcementAr = `مرحبا بكم في ${spot.name}، استمتع بعروضنا وجوائزنا الرائعة`;
   const [categoryId, setCategoryId] = useState("62d828fff35c707fdaa7422c");
   const [categoryName, setCategoryName] = useState();
-
   const handleChange = (event) => {
     setSpot({ ...spot, [event.target.name]: event.target.value });
     if (event.target.name === "name") {

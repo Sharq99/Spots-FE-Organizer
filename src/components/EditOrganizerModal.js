@@ -51,7 +51,7 @@ function EditOrganizerModal({ handleCloseEdit }) {
     <div>
       <div>
         <button className="settingsbuttons" onClick={handleShow}>
-          Edit Profile
+          Settings
         </button>
       </div>
 

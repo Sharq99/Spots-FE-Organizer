@@ -53,7 +53,8 @@ function EditSpot() {
     isAd: oldSpot?.isAd,
     category: oldSpot?.category,
     addSeats: 0,
-    announcement: oldSpot?.announcement,
+    announcementEn: oldSpot?.announcementEn,
+    announcementAr: oldSpot?.announcementAr,
     isPublished: oldSpot?.isPublished,
   });
   const [categoryId, setCategoryId] = useState(oldSpot.category);

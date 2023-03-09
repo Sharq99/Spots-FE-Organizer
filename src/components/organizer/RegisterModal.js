@@ -52,7 +52,7 @@ function RegisterModal() {
       ) : (
         <div className="welcomeformrow">
           <form className="form-styleh" onSubmit={handleSubmit}>
-            <h3>Join Kuwait's #1 Dests app</h3>
+            <h3>Join Kuwait's first Dests app</h3>
             <input
               className="input-stylemain"
               type="text"
