@@ -13,7 +13,7 @@ function SettingsModal() {
   return (
     <div>
       <h5 onClick={handleShow} name="stats-chart-outline" className="editorg">
-        Edit Profile
+        Settings
       </h5>
 
       <Modal size="sm" className="modal" show={show} onHide={handleClose}>

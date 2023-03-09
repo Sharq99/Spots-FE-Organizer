@@ -61,16 +61,16 @@ function ExperianceList() {
     isAd: spot?.isAd,
     category: spot?.category,
     addSeats: spot?.addSeats,
-    announcement: spot?.announcement,
+    announcementEn: spot?.announcementEn,
+    announcementAr: spot?.announcementAr,
     isPublished: spot?.isPublished,
   });
-  const handleAnnouncementText = (event) => {
-    newspot.announcement = event.target.value;
+  const handleAnnouncementTextEn = (event) => {
+    newspot.announcementEn = event.target.value;
   };
-  const handleAnnouncement = async (event) => {
+  const handleAnnouncementEn = async (event) => {
     event.preventDefault();
     try {
-      console.log(spot?.category);
       await spotStore.updateSpot(
         newspot,
         spotId,
@@ -84,7 +84,34 @@ function ExperianceList() {
       );
       swal({
         title: "Success",
-        text: `announcement has been Updated`,
+        text: `English announcement has been Updated`,
+        icon: "success",
+        confirmButtonText: "OK",
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const handleAnnouncementTextAr = (event) => {
+    newspot.announcementAr = event.target.value;
+  };
+  const handleAnnouncementAr = async (event) => {
+    event.preventDefault();
+    try {
+      await spotStore.updateSpot(
+        newspot,
+        spotId,
+        spot?.image,
+        spot?.category,
+        newspot.galleryImage0,
+        newspot.galleryImage1,
+        newspot.galleryImage2,
+        newspot.galleryImage3,
+        newspot.galleryImage4
+      );
+      swal({
+        title: "Success",
+        text: `Arabic announcement has been Updated`,
         icon: "success",
         confirmButtonText: "OK",
       });
@@ -119,12 +146,12 @@ function ExperianceList() {
             <MainQrCode spotId={spotId} />
           </div>
           <div>
-            <h1 className="dashannouncement">Announcement</h1>
-            <h5 className="l-color">Current Announcement</h5>
-            <h5 style={{ padding: 20 }} className="l-color">
-              {spot?.announcement}
+            <h1 className="dashannouncement">Announcements</h1>
+            <h5 className="l-color">English Announcement</h5>
+            <h5 style={{ padding: 20, paddingLeft: 0 }} className="l-color">
+              {spot?.announcementEn}
             </h5>
-            <h5 className="l-color">New Announcement</h5>
+            <h5 className="l-color">New English Announcement</h5>
             <input
               className="input-style"
               style={{ margin: 0, width: "100%" }}
@@ -132,7 +159,7 @@ function ExperianceList() {
               multiple
               placeholder="Enter Announcement"
               name="announcement"
-              onChange={handleAnnouncementText}
+              onChange={handleAnnouncementTextEn}
             />
             <div
               style={{
@@ -150,7 +177,42 @@ function ExperianceList() {
                 }}
                 className="button-sign ing-create"
                 value="Announce"
-                onClick={handleAnnouncement}
+                onClick={handleAnnouncementEn}
+              />
+            </div>
+          </div>
+          <div>
+            <h5 className="l-color">Arabic Announcement</h5>
+            <h5 style={{ padding: 20, paddingLeft: 0 }} className="l-color">
+              {spot?.announcementAr}
+            </h5>
+            <h5 className="l-color">New Arabic Announcement</h5>
+            <input
+              className="input-style"
+              style={{ margin: 0, width: "100%" }}
+              type="text"
+              multiple
+              placeholder="Enter Announcement"
+              name="announcement"
+              onChange={handleAnnouncementTextAr}
+            />
+            <div
+              style={{
+                justifyContent: "flex-end",
+                alignItems: "flex-end",
+                display: "flex",
+                alignContent: "flex-end",
+              }}
+            >
+              <input
+                style={{
+                  padding: 10,
+                  textAlign: "center",
+                  width: "20%",
+                }}
+                className="button-sign ing-create"
+                value="Announce"
+                onClick={handleAnnouncementAr}
               />
             </div>
           </div>
