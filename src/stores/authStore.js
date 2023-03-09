@@ -1,7 +1,6 @@
 import { makeAutoObservable } from "mobx";
 import { instance } from "./instance";
 import decode from "jwt-decode";
-import emailjs from "emailjs-com";
 import swal from "sweetalert";
 
 class AuthStore {
@@ -43,7 +42,6 @@ class AuthStore {
     const newOrganizer = {
       email: application.email,
       phone: application.phone,
-      bio: application.bio,
       password: new Array(12)
         .fill()
         .map(() => String.fromCharCode(Math.random() * 86 + 40))
@@ -105,44 +103,67 @@ class AuthStore {
   //     }
   //   };
 
-  changeOrganizer = async (organizerChange) => {
+  changeOrganizer = async (organizerChange, handleClose, confirmedPassword) => {
     try {
-      await instance
-        .put(`/organizer/change`, organizerChange)
-        .then((response) => {
-          if (response?.data?.isChanged === true) {
-            swal({
-              type: "success",
-              text: "Password Changed 👍",
-              icon: "success",
-            });
-          } else {
-            alert("Passwords Don't Match");
-          }
+      if(confirmedPassword === organizerChange.newPassword){
+        await instance
+          .put(`/organizer/change`, organizerChange)
+          .then((response) => {
+            if (response?.data?.isChanged === true) {
+              swal({
+                type: "success",
+                text: "Password Changed 👍",
+                icon: "success",
+              });
+              handleClose()
+            } else {
+              swal({
+                type: "Please try again!",
+                text: "Current password is incorrect",
+                icon: "error",
+              });
+            }
+          });
+      } else {
+        swal({
+          type: "Please try again!",
+          text: "New password and confirm password don't match",
+          icon: "warning",
         });
+      }
     } catch (error) {
       console.log("change", error);
     }
   };
 
-  forgotOrganizer = async (organizerForgot) => {
-    // userForgot.username = userForgot.username.toLowerCase();
+  forgotOrganizer = async (email) => {
+    // userForgot.email = userForgot.email.toLowerCase();
     try {
-      await instance.put(`/organizer/forgot`, organizerForgot).then(
-        swal({
-          type: "success",
-          text: "Email Sent 👍",
-          icon: "success",
-        })
-      );
+      const res = await instance.put(`/organizer/forgot/${email}`)
+      return res.data.message
     } catch (error) {
       console.log("forgot", error);
     }
   };
 
   addDestsToOrganizer = async (newDests) => {
+    console.log('newDests', newDests)
     try {
-      await instance.post("/organizer/more", newDests);
+      const res = await instance.put("/organizer/more", newDests);
+      console.log('first', res.data.message)
+      if(res.data.message === "Dests Added") {
+        swal({
+            title: res.data.message,
+            icon: "success",
+            button: "OK",
+          })
+      } else {
+        swal({
+          title: res.data.message,
+          icon: "error",
+          button: "OK",
+        })
+      }
     } catch (error) {
       console.log(error);
     }

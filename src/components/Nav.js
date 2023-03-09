@@ -11,10 +11,10 @@ import {
   IoMdPersonAdd,
   IoMdPerson,
 } from "react-icons/io";
-import { RiAdvertisementFill } from "react-icons/ri";
+import { RiAdvertisementFill, RiLockPasswordFill } from "react-icons/ri";
 import { AiFillNotification } from "react-icons/ai";
 import { HiViewGridAdd } from "react-icons/hi";
-import { DEST_KEY_ADS, DEST_KEY_U } from "../config/keys";
+import { DEST_KEY_ADMN } from "../config/keys";
 
 function Nav() {
   const nav = useNavigate();
@@ -22,29 +22,7 @@ function Nav() {
     <>
       {authStore.organizer ? (
         <>
-          {authStore.organizer?.displayNameEn === DEST_KEY_ADS ? (
-            <nav className="navtabs">
-              <NavLink
-                style={({ isActive }) => ({
-                  color: isActive ? "#e52b51" : "grey",
-                })}
-                className="icon"
-                to="/Ads"
-              >
-                <RiAdvertisementFill name="stats-chart-outline"></RiAdvertisementFill>
-              </NavLink>
-              <LogOutButton />
-              <NavLink
-                style={({ isActive }) => ({
-                  color: isActive ? "#e52b51" : "grey",
-                })}
-                className="icon"
-                to="/PushNotification"
-              >
-                <AiFillNotification name="stats-chart-outline"></AiFillNotification>
-              </NavLink>
-            </nav>
-          ) : authStore.organizer?.displayNameEn === DEST_KEY_U ? (
+          {authStore.organizer?.email === DEST_KEY_ADMN ? (
             <nav className="navtabs">
               <NavLink
                 style={({ isActive }) => ({
@@ -69,9 +47,36 @@ function Nav() {
                   color: isActive ? "#e52b51" : "grey",
                 })}
                 className="icon"
+                to="/forgot-passwords"
+              >
+                <RiLockPasswordFill name="stats-chart-outline"></RiLockPasswordFill>
+              </NavLink>
+              <NavLink
+                style={({ isActive }) => ({
+                  color: isActive ? "#e52b51" : "grey",
+                })}
+                className="icon"
                 to="/addDests"
               >
                 <HiViewGridAdd name="stats-chart-outline"></HiViewGridAdd>
+              </NavLink>
+              <NavLink
+                style={({ isActive }) => ({
+                  color: isActive ? "#e52b51" : "grey",
+                })}
+                className="icon"
+                to="/Ads"
+              >
+                <RiAdvertisementFill name="stats-chart-outline"></RiAdvertisementFill>
+              </NavLink>
+              <NavLink
+                style={({ isActive }) => ({
+                  color: isActive ? "#e52b51" : "grey",
+                })}
+                className="icon"
+                to="/PushNotification"
+              >
+                <AiFillNotification name="stats-chart-outline"></AiFillNotification>
               </NavLink>
               <LogOutButton />
             </nav>

@@ -5,7 +5,7 @@ import authStore from "../../stores/authStore";
 function ManageDests() {
   const [addDests, setAddDests] = useState({
     numofDests: 0,
-    oranizerEmail: "",
+    organizerEmail: "",
   });
   const [numofDests, setNumofDests] = useState(true);
   const [userId, setUserId] = useState(true);
@@ -16,9 +16,9 @@ function ManageDests() {
         setNumofDests(true);
     } else if(event.target.name === "numofDests" && event.target.value !== "") {
         setNumofDests(false);
-    } else if (event.target.name === "oranizerEmail" &&  event.target.value === "") {
+    } else if (event.target.name === "organizerEmail" &&  event.target.value === "") {
         setUserId(true);
-    } else if (event.target.name === "oranizerEmail" && event.target.value !== "") {
+    } else if (event.target.name === "organizerEmail" && event.target.value !== "") {
         setUserId(false);
     }
   };
@@ -27,13 +27,7 @@ function ManageDests() {
   const handleSubmit = async (event) => { // TODO add functions later ==> figure out the store
     event.preventDefault();
     try{
-        await authStore.addDestsToOrganizer(addDests).then(
-            swal({
-                title: "Dests Added",
-                icon: "success",
-                confirmButtonText: "OK",
-              })
-        )
+        await authStore.addDestsToOrganizer(addDests)
     } catch (error) {
         console.error(error);
     }
@@ -41,7 +35,7 @@ function ManageDests() {
 
   return (
     <div className="backgroundform">
-      <div className="whitebackgroundoffers">
+      <div className="whitebackgroundoffers" style={{marginBottom:300}}>
         <div className="center">
           <h1 className="dash">Add Dests to Organizer</h1>
         </div>
@@ -59,7 +53,7 @@ function ManageDests() {
                         type="text"
                         multiple
                         placeholder="Organizer's Email"
-                        name="oranizerEmail"
+                        name="organizerEmail"
                         onChange={handleChange}
                     />
                 </div>

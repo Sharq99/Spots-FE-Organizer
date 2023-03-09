@@ -26,17 +26,6 @@ function ActiveOrganizersList() {
         loading={loading}
         height={660}
       >
-        {/* <Column width={240} align="center" fixed resizable>
-          <HeaderCell
-            style={{
-              fontWeight: "bolder",
-              fontSize: 17,
-            }}
-          >
-            User Name
-          </HeaderCell>
-          <Cell dataKey="username" />
-        </Column> */}
         <Column width={240} align="center" fixed resizable>
           <HeaderCell
             style={{
@@ -95,6 +84,17 @@ function ActiveOrganizersList() {
               return <div>{rowData?.spots?.length}</div>;
             }}
           </Cell>
+        </Column>
+        <Column width={230} align="center" fixed resizable>
+          <HeaderCell
+            style={{
+              fontWeight: "bolder",
+              fontSize: 17,
+            }}
+          >
+            Number Of Dests
+          </HeaderCell>
+          <Cell dataKey="numofDests" />
         </Column>
       </Table>
     </div>

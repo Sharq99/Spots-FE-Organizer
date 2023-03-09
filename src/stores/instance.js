@@ -1,9 +1,10 @@
 import axios from "axios";
+import { TEST, PRODUCTION } from '../config/info'
 
 const baseURL =
   process.env.NODE_ENV === "production"
-    ? "https://destkw.com/api"
-    : "http://localhost:3000/api";
+    ? PRODUCTION
+    : TEST;
 // : "https://destkw.com/api";
 
 const instance = axios.create({

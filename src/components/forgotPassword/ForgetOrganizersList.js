@@ -1,21 +1,30 @@
 import { observer } from "mobx-react";
-import { useEffect } from "react";
-import applicationStore from "../../stores/applicationStore";
+import { useEffect, useState } from "react";
+import forgetOrganizerStore from "../../stores/forgetOrganizerStore";
 import { Table, Column, HeaderCell, Cell } from "rsuite-table";
 import "rsuite-table/dist/css/rsuite-table.css";
-import authStore from "../../stores/authStore";
 import swal from "sweetalert";
+import authStore from "../../stores/authStore";
 
-function ApplicationList() {
+function ForgetOrganizersList() {
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
-    applicationStore.fetchApplications();
+    try {
+      setLoading(true);
+      forgetOrganizerStore.fetchForgetOrganizers();
+    } finally {
+      setLoading(false);
+    }
   }, []);
+  if (loading === true) {
+    return "Loading";
+  }
 
   return (
     <div style={{ backgroundColor: "white", width: "100%", height: "100%" }}>
-      <h1 className="titleorg">Recieved Applications</h1>
-      <Table data={applicationStore.applications} height={660} wordWrap="break-word">
-      <Column width={430} align="center" fixed resizable>
+      <h1 className="titleorg">Password Reset Requests</h1>
+      <Table data={forgetOrganizerStore.forgetOrganizers} height={660} wordWrap="break-word">
+      <Column width={500} align="center" fixed resizable>
           <HeaderCell
             style={{
               fontWeight: "bolder",
@@ -26,36 +35,19 @@ function ApplicationList() {
           </HeaderCell>
           <Cell dataKey="email" />
         </Column>
-        <Column width={330} align="center" fixed resizable>
+        <Column width={500} align="center" fixed resizable>
           <HeaderCell
             style={{
               fontWeight: "bolder",
               fontSize: 17,
             }}
           >
-            Phone
+            Phone Number
           </HeaderCell>
           <Cell dataKey="phone" />
         </Column>
-        <Column width={330} align="center" fixed resizable>
-          <HeaderCell
-            style={{
-              fontWeight: "bolder",
-              fontSize: 17,
-            }}
-          >
-            Instagram
-          </HeaderCell>
-            <Cell>
-                {(rowData) => {
-                return(
-                    <a href={`https://instagram.com/${rowData.instagram}`} target="_blank" rel="noopener norefrer" style={{ color: "#ff3333", textDecoration: "underLine" }}>
-                      Visit Instagram
-                    </a>
-                )}}
-            </Cell>
-        </Column>
-        <Column width={350} align="center" fixed resizable>
+        
+        <Column width={450} align="center" fixed resizable>
           <HeaderCell
             style={{
               fontWeight: "bolder",
@@ -67,19 +59,36 @@ function ApplicationList() {
           <Cell className="acceptrejectdiv">
             {(rowData) => {
               const handleAccept = async () => {
-                await authStore.register(rowData).then(
-                  await applicationStore.deleteApplication(rowData._id).then(
+                const res = await authStore.forgotOrganizer(rowData.email)
+                console.log('res', res)
+                if(res === "Password Generated") {
+                    await forgetOrganizerStore.deleteForgetOrganizer(rowData._id).then(
+                      swal({
+                        title: "Password Generated",
+                        text: `Organizer's password has been reset`,
+                        icon: "success",
+                        confirmButtonText: "OK",
+                      })
+                    )
+                } else if(res === "No Organizer Found") {
+                  await forgetOrganizerStore.deleteForgetOrganizer(rowData._id).then(
                     swal({
-                      title: "Application Accepted",
-                      text: `Oganizer has been added`,
-                      icon: "success",
+                      title: "No Organizer Registered to this Email",
+                      text: `This request will be deleted!`,
+                      icon: "warning",
                       confirmButtonText: "OK",
                     })
                   )
-                );
+                } else {
+                  swal({
+                    title: "Something Went Wrong",
+                    text: `Please try again later`,
+                    icon: "warning",
+                    confirmButtonText: "OK",
+                  })
+                }
               };
               const handleReject = async () => {
-                //TODO SEND APPLICANT AN EMAIL IN CASE OF REJECTION OR IN CASE OF AN ERROR
                 swal({
                   title: "Are you sure?",
                   icon: "warning",
@@ -87,11 +96,11 @@ function ApplicationList() {
                   dangerMode: true,
                 }).then((willDelete) => {
                   if (willDelete) {
-                    swal("Application Rejected!", {
+                    swal("Request Rejected!", {
                       icon: "success",
                       confirmButtonText: "OK",
                     });
-                    applicationStore.deleteApplication(rowData._id);
+                    forgetOrganizerStore.deleteForgetOrganizer(rowData._id);
                   }
                 });
               };
@@ -116,4 +125,4 @@ function ApplicationList() {
     </div>
   );
 }
-export default observer(ApplicationList);
+export default observer(ForgetOrganizersList);

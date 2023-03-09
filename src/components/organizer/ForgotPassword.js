@@ -1,9 +1,9 @@
 import { useState } from "react";
-import authStore from "../../stores/authStore";
+import forgetOrganizerStore from "../../stores/forgetOrganizerStore";
 import { Modal, Button, Form } from "react-bootstrap";
 
 function ForgotPassword() {
-  const [organizerName, setOrganizerName] = useState();
+  const [organizerEmail, setOrganizerEmail] = useState();
   const [show, setShow] = useState(false);
 
   const handleClose = () => {
@@ -12,11 +12,11 @@ function ForgotPassword() {
 
   const handleShow = () => setShow(true);
 
-  const handleChange = (event) => setOrganizerName(event.target.value);
+  const handleChange = (event) => setOrganizerEmail(event.target.value);
 
   const onSubmit = async (event) => {
     event.preventDefault();
-    await authStore.forgotOrganizer(organizerName);
+    await forgetOrganizerStore.createForgetOrganizers(organizerEmail);
     handleClose();
   };
 
@@ -25,11 +25,14 @@ function ForgotPassword() {
     <div>
       <input
         style={{
+          position: "absolute",
           backgroundColor: "transparent",
           fontSize: "15px",
           color: "white",
           borderWidth: "0px",
-          marginTop: "3%",
+          marginTop: "25.5%",
+          marginLeft: "37%",
+          zIndex: 3,
         }}
         type="button"
         value="Forgot Password?"
@@ -47,7 +50,7 @@ function ForgotPassword() {
           <Form onSubmit={onSubmit}>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label style={{ fontFamily: "Ubuntu" }}>
-                Organizer's Email
+                Email
               </Form.Label>
               <Form.Control
                 style={{ fontFamily: "Source Sans Pro" }}
