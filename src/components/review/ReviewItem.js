@@ -20,7 +20,7 @@ function ReviewItem({ review }) {
           className="reviewImage"
         ></img>
         <div className="reviewnamedate">
-          <h5 className="review-name">{review?.user?.username}</h5>
+          <h5 className="review-name">{review?.user?.name}</h5>
           <h5 className="review-name">{date}</h5>
         </div>
       </div>
