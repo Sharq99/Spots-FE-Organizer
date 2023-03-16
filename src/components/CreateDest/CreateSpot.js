@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import CategoryList from "./category/CategoryList";
-import spotStore from "../stores/spotStore";
-import { useNavigate } from "react-router-dom";
+import CategoryList from "../category/CategoryList";
+import spotStore from "../../stores/spotStore";
+import { useLocation, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
-import authStore from "../stores/authStore";
+import authStore from "../../stores/authStore";
 import Toggle from "react-toggle";
 import "react-toggle/style.css";
 import Modal from "react-modal";
@@ -11,6 +11,11 @@ import { IoMdClose } from "react-icons/io";
 
 function CreateSpot() {
   const nav = useNavigate();
+  const location = useLocation();
+  const state = location.state;
+  const pickStartDate = state.pickStartDate;
+  const pickEndDate = state.pickEndDate;
+  const isMultiple = state.isMultiple;
   const [file, setFile] = useState("");
   const [image, setImage] = useState("");
   const [galleryFile0, setGalleryFile0] = useState("");
@@ -66,8 +71,9 @@ function CreateSpot() {
     endTime: "",
     isFree: true,
     isAd: false,
-    startDate: 0,
-    endDate: 0,
+    startDate: pickStartDate,
+    endDate: pickEndDate,
+    isMultiple: isMultiple,
     seats: 0,
     addSeats: 0,
     price: 0,
@@ -78,6 +84,10 @@ function CreateSpot() {
     announcementAr: "",
     seatsRemaining: 0,
     isPublished: false,
+    termsAndConditionsOffersEn: "",
+    termsAndConditionsOfferssAr: "",
+    termsAndConditionsRewardsEn: "",
+    termsAndConditionsRewardsAr: "",
   });
   const [checked, setChecked] = useState(spot?.isPublished);
   const [spotName, setSpotName] = useState(true);
@@ -88,7 +98,6 @@ function CreateSpot() {
   const [spotDescriptionAr, setSpotDescriptionAr] = useState(true);
   const [spotDetails, setSpotDetails] = useState(true);
   const [spotDetailsAr, setSpotDetailsAr] = useState(true);
-  const [spotStartDate, setSpotStartDate] = useState(true);
   const [startTime, setStartTime] = useState(true);
   const [endTime, setEndTime] = useState(true);
   const [addEndTimeRadio, setAddEndTimeRadio] = useState(false);
@@ -96,8 +105,9 @@ function CreateSpot() {
   const [spotPrice, setSpotPrice] = useState(true);
   spot.announcementEn = `Welcome to ${spot.name}, enjoy our amazing offers and rewards`;
   spot.announcementAr = `مرحبا بكم في ${spot.name}، استمتع بعروضنا وجوائزنا الرائعة`;
-  const [categoryId, setCategoryId] = useState("62d828fff35c707fdaa7422c");
+  const [categoryId, setCategoryId] = useState("640a8df4f68bfae10cbb4553");
   const [categoryName, setCategoryName] = useState();
+  const [isLoading, setIsLoading] = useState(false);
   const handleChange = (event) => {
     setSpot({ ...spot, [event.target.name]: event.target.value });
     if (event.target.name === "name") {
@@ -114,8 +124,6 @@ function CreateSpot() {
       setSpotDetails(false);
     } else if (event.target.name === "detailsAr") {
       setSpotDetailsAr(false);
-    } else if (event.target.name === "startDate") {
-      setSpotStartDate(false);
     } else if (event.target.name === "startTime") {
       setStartTime(false);
     } else if (event.target.name === "endTime") {
@@ -237,6 +245,7 @@ function CreateSpot() {
   };
 
   const handleSubmit = async (event) => {
+    setIsLoading(true);
     spot.seatsRemaining = spot.seats;
     event.preventDefault();
     try {
@@ -257,9 +266,11 @@ function CreateSpot() {
         confirmButtonText: "OK",
       }).then(async function () {
         await authStore.updateNumofDests();
+        setIsLoading(false);
         nav(`/my-spots`);
       });
     } catch (e) {
+      setIsLoading(false);
       alert(e.message);
     }
   };
@@ -270,7 +281,7 @@ function CreateSpot() {
     <div className="backgroundform">
       <div className="whitebackgroundoffers">
         <div className="center">
-          <h1 className="dash">Create A Dest</h1>
+          <h1 className="dash">Create Dest</h1>
         </div>
         {authStore.organizer.numofDests > 0 ? (
           <div className="whitebackgroundcreate">
@@ -317,7 +328,7 @@ function CreateSpot() {
                   </p>
                   <img
                     style={{ width: "100%", height: "88%", marginTop: 10 }}
-                    src={require("../components/pics/PrimaryImageInfo.png")}
+                    src={require("../../components/pics/PrimaryImageInfo.png")}
                   ></img>
                 </Modal>
               </div>
@@ -426,7 +437,7 @@ function CreateSpot() {
                         alignSelf: "center",
                         justifySelf: "center",
                       }}
-                      src={require("../components/pics/Gallery.png")}
+                      src={require("../../components/pics/Gallery.png")}
                     ></img>
                   </div>
                 </Modal>
@@ -838,26 +849,6 @@ function CreateSpot() {
                 />
                 <div style={{ display: "flex", flexDirection: "row" }}>
                   <h5 className="l-color">
-                    Enter Dest Description in English &nbsp;
-                  </h5>
-                  <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
-                </div>
-                <textarea
-                  cols="40"
-                  rows="5"
-                  style={{
-                    height: "100px",
-                    paddingTop: "10px",
-                  }}
-                  className="input-style"
-                  type="text"
-                  placeholder="Dest Description in English  (200 characters max)"
-                  name="description"
-                  maxLength={200}
-                  onChange={handleChange}
-                />
-                <div style={{ display: "flex", flexDirection: "row" }}>
-                  <h5 className="l-color">
                     Enter Dest Description in Arabic &nbsp;
                   </h5>
                   <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
@@ -880,7 +871,7 @@ function CreateSpot() {
                 />
                 <div style={{ display: "flex", flexDirection: "row" }}>
                   <h5 className="l-color">
-                    Enter Dest Detail (in English) &nbsp;
+                    Enter Dest Description in English &nbsp;
                   </h5>
                   <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
                 </div>
@@ -888,15 +879,18 @@ function CreateSpot() {
                   cols="40"
                   rows="5"
                   style={{
-                    height: "150px",
+                    height: "100px",
                     paddingTop: "10px",
                   }}
                   className="input-style"
                   type="text"
-                  placeholder="Dest Details in English"
-                  name="details"
+                  placeholder="Dest Description in English  (200 characters max)"
+                  name="description"
+                  maxLength={200}
                   onChange={handleChange}
                 />
+              </div>
+              <div>
                 <div style={{ display: "flex", flexDirection: "row" }}>
                   <h5 className="l-color">
                     Enter Dest Details (in Arabic) &nbsp;
@@ -918,8 +912,25 @@ function CreateSpot() {
                   name="detailsAr"
                   onChange={handleChange}
                 />
-              </div>
-              <div>
+                <div style={{ display: "flex", flexDirection: "row" }}>
+                  <h5 className="l-color">
+                    Enter Dest Detail (in English) &nbsp;
+                  </h5>
+                  <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
+                </div>
+                <textarea
+                  cols="40"
+                  rows="5"
+                  style={{
+                    height: "150px",
+                    paddingTop: "10px",
+                  }}
+                  className="input-style"
+                  type="text"
+                  placeholder="Dest Details in English"
+                  name="details"
+                  onChange={handleChange}
+                />
                 <div style={{ display: "flex", flexDirection: "row" }}>
                   <h5 className="l-color">Enter Start Time &nbsp;</h5>
                   <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
@@ -966,17 +977,7 @@ function CreateSpot() {
                     <></>
                   )}
                 </div>
-                <div style={{ display: "flex", flexDirection: "row" }}>
-                  <h5 className="l-color">Enter Date &nbsp;</h5>
-                  <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
-                </div>
-                <input
-                  className="input-style"
-                  type="date"
-                  placeholder="Date"
-                  name="startDate"
-                  onChange={handleChange}
-                />
+
                 <h5 className="l-color">Publish Dest</h5>
                 <Toggle
                   defaultChecked={checked}
@@ -1051,19 +1052,29 @@ function CreateSpot() {
                       spotDescriptionAr === false &&
                       spotDetails === false &&
                       startTime === false &&
-                      spotDetailsAr === false &&
-                      spotStartDate === false ? (
-                        <input
-                          className="button-sign ing-create"
-                          type="submit"
-                          value="Create Spot"
-                        />
+                      spotDetailsAr === false ? (
+                        <>
+                          {isLoading ? (
+                            <input
+                              className="button-signx ing-create"
+                              disabled
+                              type="submit"
+                              value="Creating Dest..."
+                            />
+                          ) : (
+                            <input
+                              className="button-sign ing-create"
+                              type="submit"
+                              value="Create Dest"
+                            />
+                          )}
+                        </>
                       ) : (
                         <input
                           className="button-signx ing-create"
                           type="submit"
                           disabled
-                          value="Create Spot"
+                          value="Create Dest"
                         />
                       )}
                     </>
@@ -1075,21 +1086,31 @@ function CreateSpot() {
                       spotLocation === false &&
                       spotDescription === false &&
                       spotDetails === false &&
-                      spotStartDate === false &&
                       spotSeats === false &&
                       startTime === false &&
                       spotPrice === false ? (
-                        <input
-                          className="button-sign ing-create"
-                          type="submit"
-                          value="Create Spot"
-                        />
+                        <>
+                          {isLoading ? (
+                            <input
+                              className="button-signx ing-create"
+                              disabled
+                              type="submit"
+                              value="Creating Dest..."
+                            />
+                          ) : (
+                            <input
+                              className="button-sign ing-create"
+                              type="submit"
+                              value="Create Dest"
+                            />
+                          )}
+                        </>
                       ) : (
                         <input
                           className="button-signx ing-create"
                           type="submit"
                           disabled
-                          value="Create Spot"
+                          value="Create Dest"
                         />
                       )}
                     </>
@@ -1114,7 +1135,7 @@ function CreateSpot() {
           <div className="whitebackgroundcreateoff">
             <h1 className="codelabel">You Don't have any Dest Credits</h1>
             <h1 className="codelabelsecond">
-              To get more Dest Credits, contact us in WhatsApp at 99440289
+              To get more Dest Credits, contact us in WhatsApp at 97947057
             </h1>
           </div>
         )}

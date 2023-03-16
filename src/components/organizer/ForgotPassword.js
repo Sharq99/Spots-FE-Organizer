@@ -25,13 +25,11 @@ function ForgotPassword() {
     <div>
       <input
         style={{
-          position: "absolute",
           backgroundColor: "transparent",
           fontSize: "15px",
           color: "white",
           borderWidth: "0px",
-          marginTop: "25.5%",
-          marginLeft: "37%",
+          marginTop: "3%",
           zIndex: 3,
         }}
         type="button"
@@ -49,9 +47,7 @@ function ForgotPassword() {
         <Modal.Body>
           <Form onSubmit={onSubmit}>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label style={{ fontFamily: "Ubuntu" }}>
-                Email
-              </Form.Label>
+              <Form.Label style={{ fontFamily: "Ubuntu" }}>Email</Form.Label>
               <Form.Control
                 style={{ fontFamily: "Source Sans Pro" }}
                 onChange={handleChange}

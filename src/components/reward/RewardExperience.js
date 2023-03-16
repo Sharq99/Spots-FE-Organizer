@@ -19,7 +19,6 @@ function RewardExperience() {
     descriptionAr: "",
     image: "",
     points: 0,
-    isMultiClaim: true,
   });
   const [rewardTitle, setRewardTitle] = useState(true);
   const [rewardTitleAr, setRewardTitleAr] = useState(true);

@@ -15,25 +15,37 @@ function LogInModal() {
     event.preventDefault();
     try {
       await authStore.login(organizer);
-      if(authStore.organizer) nav("/Home");
+      if (authStore.organizer) nav("/Home");
     } catch (e) {
       alert(e.message);
     }
   };
-
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      handleSubmit(event);
+    }
+  };
   return (
     <div>
-      <div class="background"></div>
-      <form className="form-style" onSubmit={handleSubmit}>
-        <div>
+      <div className="welcomeformrow">
+        <div className="form-styleh">
           <label className="label-style">
-            <h3>Login to your portal</h3>
+            <h2
+              style={{
+                textAlign: "center",
+                fontSize: 30,
+                marginBottom: 25,
+              }}
+            >
+              Login to your portal
+            </h2>
             <input
               className="input-stylemain"
               type="email"
               placeholder="Email"
               name="email"
               onChange={handleChange}
+              onKeyDown={handleKeyDown}
             />
             <input
               className="input-stylemain"
@@ -41,17 +53,19 @@ function LogInModal() {
               placeholder="Password"
               name="password"
               onChange={handleChange}
+              onKeyDown={handleKeyDown}
             />
           </label>
+          <ForgotPassword />
           <input
             className="button-sign ing-create"
             type="submit"
             value="Login"
-            style={{ marginTop: "12%" }}
+            onClick={handleSubmit}
+            style={{ marginTop: "3%" }}
           />
         </div>
-      </form>
-      <ForgotPassword />
+      </div>
     </div>
   );
 }

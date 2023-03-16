@@ -47,6 +47,7 @@ function EditSpot() {
     isFree: oldSpot?.isFree,
     startDate: oldSpot?.startDate,
     endDate: oldSpot?.endDate,
+    isMultiple: oldSpot?.isMultiple,
     seats: oldSpot?.seats,
     seatsRemaining: oldSpot?.seatsRemaining,
     price: oldSpot?.price,
@@ -56,6 +57,10 @@ function EditSpot() {
     announcementEn: oldSpot?.announcementEn,
     announcementAr: oldSpot?.announcementAr,
     isPublished: oldSpot?.isPublished,
+    termsAndConditionsOffersEn: oldSpot.termsAndConditionsOffersEn,
+    termsAndConditionsOfferssAr: oldSpot.termsAndConditionsOfferssAr,
+    termsAndConditionsRewardsEn: oldSpot.termsAndConditionsRewardsEn,
+    termsAndConditionsRewardsAr: oldSpot.termsAndConditionsRewardsAr,
   });
   const [categoryId, setCategoryId] = useState(oldSpot.category);
   const [categoryName, setCategoryName] = useState(
@@ -204,8 +209,10 @@ function EditSpot() {
     }
   };
 
-  const spotdate = new Date(spot.startDate);
-  const formattedDate = spotdate.toISOString().substr(0, 10);
+  const spotstartdate = new Date(spot.startDate);
+  const spotenddate = new Date(spot.endDate);
+  const formattedStartDate = spotstartdate.toISOString().substr(0, 10);
+  const formattedEndDate = spotenddate.toISOString().substr(0, 10);
   return (
     <div className="backgroundform">
       <div className="whitebackgroundoffers" style={{ height: "250%" }}>
@@ -722,7 +729,7 @@ function EditSpot() {
                 onChange={handleChange}
               />
 
-              {spot.endTime !== "" || spot.endTime !== null ? (
+              {spot.endTime === "" || spot.endTime === null ? (
                 <></>
               ) : (
                 <>
@@ -736,14 +743,26 @@ function EditSpot() {
                   />
                 </>
               )}
-              <h5 className="l-color">Enter Date</h5>
+              <h5 className="l-color">Enter Start Date</h5>
               <input
                 className="input-style"
                 type="date"
-                value={formattedDate}
+                value={formattedStartDate}
                 name="startDate"
                 onChange={handleChange}
               />
+              {spot?.isMultiple && (
+                <>
+                  <h5 className="l-color">Enter End Date</h5>
+                  <input
+                    className="input-style"
+                    type="date"
+                    value={formattedEndDate}
+                    name="endDate"
+                    onChange={handleChange}
+                  />
+                </>
+              )}
               <h5 className="l-color">Publish Dest</h5>
               <Toggle
                 defaultChecked={checked}
