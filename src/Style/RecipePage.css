@@ -123,7 +123,8 @@
     font-family: 'Ubuntu', sans-serif;
     font-size: 40px;
     color: #e52b51;
-  padding-right: 10px;
+    padding-right: 10px;
+    text-align: left;
 }
 
 .spotinfodiv{

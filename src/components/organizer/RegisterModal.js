@@ -70,7 +70,7 @@ function RegisterModal() {
             <input
               className="input-stylemain"
               type="text"
-              placeholder="Instagram Link"
+              placeholder="Instagram"
               name="instagram"
               onChange={handleChange}
             />

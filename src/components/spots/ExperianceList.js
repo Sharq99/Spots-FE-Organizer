@@ -55,6 +55,7 @@ function ExperianceList() {
     isFree: spot?.isFree,
     startDate: spot?.startDate,
     endDate: spot?.endDate,
+    isMultiple: spot?.isMultiple,
     seats: spot?.seats,
     seatsRemaining: spot?.seatsRemaining,
     price: spot?.price,
@@ -218,12 +219,20 @@ function ExperianceList() {
           </div>
           <div className="offerdiv">
             <h1 className="dashannouncement">Offers</h1>
-            <button
-              className="editorg"
-              onClick={() => nav(`/Experience/${spotId}`)}
-            >
-              Add Offer
-            </button>
+            <div>
+              <button
+                className="editorg"
+                onClick={() => nav(`/OffersTerms/${spotId}`)}
+              >
+                Terms and Conditions
+              </button>
+              <button
+                className="editorg"
+                onClick={() => nav(`/Experience/${spotId}`)}
+              >
+                Add Offer
+              </button>
+            </div>
           </div>
 
           <ul
@@ -259,12 +268,20 @@ function ExperianceList() {
 
           <div className="offerdiv">
             <h1 className="dashannouncement">Rewards</h1>
-            <button
-              className="editorg"
-              onClick={() => nav(`/RewardExperience/${spotId}`)}
-            >
-              Add Reward
-            </button>
+            <div>
+              <button
+                className="editorg"
+                onClick={() => nav(`/RewardsTerms/${spotId}`)}
+              >
+                Terms and Conditions
+              </button>
+              <button
+                className="editorg"
+                onClick={() => nav(`/RewardExperience/${spotId}`)}
+              >
+                Add Reward
+              </button>
+            </div>
           </div>
 
           <ul

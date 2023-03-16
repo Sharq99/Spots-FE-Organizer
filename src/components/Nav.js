@@ -106,7 +106,7 @@ function Nav() {
                   color: isActive ? "#e52b51" : "grey",
                 })}
                 className="icon2"
-                to="/create-spot"
+                to="/Pick-Date"
               >
                 <IoIosAddCircle name="stats-chart-outline"></IoIosAddCircle>
               </NavLink>
@@ -132,8 +132,8 @@ function Nav() {
             <div className="navitemPortal">
               <img
                 onClick={() => nav(`/`)}
-                src="https://i.imgur.com/iAugH1I.png"
-                style={{ height: 35, width: 100, cursor: "pointer" }}
+                src="https://i.ibb.co/ygfMmRW/icon-copy-2.png"
+                style={{ height: 70, width: 60, cursor: "pointer" }}
               />
               <NavLink className="navitemmyPortal" to="/login">
                 <div className="navitemPortalDiv">My Portal</div>

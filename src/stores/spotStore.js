@@ -72,9 +72,6 @@ class SpotStore {
         `/spot/update/${spotId}/cat/${categoryId}`,
         formData
       );
-      for (const [key, value] of formData.entries()) {
-        console.log(key, value);
-      }
       this.spots = this.spots.map((spot) =>
         spot._id === spotId ? res.data : spot
       );

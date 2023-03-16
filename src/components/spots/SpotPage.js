@@ -14,10 +14,12 @@ function SpotPage() {
   const { spotId } = useParams();
   const spot = spotStore?.getSpotsById(spotId);
   const category = categoryStore.getCategoryById(spot.category);
-  let date = moment(spot?.startDate).format("LL");
+  let startDate = moment(spot?.startDate).format("LL");
+  let endDate = moment(spot?.endDate).format("LL");
   const today = new Date();
   today.setHours(3, 0, 0, 0);
   const active = today.getTime() === new Date(spot.startDate).getTime();
+  const finished = today.getTime() > new Date(spot.startDate).getTime();
 
   useEffect(() => {
     spotStore.fetchSpots();
@@ -199,7 +201,179 @@ function SpotPage() {
       ) : (
         <></>
       )}
-
+      {finished ? (
+        <>
+          <div
+            style={{
+              fontSize: 30,
+              color: "black",
+              fontWeight: "600",
+              textAlign: "center",
+              display: "flex",
+              flexDirection: "row",
+              alignContent: "center",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <h1
+              className="fontfamily"
+              style={{
+                fontSize: 30,
+                color: "black",
+                fontWeight: "600",
+                textAlign: "center",
+                margin: 0,
+                padding: 0,
+                marginLeft: 10,
+              }}
+            >
+              Statistics
+            </h1>
+          </div>
+          {spot.isFree ? (
+            <div className="containerLive">
+              <div
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignContent: "center",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  padding: 50,
+                }}
+              >
+                <h1
+                  className="fontfamily"
+                  style={{
+                    fontSize: 30,
+                    color: "black",
+                    textAlign: "center",
+                  }}
+                >
+                  Users visited
+                </h1>
+                <h1
+                  className="fontfamily"
+                  style={{
+                    fontSize: 50,
+                    color: "black",
+                    fontWeight: "600",
+                    textAlign: "center",
+                    padding: 20,
+                  }}
+                >
+                  {spot.users.length}
+                </h1>
+                <h1
+                  className="fontfamily"
+                  style={{
+                    fontSize: 20,
+                    color: "grey",
+                    textAlign: "center",
+                  }}
+                >
+                  Only users who scanned your main QR code
+                </h1>
+              </div>
+            </div>
+          ) : (
+            <div className="containerLive">
+              <div
+                style={{
+                  width: "50%",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignContent: "center",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  padding: 50,
+                }}
+              >
+                <h1
+                  className="fontfamily"
+                  style={{
+                    fontSize: 30,
+                    color: "black",
+                    textAlign: "center",
+                  }}
+                >
+                  Seats Remaining
+                </h1>
+                <h1
+                  className="fontfamily"
+                  style={{
+                    fontSize: 50,
+                    color: "black",
+                    fontWeight: "600",
+                    textAlign: "center",
+                    padding: 20,
+                  }}
+                >
+                  {spot.seatsRemaining}
+                </h1>
+                <h1
+                  className="fontfamily"
+                  style={{
+                    fontSize: 20,
+                    color: "grey",
+                    textAlign: "center",
+                  }}
+                >
+                  From {spot.seats} total
+                </h1>
+              </div>
+              <div
+                style={{
+                  width: "50%",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignContent: "center",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  padding: 50,
+                }}
+              >
+                <h1
+                  className="fontfamily"
+                  style={{
+                    fontSize: 30,
+                    color: "black",
+                    textAlign: "center",
+                  }}
+                >
+                  Your Revenue
+                </h1>
+                <h1
+                  className="fontfamily"
+                  style={{
+                    fontSize: 50,
+                    color: "black",
+                    fontWeight: "600",
+                    textAlign: "center",
+                    padding: 20,
+                  }}
+                >
+                  {spot.spotRevenue}
+                </h1>
+                <h1
+                  className="fontfamily"
+                  style={{
+                    fontSize: 20,
+                    color: "grey",
+                    textAlign: "center",
+                  }}
+                >
+                  Before commission
+                </h1>
+              </div>
+            </div>
+          )}
+        </>
+      ) : (
+        <></>
+      )}
       <div className="container" style={{ width: "50%" }}>
         <div
           className="center"
@@ -298,9 +472,15 @@ function SpotPage() {
               </div>
             )}
             <div className="spotcontainer">
-              <p className="spottext">{date}</p>
-              <h1 className="spotlabel">Date</h1>
+              <p className="spottext">{startDate}</p>
+              <h1 className="spotlabel">Start Date</h1>
             </div>
+            {spot?.isMultiple && (
+              <div className="spotcontainer">
+                <p className="spottext">{endDate}</p>
+                <h1 className="spotlabel">End Date</h1>
+              </div>
+            )}
             {spot?.isFree === true ? (
               <div className="spotcontainer">
                 <p className="spottext">Free</p>
@@ -322,10 +502,6 @@ function SpotPage() {
                 </div>
               </>
             )}
-            <div className="spotcontainer">
-              <p className="spottext">{spot?.users?.length}</p>
-              <h1 className="spotlabel">Destted Me</h1>
-            </div>
           </div>
         </div>
         <div

@@ -4,7 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import Nav from "./components/Nav";
 import LogInModal from "./components/organizer/LogInModal";
 import Home from "./components/Home";
-import CreateSpot from "./components/CreateSpot";
+import CreateSpot from "./components/CreateDest/CreateSpot";
 import Settings from "./components/Settings";
 import MySpots from "./components/MySpots";
 import SpotPage from "./components/spots/SpotPage";
@@ -23,6 +23,9 @@ import PushNotification from "./components/pushNotification/PushNotification";
 import PushNotificationHistory from "./components/pushNotification/PushNotificationHistory";
 import ManageDests from "./components/numberOfDests/ManageDests";
 import ForgetOrganizersList from "./components/forgotPassword/ForgetOrganizersList";
+import OffersTerms from "./components/offer/OffersTerms";
+import RewardssTerms from "./components/reward/RewardsTerms";
+import PickDate from "./components/CreateDest/PickDate";
 
 function App() {
   return (
@@ -46,15 +49,9 @@ function App() {
               path="/forgot-passwords"
               element={<ForgetOrganizersList />}
             />
-            <Route
-              path="/addDests"
-              element={<ManageDests />}
-            />
+            <Route path="/addDests" element={<ManageDests />} />
             <Route path="/Ads" element={<Ads />} />
-            <Route
-              path="/PushNotification"
-              element={<PushNotification />}
-            />
+            <Route path="/PushNotification" element={<PushNotification />} />
             <Route
               path="/PushNotifications"
               element={<PushNotificationHistory />}
@@ -65,6 +62,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/Home" element={<Home />} />
             <Route path="/login" element={<LogInModal />} />
+            <Route path="/Pick-Date" element={<PickDate />} />
             <Route path="/create-spot" element={<CreateSpot />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/my-spots" element={<MySpots />} />
@@ -74,11 +72,10 @@ function App() {
               path="/ExperianceList/:spotId"
               element={<ExperianceList />}
             />
-            <Route
-              path="/OrderHistory/:spotId"
-              element={<OrderHistory />}
-            />
+            <Route path="/OrderHistory/:spotId" element={<OrderHistory />} />
             <Route path="/Experience/:spotId" element={<Experience />} />
+            <Route path="/OffersTerms/:spotId" element={<OffersTerms />} />
+            <Route path="/RewardsTerms/:spotId" element={<RewardssTerms />} />
             <Route
               path="/RewardExperience/:spotId"
               element={<RewardExperience />}
