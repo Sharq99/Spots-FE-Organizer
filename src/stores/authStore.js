@@ -2,6 +2,7 @@ import { makeAutoObservable } from "mobx";
 import { instance } from "./instance";
 import decode from "jwt-decode";
 import swal from "sweetalert";
+import { REGISTER, LOGIN, UPDATE, CHANGE_PASSWORD, FORGOT_PASSWORD, ADD_DEST, ORGANIZERS, TOKEN } from "../config/info"
 
 class AuthStore {
   constructor() {
@@ -31,7 +32,7 @@ class AuthStore {
 
   getToken = async () => {
     try {
-      const response = await instance.post("/organizer/updateToken");
+      const response = await instance.post(TOKEN);
       this.setOrganizer(response.data.token);
     } catch (error) {
       console.log(error);
@@ -40,7 +41,7 @@ class AuthStore {
 
   register = async (application) => {
     const newOrganizer = {
-      email: application.email,
+      email: application.email.toLowerCase(),
       phone: application.phone,
       password: new Array(12)
         .fill()
@@ -48,15 +49,16 @@ class AuthStore {
         .join(""),
     };
     try {
-      await instance.post("/organizer/register", newOrganizer);
+      await instance.post(REGISTER, newOrganizer);
     } catch (error) {
       console.log(error);
     }
   };
 
   login = async (organizerData) => {
+    organizerData.email = organizerData.email.toLowerCase()
     try {
-      const response = await instance.post("/organizer/login", organizerData);
+      const response = await instance.post(LOGIN, organizerData);
       this.setOrganizer(response.data.token);
     } catch (error) {
       console.log(error);
@@ -75,7 +77,7 @@ class AuthStore {
       const formData = new FormData();
       for (const key in updatedOrganizer)
         formData.append(key, updatedOrganizer[key]);
-      const res = await instance.put("/organizer/update", formData);
+      const res = await instance.put(UPDATE, formData);
       //for (const key in this.organizer) this.organizer[key] = res.data[key];
       this.setOrganizer(res.data.token);
     } catch (error) {
@@ -85,7 +87,7 @@ class AuthStore {
 
   fetchOrganizers = async () => {
     try {
-      const response = await instance.get("/organizer");
+      const response = await instance.get(ORGANIZERS);
       this.organizers = response.data;
     } catch (error) {
       console.log(error);
@@ -107,7 +109,7 @@ class AuthStore {
     try {
       if(confirmedPassword === organizerChange.newPassword){
         await instance
-          .put(`/organizer/change`, organizerChange)
+          .put(CHANGE_PASSWORD, organizerChange)
           .then((response) => {
             if (response?.data?.isChanged === true) {
               swal({
@@ -139,7 +141,7 @@ class AuthStore {
   forgotOrganizer = async (email) => {
     // userForgot.email = userForgot.email.toLowerCase();
     try {
-      const res = await instance.put(`/organizer/forgot/${email}`)
+      const res = await instance.put(FORGOT_PASSWORD+'/'+email)
       return res.data.message
     } catch (error) {
       console.log("forgot", error);
@@ -149,7 +151,7 @@ class AuthStore {
   addDestsToOrganizer = async (newDests) => {
     console.log('newDests', newDests)
     try {
-      const res = await instance.put("/organizer/more", newDests);
+      const res = await instance.put(ADD_DEST, newDests);
       console.log('first', res.data.message)
       if(res.data.message === "Dests Added") {
         swal({
@@ -175,7 +177,7 @@ class AuthStore {
       numofDests: this.organizer.numofDests - 1,
     };
     try {
-      const res = await instance.put("/organizer/update", newOrganizer);
+      const res = await instance.put(UPDATE, newOrganizer);
       this.setOrganizer(res.data.token);
     } catch (error) {
       console.log("numofdests", error);
