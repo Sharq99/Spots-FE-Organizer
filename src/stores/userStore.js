@@ -10,7 +10,7 @@ class UserStore {
 
   fetchUsers = async () => {
     try {
-      const response = await instance.get("/user/emails");
+      const response = await instance.get(process.env.REACT_APP_USER);
       this.users = response.data;
     } catch (error) {
       console.log(error);

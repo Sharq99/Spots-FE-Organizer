@@ -24,4 +24,4 @@ yarn-error.log*
 
 
 # info
-config/
+.env

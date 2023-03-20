@@ -10,7 +10,7 @@ class PushNotificationStore {
 
   fetchPushNotifications = async () => {
     try {
-      const response = await instance.get("/pushNotification");
+      const response = await instance.get(process.env.REACT_APP_NOTIFICATION);
       this.pushNotifications = toJS(response.data);
     } catch (error) {
       console.log(error);
@@ -19,7 +19,7 @@ class PushNotificationStore {
 
   createPushNotification = async (newPushNotification) => {
     try {
-      const response = await instance.post(`/pushNotification/create`, newPushNotification);
+      const response = await instance.post(process.env.REACT_APP_NOTIFICATION_CREATE, newPushNotification);
       this.pushNotifications.push(response.data);
     } catch (error) {
       console.log(error);
@@ -28,7 +28,7 @@ class PushNotificationStore {
 
   deletePushNotification = async (pushNotificationId) => {
     try {
-      await instance.delete(`/pushNotification/delete/${pushNotificationId}`);
+      await instance.delete(process.env.REACT_APP_NOTIFICATION_REMOVE+'/'+pushNotificationId);
       this.pushNotifications = this.applications.filter((pushNotification) => pushNotification._id !== pushNotificationId);
     } catch (error) {
       console.log(error);

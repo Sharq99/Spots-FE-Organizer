@@ -10,7 +10,7 @@ class ApplicationStore {
 
   fetchApplications = async () => {
     try {
-      const response = await instance.get("/application");
+      const response = await instance.get(process.env.REACT_APP_APPLICATION);
       this.applications = toJS(response.data);
     } catch (error) {
       console.log(error);
@@ -19,7 +19,7 @@ class ApplicationStore {
 
   createApplications = async (newApplication) => {
     try {
-      const response = await instance.post(`/application/create`, newApplication);
+      const response = await instance.post(process.env.REACT_APP_APPLICATION_CREATE, newApplication);
       this.applications.push(response.data);
     } catch (error) {
       console.log(error);
@@ -28,7 +28,7 @@ class ApplicationStore {
 
   deleteApplication = async (applicationId) => {
     try {
-      await instance.delete(`/application/remove/${applicationId}`);
+      await instance.delete(process.env.REACT_APP_APPLICATION_REMOVE+'/'+applicationId);
       this.applications = this.applications.filter((application) => application._id !== applicationId);
     } catch (error) {
       console.log(error);
@@ -45,7 +45,7 @@ class ApplicationStore {
 
   sendRejectionEmail = async (application) => {
     try {
-      await instance.post("/application/reject", application);
+      await instance.post(process.env.REACT_APP_APPLICATION_REJECT, application);
     } catch (error) {
       console.log(error);
     }

@@ -14,7 +14,6 @@ import Experience from "./components/offer/Experience";
 import RewardExperience from "./components/reward/RewardExperience";
 import authStore from "./stores/authStore";
 import Ads from "./components/Advertisment/Ads";
-import { DEST_KEY_ADMN } from "./config/keys";
 import ApllicationList from "./components/ApplicationManagement/AppllicationList";
 import ActiveOrganizersList from "./components/ApplicationManagement/ActiveOrganizersList";
 import { Helmet } from "react-helmet";
@@ -26,6 +25,7 @@ import ForgetOrganizersList from "./components/forgotPassword/ForgetOrganizersLi
 import OffersTerms from "./components/offer/OffersTerms";
 import RewardssTerms from "./components/reward/RewardsTerms";
 import PickDate from "./components/CreateDest/PickDate";
+import ReportsList from "./components/report/ReportsList";
 
 function App() {
   return (
@@ -38,7 +38,7 @@ function App() {
         <meta name="description" content="Events App" />
       </Helmet>
       <Routes>
-        {authStore.organizer?.email === DEST_KEY_ADMN ? (
+        {authStore.organizer?.email === process.env.REACT_APP_DEST_KEY_ADMN ? (
           <>
             <Route path="/applications" element={<ApllicationList />} />
             <Route
@@ -50,6 +50,7 @@ function App() {
               element={<ForgetOrganizersList />}
             />
             <Route path="/addDests" element={<ManageDests />} />
+            <Route path="/Report" element={<ReportsList />} />
             <Route path="/Ads" element={<Ads />} />
             <Route path="/PushNotification" element={<PushNotification />} />
             <Route
