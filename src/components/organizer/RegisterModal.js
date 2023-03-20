@@ -50,9 +50,20 @@ function RegisterModal() {
           </label>
         </div>
       ) : (
-        <div className="welcomeformrow">
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            marginTop: "3%",
+            marginBottom: "3%",
+          }}
+          className="welcomeformrow"
+        >
+          <h3 className="eventsapp">Join Kuwait's First Events App</h3>
+
           <form className="form-styleh" onSubmit={handleSubmit}>
-            <h3>Join Kuwait's first Dests app</h3>
+            <h3>Register now!</h3>
             <input
               className="input-stylemain"
               type="text"

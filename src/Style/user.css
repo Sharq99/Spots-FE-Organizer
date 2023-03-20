@@ -676,10 +676,14 @@
   width: 450px;
   height: 300px;
   margin: 10px;
-  border-radius: 30px;
-  border-style: solid;
-  border-width: 1px;
-  border-color: #e52b51;
+  object-fit: cover;
+  margin-top: 20px;
+}
+.spotgalleryad {
+  align-self: center;
+  width: 450px;
+  height: 250px;
+  margin: 10px;
   object-fit: cover;
   margin-top: 20px;
 }
@@ -738,7 +742,6 @@
   min-width: 450px;
   height: 300px;
   margin: 10px;
-  border-radius: 30px;
   border-style: solid;
   border-width: 1px;
   border-color: #e52b51;
@@ -750,6 +753,24 @@
   text-align: center;
   font-family: "Ubuntu", sans-serif;
 }
+.spotgalleryholderad {
+  align-self: center;
+  min-width: 450px;
+  height: 250px;
+  margin: 10px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #e52b51;
+  color: #e52b51;
+  object-fit: cover;
+  margin-top: 20px;
+  padding-top: 110px;
+  justify-content: center;
+  text-align: center;
+  font-family: "Ubuntu", sans-serif;
+}
+
+
 
 .input-style-choose {
   font-family: "Ubuntu", sans-serif;

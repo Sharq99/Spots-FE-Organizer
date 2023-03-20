@@ -1,11 +1,11 @@
 import { observer } from "mobx-react";
 import RegisterModal from "./organizer/RegisterModal";
 import authStore from "../stores/authStore";
-import spotStore from "../stores/spotStore";
 import Dashborad from "./Dashborad";
-import Ads from "./Advertisment/Ads";
-import { DEST_KEY_ADMN } from "../config/keys";
 import ApllicationList from "./ApplicationManagement/AppllicationList";
+import DestExplain from "./Reception/DestExplain";
+import Screenshots from "./Reception/Screenshots";
+import Footer from "./Reception/Footer";
 
 function Home() {
   const { organizer } = authStore;
@@ -13,14 +13,21 @@ function Home() {
     <>
       {organizer && (
         <>
-          {organizer.email === DEST_KEY_ADMN ? (
+          {organizer.email === process.env.REACT_APP_DEST_KEY_ADMN ? (
             <ApllicationList />
           ) : (
             <Dashborad />
           )}
         </>
       )}
-      {!organizer && <RegisterModal />}
+      {!organizer && (
+        <>
+          <RegisterModal />
+          <Screenshots />
+          <DestExplain />
+          <Footer />
+        </>
+      )}
     </>
   );
 }

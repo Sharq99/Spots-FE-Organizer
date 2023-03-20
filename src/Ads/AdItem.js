@@ -20,7 +20,22 @@ function AdItem({ spot }) {
         swal("Done!", "Dest has been removed!", {
           icon: "success",
         });
-        spotStore.updateSpot(FalseSpot, spot._id, spot?.image, spot.category);
+        spotStore.updateSpot(
+          FalseSpot,
+          spot._id,
+          spot?.image,
+          spot.category,
+          spot.galleryImage0,
+          spot.galleryImage1,
+          spot.galleryImage2,
+          spot.galleryImage3,
+          spot.galleryImage4,
+          spot.adImage0,
+          spot.adImage1,
+          spot.adImage2,
+          spot.adImage3,
+          spot.adImage4
+        );
       }
     });
   };

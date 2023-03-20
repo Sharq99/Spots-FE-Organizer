@@ -41,7 +41,6 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
   align-self: center;
   margin: 6%;
   margin-top: 8%;
-  width: 90%; 
 }
 .appdiv {
   height: 100%;
@@ -108,5 +107,33 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
   color: #f1f1f1;
   padding: 10px;
   margin-bottom: 0;
+  font-family: "Ubuntu", sans-serif;
+}
+
+.maintitle{
+  color: white;
+  align-self: center;
+  margin-top: 50px;
+  font-weight: bolder;
+  font-size: 40px;
+  font-family: "Ubuntu", sans-serif;
+  text-align: center;
+}
+.maintitledescribe{
+  color: #1b1b1b;
+  align-self: center;
+  margin-top: 10px;
+  font-weight: bolder;
+  font-size: 30px;
+  font-family: "Ubuntu", sans-serif;
+  text-align: center;
+}
+
+.eventsapp{
+  margin-bottom: 4%;
+  text-align: center;
+  color: #f1f1f1;
+  font-size: 60px;
+  margin-top: 40px;
   font-family: "Ubuntu", sans-serif;
 }
