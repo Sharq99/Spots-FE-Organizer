@@ -11,7 +11,7 @@ class ForgetOrganizerStore {
 
   fetchForgetOrganizers = async () => {
     try {
-      const response = await instance.get("/forgetOrganizer");
+      const response = await instance.get(process.env.REACT_APP_FORGET);
       this.forgetOrganizers = toJS(response.data);
     } catch (error) {
       console.log(error);
@@ -19,9 +19,8 @@ class ForgetOrganizerStore {
   };
 
   createForgetOrganizers = async (email) => {
-    console.log("email", email)
     try {
-      const response = await instance.post(`/forgetOrganizer/create/${email}`,).then(
+      const response = await instance.post(process.env.REACT_APP_FORGET_CREATE+'/'+email.toLowerCase()).then(
         swal({
           type: "success",
           text: "Email Sent 👍",
@@ -36,7 +35,7 @@ class ForgetOrganizerStore {
 
   deleteForgetOrganizer = async (forgetOrganizerId) => {
     try {
-      await instance.delete(`/forgetOrganizer/remove/${forgetOrganizerId}`);
+      await instance.delete(process.env.REACT_APP_FORGET_REMOVE+'/'+forgetOrganizerId);
       this.forgetOrganizers = this.forgetOrganizers.filter((forgetOrganizer) => forgetOrganizer._id !== forgetOrganizerId);
     } catch (error) {
       console.log(error);

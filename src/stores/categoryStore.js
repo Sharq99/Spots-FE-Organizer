@@ -10,7 +10,7 @@ class CategoryStore {
 
   fetchCategories = async () => {
     try {
-      const response = await instance.get("/category");
+      const response = await instance.get(process.env.REACT_APP_CATEGORY);
       this.categories = response.data;
     } catch (error) {
       console.log(error);

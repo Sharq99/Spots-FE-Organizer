@@ -11,10 +11,9 @@ import {
   IoMdPersonAdd,
   IoMdPerson,
 } from "react-icons/io";
-import { RiAdvertisementFill, RiLockPasswordFill } from "react-icons/ri";
+import { RiAdvertisementFill, RiLockPasswordFill, RiSpam2Fill } from "react-icons/ri";
 import { AiFillNotification } from "react-icons/ai";
 import { HiViewGridAdd } from "react-icons/hi";
-import { DEST_KEY_ADMN } from "../config/keys";
 
 function Nav() {
   const nav = useNavigate();
@@ -22,7 +21,7 @@ function Nav() {
     <>
       {authStore.organizer ? (
         <>
-          {authStore.organizer?.email === DEST_KEY_ADMN ? (
+          {authStore.organizer?.email === process.env.REACT_APP_DEST_KEY_ADMN ? (
             <nav className="navtabs">
               <NavLink
                 style={({ isActive }) => ({
@@ -59,6 +58,15 @@ function Nav() {
                 to="/addDests"
               >
                 <HiViewGridAdd name="stats-chart-outline"></HiViewGridAdd>
+              </NavLink>
+              <NavLink
+                style={({ isActive }) => ({
+                  color: isActive ? "#e52b51" : "grey",
+                })}
+                className="icon"
+                to="/Report"
+              >
+                <RiSpam2Fill name="stats-chart-outline"></RiSpam2Fill>
               </NavLink>
               <NavLink
                 style={({ isActive }) => ({

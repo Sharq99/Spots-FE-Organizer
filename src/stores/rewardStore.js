@@ -10,7 +10,7 @@ class RewardStore {
 
   fetchRewards = async () => {
     try {
-      const response = await instance.get("/reward");
+      const response = await instance.get(process.env.REACT_APP_REWARD);
       this.rewards = response.data;
     } catch (error) {
       console.log(error);
@@ -22,7 +22,7 @@ class RewardStore {
       newReward.image = file;
       const formData = new FormData();
       for (const key in newReward) formData.append(key, newReward[key]);
-      const response = await instance.post(`/reward/${spotId}`, formData);
+      const response = await instance.post(process.env.REACT_APP_REWARD+'/'+spotId, formData);
       this.rewards.push(response.data);
     } catch (error) {
       console.log(error);
@@ -31,7 +31,7 @@ class RewardStore {
 
   deleteReward = async (rewardId) => {
     try {
-      await instance.delete(`/reward/delete/${rewardId}`);
+      await instance.delete(process.env.REACT_APP_REWARD_REMOVE+'/'+rewardId);
       this.rewards = this.rewards.filter((reward) => reward._id !== rewardId);
     } catch (error) {
       console.log(error);

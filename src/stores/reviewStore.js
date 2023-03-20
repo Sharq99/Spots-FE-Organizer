@@ -10,7 +10,7 @@ class ReviewStore {
 
   fetchReviews = async () => {
     try {
-        const response = await instance.get("/review");
+        const response = await instance.get(process.env.REACT_APP_REVIEW);
         this.reviews = response.data;
     } catch (error) {
       console.log(error);
