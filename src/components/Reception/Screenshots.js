@@ -1,0 +1,35 @@
+export default function Screenshots() {
+  return (
+    <div
+      style={{
+        paddingBottom: 50,
+        paddingTop: 0,
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "flex-start",
+      }}
+    >
+      <img
+        style={{
+          height: "72%",
+          width: "72%",
+          alignSelf: "center",
+        }}
+        src={require("../pics/Destscreenshotholder.png")}
+      ></img>
+      <h1 className="maintitle">Discover a world of possibilities with Dest</h1>
+      <h3
+        style={{
+          color: "white",
+          opacity: 0.8,
+          alignSelf: "center",
+          marginTop: 10,
+          fontWeight: "300",
+          textAlign: "center",
+        }}
+      >
+        The app that connects you to a world of attendees!
+      </h3>
+    </div>
+  );
+}

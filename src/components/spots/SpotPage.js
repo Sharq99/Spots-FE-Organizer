@@ -13,7 +13,7 @@ function SpotPage() {
   const nav = useNavigate();
   const { spotId } = useParams();
   const spot = spotStore?.getSpotsById(spotId);
-  const category = categoryStore.getCategoryById(spot.category);
+  const category = categoryStore.getCategoryById(spot?.category);
   let startDate = moment(spot?.startDate).format("LL");
   let endDate = moment(spot?.endDate).format("LL");
   const today = new Date();

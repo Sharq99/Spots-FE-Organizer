@@ -23,6 +23,11 @@ function OffersTerms() {
     galleryImage2: oldSpot?.galleryImage2,
     galleryImage3: oldSpot?.galleryImage3,
     galleryImage4: oldSpot?.galleryImage4,
+    adImage0: oldSpot?.adImage0,
+    adImage1: oldSpot?.adImage1,
+    adImage2: oldSpot?.adImage2,
+    adImage3: oldSpot?.adImage3,
+    adImage4: oldSpot?.adImage4,
     location: oldSpot?.location,
     description: oldSpot?.description,
     descriptionAr: oldSpot?.descriptionAr,
@@ -60,7 +65,12 @@ function OffersTerms() {
         galleryFile1,
         galleryFile2,
         galleryFile3,
-        galleryFile4
+        galleryFile4,
+        spot.adImage0,
+        spot.adImage1,
+        spot.adImage2,
+        spot.adImage3,
+        spot.adImage4
       );
       swal({
         title: "Success",
@@ -123,6 +133,7 @@ function OffersTerms() {
                       height: "300px",
                       paddingTop: "10px",
                     }}
+                    dir="rtl"
                     className="input-style"
                     type="text"
                     placeholder=""

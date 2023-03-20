@@ -37,6 +37,11 @@ function EditSpot() {
     galleryImage2: oldSpot?.galleryImage2,
     galleryImage3: oldSpot?.galleryImage3,
     galleryImage4: oldSpot?.galleryImage4,
+    adImage0: oldSpot?.adImage0,
+    adImage1: oldSpot?.adImage1,
+    adImage2: oldSpot?.adImage2,
+    adImage3: oldSpot?.adImage3,
+    adImage4: oldSpot?.adImage4,
     location: oldSpot?.location,
     description: oldSpot?.description,
     descriptionAr: oldSpot?.descriptionAr,
@@ -46,8 +51,8 @@ function EditSpot() {
     endTime: oldSpot?.endTime ? oldSpot?.endTime : "",
     isFree: oldSpot?.isFree,
     startDate: oldSpot?.startDate,
-    endDate: oldSpot?.endDate,
     isMultiple: oldSpot?.isMultiple,
+    endDate: oldSpot?.isMultiple ? oldSpot?.endDate : "",
     seats: oldSpot?.seats,
     seatsRemaining: oldSpot?.seatsRemaining,
     price: oldSpot?.price,
@@ -194,7 +199,12 @@ function EditSpot() {
         galleryFile1,
         galleryFile2,
         galleryFile3,
-        galleryFile4
+        galleryFile4,
+        spot.adImage0,
+        spot.adImage1,
+        spot.adImage2,
+        spot.adImage3,
+        spot.adImage4
       );
       swal({
         title: "Success",
@@ -210,9 +220,7 @@ function EditSpot() {
   };
 
   const spotstartdate = new Date(spot.startDate);
-  const spotenddate = new Date(spot.endDate);
   const formattedStartDate = spotstartdate.toISOString().substr(0, 10);
-  const formattedEndDate = spotenddate.toISOString().substr(0, 10);
   return (
     <div className="backgroundform">
       <div className="whitebackgroundoffers" style={{ height: "250%" }}>
@@ -757,7 +765,11 @@ function EditSpot() {
                   <input
                     className="input-style"
                     type="date"
-                    value={formattedEndDate}
+                    value={
+                      spot?.isMultiple
+                        ? new Date(spot.endDate).toISOString().substr(0, 10)
+                        : ""
+                    }
                     name="endDate"
                     onChange={handleChange}
                   />

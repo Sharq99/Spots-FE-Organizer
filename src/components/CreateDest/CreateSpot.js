@@ -61,6 +61,11 @@ function CreateSpot() {
     galleryImage2: "",
     galleryImage3: "",
     galleryImage4: "",
+    adImage0: "",
+    adImage1: "",
+    adImage2: "",
+    adImage3: "",
+    adImage4: "",
     video: "",
     location: "",
     description: "",
@@ -257,7 +262,12 @@ function CreateSpot() {
         galleryFile1,
         galleryFile2,
         galleryFile3,
-        galleryFile4
+        galleryFile4,
+        spot.adImage0,
+        spot.adImage1,
+        spot.adImage2,
+        spot.adImage3,
+        spot.adImage4
       );
       swal({
         title: "Success",

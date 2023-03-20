@@ -25,7 +25,22 @@ function AdSpotsItems({ spot }) {
         swal("Done!", "Spot has been Advertised!", {
           icon: "success",
         });
-        spotStore.updateSpot(TrueSpot, spot._id, spot?.image, spot.category);
+        spotStore.updateSpot(
+          TrueSpot,
+          spot._id,
+          spot?.image,
+          spot.category,
+          spot.galleryImage0,
+          spot.galleryImage1,
+          spot.galleryImage2,
+          spot.galleryImage3,
+          spot.galleryImage4,
+          spot.adImage0,
+          spot.adImage1,
+          spot.adImage2,
+          spot.adImage3,
+          spot.adImage4
+        );
       }
     });
   };
