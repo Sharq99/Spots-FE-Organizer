@@ -1,10 +1,20 @@
+import { useEffect } from "react";
+import { useState } from "react";
+
 export default function DestExplain() {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
   return (
     <div
       style={{
         display: "flex",
         alignContent: "center",
         justifyContent: "center",
+        flexDirection: "column",
       }}
     >
       <div
@@ -18,7 +28,6 @@ export default function DestExplain() {
           width: "70%",
           borderRadius: 50,
           padding: 50,
-          marginBottom: 100,
           boxShadow: "0 0 40px rgba(8, 7, 16, 0.6)",
           flexWrap: "wrap",
         }}
@@ -74,6 +83,33 @@ export default function DestExplain() {
             Optimize your event's impact with Dest
           </h3>
         </div>
+      </div>
+      <div
+        style={{
+          display: "flex",
+          alignSelf: "center",
+          margin: 50,
+        }}
+      >
+        <h1
+          style={{
+            backgroundColor: "#e52b51",
+            padding: 30,
+            paddingTop: 10,
+            paddingBottom: 10,
+            borderRadius: 15,
+            color: "#f1f1f1",
+            alignSelf: "center",
+            margin: 30,
+            fontSize: 30,
+            cursor: "pointer",
+            fontWeight: "normal",
+          }}
+          onClick={scrollToTop}
+          className="maintitledescribe"
+        >
+          Join us now!
+        </h1>
       </div>
     </div>
   );

@@ -1143,9 +1143,13 @@ function CreateSpot() {
           </div>
         ) : (
           <div className="whitebackgroundcreateoff">
+            <img
+              style={{ height: "40%", width: "50%" }}
+              src={require("../pics/EmptyTickets.png")}
+            ></img>
             <h1 className="codelabel">You Don't have any Dest Credits</h1>
             <h1 className="codelabelsecond">
-              To get more Dest Credits, contact us in WhatsApp at 97947057
+              To get more Dest Credits, contact us in WhatsApp at 99440289
             </h1>
           </div>
         )}

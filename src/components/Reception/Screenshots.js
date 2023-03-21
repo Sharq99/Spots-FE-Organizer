@@ -30,6 +30,29 @@ export default function Screenshots() {
       >
         The app that connects you to a world of attendees!
       </h3>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          alignContent: "center",
+          alignItems: "center",
+          justifyContent: "center",
+          alignSelf: "center",
+          marginTop: 20,
+        }}
+      >
+        <img
+          style={{
+            height: "50%",
+            width: "50%",
+            cursor: "pointer",
+          }}
+          onClick={() =>
+            window.open("https://apps.apple.com/us/app/dest/id1662424448")
+          }
+          src={require("../pics/appstorebutton.png")}
+        ></img>
+      </div>
     </div>
   );
 }
