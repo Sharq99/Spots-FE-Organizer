@@ -298,15 +298,21 @@ function EditSpot() {
                     alignItems: "center",
                   }}
                 >
-                  <img
-                    alt={galleryImage0}
-                    className="spotgallery"
-                    src={
-                      galleryImage0
-                        ? galleryImage0
-                        : `${baseURL}${spot.galleryImage0}`
-                    }
-                  ></img>
+                  {galleryFile0 !== "" ? (
+                    <img
+                      alt={galleryImage0}
+                      className="spotgallery"
+                      src={
+                        galleryImage0
+                          ? galleryImage0
+                          : `${baseURL}${spot.galleryImage0}`
+                      }
+                    ></img>
+                  ) : (
+                    <label className="spotgalleryholder">
+                      Recommended 1080W x 720H
+                    </label>
+                  )}
                   <div>
                     <input
                       onChange={handleGalleryImage0}
@@ -359,15 +365,21 @@ function EditSpot() {
                     alignItems: "center",
                   }}
                 >
-                  <img
-                    alt={galleryImage1}
-                    className="spotgallery"
-                    src={
-                      galleryImage1
-                        ? galleryImage1
-                        : `${baseURL}${spot.galleryImage1}`
-                    }
-                  ></img>
+                  {galleryFile1 !== "" ? (
+                    <img
+                      alt={galleryImage1}
+                      className="spotgallery"
+                      src={
+                        galleryImage1
+                          ? galleryImage1
+                          : `${baseURL}${spot.galleryImage1}`
+                      }
+                    ></img>
+                  ) : (
+                    <label className="spotgalleryholder">
+                      Recommended 1080W x 720H
+                    </label>
+                  )}
                   <div>
                     <input
                       onChange={handleGalleryImage1}
@@ -421,15 +433,21 @@ function EditSpot() {
                     alignItems: "center",
                   }}
                 >
-                  <img
-                    alt={galleryImage2}
-                    className="spotgallery"
-                    src={
-                      galleryImage2
-                        ? galleryImage2
-                        : `${baseURL}${spot.galleryImage2}`
-                    }
-                  ></img>
+                  {galleryFile2 !== "" ? (
+                    <img
+                      alt={galleryImage2}
+                      className="spotgallery"
+                      src={
+                        galleryImage2
+                          ? galleryImage2
+                          : `${baseURL}${spot.galleryImage2}`
+                      }
+                    ></img>
+                  ) : (
+                    <label className="spotgalleryholder">
+                      Recommended 1080W x 720H
+                    </label>
+                  )}
                   <div>
                     <input
                       onChange={handleGalleryImage2}
@@ -483,15 +501,21 @@ function EditSpot() {
                     alignItems: "center",
                   }}
                 >
-                  <img
-                    alt={galleryImage3}
-                    className="spotgallery"
-                    src={
-                      galleryImage3
-                        ? galleryImage3
-                        : `${baseURL}${spot.galleryImage3}`
-                    }
-                  ></img>
+                  {galleryFile3 !== "" ? (
+                    <img
+                      alt={galleryImage3}
+                      className="spotgallery"
+                      src={
+                        galleryImage3
+                          ? galleryImage3
+                          : `${baseURL}${spot.galleryImage3}`
+                      }
+                    ></img>
+                  ) : (
+                    <label className="spotgalleryholder">
+                      Recommended 1080W x 720H
+                    </label>
+                  )}
                   <div>
                     <input
                       onChange={handleGalleryImage3}
@@ -545,15 +569,21 @@ function EditSpot() {
                     alignItems: "center",
                   }}
                 >
-                  <img
-                    alt={galleryImage4}
-                    className="spotgallery"
-                    src={
-                      galleryImage4
-                        ? galleryImage4
-                        : `${baseURL}${spot.galleryImage4}`
-                    }
-                  ></img>
+                  {galleryFile4 !== "" ? (
+                    <img
+                      alt={galleryImage4}
+                      className="spotgallery"
+                      src={
+                        galleryImage4
+                          ? galleryImage4
+                          : `${baseURL}${spot.galleryImage4}`
+                      }
+                    ></img>
+                  ) : (
+                    <label className="spotgalleryholder">
+                      Recommended 1080W x 720H
+                    </label>
+                  )}
                   <div>
                     <input
                       onChange={handleGalleryImage4}
