@@ -350,7 +350,7 @@ function CreateSpot() {
                   <img alt={image} className="spotimage" src={image}></img>
                 ) : (
                   <label className="spotimagetext">
-                    Recommended 290W x 480H
+                    Recommended 725W x 1200H
                   </label>
                 )}
               </div>
@@ -481,7 +481,7 @@ function CreateSpot() {
                     ></img>
                   ) : (
                     <label className="spotgalleryholder">
-                      Recommended 450W x 300H
+                      Recommended 1080W x 720H
                     </label>
                   )}
                   <div>
@@ -544,7 +544,7 @@ function CreateSpot() {
                     ></img>
                   ) : (
                     <label className="spotgalleryholder">
-                      Recommended 450W x 300H
+                      Recommended 1080W x 720H
                     </label>
                   )}
                   <div>
@@ -608,7 +608,7 @@ function CreateSpot() {
                     ></img>
                   ) : (
                     <label className="spotgalleryholder">
-                      Recommended 450W x 300H
+                      Recommended 1080W x 720H
                     </label>
                   )}
                   <div>
@@ -672,7 +672,7 @@ function CreateSpot() {
                     ></img>
                   ) : (
                     <label className="spotgalleryholder">
-                      Recommended 450W x 300H
+                      Recommended 1080W x 720H
                     </label>
                   )}
                   <div>
@@ -736,7 +736,7 @@ function CreateSpot() {
                     ></img>
                   ) : (
                     <label className="spotgalleryholder">
-                      Recommended 450W x 300H
+                      Recommended 1080W x 720H
                     </label>
                   )}
                   <div>
