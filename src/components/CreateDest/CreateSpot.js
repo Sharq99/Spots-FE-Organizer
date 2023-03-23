@@ -109,7 +109,7 @@ function CreateSpot() {
   const [spotSeats, setSpotSeats] = useState(true);
   const [spotPrice, setSpotPrice] = useState(true);
   spot.announcementEn = `Welcome to ${spot.name}, enjoy our amazing offers and rewards`;
-  spot.announcementAr = `مرحبا بكم في ${spot.name}، استمتع بعروضنا وجوائزنا الرائعة`;
+  spot.announcementAr = `مرحبا بكم في ${spot.nameAr}، استمتع بعروضنا وجوائزنا الرائعة`;
   const [categoryId, setCategoryId] = useState("640a8df4f68bfae10cbb4553");
   const [categoryName, setCategoryName] = useState();
   const [isLoading, setIsLoading] = useState(false);
