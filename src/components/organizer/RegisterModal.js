@@ -53,15 +53,15 @@ function RegisterModal() {
         <div
           style={{
             display: "flex",
-            flexDirection: "column",
+            flexDirection: "row",
             alignItems: "center",
-            marginTop: "3%",
-            marginBottom: "3%",
+            marginTop: "8%",
+            marginBottom: "5%",
+            justifyContent: "space-evenly",
           }}
           className="welcomeformrow"
         >
           <h3 className="eventsapp">Join Kuwait's First Events App</h3>
-
           <form className="form-styleh" onSubmit={handleSubmit}>
             <h3>Register now!</h3>
             <input

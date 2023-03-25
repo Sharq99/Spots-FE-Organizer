@@ -100,13 +100,12 @@ export default function DestExplain() {
             borderRadius: 15,
             color: "#f1f1f1",
             alignSelf: "center",
-            margin: 30,
+
             fontSize: 30,
             cursor: "pointer",
             fontWeight: "normal",
           }}
           onClick={scrollToTop}
-          className="maintitledescribe"
         >
           Join us now!
         </h1>

@@ -11,8 +11,9 @@ export default function Screenshots() {
     >
       <img
         style={{
+          marginTop: 50,
           height: "72%",
-          width: "72%",
+          width: "85%",
           alignSelf: "center",
         }}
         src={require("../pics/Destscreenshotholder.png")}
@@ -38,7 +39,7 @@ export default function Screenshots() {
           alignItems: "center",
           justifyContent: "center",
           alignSelf: "center",
-          marginTop: 20,
+          marginTop: 40,
         }}
       >
         <img

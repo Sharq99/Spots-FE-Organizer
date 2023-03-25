@@ -115,7 +115,7 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
   align-self: center;
   margin-top: 50px;
   font-weight: bolder;
-  font-size: 40px;
+  font-size: 35px;
   font-family: "Ubuntu", sans-serif;
   text-align: center;
 }
@@ -130,10 +130,9 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
 }
 
 .eventsapp{
-  margin-bottom: 4%;
+  margin: 40px;
   text-align: center;
   color: #f1f1f1;
-  font-size: 60px;
-  margin-top: 40px;
+  font-size: 40px;
   font-family: "Ubuntu", sans-serif;
 }

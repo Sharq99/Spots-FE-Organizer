@@ -10,7 +10,9 @@ export default function Footer() {
         alignContent: "center",
         justifyContent: "center",
         alignItems: "center",
-        marginBottom: 50,
+        margin: 50,
+        marginTop: 50,
+        marginBottom: 90,
       }}
     >
       <div
