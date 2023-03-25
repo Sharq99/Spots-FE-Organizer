@@ -254,7 +254,7 @@ function CreateSpot() {
     spot.seatsRemaining = spot.seats;
     event.preventDefault();
     try {
-      await spotStore.createSpot(
+      const res = await spotStore.createSpot(
         spot,
         categoryId,
         file,
@@ -269,16 +269,24 @@ function CreateSpot() {
         spot.adImage3,
         spot.adImage4
       );
-      swal({
-        title: "Success",
-        text: `${spot.name} has been added`,
-        icon: "success",
-        confirmButtonText: "OK",
-      }).then(async function () {
-        await authStore.updateNumofDests();
-        setIsLoading(false);
-        nav(`/my-spots`);
-      });
+      if(res === "created") {
+        swal({
+          title: "Success",
+          text: `${spot.name} has been added`,
+          icon: "success",
+          confirmButtonText: "OK",
+        }).then(async function () {
+          await authStore.updateNumofDests();
+          setIsLoading(false);
+          nav(`/my-spots`);
+        });
+      } else {
+        swal({
+          title: "Reduce images size",
+          icon: "error",
+          confirmButtonText: "OK",
+        })
+      }
     } catch (e) {
       setIsLoading(false);
       alert(e.message);
@@ -857,6 +865,26 @@ function CreateSpot() {
                   name="location"
                   onChange={handleChange}
                 />
+                 <div style={{ display: "flex", flexDirection: "row" }}>
+                  <h5 className="l-color">
+                    Enter Dest Description in English &nbsp;
+                  </h5>
+                  <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
+                </div>
+                <textarea
+                  cols="40"
+                  rows="5"
+                  style={{
+                    height: "100px",
+                    paddingTop: "10px",
+                  }}
+                  className="input-style"
+                  type="text"
+                  placeholder="Dest Description in English  (200 characters max)"
+                  name="description"
+                  maxLength={200}
+                  onChange={handleChange}
+                />
                 <div style={{ display: "flex", flexDirection: "row" }}>
                   <h5 className="l-color">
                     Enter Dest Description in Arabic &nbsp;
@@ -879,9 +907,11 @@ function CreateSpot() {
                   maxLength={200}
                   onChange={handleChange}
                 />
+              </div>
+              <div>
                 <div style={{ display: "flex", flexDirection: "row" }}>
                   <h5 className="l-color">
-                    Enter Dest Description in English &nbsp;
+                    Enter Dest Detail (in English) &nbsp;
                   </h5>
                   <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
                 </div>
@@ -889,18 +919,15 @@ function CreateSpot() {
                   cols="40"
                   rows="5"
                   style={{
-                    height: "100px",
+                    height: "150px",
                     paddingTop: "10px",
                   }}
                   className="input-style"
                   type="text"
-                  placeholder="Dest Description in English  (200 characters max)"
-                  name="description"
-                  maxLength={200}
+                  placeholder="Dest Details in English"
+                  name="details"
                   onChange={handleChange}
                 />
-              </div>
-              <div>
                 <div style={{ display: "flex", flexDirection: "row" }}>
                   <h5 className="l-color">
                     Enter Dest Details (in Arabic) &nbsp;
@@ -920,25 +947,6 @@ function CreateSpot() {
                   type="text"
                   placeholder="تفاصيل الوجهه بالعربي"
                   name="detailsAr"
-                  onChange={handleChange}
-                />
-                <div style={{ display: "flex", flexDirection: "row" }}>
-                  <h5 className="l-color">
-                    Enter Dest Detail (in English) &nbsp;
-                  </h5>
-                  <h5 style={{ color: "red", marginTop: "10px" }}>*</h5>
-                </div>
-                <textarea
-                  cols="40"
-                  rows="5"
-                  style={{
-                    height: "150px",
-                    paddingTop: "10px",
-                  }}
-                  className="input-style"
-                  type="text"
-                  placeholder="Dest Details in English"
-                  name="details"
                   onChange={handleChange}
                 />
                 <div style={{ display: "flex", flexDirection: "row" }}>

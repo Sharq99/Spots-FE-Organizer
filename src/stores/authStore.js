@@ -147,7 +147,7 @@ class AuthStore {
   };
 
   addDestsToOrganizer = async (newDests) => {
-    console.log('newDests', newDests)
+    newDests.organizerEmail = newDests.organizerEmail.toLowerCase()
     try {
       const res = await instance.put(process.env.REACT_APP_ADD_DEST, newDests);
       console.log('first', res.data.message)

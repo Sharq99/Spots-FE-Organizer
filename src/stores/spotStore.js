@@ -50,7 +50,12 @@ class SpotStore {
         formData.append(key, newSpot[key]);
       }
       const response = await instance.post(process.env.REACT_APP_DEST_CREATE+'/'+categoryId, formData);
-      this.spots.push(response.data);
+      if(typeof response === "undefined") {
+        return "not created"
+      } else {
+        this.spots.push(response.data);
+        return "created"
+      }
     } catch (error) {
       console.log(error);
     }
