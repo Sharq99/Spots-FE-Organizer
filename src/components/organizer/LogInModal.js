@@ -27,7 +27,12 @@ function LogInModal() {
   };
   return (
     <div>
-      <div className="welcomeformrow">
+      <div
+        style={{
+          marginTop: 100,
+        }}
+        className="welcomeformrow"
+      >
         <div className="form-styleh">
           <label className="label-style">
             <h2
