@@ -722,12 +722,19 @@ function EditSpot() {
                 maxLength={200}
                 onChange={handleChange}
               />
+            </div>
+
+            <div
+              style={{
+                width: "100%",
+              }}
+            >
               <h5 className="l-color">Enter Dest Details (English)</h5>
               <textarea
                 cols="40"
                 rows="5"
                 style={{
-                  height: "150px",
+                  height: "100px",
                   paddingTop: "10px",
                 }}
                 className="input-style"
@@ -741,7 +748,7 @@ function EditSpot() {
                 cols="40"
                 rows="5"
                 style={{
-                  height: "150px",
+                  height: "100px",
                   paddingTop: "10px",
                 }}
                 className="input-style"
@@ -751,13 +758,6 @@ function EditSpot() {
                 name="detailsAr"
                 onChange={handleChange}
               />
-            </div>
-
-            <div
-              style={{
-                width: "100%",
-              }}
-            >
               <h5 className="l-color">Enter Start Time</h5>
               <input
                 className="input-style"

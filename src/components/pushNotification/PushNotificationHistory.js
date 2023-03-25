@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { Table, Column, HeaderCell, Cell } from "rsuite-table";
 import "rsuite-table/dist/css/rsuite-table.css";
 import pushNotificationStore from "../../stores/pushNotificationStore";
+import moment from "moment";
+
 
 function PushNotificationHistory() {
   const [loading, setLoading] = useState(false);
@@ -57,7 +59,16 @@ function PushNotificationHistory() {
           >
             date
           </HeaderCell>
-          <Cell dataKey="displayNameEn" />
+          <Cell>
+            {(rowData) => {
+              return(
+                <h4 style={{
+                  fontWeight: "400",
+                  fontSize: 17,
+                }}>{moment(rowData.date).format("LLL")}</h4>
+              )
+            }}
+            </Cell>
         </Column>
       </Table>
     </div>
