@@ -45,7 +45,10 @@ const qrCodePreview = new QRCodeStyling({
 });
 
 const MainQrCode = ({ spotId }) => {
-  const [url, setUrl] = useState(`dest://Profile/${spotId}`);
+  const [url, setUrl] = useState({
+    url: `dest://Profile/${spotId}`,
+    isDest: true,
+  });
   const [color, setColor] = useState(500);
   const [image, setImage] = useState();
   const ref = useRef(0);
@@ -65,7 +68,7 @@ const MainQrCode = ({ spotId }) => {
   }, [url]);
   useEffect(() => {
     qrCodePreview.update({
-      data: url,
+      data: JSON.stringify(url),
     });
   }, [url]);
   const onUrlChange = (event) => {
