@@ -45,7 +45,10 @@ const qrCodePreview = new QRCodeStyling({
 });
 
 const GenerateQrCode = () => {
-  const [url, setUrl] = useState("");
+  const [url, setUrl] = useState({
+    points: 0,
+    isPoints: true,
+  });
   const [color, setColor] = useState(500);
   const [image, setImage] = useState();
   const ref = useRef(0);
@@ -65,12 +68,13 @@ const GenerateQrCode = () => {
   }, [url]);
   useEffect(() => {
     qrCodePreview.update({
-      data: url,
+      data: JSON.stringify(url),
     });
   }, [url]);
   const onUrlChange = (event) => {
     event.preventDefault();
-    setUrl(event.target.value);
+    console.log("first", event.target.value);
+    setUrl({ ...url, [event.target.name]: event.target.value });
   };
 
   useEffect(() => {
@@ -145,7 +149,8 @@ const GenerateQrCode = () => {
             <input
               type="number"
               className="input-style"
-              value={url}
+              name="points"
+              value={url.points}
               onChange={onUrlChange}
               placeholder="0-500"
               style={{ width: 200, marginLeft: 20 }}
