@@ -63,7 +63,7 @@ const MainQrCode = ({ spotId }) => {
 
   useEffect(() => {
     qrCode.update({
-      data: url,
+      data: JSON.stringify(url),
     });
   }, [url]);
   useEffect(() => {
