@@ -45,8 +45,7 @@ const qrCodePreview = new QRCodeStyling({
   extension: "png",
 });
 
-const GenerateQrCode = () => {
-  const { spotId } = useParams();
+const GenerateQrCode = ({ spotId }) => {
   const [url, setUrl] = useState({
     points: 0,
     isPoints: true,
