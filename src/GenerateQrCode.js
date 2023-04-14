@@ -63,7 +63,7 @@ const GenerateQrCode = () => {
 
   useEffect(() => {
     qrCode.update({
-      data: url,
+      data: JSON.stringify(url),
     });
   }, [url]);
   useEffect(() => {
@@ -73,7 +73,6 @@ const GenerateQrCode = () => {
   }, [url]);
   const onUrlChange = (event) => {
     event.preventDefault();
-    console.log("first", event.target.value);
     setUrl({ ...url, [event.target.name]: event.target.value });
   };
 

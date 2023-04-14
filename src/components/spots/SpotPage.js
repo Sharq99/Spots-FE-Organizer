@@ -18,8 +18,13 @@ function SpotPage() {
   let endDate = moment(spot?.endDate).format("LL");
   const today = new Date();
   today.setHours(3, 0, 0, 0);
-  const active = today.getTime() === new Date(spot.startDate).getTime();
-  const finished = today.getTime() > new Date(spot.startDate).getTime();
+  let todayDate = moment(today).format("LL");
+  const active = spot.isMultiple
+    ? todayDate >= startDate && todayDate <= endDate
+    : todayDate === startDate;
+  const finished = spot.isMultiple
+    ? todayDate > endDate
+    : todayDate > startDate;
 
   useEffect(() => {
     spotStore.fetchSpots();
@@ -412,7 +417,7 @@ function SpotPage() {
             </div>
           </div>
           <div className="spotsettigs">
-            {today > new Date(spot.startDate) ? (
+            {finished ? (
               <></>
             ) : (
               <button
