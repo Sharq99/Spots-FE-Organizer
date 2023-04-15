@@ -81,6 +81,7 @@ function ExperianceList() {
     announcementEn: spot?.announcementEn,
     announcementAr: spot?.announcementAr,
     isPublished: spot?.isPublished,
+    views: spot?.views,
   });
   const handleAnnouncementTextEn = (event) => {
     newspot.announcementEn = event.target.value;

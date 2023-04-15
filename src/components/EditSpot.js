@@ -43,6 +43,7 @@ function EditSpot() {
     adImage3: oldSpot?.adImage3,
     adImage4: oldSpot?.adImage4,
     location: oldSpot?.location,
+    views: oldSpot?.views,
     description: oldSpot?.description,
     descriptionAr: oldSpot?.descriptionAr,
     details: oldSpot?.details,

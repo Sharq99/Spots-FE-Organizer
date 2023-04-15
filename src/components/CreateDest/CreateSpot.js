@@ -93,6 +93,7 @@ function CreateSpot() {
     termsAndConditionsOfferssAr: "",
     termsAndConditionsRewardsEn: "",
     termsAndConditionsRewardsAr: "",
+    views: 0,
   });
   const [checked, setChecked] = useState(spot?.isPublished);
   const [spotName, setSpotName] = useState(true);
@@ -269,7 +270,7 @@ function CreateSpot() {
         spot.adImage3,
         spot.adImage4
       );
-      if(res === "created") {
+      if (res === "created") {
         swal({
           title: "Success",
           text: `${spot.name} has been added`,
@@ -285,7 +286,7 @@ function CreateSpot() {
           title: "Reduce images size",
           icon: "error",
           confirmButtonText: "OK",
-        })
+        });
       }
     } catch (e) {
       setIsLoading(false);
@@ -865,7 +866,7 @@ function CreateSpot() {
                   name="location"
                   onChange={handleChange}
                 />
-                 <div style={{ display: "flex", flexDirection: "row" }}>
+                <div style={{ display: "flex", flexDirection: "row" }}>
                   <h5 className="l-color">
                     Enter Dest Description in English &nbsp;
                   </h5>

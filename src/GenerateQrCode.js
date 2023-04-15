@@ -1,7 +1,6 @@
 import { useState, useRef } from "react";
 import QRCodeStyling from "qr-code-styling";
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
 
 const qrCode = new QRCodeStyling({
   width: 2000,
@@ -51,6 +50,7 @@ const GenerateQrCode = ({ spotId }) => {
     isPoints: true,
     spot: spotId,
   });
+  console.log("url", url);
   const [color, setColor] = useState(500);
   const [image, setImage] = useState();
   const ref = useRef(0);
