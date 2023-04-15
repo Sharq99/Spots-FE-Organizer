@@ -44,6 +44,7 @@ function RewardssTerms() {
     price: oldSpot?.price,
     isAd: oldSpot?.isAd,
     category: oldSpot?.category,
+    views: oldSpot?.views,
     addSeats: 0,
     announcementEn: oldSpot?.announcementEn,
     announcementAr: oldSpot?.announcementAr,
