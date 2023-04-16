@@ -44,11 +44,13 @@ const qrCodePreview = new QRCodeStyling({
   extension: "png",
 });
 
-const GenerateQrCode = () => {
+const GenerateQrCode = ({ spotId }) => {
   const [url, setUrl] = useState({
     points: 0,
     isPoints: true,
+    spot: spotId,
   });
+  console.log("url", url);
   const [color, setColor] = useState(500);
   const [image, setImage] = useState();
   const ref = useRef(0);
@@ -63,7 +65,7 @@ const GenerateQrCode = () => {
 
   useEffect(() => {
     qrCode.update({
-      data: url,
+      data: JSON.stringify(url),
     });
   }, [url]);
   useEffect(() => {
@@ -73,7 +75,6 @@ const GenerateQrCode = () => {
   }, [url]);
   const onUrlChange = (event) => {
     event.preventDefault();
-    console.log("first", event.target.value);
     setUrl({ ...url, [event.target.name]: event.target.value });
   };
 

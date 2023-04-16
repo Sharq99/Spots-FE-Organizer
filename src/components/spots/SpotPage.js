@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import moment from "moment";
 import categoryStore from "../../stores/categoryStore";
 import { useEffect, useState } from "react";
+import { IoIosEye } from "react-icons/io";
 import "react-toggle/style.css";
 
 function SpotPage() {
@@ -18,8 +19,13 @@ function SpotPage() {
   let endDate = moment(spot?.endDate).format("LL");
   const today = new Date();
   today.setHours(3, 0, 0, 0);
-  const active = today.getTime() === new Date(spot.startDate).getTime();
-  const finished = today.getTime() > new Date(spot.startDate).getTime();
+  let todayDate = moment(today).format("LL");
+  const active = spot.isMultiple
+    ? todayDate >= startDate && todayDate <= endDate
+    : todayDate === startDate;
+  const finished = spot.isMultiple
+    ? todayDate > endDate
+    : todayDate > startDate;
 
   useEffect(() => {
     spotStore.fetchSpots();
@@ -409,10 +415,38 @@ function SpotPage() {
               >
                 {spot?.isPublished ? "Published" : "Not published"}
               </p>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  alignContent: "center",
+                  alignItems: "center",
+                  marginLeft: 10,
+                }}
+              >
+                <IoIosEye
+                  style={{
+                    fontSize: 22,
+                    color: "#e52b51",
+                  }}
+                  name="stats-chart-outline"
+                ></IoIosEye>
+                <p
+                  className="catdetails"
+                  style={{
+                    fontSize: 16,
+                    alignSelf: "center",
+                    margin: 0,
+                    marginLeft: 5,
+                  }}
+                >
+                  {`${spot?.views} Views`}
+                </p>
+              </div>
             </div>
           </div>
           <div className="spotsettigs">
-            {today > new Date(spot.startDate) ? (
+            {finished ? (
               <></>
             ) : (
               <button

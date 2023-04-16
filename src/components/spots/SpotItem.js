@@ -25,7 +25,9 @@ function SpotItem({ spot }) {
   };
   const today = new Date();
   today.setHours(3, 0, 0, 0);
-  const dateCheck = today > new Date(spot.startDate);
+  const dateCheck = spot.isMultiple
+    ? today > new Date(spot.endDate)
+    : today > new Date(spot.startDate);
   return (
     <div className="icondivitem">
       <IoIosRemoveCircle

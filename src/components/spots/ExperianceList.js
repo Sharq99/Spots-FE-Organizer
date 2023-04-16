@@ -82,6 +82,7 @@ function ExperianceList() {
     announcementEn: spot?.announcementEn,
     announcementAr: spot?.announcementAr,
     isPublished: spot?.isPublished,
+    views: spot?.views,
   });
   const handleAnnouncementTextEn = (event) => {
     newspot.announcementEn = event.target.value;
@@ -837,7 +838,7 @@ function ExperianceList() {
             )}
           </ul>
           <h1 className="dashannouncement">Create Points</h1>
-          <GenerateQrCode />
+          <GenerateQrCode spotId={spotId} />
           <h1 className="dashannouncement">Dest Stamp</h1>
           <h1 className="destdownloads">
             Click on the one you want to download
