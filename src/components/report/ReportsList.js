@@ -77,7 +77,7 @@ function ReportsList() {
               const handleResolve = async () => {
                 swal("Problem Resolved!", {
                     icon: "success",
-                    confirmButtonText: "OK",
+                    button: "OK",
                 });
                 reportStore.deleteReport(rowData._id);
               };

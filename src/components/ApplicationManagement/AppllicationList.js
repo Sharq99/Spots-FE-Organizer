@@ -73,7 +73,7 @@ function ApplicationList() {
                       title: "Application Accepted",
                       text: `Oganizer has been added`,
                       icon: "success",
-                      confirmButtonText: "OK",
+                      button: "OK",
                     })
                   )
                 );
@@ -89,7 +89,7 @@ function ApplicationList() {
                   if (willDelete) {
                     swal("Application Rejected!", {
                       icon: "success",
-                      confirmButtonText: "OK",
+                      button: "OK",
                     });
                     applicationStore.deleteApplication(rowData._id);
                   }

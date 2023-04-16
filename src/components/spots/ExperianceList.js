@@ -13,6 +13,7 @@ import html2canvas from "html2canvas";
 import { ReactComponent as DestLogo } from "../pics/DestLogo.svg";
 import QRCode from "react-qr-code";
 import { baseURL } from "../../stores/instance";
+import Resizer from 'react-image-file-resizer';
 
 function downloadDivAsImageEnglish(divId) {
   const div = document.getElementById(divId);
@@ -108,7 +109,7 @@ function ExperianceList() {
         title: "Success",
         text: `English announcement has been Updated`,
         icon: "success",
-        confirmButtonText: "OK",
+        button: "OK",
       });
     } catch (error) {
       console.log(error);
@@ -140,7 +141,7 @@ function ExperianceList() {
         title: "Success",
         text: `Arabic announcement has been Updated`,
         icon: "success",
-        confirmButtonText: "OK",
+        button: "OK",
       });
     } catch (error) {
       console.log(error);
@@ -169,77 +170,94 @@ function ExperianceList() {
         title: "Success",
         text: `Ad images have been Updated`,
         icon: "success",
-        confirmButtonText: "OK",
+        button: "OK",
       });
     } catch (error) {
       console.log(error);
     }
   };
-  const handleAdImage0 = (event) => {
-    let file0 = event.target.files[0];
-    if (file0.size > 5 * 1024 * 1024) {
+
+  const resizeFile = (file) =>
+    new Promise((resolve) => {
+      Resizer.imageFileResizer(
+        file,
+        1080,
+        720,
+        "JPEG",
+        50,
+        0,
+        (uri) => {
+          resolve(uri);
+        },
+        "file",
+    );
+  });
+
+  const handleAdImage0 = async (event) => {
+    if (event.target.files[0].size > 5 * 1024 * 1024) {
       window.alert("Please upload an image smaller than 5 MB");
       return false;
     }
-    setAdFile0(file0);
+    const image = await resizeFile(event.target.files[0]);
+    setAdFile0(image);
     let reader = new FileReader();
     reader.addEventListener("load", () => {
       setAdImage0(reader.result);
     });
-    reader.readAsDataURL(file0);
+    reader.readAsDataURL(image);
   };
 
-  const handleAdImage1 = (event) => {
-    let file1 = event.target.files[0];
-    if (file1.size > 5 * 1024 * 1024) {
+  const handleAdImage1 = async (event) => {
+    if (event.target.files[0].size > 5 * 1024 * 1024) {
       window.alert("Please upload an image smaller than 5 MB");
       return false;
     }
-    setAdFile1(file1);
+    const image = await resizeFile(event.target.files[0]);
+    setAdFile1(image);
     let reader = new FileReader();
     reader.addEventListener("load", () => {
       setAdImage1(reader.result);
     });
-    reader.readAsDataURL(file1);
+    reader.readAsDataURL(image);
   };
-  const handleAdImage2 = (event) => {
-    let file2 = event.target.files[0];
-    if (file2.size > 5 * 1024 * 1024) {
+  const handleAdImage2 = async (event) => {
+    if (event.target.files[0].size > 5 * 1024 * 1024) {
       window.alert("Please upload an image smaller than 5 MB");
       return false;
     }
-    setAdFile2(file2);
+    const image = await resizeFile(event.target.files[0]);
+    setAdFile2(image);
     let reader = new FileReader();
     reader.addEventListener("load", () => {
       setAdImage2(reader.result);
     });
-    reader.readAsDataURL(file2);
+    reader.readAsDataURL(image);
   };
-  const handleAdImage3 = (event) => {
-    let file3 = event.target.files[0];
-    if (file3.size > 5 * 1024 * 1024) {
+  const handleAdImage3 = async (event) => {
+    if (event.target.files[0].size > 5 * 1024 * 1024) {
       window.alert("Please upload an image smaller than 5 MB");
       return false;
     }
-    setAdFile3(file3);
+    const image = await resizeFile(event.target.files[0]);
+    setAdFile3(image);
     let reader = new FileReader();
     reader.addEventListener("load", () => {
       setAdImage3(reader.result);
     });
-    reader.readAsDataURL(file3);
+    reader.readAsDataURL(image);
   };
-  const handleAdImage4 = (event) => {
-    let file4 = event.target.files[0];
-    if (file4.size > 5 * 1024 * 1024) {
+  const handleAdImage4 = async (event) => {
+    if (event.target.files[0].size > 5 * 1024 * 1024) {
       window.alert("Please upload an image smaller than 5 MB");
       return false;
     }
-    setAdFile4(file4);
+    const image = await resizeFile(event.target.files[0]);
+    setAdFile4(image);
     let reader = new FileReader();
     reader.addEventListener("load", () => {
       setAdImage4(reader.result);
     });
-    reader.readAsDataURL(file4);
+    reader.readAsDataURL(image);
   };
   const spotOffers = offerStore.offers.filter((offer) => offer.spot === spotId);
   const spotRewards = rewardStore.rewards.filter(

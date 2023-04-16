@@ -67,7 +67,7 @@ function ForgetOrganizersList() {
                         title: "Password Generated",
                         text: `Organizer's password has been reset`,
                         icon: "success",
-                        confirmButtonText: "OK",
+                        button: "OK",
                       })
                     )
                 } else if(res === "No Organizer Found") {
@@ -76,7 +76,7 @@ function ForgetOrganizersList() {
                       title: "No Organizer Registered to this Email",
                       text: `This request will be deleted!`,
                       icon: "warning",
-                      confirmButtonText: "OK",
+                      button: "OK",
                     })
                   )
                 } else {
@@ -84,7 +84,7 @@ function ForgetOrganizersList() {
                     title: "Something Went Wrong",
                     text: `Please try again later`,
                     icon: "warning",
-                    confirmButtonText: "OK",
+                    button: "OK",
                   })
                 }
               };
@@ -98,7 +98,7 @@ function ForgetOrganizersList() {
                   if (willDelete) {
                     swal("Request Rejected!", {
                       icon: "success",
-                      confirmButtonText: "OK",
+                      button: "OK",
                     });
                     forgetOrganizerStore.deleteForgetOrganizer(rowData._id);
                   }

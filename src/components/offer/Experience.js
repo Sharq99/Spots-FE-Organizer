@@ -56,7 +56,7 @@ function Experience() {
         title: "Success",
         text: `offer has been added`,
         icon: "success",
-        confirmButtonText: "OK",
+        button: "OK",
       }).then(function () {
         nav(`/ExperianceList/${spotId}`);
       });

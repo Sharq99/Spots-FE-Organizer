@@ -76,7 +76,7 @@ function OffersTerms() {
         title: "Success",
         text: `Offers Terms and Conditions Updated`,
         icon: "success",
-        confirmButtonText: "OK",
+        button: "OK",
       }).then(function () {
         nav(`/ExperianceList/${spotId}`);
       });
