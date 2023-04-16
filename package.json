@@ -25,6 +25,7 @@
     "react-easy-crop": "^4.6.3",
     "react-helmet": "^6.1.0",
     "react-icons": "^4.4.0",
+    "react-image-file-resizer": "^0.4.8",
     "react-input-multiline": "^0.3.1",
     "react-modal": "^3.16.1",
     "react-qr-code": "^2.0.11",

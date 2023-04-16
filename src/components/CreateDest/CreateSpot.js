@@ -8,6 +8,7 @@ import Toggle from "react-toggle";
 import "react-toggle/style.css";
 import Modal from "react-modal";
 import { IoMdClose } from "react-icons/io";
+import Resizer from 'react-image-file-resizer';
 
 function CreateSpot() {
   const nav = useNavigate();
@@ -169,6 +170,22 @@ function CreateSpot() {
   const handlePaid = (event) =>
     setSpot({ ...spot, [event.target.name]: false });
 
+  const resizeFile = (file) =>
+    new Promise((resolve) => {
+      Resizer.imageFileResizer(
+        file,
+        1080,
+        720,
+        "JPEG",
+        50,
+        0,
+        (uri) => {
+          resolve(uri);
+        },
+        "file",
+    );
+  });
+
   const handleImage = (event) => {
     let file = event.target.files[0];
     if (file.size > 5 * 1024 * 1024) {
@@ -184,70 +201,72 @@ function CreateSpot() {
     reader.readAsDataURL(file);
   };
 
-  const handleGalleryImage0 = (event) => {
-    let file0 = event.target.files[0];
-    if (file0.size > 5 * 1024 * 1024) {
+  const handleGalleryImage0 = async (event) => {
+    if (event.target.files[0].size > 5 * 1024 * 1024) {
       window.alert("Please upload an image smaller than 5 MB");
       return false;
     }
-    setGalleryFile0(file0);
+    const image = await resizeFile(event.target.files[0]);
+    // setGalleryImage0(image);
+    // setGalleryFile0(image);
+    setGalleryFile0(image);
     let reader = new FileReader();
     reader.addEventListener("load", () => {
       setGalleryImage0(reader.result);
     });
-    reader.readAsDataURL(file0);
+    reader.readAsDataURL(image);
   };
-  const handleGalleryImage1 = (event) => {
-    let file1 = event.target.files[0];
-    if (file1.size > 5 * 1024 * 1024) {
+  const handleGalleryImage1 = async (event) => {
+    if (event.target.files[0].size > 5 * 1024 * 1024) {
       window.alert("Please upload an image smaller than 5 MB");
       return false;
     }
-    setGalleryFile1(file1);
+    const image = await resizeFile(event.target.files[0]);
+    setGalleryFile1(image);
     let reader = new FileReader();
     reader.addEventListener("load", () => {
       setGalleryImage1(reader.result);
     });
-    reader.readAsDataURL(file1);
+    reader.readAsDataURL(image);
   };
-  const handleGalleryImage2 = (event) => {
-    let file2 = event.target.files[0];
-    if (file2.size > 5 * 1024 * 1024) {
+  const handleGalleryImage2 = async (event) => {
+    if (event.target.files[0].size > 5 * 1024 * 1024) {
       window.alert("Please upload an image smaller than 5 MB");
       return false;
     }
-    setGalleryFile2(file2);
+    const image = await resizeFile(event.target.files[0]);
+    setGalleryFile2(image);
     let reader = new FileReader();
     reader.addEventListener("load", () => {
       setGalleryImage2(reader.result);
     });
-    reader.readAsDataURL(file2);
+    reader.readAsDataURL(image);
   };
-  const handleGalleryImage3 = (event) => {
-    let file3 = event.target.files[0];
-    if (file3.size > 5 * 1024 * 1024) {
+  const handleGalleryImage3 = async (event) => {
+    if (event.target.files[0].size > 5 * 1024 * 1024) {
       window.alert("Please upload an image smaller than 5 MB");
       return false;
     }
-    setGalleryFile3(file3);
+    const image = await resizeFile(event.target.files[0]);
+    setGalleryFile3(image);
     let reader = new FileReader();
     reader.addEventListener("load", () => {
       setGalleryImage3(reader.result);
     });
-    reader.readAsDataURL(file3);
+    reader.readAsDataURL(image);
   };
-  const handleGalleryImage4 = (event) => {
-    let file4 = event.target.files[0];
-    if (file4.size > 5 * 1024 * 1024) {
+  const handleGalleryImage4 = async (event) => {
+    if (event.target.files[0].size > 5 * 1024 * 1024) {
       window.alert("Please upload an image smaller than 5 MB");
       return false;
     }
-    setGalleryFile4(file4);
+    const image = await resizeFile(event.target.files[0]);
+    setGalleryFile4(image);
     let reader = new FileReader();
     reader.addEventListener("load", () => {
       setGalleryImage4(reader.result);
     });
-    reader.readAsDataURL(file4);
+    reader.readAsDataURL(image);
   };
 
   const handleSubmit = async (event) => {
@@ -275,7 +294,7 @@ function CreateSpot() {
           title: "Success",
           text: `${spot.name} has been added`,
           icon: "success",
-          confirmButtonText: "OK",
+          button: "OK",
         }).then(async function () {
           await authStore.updateNumofDests();
           setIsLoading(false);
@@ -285,7 +304,9 @@ function CreateSpot() {
         swal({
           title: "Reduce images size",
           icon: "error",
-          confirmButtonText: "OK",
+          button: "OK",
+        }).then(async function () {
+          setIsLoading(false);
         });
       }
     } catch (e) {

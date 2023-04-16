@@ -66,7 +66,7 @@ function RewardExperience() {
         title: "Success",
         text: `Reward has been added`,
         icon: "success",
-        confirmButtonText: "OK",
+        button: "OK",
       }).then(function () {
         nav(`/ExperianceList/${spotId}`);
       });

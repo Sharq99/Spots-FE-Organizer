@@ -97,9 +97,17 @@ class SpotStore {
         process.env.REACT_APP_DEST_UPDATE1+'/'+spotId+process.env.REACT_APP_DEST_UPDATE2+'/'+categoryId,
         formData
       );
-      this.spots = this.spots.map((spot) =>
-        spot._id === spotId ? res.data : spot
-      );
+      console.log('res', res)
+      if(typeof res === "undefined") {
+        console.log('undefined')
+        return "not updated"
+      } else {
+        console.log('defined')
+        this.spots = this.spots.map((spot) =>
+          spot._id === spotId ? res.data : spot
+        );
+        return "updated"
+      }
     } catch (error) {
       console.log(error);
     }

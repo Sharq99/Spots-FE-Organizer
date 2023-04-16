@@ -76,7 +76,7 @@ function PushNotification() {
           swal({
             title: "Notification Sent",
             icon: "success",
-            confirmButtonText: "OK",
+            button: "OK",
           })
         );
     } catch (error) {
@@ -107,7 +107,7 @@ function PushNotification() {
           swal({
             title: "Notification Sent",
             icon: "success",
-            confirmButtonText: "OK",
+            button: "OK",
           })
         );
     } catch (error) {

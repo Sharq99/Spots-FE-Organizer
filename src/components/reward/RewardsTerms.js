@@ -80,7 +80,7 @@ function RewardssTerms() {
         title: "Success",
         text: `Rewards Terms and Conditions Updated`,
         icon: "success",
-        confirmButtonText: "OK",
+        button: "OK",
       }).then(function () {
         nav(`/ExperianceList/${spotId}`);
       });
