@@ -13,11 +13,19 @@ import html2canvas from "html2canvas";
 import { ReactComponent as DestLogo } from "../pics/DestLogo.svg";
 import QRCode from "react-qr-code";
 import { baseURL } from "../../stores/instance";
-import Resizer from 'react-image-file-resizer';
+import Resizer from "react-image-file-resizer";
 
 function downloadDivAsImageEnglish(divId) {
   const div = document.getElementById(divId);
-  html2canvas(div, { backgroundColor: null }).then((canvas) => {
+  html2canvas(
+    document.querySelector(".deststamp"),
+    {
+      allowTaint: true,
+      useCORS: true,
+    },
+    div,
+    { backgroundColor: null }
+  ).then((canvas) => {
     const link = document.createElement("a");
     link.href = canvas.toDataURL();
     link.download = "DestStampEnglish.png";
@@ -26,7 +34,15 @@ function downloadDivAsImageEnglish(divId) {
 }
 function downloadDivAsImageArabic(divId) {
   const div = document.getElementById(divId);
-  html2canvas(div, { backgroundColor: null }).then((canvas) => {
+  html2canvas(
+    document.querySelector(".deststampar"),
+    {
+      allowTaint: true,
+      useCORS: true,
+    },
+    div,
+    { backgroundColor: null }
+  ).then((canvas) => {
     const link = document.createElement("a");
     link.href = canvas.toDataURL();
     link.download = "DestStampArabic.png";
@@ -190,9 +206,9 @@ function ExperianceList() {
         (uri) => {
           resolve(uri);
         },
-        "file",
-    );
-  });
+        "file"
+      );
+    });
 
   const handleAdImage0 = async (event) => {
     if (event.target.files[0].size > 5 * 1024 * 1024) {
