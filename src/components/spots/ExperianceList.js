@@ -14,18 +14,11 @@ import { ReactComponent as DestLogo } from "../pics/DestLogo.svg";
 import QRCode from "react-qr-code";
 import { baseURL } from "../../stores/instance";
 import Resizer from "react-image-file-resizer";
+import "../../Style/user.css";
 
 function downloadDivAsImageEnglish(divId) {
   const div = document.getElementById(divId);
-  html2canvas(
-    document.querySelector(".deststamp"),
-    {
-      allowTaint: true,
-      useCORS: true,
-    },
-    div,
-    { backgroundColor: null }
-  ).then((canvas) => {
+  html2canvas(div, { backgroundColor: null }).then((canvas) => {
     const link = document.createElement("a");
     link.href = canvas.toDataURL();
     link.download = "DestStampEnglish.png";
@@ -34,15 +27,7 @@ function downloadDivAsImageEnglish(divId) {
 }
 function downloadDivAsImageArabic(divId) {
   const div = document.getElementById(divId);
-  html2canvas(
-    document.querySelector(".deststampar"),
-    {
-      allowTaint: true,
-      useCORS: true,
-    },
-    div,
-    { backgroundColor: null }
-  ).then((canvas) => {
+  html2canvas(div, { backgroundColor: null }).then((canvas) => {
     const link = document.createElement("a");
     link.href = canvas.toDataURL();
     link.download = "DestStampArabic.png";
@@ -870,23 +855,50 @@ function ExperianceList() {
             >
               <div
                 id="deststamp"
-                className="deststamp"
+                //className="deststamp"
+                style={{
+                  height: 100,
+                  width: "50%",
+                  backgroundColor: "#e52b51",
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  boxShadow:
+                    "rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px",
+                  paddingLeft: 15,
+                  cursor: "pointer",
+                }}
                 onClick={() => downloadDivAsImageEnglish("deststamp")}
               >
                 <DestLogo
                   src={require("../pics/DestLogo.svg")}
-                  className="deststampimage"
+                  //className="deststampimage"
+                  style={{
+                    width: 70,
+                    height: 82,
+                  }}
                 />
                 <div>
                   <h1
-                    style={{ paddingRight: 60 }}
-                    className="deststamptitlesmall"
+                    style={{
+                      fontSize: 22,
+                      color: "#f1f1f1",
+                      alignSelf: "flex-end",
+                      paddingRight: 55,
+                    }}
                   >
                     Find us on
                   </h1>
                   <h1
-                    style={{ paddingRight: 30 }}
-                    className="deststamptitlelarge"
+                    style={{
+                      fontSize: 55,
+                      fontWeight: 600,
+                      color: "#f1f1f1",
+                      textAlign: "right",
+                      paddingRight: 30,
+                      lineHeight: 0.6,
+                    }} //className="deststamptitlelarge"
                   >
                     Dest
                   </h1>
@@ -915,23 +927,54 @@ function ExperianceList() {
               </div>
               <div
                 id="deststampar"
-                className="deststampar"
+                //className="deststampar"
+                style={{
+                  height: 100,
+                  width: "50%",
+                  backgroundColor: "#e52b51",
+                  display: "flex",
+                  flexDirection: "row-reverse",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  boxShadow:
+                    "rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px",
+                  paddingRight: 15,
+                  marginLeft: 20,
+                  cursor: "pointer",
+                }}
                 onClick={() => downloadDivAsImageArabic("deststampar")}
               >
                 <DestLogo
                   src={require("../pics/DestLogo.svg")}
-                  className="deststampimage"
+                  //className="deststampimage"
+                  style={{
+                    width: 70,
+                    height: 82,
+                  }}
                 />
                 <div>
                   <h1
-                    style={{ paddingLeft: 70 }}
-                    className="deststamptitlesmallar"
+                    style={{
+                      fontSize: 25,
+                      color: "#f1f1f1",
+                      alignSelf: "flex-end",
+                      paddingLeft: 70,
+                    }}
+                    //className="deststamptitlesmallar"
                   >
                     تجدنا في
                   </h1>
                   <h1
-                    style={{ paddingLeft: 40 }}
-                    className="deststamptitlelargear"
+                    style={{
+                      fontSize: 55,
+                      fontWeight: 600,
+                      color: "#f1f1f1",
+                      textAlign: "right",
+                      marginRight: 30,
+                      paddingLeft: 40,
+                      lineHeight: 0.6,
+                    }}
+                    //className="deststamptitlelargear"
                   >
                     ديست
                   </h1>
@@ -970,15 +1013,41 @@ function ExperianceList() {
             >
               <div
                 id="deststamp"
-                className="deststamp"
+                // className="deststamp"
+                style={{
+                  height: 100,
+                  width: "100%",
+                  backgroundColor: "#e52b51",
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  boxShadow:
+                    "rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px",
+                  paddingLeft: 15,
+                  cursor: "pointer",
+                }}
                 onClick={() => downloadDivAsImageEnglish("deststamp")}
               >
                 <DestLogo
                   src={require("../pics/DestLogo.svg")}
-                  className="deststampimage"
+                  // className="deststampimage"
+                  style={{
+                    width: 70,
+                    height: 82,
+                  }}
                 />
                 <div>
-                  <h1 className="deststamptitlesmall">Get Tickets from</h1>
+                  <h1
+                    style={{
+                      fontSize: 22,
+                      color: "#f1f1f1",
+                      alignSelf: "flex-start",
+                    }}
+                    className="deststamptitlesmall"
+                  >
+                    Get Tickets from
+                  </h1>
                   <h1 className="deststamptitlelarge">Dest</h1>
                 </div>
                 <div
@@ -1005,16 +1074,55 @@ function ExperianceList() {
               </div>
               <div
                 id="deststampar"
-                className="deststampar"
+                // className="deststampar"
+                style={{
+                  height: 100,
+                  width: "50%",
+                  backgroundColor: "#e52b51",
+                  display: "flex",
+                  flexDirection: "row-reverse",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  boxShadow:
+                    "rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px",
+                  paddingRight: 15,
+                  marginLeft: 20,
+                  cursor: "pointer",
+                }}
                 onClick={() => downloadDivAsImageArabic("deststampar")}
               >
                 <DestLogo
                   src={require("../pics/DestLogo.svg")}
-                  className="deststampimage"
+                  //className="deststampimage"
+                  style={{
+                    width: 70,
+                    height: 82,
+                  }}
                 />
                 <div>
-                  <h1 className="deststamptitlesmallar">تجد التذاكر في</h1>
-                  <h1 className="deststamptitlelargear">ديست</h1>
+                  <h1
+                    style={{
+                      fontSize: 25,
+                      color: "#f1f1f1",
+                      alignSelf: "flex-end",
+                      lineHeight: 0.5,
+                    }} //</div>className="deststamptitlesmallar"
+                  >
+                    تجد التذاكر في
+                  </h1>
+                  <h1
+                    style={{
+                      fontSize: 55,
+                      fontWeight: 600,
+                      color: "#f1f1f1",
+                      textAlign: "right",
+                      lineHeight: 32,
+                      marginRight: 30,
+                    }}
+                    //className="deststamptitlelargear"
+                  >
+                    ديست
+                  </h1>
                 </div>
                 <div
                   style={{
