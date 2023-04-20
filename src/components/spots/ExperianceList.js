@@ -15,10 +15,11 @@ import QRCode from "react-qr-code";
 import { baseURL } from "../../stores/instance";
 import Resizer from "react-image-file-resizer";
 import "../../Style/user.css";
+import QrStamp from "../../qrCodeStamp";
 
 function downloadDivAsImageEnglish(divId) {
   const div = document.getElementById(divId);
-  html2canvas(div, { backgroundColor: null }).then((canvas) => {
+  html2canvas(div, { backgroundColor: null, width: 220 }).then((canvas) => {
     const link = document.createElement("a");
     link.href = canvas.toDataURL();
     link.download = "DestStampEnglish.png";
@@ -27,7 +28,7 @@ function downloadDivAsImageEnglish(divId) {
 }
 function downloadDivAsImageArabic(divId) {
   const div = document.getElementById(divId);
-  html2canvas(div, { backgroundColor: null }).then((canvas) => {
+  html2canvas(div, { backgroundColor: null, width: 220 }).then((canvas) => {
     const link = document.createElement("a");
     link.href = canvas.toDataURL();
     link.download = "DestStampArabic.png";
@@ -840,215 +841,17 @@ function ExperianceList() {
           </ul>
           <h1 className="dashannouncement">Create Points</h1>
           <GenerateQrCode spotId={spotId} />
-          <h1 className="dashannouncement">Dest Stamp</h1>
-          <h1 className="destdownloads">Click on the stamp to download</h1>
-          {spot?.isFree ? (
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <div
-                id="deststampar"
-                //className="deststampar"
-                style={{
-                  height: 100,
-                  width: "28%",
-                  backgroundColor: "#e52b51",
-                  display: "flex",
-                  flexDirection: "row-reverse",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  boxShadow:
-                    "rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px",
-                  cursor: "pointer",
-                  alignSelf: "center",
-                }}
-                onClick={() => downloadDivAsImageArabic("deststampar")}
-              >
-                <div style={{ width: "50%" }}>
-                  <DestLogo
-                    src={require("../pics/DestLogo.svg")}
-                    //className="deststampimage"
-                    style={{
-                      width: 70,
-                      height: 82,
-                      alignSelf: "center",
-                    }}
-                  />
-                </div>
-                <div
-                  style={{
-                    height: "100%",
-                    backgroundColor: "white",
-                    width: "50%",
-                    display: "flex",
-                    alignContent: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <QRCode
-                    size={90}
-                    style={{
-                      alignSelf: "center",
-                      height: 90,
-                      width: 90,
-                    }}
-                    fgColor="#e52b51"
-                    value={`dest://SpotDetails/${spotId}`}
-                  />
-                </div>
-              </div>
-            </div>
-          ) : (
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "space-between",
-                alignItems: "center",
-              }}
-            >
-              <div
-                id="deststamp"
-                // className="deststamp"
-                style={{
-                  height: 100,
-                  width: "100%",
-                  backgroundColor: "#e52b51",
-                  display: "flex",
-                  flexDirection: "row",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  boxShadow:
-                    "rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px",
-                  paddingLeft: 15,
-                  cursor: "pointer",
-                }}
-                onClick={() => downloadDivAsImageEnglish("deststamp")}
-              >
-                <DestLogo
-                  src={require("../pics/DestLogo.svg")}
-                  // className="deststampimage"
-                  style={{
-                    width: 70,
-                    height: 82,
-                  }}
-                />
-                <div>
-                  <h1
-                    style={{
-                      fontSize: 22,
-                      color: "#f1f1f1",
-                      alignSelf: "flex-start",
-                    }}
-                    className="deststamptitlesmall"
-                  >
-                    Get Tickets from
-                  </h1>
-                  <h1 className="deststamptitlelarge">Dest</h1>
-                </div>
-                <div
-                  style={{
-                    height: "100%",
-                    backgroundColor: "white",
-                    width: 110,
-                    display: "flex",
-                    alignContent: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <QRCode
-                    size={90}
-                    style={{
-                      alignSelf: "center",
-                      height: 90,
-                      width: 90,
-                    }}
-                    fgColor="#e52b51"
-                    value={`dest://SpotDetails/${spotId}`}
-                  />
-                </div>
-              </div>
-              <div
-                id="deststampar"
-                // className="deststampar"
-                style={{
-                  height: 100,
-                  width: "50%",
-                  backgroundColor: "#e52b51",
-                  display: "flex",
-                  flexDirection: "row-reverse",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  boxShadow:
-                    "rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px",
-                  paddingRight: 15,
-                  marginLeft: 20,
-                  cursor: "pointer",
-                }}
-                onClick={() => downloadDivAsImageArabic("deststampar")}
-              >
-                <DestLogo
-                  src={require("../pics/DestLogo.svg")}
-                  //className="deststampimage"
-                  style={{
-                    width: 70,
-                    height: 82,
-                  }}
-                />
-                <div>
-                  <h1
-                    style={{
-                      fontSize: 25,
-                      color: "#f1f1f1",
-                      alignSelf: "flex-end",
-                      lineHeight: 0.5,
-                    }} //</div>className="deststamptitlesmallar"
-                  >
-                    تجد التذاكر في
-                  </h1>
-                  <h1
-                    style={{
-                      fontSize: 55,
-                      fontWeight: 600,
-                      color: "#f1f1f1",
-                      textAlign: "right",
-                      lineHeight: 32,
-                      marginRight: 30,
-                    }}
-                    //className="deststamptitlelargear"
-                  >
-                    ديست
-                  </h1>
-                </div>
-                <div
-                  style={{
-                    height: "100%",
-                    backgroundColor: "white",
-                    width: 110,
-                    display: "flex",
-                    alignContent: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <QRCode
-                    size={90}
-                    style={{
-                      alignSelf: "center",
-                      height: 90,
-                      width: 90,
-                    }}
-                    fgColor="#e52b51"
-                    value={`dest://SpotDetails/${spotId}`}
-                  />
-                </div>
-              </div>
-            </div>
-          )}
+          <h1 className="dashannouncement">Dest Stamps</h1>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <QrStamp spotId={spotId} />
+          </div>
         </div>
       </div>
     </div>
