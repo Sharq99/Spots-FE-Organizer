@@ -8,7 +8,7 @@ import Toggle from "react-toggle";
 import "react-toggle/style.css";
 import Modal from "react-modal";
 import { IoMdClose } from "react-icons/io";
-import Resizer from 'react-image-file-resizer';
+import Resizer from "react-image-file-resizer";
 
 function CreateSpot() {
   const nav = useNavigate();
@@ -68,6 +68,8 @@ function CreateSpot() {
     adImage3: "",
     adImage4: "",
     video: "",
+    website: "",
+    instagram: "",
     location: "",
     description: "",
     descriptionAr: "",
@@ -101,6 +103,8 @@ function CreateSpot() {
   const [spotNameAr, setSpotNameAr] = useState(true);
   const [spotImage, setSpotImage] = useState(true);
   const [spotLocation, setSpotLocation] = useState(true);
+  const [spotWebsite, setSpotWebsite] = useState(true);
+  const [spotInstagram, setSpotInstagram] = useState(true);
   const [spotDescription, setSpotDescription] = useState(true);
   const [spotDescriptionAr, setSpotDescriptionAr] = useState(true);
   const [spotDetails, setSpotDetails] = useState(true);
@@ -182,9 +186,9 @@ function CreateSpot() {
         (uri) => {
           resolve(uri);
         },
-        "file",
-    );
-  });
+        "file"
+      );
+    });
 
   const handleImage = (event) => {
     let file = event.target.files[0];
@@ -885,6 +889,26 @@ function CreateSpot() {
                   type="text"
                   placeholder="Location URL"
                   name="location"
+                  onChange={handleChange}
+                />
+                <div style={{ display: "flex", flexDirection: "row" }}>
+                  <h5 className="l-color">Enter Website URL &nbsp;</h5>
+                </div>
+                <input
+                  className="input-style"
+                  type="text"
+                  placeholder="Website URL"
+                  name="website"
+                  onChange={handleChange}
+                />
+                <div style={{ display: "flex", flexDirection: "row" }}>
+                  <h5 className="l-color">Enter Instagram URL &nbsp;</h5>
+                </div>
+                <input
+                  className="input-style"
+                  type="text"
+                  placeholder="Instagram URL"
+                  name="instagram"
                   onChange={handleChange}
                 />
                 <div style={{ display: "flex", flexDirection: "row" }}>
