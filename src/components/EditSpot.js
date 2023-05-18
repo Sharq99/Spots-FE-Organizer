@@ -10,7 +10,7 @@ import { baseURL } from "../stores/instance";
 import Toggle from "react-toggle";
 import "react-toggle/style.css";
 import categoryStore from "../stores/categoryStore";
-import Resizer from 'react-image-file-resizer';
+import Resizer from "react-image-file-resizer";
 
 function EditSpot() {
   const { spotId } = useParams();
@@ -45,6 +45,8 @@ function EditSpot() {
     adImage4: oldSpot?.adImage4,
     location: oldSpot?.location,
     views: oldSpot?.views,
+    website: oldSpot?.website,
+    instagram: oldSpot?.instagram,
     description: oldSpot?.description,
     descriptionAr: oldSpot?.descriptionAr,
     details: oldSpot?.details,
@@ -115,9 +117,9 @@ function EditSpot() {
         (uri) => {
           resolve(uri);
         },
-        "file",
-    );
-  });
+        "file"
+      );
+    });
 
   const handleGalleryImage0 = async (event) => {
     if (event.target.files[0].size > 5 * 1024 * 1024) {
@@ -226,7 +228,7 @@ function EditSpot() {
         spot.adImage3,
         spot.adImage4
       );
-      if(res === "updated") {
+      if (res === "updated") {
         swal({
           title: "Success",
           text: `${spot.name} has been Updated`,
@@ -716,6 +718,22 @@ function EditSpot() {
                 type="text"
                 value={spot.location}
                 name="location"
+                onChange={handleChange}
+              />
+              <h5 className="l-color">Enter Website URL</h5>
+              <input
+                className="input-style"
+                type="text"
+                value={spot.website}
+                name="website"
+                onChange={handleChange}
+              />
+              <h5 className="l-color">Enter Instagram URL</h5>
+              <input
+                className="input-style"
+                type="text"
+                value={spot.instagram}
+                name="instagram"
                 onChange={handleChange}
               />
               <h5 className="l-color">

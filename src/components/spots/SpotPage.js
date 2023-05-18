@@ -597,6 +597,14 @@ function SpotPage() {
           <a className="spotlink" href={spot?.location} target="_blank">
             Dest Location
           </a>
+          <h1 className="spotlabel">Website</h1>
+          <a className="spotlink" href={spot?.website} target="_blank">
+            Dest website
+          </a>
+          <h1 className="spotlabel">Instagram</h1>
+          <a className="spotlink" href={spot?.instagram} target="_blank">
+            Dest Instagram
+          </a>
         </div>
         {spot?.reviews.length !== 0 ? (
           <ReviewList reviews={spot?.reviews} />
