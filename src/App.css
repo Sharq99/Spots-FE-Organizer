@@ -136,3 +136,32 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
   font-size: 40px;
   font-family: "Ubuntu", sans-serif;
 }
+
+.collapsible {
+  color: #e52b51;
+  background-color: white;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #e52b51;
+  font-family: "Ubuntu", sans-serif;
+  border-radius: 10px;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.collapsible.active, .collapsible:hover {
+  background-color: #e52b51;
+  color: white;
+}
+
+.content {
+  margin: 10px;
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+}
