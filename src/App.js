@@ -26,6 +26,7 @@ import OffersTerms from "./components/offer/OffersTerms";
 import RewardssTerms from "./components/reward/RewardsTerms";
 import PickDate from "./components/CreateDest/PickDate";
 import ReportsList from "./components/report/ReportsList";
+import Populars from "./components/popular/Populars";
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
         {authStore.organizer?.email === process.env.REACT_APP_DEST_KEY_ADMN ? (
           <>
             <Route path="/applications" element={<ApllicationList />} />
+            <Route path="/populars" element={<Populars />} />
             <Route
               path="/active-organizers"
               element={<ActiveOrganizersList />}

@@ -10,8 +10,13 @@ import {
   IoIosListBox,
   IoMdPersonAdd,
   IoMdPerson,
+  IoIosApps,
 } from "react-icons/io";
-import { RiAdvertisementFill, RiLockPasswordFill, RiSpam2Fill } from "react-icons/ri";
+import {
+  RiAdvertisementFill,
+  RiLockPasswordFill,
+  RiSpam2Fill,
+} from "react-icons/ri";
 import { AiFillNotification } from "react-icons/ai";
 import { HiViewGridAdd } from "react-icons/hi";
 
@@ -21,8 +26,18 @@ function Nav() {
     <>
       {authStore.organizer ? (
         <>
-          {authStore.organizer?.email === process.env.REACT_APP_DEST_KEY_ADMN ? (
+          {authStore.organizer?.email ===
+          process.env.REACT_APP_DEST_KEY_ADMN ? (
             <nav className="navtabs">
+              <NavLink
+                style={({ isActive }) => ({
+                  color: isActive ? "#e52b51" : "grey",
+                })}
+                className="icon"
+                to="/populars"
+              >
+                <IoIosApps name="stats-chart-outline"></IoIosApps>
+              </NavLink>
               <NavLink
                 style={({ isActive }) => ({
                   color: isActive ? "#e52b51" : "grey",
