@@ -33,19 +33,22 @@ class PopularStore {
     }
   };
 
-  updatePopular = async (updatedPopular, popularId) => {
+  updatePopular = async (updatedPopular, popularId, file,) => {
+    updatedPopular.image = file;
+
     try {
       const formData = new FormData();
       for (const key in updatedPopular) {
         formData.append(key, updatedPopular[key]);
       }
       const res = await instance.put(
-        process.env.REACT_APP_POPULAR_UPDATE + popularId,
-        updatedPopular
+        process.env.REACT_APP_POPULAR_UPDATE + '/' + popularId,
+        formData
       );
       this.populars = this.populars.map((popular) =>
         popular._id === popularId ? res.data : popular
       );
+      return "it works"
     } catch (error) {
       console.error("popular", error);
     }
