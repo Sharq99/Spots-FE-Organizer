@@ -18,9 +18,12 @@ class AuthStore {
 
   checkForToken = () => {
     const token = localStorage.getItem("myToken");
+    console.log('token', token)
     if (token) {
       const currentTime = Date.now();
+      console.log('currentTime', currentTime)
       const user = decode(token);
+      console.log('user', user.exp)
       if (user.exp >= currentTime) {
         this.setOrganizer(token);
       } else {
