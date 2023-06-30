@@ -4,7 +4,7 @@ import PopularItem from "./PopularItem";
 
 function PopularList() {
   const popularList = popularStore.populars.map((popular) => (
-    <PopularItem key={popular?._id} popular={popular} />
+    <PopularItem key={popular?._id} popular={popular} id={popular?._id} />
   ));
   return popularList.length > 0 ? (
     <div className="categoriescarousel" style={{ justifyContent: "center" }}>

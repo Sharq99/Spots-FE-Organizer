@@ -3,7 +3,7 @@ import { baseURL } from "../../stores/instance";
 import { useState } from "react";
 import swal from "sweetalert";
 import popularStore from "../../stores/popularStore";
-function PopularItem({ popular }) {
+function PopularItem({ popular, id }) {
   const [newPopular, setNewPopular] = useState({
     title: popular.title,
     titleAr: popular.titleAr,
@@ -17,24 +17,38 @@ function PopularItem({ popular }) {
   });
 
   const [isActive, setIsActive] = useState(false);
+  const [file, setFile] = useState(popular?.image);
+  const [image, setImage] = useState("");
+  const [currentId, setCurrentId] = useState(id);
 
   const toggleCollapsible = () => {
     setIsActive(!isActive);
   };
-
+  
+  
   const handleChange = (event) => {
     setNewPopular({ ...newPopular, [event.target.name]: event.target.value });
   };
-
+  
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await popularStore.updatePopular(newPopular, popular._id);
-      swal({
-        title: "Success",
-        text: `Popular has been created`,
-        icon: "success",
-        button: "OK",
+      await popularStore.updatePopular(newPopular, currentId, file).then(response => {
+        if(response) {
+          swal({
+            title: "Success",
+            text: `Popular has been updated`,
+            icon: "success",
+            button: "OK",
+          });
+        } else {
+          swal({
+            title: "welp that didnt work 🤷‍♂️",
+            text: `oh no! 🥹 please try again`,
+            icon: "warning",
+            button: "OK",
+          });
+        }
       });
     } catch (e) {
       alert(e.message);
@@ -56,23 +70,89 @@ function PopularItem({ popular }) {
       }
     });
   };
+  const handleImage = async (event, id) => {
+    event.preventDefault();
+    let file = event.target.files[0];
+    setFile(file);
+    let reader = new FileReader();
+    reader.addEventListener("load", () => {
+      setImage(reader.result);
+    });
+    reader.readAsDataURL(file);
+    try {
+      await popularStore.updatePopular(newPopular, id, file).then(response => {
+        if(response) {
+          swal({
+            title: "Success",
+            text: `Popular has been updated`,
+            icon: "success",
+            button: "OK",
+          });
+        } else {
+          swal({
+            title: "welp that didnt work 🤷‍♂️",
+            text: `oh no! 🥹 please try again`,
+            icon: "warning",
+            button: "OK",
+          });
+        }
+      });
+    } catch (e) {
+      alert(e.message);
+    }
+  };
   return (
     <div
-      style={{
+    style={{
         display: "flex",
         flexDirection: "column",
         margin: 20,
       }}
     >
-      <img
-        style={{
-          height: 500,
-          width: 460,
-          objectFit: "cover",
-          borderRadius: 20,
-        }}
-        src={baseURL + popular.image}
-      ></img>
+      
+      <div>
+        <input
+          style={{
+            borderRadius: 20,
+            borderWidth: 2,
+            borderColor: "#e52b51",
+            height: 500,
+            width: 480,
+            display: "none"
+          }}
+          type="file"
+          id={currentId}
+          placeholder="Image URL"
+          name="image"
+          onChange={(event) => handleImage(event, currentId)}
+        />
+        <button
+          style={{
+            borderRadius: 20,
+            borderWidth: 9,
+            borderColor: "#e52b51",
+            height: 500,
+            width: 480,
+            background: "none",
+            border: "none",
+            padding: 0
+          }}
+          onClick={() => {
+            document.getElementById(currentId).click();
+          }}
+        >
+          <img
+            style={{
+              height: 500,
+              width: 460,
+              objectFit: "cover",
+              borderRadius: 20,
+            }}
+            src={image ? image : `${baseURL}${popular.image}`}
+            alt="Popular Image"
+          />
+        </button>
+      </div>
 
       <button
         style={{
