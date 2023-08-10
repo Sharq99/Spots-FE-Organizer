@@ -3,6 +3,8 @@ import { baseURL } from "../../stores/instance";
 import { useState } from "react";
 import swal from "sweetalert";
 import popularStore from "../../stores/popularStore";
+import Toggle from "react-toggle";
+
 function PopularItem({ popular, id }) {
   const [newPopular, setNewPopular] = useState({
     title: popular.title,
@@ -20,6 +22,7 @@ function PopularItem({ popular, id }) {
   const [file, setFile] = useState(popular?.image);
   const [image, setImage] = useState("");
   const [currentId, setCurrentId] = useState(id);
+  const [checked, setChecked] = useState(popular?.expired);
 
   const toggleCollapsible = () => {
     setIsActive(!isActive);
@@ -101,6 +104,11 @@ function PopularItem({ popular, id }) {
       alert(e.message);
     }
   };
+
+  const handleExpiary = (isExpired) => {
+      setNewPopular({ ...newPopular, ['expired']: isExpired });
+  };
+
   return (
     <div
     style={{
@@ -242,6 +250,27 @@ function PopularItem({ popular, id }) {
             placeholder="DescriptionAr"
             onChange={handleChange}
           />
+          <div style={{ display: 'flex', flexDirection: "row", alignItems: "center" }}>
+            <h5 className="l-color" style={{ marginRight: 8 }} >Popular Expired?</h5>
+            <input
+              type="radio"
+              id="expired"
+              name="expiredPopular"
+              className="radio"
+              onChange={() => handleExpiary(true)}
+            />
+            <label className="radiotext" for="expired">
+              Yes
+            </label>
+            <input
+              type="radio"
+              id="expired"
+              name="expiredPopular"
+              className="radio"
+              onChange={() => handleExpiary(false)}
+            />
+            <label for="expired">No</label>
+          </div>
           <label
             style={{
               fontSize: 20,
