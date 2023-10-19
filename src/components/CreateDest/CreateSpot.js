@@ -515,7 +515,7 @@ function CreateSpot() {
                     ></img>
                   ) : (
                     <label className="spotgalleryholder">
-                      Recommended 1080W x 720H
+                      Recommended 1080W x 1080H
                     </label>
                   )}
                   <div>
@@ -578,7 +578,7 @@ function CreateSpot() {
                     ></img>
                   ) : (
                     <label className="spotgalleryholder">
-                      Recommended 1080W x 720H
+                      Recommended 1080W x 1080H
                     </label>
                   )}
                   <div>
@@ -642,7 +642,7 @@ function CreateSpot() {
                     ></img>
                   ) : (
                     <label className="spotgalleryholder">
-                      Recommended 1080W x 720H
+                      Recommended 1080W x 1080H
                     </label>
                   )}
                   <div>
@@ -706,7 +706,7 @@ function CreateSpot() {
                     ></img>
                   ) : (
                     <label className="spotgalleryholder">
-                      Recommended 1080W x 720H
+                      Recommended 1080W x 1080H
                     </label>
                   )}
                   <div>
@@ -770,7 +770,7 @@ function CreateSpot() {
                     ></img>
                   ) : (
                     <label className="spotgalleryholder">
-                      Recommended 1080W x 720H
+                      Recommended 1080W x 1080H
                     </label>
                   )}
                   <div>
@@ -928,7 +928,7 @@ function CreateSpot() {
                   type="text"
                   placeholder="Dest Description in English  (200 characters max)"
                   name="description"
-                  maxLength={200}
+                  maxLength={400}
                   onChange={handleChange}
                 />
                 <div style={{ display: "flex", flexDirection: "row" }}>
@@ -950,7 +950,7 @@ function CreateSpot() {
                   type="text"
                   placeholder="وصف الوجهه بالعربي (٢٠٠ حرف كحد اقصى)"
                   name="descriptionAr"
-                  maxLength={200}
+                  maxLength={400}
                   onChange={handleChange}
                 />
               </div>

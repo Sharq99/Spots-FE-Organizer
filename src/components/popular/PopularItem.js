@@ -27,32 +27,34 @@ function PopularItem({ popular, id }) {
   const toggleCollapsible = () => {
     setIsActive(!isActive);
   };
-  
-  
+
   const handleChange = (event) => {
     setNewPopular({ ...newPopular, [event.target.name]: event.target.value });
   };
-  
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await popularStore.updatePopular(newPopular, currentId, file).then(response => {
-        if(response) {
-          swal({
-            title: "Success",
-            text: `Popular has been updated`,
-            icon: "success",
-            button: "OK",
-          });
-        } else {
-          swal({
-            title: "welp that didnt work 🤷‍♂️",
-            text: `oh no! 🥹 please try again`,
-            icon: "warning",
-            button: "OK",
-          });
-        }
-      });
+      console.log("hello i in submit");
+      await popularStore
+        .updatePopular(newPopular, currentId, file)
+        .then((response) => {
+          if (response) {
+            swal({
+              title: "Success",
+              text: `Popular has been updated`,
+              icon: "success",
+              button: "OK",
+            });
+          } else {
+            swal({
+              title: "welp that didnt work 🤷‍♂️",
+              text: `oh no! 🥹 please try again`,
+              icon: "warning",
+              button: "OK",
+            });
+          }
+        });
     } catch (e) {
       alert(e.message);
     }
@@ -83,41 +85,42 @@ function PopularItem({ popular, id }) {
     });
     reader.readAsDataURL(file);
     try {
-      await popularStore.updatePopular(newPopular, id, file).then(response => {
-        if(response) {
-          swal({
-            title: "Success",
-            text: `Popular has been updated`,
-            icon: "success",
-            button: "OK",
-          });
-        } else {
-          swal({
-            title: "welp that didnt work 🤷‍♂️",
-            text: `oh no! 🥹 please try again`,
-            icon: "warning",
-            button: "OK",
-          });
-        }
-      });
+      await popularStore
+        .updatePopular(newPopular, id, file)
+        .then((response) => {
+          if (response) {
+            swal({
+              title: "Success",
+              text: `Popular has been updated`,
+              icon: "success",
+              button: "OK",
+            });
+          } else {
+            swal({
+              title: "welp that didnt work 🤷‍♂️",
+              text: `oh no! 🥹 please try again`,
+              icon: "warning",
+              button: "OK",
+            });
+          }
+        });
     } catch (e) {
       alert(e.message);
     }
   };
 
   const handleExpiary = (isExpired) => {
-      setNewPopular({ ...newPopular, ['expired']: isExpired });
+    setNewPopular({ ...newPopular, ["expired"]: isExpired });
   };
 
   return (
     <div
-    style={{
+      style={{
         display: "flex",
         flexDirection: "column",
         margin: 20,
       }}
     >
-      
       <div>
         <input
           style={{
@@ -126,7 +129,7 @@ function PopularItem({ popular, id }) {
             borderColor: "#e52b51",
             height: 500,
             width: 480,
-            display: "none"
+            display: "none",
           }}
           type="file"
           id={currentId}
@@ -143,7 +146,7 @@ function PopularItem({ popular, id }) {
             width: 480,
             background: "none",
             border: "none",
-            padding: 0
+            padding: 0,
           }}
           onClick={() => {
             document.getElementById(currentId).click();
@@ -250,8 +253,16 @@ function PopularItem({ popular, id }) {
             placeholder="DescriptionAr"
             onChange={handleChange}
           />
-          <div style={{ display: 'flex', flexDirection: "row", alignItems: "center" }}>
-            <h5 className="l-color" style={{ marginRight: 8 }} >Popular Expired?</h5>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+            }}
+          >
+            <h5 className="l-color" style={{ marginRight: 8 }}>
+              Popular Expired?
+            </h5>
             <input
               type="radio"
               id="expired"

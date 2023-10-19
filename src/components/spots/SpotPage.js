@@ -18,14 +18,13 @@ function SpotPage() {
   let startDate = moment(spot?.startDate).format("LL");
   let endDate = moment(spot?.endDate).format("LL");
   const today = new Date();
-  today.setHours(3, 0, 0, 0);
-  let todayDate = moment(today).format("LL");
+  today.setHours(0, 0, 0, 0);
   const active = spot.isMultiple
-    ? todayDate >= startDate && todayDate <= endDate
-    : todayDate === startDate;
+    ? today >= new Date(startDate).d && today <= new Date(endDate)
+    : today === new Date(startDate);
   const finished = spot.isMultiple
-    ? todayDate > endDate
-    : todayDate > startDate;
+    ? today > new Date(endDate)
+    : today > new Date(startDate);
 
   useEffect(() => {
     spotStore.fetchSpots();
